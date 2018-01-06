@@ -11,7 +11,7 @@ Een beknopte heldere website met visualisaties van data over vuurwerkschade,  wa
 De **doelgroep** is mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** is toegankelijk, bij voorkeur is de website begrijpelijk voor kinderen vanaf 12 jaar.
 
 ### 3. Uitgebreidde omschrijving van de oplossing.
-Een website met visualisaties van schade veroorzaakt door vuurwerk.  Makkelijk te begrijpen.  Alles staat op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel.
+Een website met visualisaties van schade veroorzaakt door vuurwerk.  Makkelijk te begrijpen.  Alles staat op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. Zie ook de schets hieronder.
   ### Mensen
   #### Letsel 
 
@@ -29,7 +29,11 @@ Een lijngrafiek die de piek in concentratie fijnstof rond de jaarwisseling weerg
 ### Materieel
 Een staafdiagram met de hoeveelheid schade per jaarwisseling.  Het aanklikken van een staafje selecteerd een jaarwisseling. Per staaf is er een onderverdeling naar soort schade (indien data gevonden wordt.)
 
-### 4. Vereisten.
+### 4. Minimale onderdelen en optionele onderdelen.
+Minimaal moeten het staafdiagram met het aantal mensen dat tijdens een jaarwisseling naar de spoedeisende hulp moest er in, de taartdiagrammen die hier bij horen, de infographic over ilieuvervuiling door vuurwerk, de piek in luchtvervuiling rond de jaarwisseling en de hoeveelheid schade.
+Optioneel zijn het poppetje met het letsel en het staafdiagram met meldingen van vuurwerkoverlast.
+
+### 5. Vereisten.
 Het doel is zoveel mogelijk relevante data weer te geven. Deze data blijkt erg versnippert en zal grotendeels uit nieuwsberichten en rapporten komen. Dit betekent dat het voorbereiden van de data veel werk gaat kosten, maar het is ook een extra motivatie voor het maken van de website.
   #### Lijst van data bronnen 
 https://www.google.nl/amp/s/nos.nl/googleamp/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html
@@ -42,3 +46,5 @@ http://content1a.omroep.nl/urishieldv2/l27m707c500020d6b406005a4f4565000000.d2e5
  http://www.clo.nl/indicatoren/nl0570-luchtverontreiniging-tijdens-de-jaarwisseling 
 https://nos.nl/artikel/2151143-schade-jaarwisseling-geschat-op-13-miljoen-euro.html
 https://l1.nl/content/documents/2016/12/2017-vuurwerkschade.pdf
+
+![](doc/schetsWebsite.png)

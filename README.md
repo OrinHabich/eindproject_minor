@@ -3,8 +3,7 @@
 
 ### 1. Omschrijving van het probleem.
 Er is te weinig bewustzijn van schade door vuurwerk. 
-De discussies rondom vuurwerk slingert meestal tussen de argumenten 
-"het is traditie" en "het levert veel schade."
+De discussie rondom vuurwerk slingert meestal tussen "het is traditie" en "het levert veel schade."
 Dit laatste argument is veelomvattend en rationeel, maar dat komt niet altijd goed uit de verf.
 
 ### 2. De oplossing in het kort.

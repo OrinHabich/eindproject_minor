@@ -1,5 +1,4 @@
-## Vuurwerkschade
-#### Orin Habich
+# Vuurwerkschade #### Orin Habich
 
 ### 1. Omschrijving van het probleem
 Over het algemeen zijn mensen zich onvoldoende bewust van de hoeveelheid schade door vuurwerk. 

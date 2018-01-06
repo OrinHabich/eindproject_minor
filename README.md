@@ -10,7 +10,7 @@ Dit laatste argument is veelomvattend en rationeel, maar dat komt niet altijd go
 Een beknopte heldere website met visualisaties van data over vuurwerkschade,  waarbij gefocused wordt op schade aan mensen (zoals letselschade), schade aan milieu (zoals fijnstof) en materiële schade (zoals brand).  
 De **doelgroep** is mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** is toegankelijk, bij voorkeur is de website begrijpelijk voor kinderen vanaf 12 jaar.
 
-### 3. Uitgebreidde omschrijving van de oplossing.
+### 3. Uitgebreide omschrijving van de oplossing.
 Een website met visualisaties van schade veroorzaakt door vuurwerk.  Makkelijk te begrijpen.  Alles staat op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. Zie ook de schets hieronder.
   ### Mensen
   #### Letsel 

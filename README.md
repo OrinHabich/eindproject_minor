@@ -11,7 +11,7 @@ Een beknopte heldere website met visualisaties van data over drie soorten vuurwe
 De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** is toegankelijk, bij voorkeur is de website begrijpelijk voor kinderen vanaf 12 jaar.
 
 ### 3. Uitgebreide omschrijving van de oplossing
-Een website met visualisaties van schade veroorzaakt door vuurwerk.  Makkelijk te begrijpen.  Alles staat op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. Zie ook de schets hieronder.
+Een website met visualisaties van schade veroorzaakt door vuurwerk.  Makkelijk te begrijpen.  Alles staat op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. Zie ook de schets onderaan.
   ### Mensen
   #### Letsel 
 

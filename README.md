@@ -50,7 +50,7 @@ Het doel is zoveel mogelijk relevante data weer te geven. Deze data blijkt erg v
 - https://nos.nl/artikel/2151143-schade-jaarwisseling-geschat-op-13-miljoen-euro.html
 - https://l1.nl/content/documents/2016/12/2017-vuurwerkschade.pdf
 - https://www.nvshv.nl/wp-content/uploads/2014/12/vuurwerkongevallen-2013-2014.pdf
-- https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2015/04/30/rapport-veiligheid-nl-vervolgonderzoek-- -    vuurwerkongevallen-2014-2015/rapport-veiligheid-nl-vervolgonderzoek-vuurwerkongevallen-2014-2015.pdf
+- https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2015/04/30/rapport-veiligheid-nl-vervolgonderzoek-vuurwerkongevallen-2014-2015/rapport-veiligheid-nl-vervolgonderzoek-vuurwerkongevallen-2014-2015.pdf
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/C3229E8087B6F2F5C1257FE100442ADB/asset/Rapport%20631%20Vuurwerk%202015-2016.pdf
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf

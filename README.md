@@ -1,17 +1,15 @@
 # Vuurwerkschade 
 #### Orin Habich
 
-### 1. Omschrijving van het probleem
+### 1. Probleemstelling
 Over het algemeen zijn mensen zich onvoldoende bewust van de hoeveelheid schade door vuurwerk. 
 De discussie rondom vuurwerk slingert meestal tussen "het is traditie" en "het veroorzaakt veel schade."
 Dit laatste argument is veelomvattend en rationeel, maar de informatie over vuurwerkschade is erg versnipperd en ontoegankelijk. 
 
-### 2. De oplossing in het kort
-Een beknopte heldere website met visualisaties van data over drie soorten vuurwerkschade: schade aan mensen (zoals letselschade), schade aan milieu (zoals fijnstof) en materiële schade (zoals brand).  
+### 2. Oplossing
+In één zin is de beoogde oplosing een beknopte heldere website met visualisaties van data over drie soorten vuurwerkschade: schade aan mensen (zoals letselschade), schade aan milieu (zoals fijnstof) en materiële schade (zoals brand).  
 De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** is toegankelijk, bij voorkeur is de website begrijpelijk voor kinderen vanaf 12 jaar.
-
-### 3. Uitgebreide omschrijving van de oplossing
-Een website met visualisaties van schade veroorzaakt door vuurwerk.  Makkelijk te begrijpen.  Alles staat op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. Zie ook de schets onderaan.
+Alles staat bij voorkeur op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. Zie ook de schets onderaan.
   ### Mensen
   #### Letsel 
 

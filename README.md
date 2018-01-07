@@ -24,8 +24,9 @@ Een staafdiagram met het aantal meldingen van overlast door vuurwerk bij Meldpun
 
 ### Milieu
 Een infographic over de vervuiling. 
-Een lijngrafiek met de gemiddelde hoeveelheid smog met crosshair die (net als het staafje in de barchart hierboven) een jaarwisseling selecteert.
-Een lijngrafiek die de piek in concentratie fijnstof rond de jaarwisseling weergeeft
+Een lijngrafiek met de gemiddelde hoeveelheid smog met crosshair die (net als het staafje in de barchart hierboven) een jaarwisseling selecteert. 
+Een lijngrafiek die de piek in concentratie fijnstof rond de jaarwisseling weergeeft. 
+Deze twee lijngrafieken zijn zoals [hier](http://www.clo.nl/indicatoren/nl0570-luchtverontreiniging-tijdens-de-jaarwisseling)
 
 ### Materieel
 Een staafdiagram met de hoeveelheid schade per jaarwisseling.  Het aanklikken van een staafje selecteert een jaarwisseling. Per staaf is er een onderverdeling naar soort schade (indien data gevonden wordt.)

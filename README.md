@@ -33,7 +33,7 @@ Een staafdiagram met de hoeveelheid schade per jaarwisseling.  Het aanklikken va
 
 ### 4. Minimale onderdelen en optionele onderdelen
 Minimaal moeten de staafdiagram met het aantal mensen dat tijdens een jaarwisseling naar de spoedeisende hulp moest erin, de taartdiagrammen die hierbij horen, de infographic over milieuvervuiling door vuurwerk, de piek in luchtvervuiling rond de jaarwisseling en de hoeveelheid schade.
-Optioneel zijn het poppetje met het letsel en de staafdiagram met meldingen van vuurwerkoverlast.
+Optioneel zijn het poppetje met het letsel en de staafdiagram met meldingen van vuurwerkoverlast. Er zou wellicht ook interactiviteit aan de infographic toegevoegd kunnen worden.
 
 ### 5. Vereisten
 Het doel is zoveel mogelijk relevante data weer te geven. Deze data blijkt erg versnipperd en zal grotendeels uit nieuwsberichten en rapporten komen. Dit betekent dat het voorbereiden van de data veel werk gaat kosten, maar het is ook een extra motivatie voor het maken van de website.

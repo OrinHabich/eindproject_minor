@@ -20,8 +20,8 @@ Alles staat bij voorkeur op één pagina. De visualisaties zijn ingedeeld naar M
 - Taartdiagrammen geven diverse aspecten (zoals leeftijdsverdeling) bij de gekozen jaarwisseling.
 Voor de plaats van het letsel is een poppetje in plaats van een taartdiagram. De ledematen en percentages highlighten bij mouse-over. Bij mouse-over over de ogen verschijnt een taartdiagram met een verdere specificatie van de soorten oogletsel. 	                          Het hart geeft het aantal doden door vuurwerk. Daarbij zit een knop voor meer informatie over deze sterfgevallen.
 
-  ####  Overlast
-- Een staafdiagram met het aantal meldingen van overlast door vuurwerk bij Meldpunt Vuurwerkoverlast per jaarwisseling. Per staaf is er een onderverdeling naar soort overlast (indien deze data gevonden wordt.)
+ ####  Overlast
+  - Een staafdiagram met het aantal meldingen van overlast door vuurwerk bij Meldpunt Vuurwerkoverlast per jaarwisseling. Per staaf is er een onderverdeling naar soort overlast (indien deze data gevonden wordt.)
 
 ### Milieu
 - Een infographic over de vervuiling. 

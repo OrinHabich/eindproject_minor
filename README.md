@@ -9,7 +9,10 @@ Dit laatste argument is veelomvattend en rationeel, maar de informatie over vuur
 ### 2. Oplossing
 In één zin is de beoogde oplosing een beknopte heldere website met visualisaties van data over drie soorten vuurwerkschade: schade aan mensen (zoals letselschade), schade aan milieu (zoals fijnstof) en materiële schade (zoals brand).  
 De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** is toegankelijk, bij voorkeur is de website begrijpelijk voor kinderen vanaf 12 jaar.
-Alles staat bij voorkeur op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. Zie ook de schets onderaan.
+
+### 3. Gedetailleerde omschrijving van de oplossing
+(Zie de schets onderaan.)
+Alles staat bij voorkeur op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. 
   ### Mensen
   #### Letsel 
 
@@ -17,7 +20,7 @@ Een staafdiagram geeft het aantal mensen dat tijdens een jaarwisseling naar de s
 Voor de plaats van het letsel is een poppetje in plaats van een taartdiagram. De ledematen en percentages highlighten bij mouse-over. Bij mouse-over over de ogen verschijnt een taartdiagram met een verdere specificatie van de soorten oogletsel. 	                          Het hart geeft het aantal doden door vuurwerk. Daarbij zit een knop voor meer informatie over deze sterfgevallen.
 
   ####  Overlast
-Een staafdiagram met het aantal meldingen van overlast door vuurwerk bij Meldpunt Vuurwerkoverlast per jaarwisseling. Per staaf is er een onderverdeling naar soort overlast (indien data gevonden wordt.)
+Een staafdiagram met het aantal meldingen van overlast door vuurwerk bij Meldpunt Vuurwerkoverlast per jaarwisseling. Per staaf is er een onderverdeling naar soort overlast (indien deze data gevonden wordt.)
 
 ### Milieu
 Een infographic over de vervuiling. 
@@ -50,5 +53,4 @@ https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2015/04
 https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/C3229E8087B6F2F5C1257FE100442ADB/asset/Rapport%20631%20Vuurwerk%202015-2016.pdf
 https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf
 https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf
-
 ![](doc/schetsWebsite.png)

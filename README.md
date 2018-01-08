@@ -11,7 +11,7 @@ In één zin is de beoogde oplosing een beknopte heldere website met visualisati
 De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** is toegankelijk, bij voorkeur is de website begrijpelijk voor kinderen vanaf 12 jaar.
 
 ### 3. Gedetailleerde omschrijving van de oplossing
-Zie de schets onderaan. Alles staat bij voorkeur op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. 
+Zie de schets onderaan. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. Alles staat bij voorkeur op één pagina, of misschien wordt het een pagina per onderwerp.
  ### Mensen
  #### Letsel 
 

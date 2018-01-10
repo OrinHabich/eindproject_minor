@@ -2,31 +2,17 @@
 #### Orin Habich
 
 ### Technische aanpak van de onderdelen in de oplossing
-Zie de schets onderaan. Alles staat bij voorkeur op één pagina. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel.
- ### Mensen
- #### Letsel
+  Hieronder is een lijst met de databronnen. Dit zijn bijna allemaal nieuwsberichten of rapporten.
+  De data moet ik dus grotendeels uit tekst halen. Gelukkig zijn het vrij kleine datasetjes per visualisatie.
 
-- Een staafdiagram geeft het aantal mensen dat tijdens een jaarwisseling naar de spoedeisende hulp moest. Het aandeel dat vervolgens in het ziekenhuis opgenomen werd is aangegeven (stacked barchart).
-- Het aanklikken van een staafje selecteert een jaarwisseling ().
-- Taartdiagrammen geven diverse aspecten (zoals leeftijdsverdeling) bij de gekozen jaarwisseling.
-- Voor de plaats van het letsel is een poppetje in plaats van een taartdiagram. De ledematen en percentages highlighten bij mouse-over.
- - Bij mouse-over over de ogen highlight het taartdiagram met een verdere specificatie van de soorten oogletsel.
- - Bij mouse-over over het hart highlight het aantal doden door vuurwerk. Daarbij zit een knop voor meer informatie over deze sterfgevallen.
+  Een overzicht en omschrijving van de technische componenten staat in de afbeelding hieronder.
 
- ####  Overlast
-  - Een staafdiagram met het aantal meldingen van overlast door vuurwerk bij Meldpunt Vuurwerkoverlast per jaarwisseling. Per staaf is er een onderverdeling naar soort overlast (indien deze data gevonden wordt.)
+  Voor dit project ga ik in ieder geval gebruiken:
+  - bootstrap
+  - jqueryAjax
+  - queue
+  - d3-tip
 
-### Milieu
-- Een infographic over de vervuiling.
-- Een lijngrafiek met de gemiddelde hoeveelheid smog met crosshair die (net als het staafje in de barchart hierboven) een jaarwisseling selecteert.
-- Een lijngrafiek die de piek in concentratie fijnstof rond de jaarwisseling weergeeft.
-Deze twee lijngrafieken zijn zoals [hier](http://www.clo.nl/indicatoren/nl0570-luchtverontreiniging-tijdens-de-jaarwisseling).
-
-### Materieel
-- Een staafdiagram met de hoeveelheid schade per jaarwisseling.  Het aanklikken van een staafje selecteert een jaarwisseling. Per staaf is er een onderverdeling naar soort schade (indien data gevonden wordt.)
-
-### Vereisten
-Het doel is zoveel mogelijk relevante data weer te geven. Deze data blijkt erg versnipperd en zal grotendeels uit nieuwsberichten en rapporten komen. Dit betekent dat het voorbereiden van de data veel werk gaat kosten, maar het is ook een extra motivatie voor het maken van de website.
   #### Lijst van databronnen
 - https://www.google.nl/amp/s/nos.nl/googleamp/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html
 - https://www.nrc.nl/nieuws/2016/01/03/bijna-90-000-meldingen-van-vuurwerkoverlast-a1410391
@@ -44,4 +30,4 @@ Het doel is zoveel mogelijk relevante data weer te geven. Deze data blijkt erg v
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/C3229E8087B6F2F5C1257FE100442ADB/asset/Rapport%20631%20Vuurwerk%202015-2016.pdf
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf
-![](doc/schetsWebsite.png)
+![](doc/schetsTechnischeComponenten.png)

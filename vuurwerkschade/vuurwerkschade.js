@@ -46,9 +46,28 @@ function afterLoad() {
 
     var yOverlast = d3.scaleLinear().rangeRound([heightBarchart, 0]);
 
-    var colorsBarchartOverlast = ["#B8860B"];
+    var colorsBarchartOverlast = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
 
     var zOverlast = d3.scaleOrdinal().range(colorsBarchartOverlast);
+
+    //--------VARIABLES FOR THE BARCHART ABOUT SCHADE---------------------------
+    var svgBarchartSchade = d3.select("#svgBarchartSchade"),
+        margin = {top: 20, right: 100, bottom: 30, left: 60},
+        widthBarchart = +svgBarchartSchade.attr("width") - margin.left - margin.right,
+        heightBarchart = +svgBarchartSchade.attr("height") - margin.top - margin.bottom,
+        gBarchartSchade = svgBarchartSchade.append("g").attr("id", "BarchartSchade")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var xSchade = d3.scaleBand()
+        .rangeRound([0, widthBarchart])
+        .paddingInner(0.05)
+        .align(0.1);
+
+    var ySchade = d3.scaleLinear().rangeRound([heightBarchart, 0]);
+
+    var colorsBarchartSchade = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
+
+    var zSchade = d3.scaleOrdinal().range(colorsBarchartSchade);
 
 
     //--------VARIABLES FOR THE PIECHART ABOUT 'SEHperLeeftijd'-----------------
@@ -162,14 +181,20 @@ function afterLoad() {
             d.total = t;
             return d;
         })
+        .defer(d3.csv, "data/schade.csv", function(d, i, columns) {
+            for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+            d.total = t;
+            return d;
+        })
       	.defer(d3.json, "data/SEHperLeeftijd.json")
         .defer(d3.json, "data/SEHomstander.json")
         .defer(d3.json, "data/SEHperTypeVuurwerk.json")
         .defer(d3.json, "data/SEHstatusVuurwerk.json")
       	.await(makeCharts);
 
-    function makeCharts(error, dataBarchartSEH, dataBarchartOverlast, dataPiechartSEHperLeeftijd,
-       dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk) {
+    function makeCharts(error, dataBarchartSEH, dataBarchartOverlast, dataBarchartSchade,
+       dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
+       dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk) {
         /*   Creates charts based on the given data.
              Args: Appriopiate datasets.
         */
@@ -180,6 +205,9 @@ function afterLoad() {
 
        makeBarchart(xOverlast, yOverlast, zOverlast, gBarchartOverlast, dataBarchartOverlast, dataPiechartSEHperLeeftijd,
           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk);
+
+        makeBarchart(xSchade, ySchade, zSchade, gBarchartSchade, dataBarchartSchade, dataPiechartSEHperLeeftijd,
+           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk);
 
         // Draw default piecharts
         updatePiecharts("2014/2015", dataPiechartSEHperLeeftijd,

@@ -19,6 +19,8 @@
   - makeBarchart      voor het maken (stacked) barcharts 
   - updatePiecharts   voor het updaten van de piecharts
   - makePiechart      voor het maken van piecharts
+  
+  In het schema hieronder is te zien in welke volgorde deze worden aangeroepen.
 
   #### Lijst van databronnen
 - https://www.google.nl/amp/s/nos.nl/googleamp/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html

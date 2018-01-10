@@ -13,42 +13,42 @@ function afterLoad() {
     */
 
     //--------VARIABLES FOR THE BARCHART ABOUT SEH------------------------------
-    var svgBarchart = d3.select("#svgBarchartSEH"),
+    var svgBarchartSEH = d3.select("#svgBarchartSEH"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchart = +svgBarchart.attr("width") - margin.left - margin.right,
-        heightBarchart = +svgBarchart.attr("height") - margin.top - margin.bottom,
-        gBarchart = svgBarchart.append("g").attr("id", "Barchart")
+        widthBarchart = +svgBarchartSEH .attr("width") - margin.left - margin.right,
+        heightBarchart = +svgBarchartSEH .attr("height") - margin.top - margin.bottom,
+        gBarchartSEH  = svgBarchartSEH .append("g").attr("id", "BarchartSEH ")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var x = d3.scaleBand()
+    var xSEH = d3.scaleBand()
         .rangeRound([0, widthBarchart])
         .paddingInner(0.05)
         .align(0.1);
 
-    var y = d3.scaleLinear().rangeRound([heightBarchart, 0]);
+    var ySEH = d3.scaleLinear().rangeRound([heightBarchart, 0]);
 
-    var colorsBarchart = ["#A9A9A9", "#BDB76B"];
+    var colorsBarchartSEH  = ["#A9A9A9", "#BDB76B"];
 
-    var z = d3.scaleOrdinal().range(colorsBarchart);
+    var zSEH = d3.scaleOrdinal().range(colorsBarchartSEH );
 
     //--------VARIABLES FOR THE BARCHART ABOUT MELDINGEN VUURWERKOVERLAST------------------------------
-    var svgBarchart = d3.select("#svgBarchartOverlast"),
+    var svgBarchartOverlast = d3.select("#svgBarchartOverlast"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchart = +svgBarchart.attr("width") - margin.left - margin.right,
-        heightBarchart = +svgBarchart.attr("height") - margin.top - margin.bottom,
-        gBarchart = svgBarchart.append("g").attr("id", "Barchart")
+        widthBarchart = +svgBarchartOverlast.attr("width") - margin.left - margin.right,
+        heightBarchart = +svgBarchartOverlast.attr("height") - margin.top - margin.bottom,
+        gBarchartOverlast = svgBarchartOverlast.append("g").attr("id", "BarchartOverlast")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var x = d3.scaleBand()
+    var xOverlast = d3.scaleBand()
         .rangeRound([0, widthBarchart])
         .paddingInner(0.05)
         .align(0.1);
 
-    var y = d3.scaleLinear().rangeRound([heightBarchart, 0]);
+    var yOverlast = d3.scaleLinear().rangeRound([heightBarchart, 0]);
 
-    var colorsBarchart = ["#A9A9A9", "#BDB76B"];
+    var colorsBarchartOverlast = ["#B8860B"];
 
-    var z = d3.scaleOrdinal().range(colorsBarchart);
+    var zOverlast = d3.scaleOrdinal().range(colorsBarchartOverlast);
 
 
     //--------VARIABLES FOR THE PIECHART ABOUT 'SEHperLeeftijd'-----------------
@@ -157,35 +157,33 @@ function afterLoad() {
             d.total = t;
             return d;
         })
+        .defer(d3.csv, "data/overlast.csv", function(d, i, columns) {
+            for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+            d.total = t;
+            return d;
+        })
       	.defer(d3.json, "data/SEHperLeeftijd.json")
         .defer(d3.json, "data/SEHomstander.json")
         .defer(d3.json, "data/SEHperTypeVuurwerk.json")
         .defer(d3.json, "data/SEHstatusVuurwerk.json")
       	.await(makeCharts);
 
-    function makeCharts(error, dataBarchartSEH, dataPiechartSEHperLeeftijd,
+    function makeCharts(error, dataBarchartSEH, dataBarchartOverlast, dataPiechartSEHperLeeftijd,
        dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk) {
         /*   Creates charts based on the given data.
              Args: Appriopiate datasets.
         */
         if (error) throw error;
 
-        makeBarchart(dataBarchartSEH, dataPiechartSEHperLeeftijd,
-           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk)
+        makeBarchart(xSEH, ySEH, zSEH, gBarchartSEH, dataBarchartSEH, dataPiechartSEHperLeeftijd,
+           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk);
+
+       makeBarchart(xOverlast, yOverlast, zOverlast, gBarchartOverlast, dataBarchartOverlast, dataPiechartSEHperLeeftijd,
+          dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk);
 
         // Draw default piecharts
-        makePiechart(gPiechartSEHperLeeftijd, pieSEHperLeeftijd, pathSEHperLeeftijd,
-          colorsPiechartSEHperLeeftijd, labelSEHperLeeftijd, "leeftijd",
-          dataPiechartSEHperLeeftijd["2014/2015"], true);
-        makePiechart(gPiechartSEHomstander, pieSEHomstander, pathSEHomstander,
-          colorsPiechartSEHomstander, labelSEHomstander, "omstander",
-          dataPiechartSEHomstander["2014/2015"], true);
-        makePiechart(gPiechartSEHperTypeVuurwerk, pieSEHperTypeVuurwerk, pathSEHperTypeVuurwerk,
-          colorsPiechartSEHperTypeVuurwerk, labelSEHperTypeVuurwerk, "type",
-          dataPiechartSEHperTypeVuurwerk["2014/2015"], true);
-        makePiechart(gPiechartSEHstatusVuurwerk, pieSEHstatusVuurwerk, pathSEHstatusVuurwerk,
-          colorsPiechartSEHstatusVuurwerk, labelSEHstatusVuurwerk, "status",
-          dataPiechartSEHstatusVuurwerk["2014/2015"], true);
+        updatePiecharts("2014/2015", dataPiechartSEHperLeeftijd,
+           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk, true);
     };
 
     // This function should update "jaarwisseling" in the title of the website
@@ -201,22 +199,22 @@ function afterLoad() {
     };
 
     function updatePiecharts(jaarwisseling, dataPiechartSEHperLeeftijd,
-       dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk) {
+       dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk, firstTime) {
       /*   Updates the piecharts.
            Args: The year and the age group.
       */
       makePiechart(gPiechartSEHperLeeftijd, pieSEHperLeeftijd, pathSEHperLeeftijd,
         colorsPiechartSEHperLeeftijd, labelSEHperLeeftijd, "leeftijd",
-        dataPiechartSEHperLeeftijd[jaarwisseling], false);
+        dataPiechartSEHperLeeftijd[jaarwisseling], firstTime);
       makePiechart(gPiechartSEHomstander, pieSEHomstander, pathSEHomstander,
         colorsPiechartSEHomstander, labelSEHomstander, "omstander",
-        dataPiechartSEHomstander[jaarwisseling], false);
+        dataPiechartSEHomstander[jaarwisseling], firstTime);
       makePiechart(gPiechartSEHperTypeVuurwerk, pieSEHperTypeVuurwerk, pathSEHperTypeVuurwerk,
         colorsPiechartSEHperTypeVuurwerk, labelSEHperTypeVuurwerk, "type",
-        dataPiechartSEHperTypeVuurwerk[jaarwisseling], false);
+        dataPiechartSEHperTypeVuurwerk[jaarwisseling], firstTime);
       makePiechart(gPiechartSEHstatusVuurwerk, pieSEHstatusVuurwerk, pathSEHstatusVuurwerk,
         colorsPiechartSEHstatusVuurwerk, labelSEHstatusVuurwerk, "status",
-        dataPiechartSEHstatusVuurwerk[jaarwisseling], false);
+        dataPiechartSEHstatusVuurwerk[jaarwisseling], firstTime);
     };
 
     function makePiechart(gPiechart, pie, path, colorsPiechart,
@@ -242,7 +240,7 @@ function afterLoad() {
           .text(function(d) { return d.data[dataItem]; });
     };
 
-    function makeBarchart(dataChosen, dataPiechartSEHperLeeftijd,
+    function makeBarchart(x, y, z, gBarchart, dataChosen, dataPiechartSEHperLeeftijd,
        dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk) {
        /*   Creates a barchart for the given data.
             Args: An appriopiate data set.
@@ -274,24 +272,8 @@ function afterLoad() {
 
                // remake piecharts
                updatePiecharts(xPosition, dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
-                  dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk);
-               // makePiechart(gPiechartSEHperLeeftijd, pieSEHperLeeftijd, pathSEHperLeeftijd,
-               //   colorsPiechartSEHperLeeftijd, labelSEHperLeeftijd, "leeftijd",
-               //   dataPiechartSEHperLeeftijd[xPosition], false);
-               //
-               // makePiechart(gPiechartSEHomstander, pieSEHomstander, pathSEHomstander,
-               //   colorsPiechartSEHomstander, labelSEHomstander, "omstander",
-               //   dataPiechartSEHomstander[xPosition], false);
-               //
-               // makePiechart(gPiechartSEHstatusVuurwerk, pieSEHstatusVuurwerk, pathSEHstatusVuurwerk,
-               //   colorsPiechartSEHstatusVuurwerk, labelSEHstatusVuurwerk, "status",
-               //   dataPiechartSEHstatusVuurwerk[xPosition], false);
-               //
-               // makePiechart(gPiechartSEHperTypeVuurwerk, pieSEHperTypeVuurwerk, pathSEHperTypeVuurwerk,
-               //   colorsPiechartSEHperTypeVuurwerk, labelSEHperTypeVuurwerk, "type",
-               //   dataPiechartSEHperTypeVuurwerk[xPosition], false);
+                  dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk, false);
 
-               //titlePiechart(xPosition);
                return
            });
 

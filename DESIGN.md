@@ -16,9 +16,11 @@
   #### Functies
   Er komen meerdere barcharts en piecharts. De volgende functies ga ik nodig hebben.
   - makeCharts        voor het maken van alle charts
-  - makeBarchart      voor het maken (stacked) barcharts 
+  - makeBarchart      voor het maken van (stacked) barcharts 
   - updatePiecharts   voor het updaten van de piecharts
   - makePiechart      voor het maken van piecharts
+  
+  In het schema hieronder is te zien in welke volgorde deze worden aangeroepen.
 
   #### Lijst van databronnen
 - https://www.google.nl/amp/s/nos.nl/googleamp/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html

@@ -12,6 +12,13 @@
   - jqueryAjax
   - queue
   - d3-tip
+  
+  #### Functies
+  Er komen meerdere barcharts en piecharts. De volgende functies ga ik nodig hebben.
+  - makeCharts        voor het maken van alle charts
+  - makeBarchart      voor het maken (stacked) barcharts 
+  - updatePiecharts   voor het updaten van de piecharts
+  - makePiechart      voor het maken van piecharts
 
   #### Lijst van databronnen
 - https://www.google.nl/amp/s/nos.nl/googleamp/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html

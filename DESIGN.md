@@ -16,7 +16,7 @@
   #### Functies
   Er komen meerdere barcharts en piecharts. De volgende functies ga ik nodig hebben.
   - makeCharts        voor het maken van alle charts
-  - makeBarchart      voor het maken (stacked) barcharts 
+  - makeBarchart      voor het maken van (stacked) barcharts 
   - updatePiecharts   voor het updaten van de piecharts
   - makePiechart      voor het maken van piecharts
   

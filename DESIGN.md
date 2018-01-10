@@ -32,4 +32,3 @@
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf
 
 ![](doc/schetsTechnischeComponenten.png)
-![](doc/schetsWebsite.png)

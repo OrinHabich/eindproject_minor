@@ -35,7 +35,8 @@ Deze twee lijngrafieken zijn zoals [hier](http://www.clo.nl/indicatoren/nl0570-l
 
 ### 4. Minimale onderdelen en optionele onderdelen
 Minimaal moeten de staafdiagram met het aantal mensen dat tijdens een jaarwisseling naar de spoedeisende hulp moest erin, de taartdiagrammen die hierbij horen, de infographic over milieuvervuiling door vuurwerk, de piek in luchtvervuiling rond de jaarwisseling en de hoeveelheid schade.
-Optioneel zijn het poppetje met het letsel en de staafdiagram met meldingen van vuurwerkoverlast. Er zou wellicht ook interactiviteit aan de infographic toegevoegd kunnen worden.
+Het poppetje met het letsel moet er ook in want dat is een leuke visualisatie. 
+Er komt een dropdown menu om een jaarwisseling te kiezen en een interactieve tabel over in beslag genomen vuurwerk. 
 
 ### 5. Vereisten
 Het doel is zoveel mogelijk relevante data weer te geven. Deze data blijkt erg versnipperd en zal grotendeels uit nieuwsberichten en rapporten komen. Dit betekent dat het voorbereiden van de data veel werk gaat kosten, maar het is ook een extra motivatie voor het maken van de website.
@@ -57,4 +58,4 @@ Het doel is zoveel mogelijk relevante data weer te geven. Deze data blijkt erg v
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf
 - https://www.veiligheid.nl/organisatie/actueel/nieuws/cijfers-vuurwerkgewonden-2017-2018?gclid=EAIaIQobChMIudCMlqrI2AIV5rftCh20jAmDEAAYASAAEgInePD_BwE
-![](doc/schetsWebsite1.png)
+![](doc/schetsWebsite2.png)

@@ -1,0 +1,110 @@
+{
+  "2014/2015":
+    [
+      {
+      "leeftijd": "0-9",
+      "number": 69
+      },
+      {
+        "leeftijd": "10-14",
+        "number": 126
+      },
+      {
+        "leeftijd": "15-19",
+        "number": 69
+      },
+      {
+        "leeftijd": "20-29",
+        "number": 155
+      },
+      {
+        "leeftijd": "30-39",
+        "number": 69
+      },
+      {
+        "leeftijd": "> 40",
+        "number": 98
+      }
+    ],
+  "2015/2016":
+    [
+      {
+      "leeftijd": "0-9",
+      "number": 43
+      },
+      {
+        "leeftijd": "10-14",
+        "number": 135
+      },
+      {
+        "leeftijd": "15-19",
+        "number": 82
+      },
+      {
+        "leeftijd": "20-29",
+        "number": 101
+      },
+      {
+        "leeftijd": "30-39",
+        "number": 63
+      },
+      {
+        "leeftijd": "> 40",
+        "number": 63
+      }
+    ],
+  "2016/2017":
+    [
+      {
+      "leeftijd": "0-9 jaar",
+      "number": 57
+      },
+      {
+        "leeftijd": "10-14 jaar",
+        "number": 43
+      },
+      {
+        "leeftijd": "15-19 jaar",
+        "number": 71
+      },
+      {
+        "leeftijd": "20-29 jaar",
+        "number": 142
+      },
+      {
+        "leeftijd": "30-39 jaar",
+        "number": 71
+      },
+      {
+        "leeftijd": "40 jaar en ouder",
+        "number": 85
+      }
+    ],
+  "2017/2018":
+    [
+      {
+      "leeftijd": "0-9 jaar",
+      "number": 48
+      },
+      {
+        "leeftijd": "10-14 jaar",
+        "number": 95
+      },
+      {
+        "leeftijd": "15-19 jaar",
+        "number": 82
+      },
+      {
+        "leeftijd": "20-29 jaar",
+        "number": 82
+      },
+      {
+        "leeftijd": "30-39 jaar",
+        "number": 56
+      },
+      {
+        "leeftijd": "40 jaar en ouder",
+        "number": 69
+      }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+  "2014/2015":
+    [
+      {
+        "omstander": "omstander",
+        "number": 287
+      },
+      {
+        "omstander": "zelf afgestoken",
+        "number": 287
+      }
+    ],
+  "2015/2016":
+    [
+      {
+        "omstander": "omstander",
+        "number": 231
+      },
+      {
+        "omstander": "zelf afgestoken",
+        "number": 251
+      }
+    ],
+  "2016/2017":
+    [
+      {
+        "omstander": "omstander",
+        "number": 289
+      },
+      {
+        "omstander": "zelf afgestoken",
+        "number": 184
+      }
+    ],
+  "2017/2018":
+    [
+      {
+        "omstander": "omstander",
+        "number": 191
+      },
+      {
+        "omstander": "zelf afgestoken",
+        "number": 243
+      }
+    ]
+}

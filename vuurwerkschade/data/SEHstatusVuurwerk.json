@@ -1,0 +1,46 @@
+{
+  "2014/2015":
+    [
+      {
+        "status": "illegaal",
+        "number": 224
+      },
+      {
+        "status": "legaal",
+        "number": 350
+      }
+    ],
+  "2015/2016":
+    [
+      {
+        "status": "illegaal",
+        "number": 121
+      },
+      {
+        "status": "legaal",
+        "number": 361
+      }
+    ],
+  "2016/2017":
+    [
+      {
+        "status": "illegaal",
+        "number": 118
+      },
+      {
+        "status": "legaal",
+        "number": 155
+      }
+    ],
+  "2017/2018":
+    [
+      {
+        "status": "illegaal",
+        "number": 95
+      },
+      {
+        "status": "legaal",
+        "number": 339
+      }
+    ]
+}

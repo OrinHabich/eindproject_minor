@@ -15,8 +15,10 @@ function afterLoad() {
     //--------VARIABLES FOR THE BARCHART ABOUT SEH------------------------------
     var svgBarchartSEH = d3.select("#svgBarchartSEH"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchart = +svgBarchartSEH .attr("width") - margin.left - margin.right,
-        heightBarchart = +svgBarchartSEH .attr("height") - margin.top - margin.bottom,
+        widthBarchart =
+        +svgBarchartSEH .attr("width") - margin.left - margin.right,
+        heightBarchart =
+        +svgBarchartSEH .attr("height") - margin.top - margin.bottom,
         gBarchartSEH  = svgBarchartSEH .append("g").attr("id", "BarchartSEH ")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -31,12 +33,18 @@ function afterLoad() {
 
     var zSEH = d3.scaleOrdinal().range(colorsBarchartSEH );
 
+    var toolTipSEH =
+    d3.select("#svgBarchartSEH").append("div").attr("id", "toolTipSEH");
+
     //--------VARIABLES FOR THE BARCHART ABOUT MELDINGEN VUURWERKOVERLAST------------------------------
     var svgBarchartOverlast = d3.select("#svgBarchartOverlast"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchart = +svgBarchartOverlast.attr("width") - margin.left - margin.right,
-        heightBarchart = +svgBarchartOverlast.attr("height") - margin.top - margin.bottom,
-        gBarchartOverlast = svgBarchartOverlast.append("g").attr("id", "BarchartOverlast")
+        widthBarchart =
+        +svgBarchartOverlast.attr("width") - margin.left - margin.right,
+        heightBarchart =
+        +svgBarchartOverlast.attr("height") - margin.top - margin.bottom,
+        gBarchartOverlast =
+        svgBarchartOverlast.append("g").attr("id", "BarchartOverlast")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var xOverlast = d3.scaleBand()
@@ -46,16 +54,23 @@ function afterLoad() {
 
     var yOverlast = d3.scaleLinear().rangeRound([heightBarchart, 0]);
 
-    var colorsBarchartOverlast = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
+    var colorsBarchartOverlast =
+    ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
 
     var zOverlast = d3.scaleOrdinal().range(colorsBarchartOverlast);
+
+    var toolTipOverlast =
+    d3.select("#svgBarchartOverlast").append("div").attr("id", "toolTipOverlast");
 
     //--------VARIABLES FOR THE BARCHART ABOUT SCHADE---------------------------
     var svgBarchartSchade = d3.select("#svgBarchartSchade"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchart = +svgBarchartSchade.attr("width") - margin.left - margin.right,
-        heightBarchart = +svgBarchartSchade.attr("height") - margin.top - margin.bottom,
-        gBarchartSchade = svgBarchartSchade.append("g").attr("id", "BarchartSchade")
+        widthBarchart =
+        +svgBarchartSchade.attr("width") - margin.left - margin.right,
+        heightBarchart =
+        +svgBarchartSchade.attr("height") - margin.top - margin.bottom,
+        gBarchartSchade =
+        svgBarchartSchade.append("g").attr("id", "BarchartSchade")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var xSchade = d3.scaleBand()
@@ -65,9 +80,13 @@ function afterLoad() {
 
     var ySchade = d3.scaleLinear().rangeRound([heightBarchart, 0]);
 
-    var colorsBarchartSchade = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
+    var colorsBarchartSchade =
+    ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
 
     var zSchade = d3.scaleOrdinal().range(colorsBarchartSchade);
+
+    var toolTipSchade =
+    d3.select("#svgBarchartSchade").append("div").attr("id", "toolTipSchade");
 
 
     //--------VARIABLES FOR THE PIECHART ABOUT 'SEHperLeeftijd'-----------------
@@ -75,7 +94,8 @@ function afterLoad() {
         widthPiechart = +svgPiechartSEHperLeeftijd.attr("width"),
         heightPiechart = +svgPiechartSEHperLeeftijd.attr("height"),
         radius = Math.min(widthPiechart, heightPiechart) / 2,
-        gPiechartSEHperLeeftijd = svgPiechartSEHperLeeftijd.append("g").attr("id", "PiechartLeeftijd")
+        gPiechartSEHperLeeftijd =
+        svgPiechartSEHperLeeftijd.append("g").attr("id", "PiechartLeeftijd")
             .attr("transform",
              "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
 
@@ -91,7 +111,8 @@ function afterLoad() {
 
     var pathSEHperLeeftijd = d3.arc().outerRadius(radius).innerRadius(0);
 
-    var labelSEHperLeeftijd = d3.arc().outerRadius(radius + 70).innerRadius(radius - 150);
+    var labelSEHperLeeftijd =
+    d3.arc().outerRadius(radius + 70).innerRadius(radius - 150);
 
     var firstTimePiechartSEHperLeeftijd = true;
 
@@ -100,7 +121,8 @@ function afterLoad() {
         widthPiechart = +svgPiechartSEHomstander.attr("width"),
         heightPiechart = +svgPiechartSEHomstander.attr("height"),
         radius = Math.min(widthPiechart, heightPiechart) / 2,
-        gPiechartSEHomstander = svgPiechartSEHomstander.append("g").attr("id", "PiechartOmstander")
+        gPiechartSEHomstander =
+        svgPiechartSEHomstander.append("g").attr("id", "PiechartOmstander")
             .attr("transform",
              "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
 
@@ -116,7 +138,8 @@ function afterLoad() {
 
     var pathSEHomstander = d3.arc().outerRadius(radius).innerRadius(0);
 
-    var labelSEHomstander = d3.arc().outerRadius(radius + 70).innerRadius(radius - 100);
+    var labelSEHomstander =
+    d3.arc().outerRadius(radius + 70).innerRadius(radius - 100);
 
     var firstTimePiechartSEHomstander = true;
 
@@ -130,7 +153,8 @@ function afterLoad() {
             .attr("transform",
              "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
 
-     // var PieTitleSEHperTypeVuurwerk = d3.select("#PiechartperTypeVuurwerk").append("div")
+     // var PieTitleSEHperTypeVuurwerk
+     //= d3.select("#PiechartperTypeVuurwerk").append("div")
      // .attr("class", "tooltip")
      // .style("opacity", 0);
 
@@ -142,7 +166,8 @@ function afterLoad() {
 
     var pathSEHperTypeVuurwerk = d3.arc().outerRadius(radius).innerRadius(0);
 
-    var labelSEHperTypeVuurwerk = d3.arc().outerRadius(radius + 70).innerRadius(radius - 100);
+    var labelSEHperTypeVuurwerk =
+    d3.arc().outerRadius(radius + 70).innerRadius(radius - 100);
 
     var firstTimePiechartSEHperTypeVuurwerk = true;
 
@@ -164,25 +189,38 @@ function afterLoad() {
 
     var pathSEHstatusVuurwerk = d3.arc().outerRadius(radius).innerRadius(0);
 
-    var labelSEHstatusVuurwerk = d3.arc().outerRadius(radius + 70).innerRadius(radius - 100);
+    var labelSEHstatusVuurwerk =
+    d3.arc().outerRadius(radius + 70).innerRadius(radius - 100);
 
     var firstTimePiechartSEHstatusVuurwerk = true;
 
     //--------------------------------------------------------------------------
-    // load the data and call makeCharts()
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //--------LOAD DATA---------------------------------------------------------
+
     queue()
         .defer(d3.csv, "data/SEH.csv", function(d, i, columns) {
-            for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+            for (i = 1, t = 0; i < columns.length; ++i)
+            t += d[columns[i]] = +d[columns[i]];
             d.total = t;
             return d;
         })
         .defer(d3.csv, "data/overlast.csv", function(d, i, columns) {
-            for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+            for (i = 1, t = 0; i < columns.length; ++i)
+            t += d[columns[i]] = +d[columns[i]];
             d.total = t;
             return d;
         })
         .defer(d3.csv, "data/schade.csv", function(d, i, columns) {
-            for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+            for (i = 1, t = 0; i < columns.length; ++i)
+            t += d[columns[i]] = +d[columns[i]];
             d.total = t;
             return d;
         })
@@ -192,55 +230,68 @@ function afterLoad() {
         .defer(d3.json, "data/SEHstatusVuurwerk.json")
       	.await(makeCharts);
 
-    function makeCharts(error, dataBarchartSEH, dataBarchartOverlast, dataBarchartSchade,
-       dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
+    function makeCharts(error, dataBarchartSEH, dataBarchartOverlast,
+       dataBarchartSchade, dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
        dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk) {
         /*   Creates charts based on the given data.
              Args: Appriopiate datasets.
         */
         if (error) throw error;
 
-        makeBarchart(xSEH, ySEH, zSEH, gBarchartSEH, dataBarchartSEH, dataPiechartSEHperLeeftijd,
-           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk);
+        makeBarchart(xSEH, ySEH, zSEH, gBarchartSEH, dataBarchartSEH,
+          dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
+          dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk,
+          toolTipSEH);
 
-       makeBarchart(xOverlast, yOverlast, zOverlast, gBarchartOverlast, dataBarchartOverlast, dataPiechartSEHperLeeftijd,
-          dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk);
+       makeBarchart(xOverlast, yOverlast, zOverlast, gBarchartOverlast,
+          dataBarchartOverlast, dataPiechartSEHperLeeftijd,
+          dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
+          dataPiechartSEHstatusVuurwerk, toolTipOverlast);
 
-        makeBarchart(xSchade, ySchade, zSchade, gBarchartSchade, dataBarchartSchade, dataPiechartSEHperLeeftijd,
-           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk);
+        makeBarchart(xSchade, ySchade, zSchade, gBarchartSchade,
+           dataBarchartSchade, dataPiechartSEHperLeeftijd,
+           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
+            dataPiechartSEHstatusVuurwerk, toolTipSchade);
 
         // Draw default piecharts
         updatePiecharts("2014/2015", dataPiechartSEHperLeeftijd,
-           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk, true);
+           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
+           dataPiechartSEHstatusVuurwerk, true);
     };
 
-    // This function should update "jaarwisseling" in the title of the website
-    function titlePiechart(jaarwisseling) {
-      /*   Creates a title for the piechart.
-           Args: The year and the age group.
-      */
-      d3.select(".tooltip").transition().style("opacity", 1);
+    //--------FUNCTIONS--------------------------------------------------------
 
-      d3.select(".tooltip").html("jaarwisseling")
-          .style("left", 0)
-          .style("top", heightPiechart);
-    };
+    // // This function should update "jaarwisseling" in the title of the website
+    // function titlePiechart(jaarwisseling) {
+    //   /*   Creates a title for the piechart.
+    //        Args: The year and the age group.
+    //   */
+    //   d3.select(".tooltip").transition().style("opacity", 1);
+    //
+    //   d3.select(".tooltip").html("jaarwisseling")
+    //       .style("left", 0)
+    //       .style("top", heightPiechart);
+    // };
 
     function updatePiecharts(jaarwisseling, dataPiechartSEHperLeeftijd,
-       dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk, firstTime) {
+       dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
+       dataPiechartSEHstatusVuurwerk, firstTime) {
       /*   Updates the piecharts.
            Args: The year and the age group.
       */
-      makePiechart(gPiechartSEHperLeeftijd, pieSEHperLeeftijd, pathSEHperLeeftijd,
+      makePiechart(gPiechartSEHperLeeftijd, pieSEHperLeeftijd,
+         pathSEHperLeeftijd,
         colorsPiechartSEHperLeeftijd, labelSEHperLeeftijd, "leeftijd",
         dataPiechartSEHperLeeftijd[jaarwisseling], firstTime);
       makePiechart(gPiechartSEHomstander, pieSEHomstander, pathSEHomstander,
         colorsPiechartSEHomstander, labelSEHomstander, "omstander",
         dataPiechartSEHomstander[jaarwisseling], firstTime);
-      makePiechart(gPiechartSEHperTypeVuurwerk, pieSEHperTypeVuurwerk, pathSEHperTypeVuurwerk,
+      makePiechart(gPiechartSEHperTypeVuurwerk, pieSEHperTypeVuurwerk,
+         pathSEHperTypeVuurwerk,
         colorsPiechartSEHperTypeVuurwerk, labelSEHperTypeVuurwerk, "type",
         dataPiechartSEHperTypeVuurwerk[jaarwisseling], firstTime);
-      makePiechart(gPiechartSEHstatusVuurwerk, pieSEHstatusVuurwerk, pathSEHstatusVuurwerk,
+      makePiechart(gPiechartSEHstatusVuurwerk, pieSEHstatusVuurwerk,
+         pathSEHstatusVuurwerk,
         colorsPiechartSEHstatusVuurwerk, labelSEHstatusVuurwerk, "status",
         dataPiechartSEHstatusVuurwerk[jaarwisseling], firstTime);
     };
@@ -261,15 +312,19 @@ function afterLoad() {
 
       arc.append("path")
           .attr("d", path)
-          .attr("fill", function(d) { return colorsPiechart(d.data[dataItem]); });
+          .attr("fill",
+          function(d) { return colorsPiechart(d.data[dataItem]); });
 
       arc.append("text")
-          .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+          .attr("transform",
+          function(d) { return "translate(" + label.centroid(d) + ")"; })
           .text(function(d) { return d.data[dataItem]; });
     };
 
-    function makeBarchart(x, y, z, gBarchart, dataChosen, dataPiechartSEHperLeeftijd,
-       dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk) {
+    function makeBarchart(x, y, z, gBarchart, dataChosen,
+       dataPiechartSEHperLeeftijd,
+       dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
+        dataPiechartSEHstatusVuurwerk, toolTip) {
        /*   Creates a barchart for the given data.
             Args: An appriopiate data set.
        */
@@ -288,19 +343,33 @@ function afterLoad() {
            .selectAll("rect")
            .data(function(d) { return d; })
            .enter().append("rect")
+           .attr("class", function(d) { return "jaarwisseling" + d.data.jaarwisseling; })
            .attr("x", function(d) { return x(d.data.jaarwisseling); })
            .attr("y", function(d) { return y(d[1]); })
            .attr("height", function(d) { return y(d[0]) - y(d[1]); })
            .attr("width", x.bandwidth())
+           .attr('opacity', 0.5)
+           .on("mousemove", function(d){
+               toolTip
+                 .style("left", d3.event.pageX - 50 + "px")
+                 .style("top", d3.event.pageY - 70 + "px")
+                 .style("display", "inline-block")
+                 .html("tekst");
+           })
+           .on("mouseout", function(d){ toolTip.style("display", "none");})
            .on("click", function(d) {
 
                // obtain x and y position
+               d3.selectAll("rect").attr('opacity', 0.5);
+               //d3.selectAll(".jaarwisseling2014/2015").attr('opacity', 1);
                var xPosition = d.data.jaarwisseling;
                var yPosition = d3.select(this.parentNode).attr("fill");
 
                // remake piecharts
-               updatePiecharts(xPosition, dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
-                  dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk, false);
+               updatePiecharts(xPosition, dataPiechartSEHperLeeftijd,
+                  dataPiechartSEHomstander,
+                  dataPiechartSEHperTypeVuurwerk,
+                   dataPiechartSEHstatusVuurwerk, false);
 
                return
            });
@@ -337,7 +406,8 @@ function afterLoad() {
            .selectAll("g")
            .data(keys.slice().reverse())
            .enter().append("g")
-           .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+           .attr("transform",
+           function(d, i) { return "translate(0," + i * 20 + ")"; });
 
      legend.append("rect")
            .attr("x", widthBarchart + 60)

@@ -9,7 +9,6 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, 12px, sans-serif;
   margin: auto;
   position: relative;
-  width: 960px;
 }
 
 text {
@@ -24,6 +23,10 @@ form {
 
 input {
   margin: 0 7px;
+}
+
+h3 {
+    color: blue;
 }
 
 

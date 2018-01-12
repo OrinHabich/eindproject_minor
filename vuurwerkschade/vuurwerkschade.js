@@ -194,6 +194,22 @@ function afterLoad() {
 
     var firstTimePiechartSEHstatusVuurwerk = true;
 
+    //---------IMAGE POPPETJE---------------------------------------------------
+    // var svg = d3.select('body').append('svg').attr({
+    //   width: 300,
+    //   height: 300,
+    //   border: '1px solid #ccc'
+    // });
+
+    d3.select("#svgImagePoppetje1")
+    .append("svg:image")
+    .attr("xlink:href", "images/poppetje1.png")
+    .attr("width", 150)
+    .attr("height", 300)
+    .attr("x", 0)
+    .attr("y", 0);
+
+
     //--------------------------------------------------------------------------
     //
     //

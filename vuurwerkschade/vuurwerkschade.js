@@ -201,13 +201,28 @@ function afterLoad() {
     //   border: '1px solid #ccc'
     // });
 
-    d3.select("#svgImagePoppetje1")
-    .append("svg:image")
-    .attr("xlink:href", "images/poppetje1.png")
-    .attr("width", 150)
-    .attr("height", 300)
-    .attr("x", 0)
-    .attr("y", 0);
+    // 
+    // var widthImagePoppetje1 = d3.select("#svgImagePoppetje1").attr("width");
+    // var heightImagePoppetje1 = d3.select("#svgImagePoppetje1").attr("height");
+    //
+    // d3.select("#svgImagePoppetje1")
+    // .append("svg:image")
+    // .attr("xlink:href", "images/poppetje1.png")
+    // .attr("width", widthImagePoppetje1)
+    // .attr("height", heightImagePoppetje1)
+    // .attr("x", 0)
+    // .attr("y", 10);
+    //
+    // d3.select("#svgImagePoppetje1")
+    // .append("svg:image")
+    // .attr("xlink:href", "images/head.png")
+    // .attr("width", widthImagePoppetje1/2)
+    // .attr("height", heightImagePoppetje1/2)
+    // .attr("x", 40)
+    // .attr("y", -35)
+    // .on("mouseover", function(d){
+    //   this.style("opacity", 0.1);
+    // });
 
 
     //--------------------------------------------------------------------------

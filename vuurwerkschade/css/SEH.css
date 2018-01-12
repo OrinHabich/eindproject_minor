@@ -40,3 +40,42 @@ h3 {
   padding: 14px;
   text-align: center;
 }
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* .image {
+  display: block;
+  width: 100%;
+  height: auto;
+} */
+
+#headBlack {
+    position: absolute;
+    width: 40%;
+    left: 30%;
+}
+
+#headRed {
+    position: relative;
+    width: 50%;
+    left: 25%;
+    opacity: 0;
+}
+
+#body {
+    position: relative;
+    /* top: -100%; */
+    width: 100%;
+}
+
+#headRed:hover {
+  opacity: 1;
+
+}
+
+#headBlack:hover {
+  opacity: 0;
+}

@@ -56,54 +56,54 @@
   "16-17":
     [
       {
-      "leeftijd": "0-9 jaar",
+      "leeftijd": "0-9",
       "number": 57
       },
       {
-        "leeftijd": "10-14 jaar",
+        "leeftijd": "10-14",
         "number": 43
       },
       {
-        "leeftijd": "15-19 jaar",
+        "leeftijd": "15-19",
         "number": 71
       },
       {
-        "leeftijd": "20-29 jaar",
+        "leeftijd": "20-29",
         "number": 142
       },
       {
-        "leeftijd": "30-39 jaar",
+        "leeftijd": "30-39",
         "number": 71
       },
       {
-        "leeftijd": "40 jaar en ouder",
+        "leeftijd": "> 40",
         "number": 85
       }
     ],
   "17-18":
     [
       {
-      "leeftijd": "0-9 jaar",
+      "leeftijd": "0-9",
       "number": 48
       },
       {
-        "leeftijd": "10-14 jaar",
+        "leeftijd": "10-14",
         "number": 95
       },
       {
-        "leeftijd": "15-19 jaar",
+        "leeftijd": "15-19",
         "number": 82
       },
       {
-        "leeftijd": "20-29 jaar",
+        "leeftijd": "20-29",
         "number": 82
       },
       {
-        "leeftijd": "30-39 jaar",
+        "leeftijd": "30-39",
         "number": 56
       },
       {
-        "leeftijd": "40 jaar en ouder",
+        "leeftijd": "> 40",
         "number": 69
       }
     ]

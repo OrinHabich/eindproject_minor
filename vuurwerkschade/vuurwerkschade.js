@@ -107,7 +107,7 @@ function afterLoad() {
     var pathSEHperLeeftijd = d3.arc().outerRadius(radius).innerRadius(0);
 
     var labelSEHperLeeftijd =
-    d3.arc().outerRadius(radius + 70).innerRadius(radius - 150);
+    d3.arc().outerRadius(radius - 10).innerRadius(radius - 60);
 
     var firstTimePiechartSEHperLeeftijd = true;
 
@@ -185,7 +185,7 @@ function afterLoad() {
     var pathSEHstatusVuurwerk = d3.arc().outerRadius(radius).innerRadius(0);
 
     var labelSEHstatusVuurwerk =
-    d3.arc().outerRadius(radius + 70).innerRadius(radius - 100);
+    d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
 
     var firstTimePiechartSEHstatusVuurwerk = true;
 
@@ -283,6 +283,26 @@ function afterLoad() {
         updatePiecharts("14-15", dataPiechartSEHperLeeftijd,
            dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
            dataPiechartSEHstatusVuurwerk, true);
+
+        var select = d3.select("#title")
+          .append('select')
+       	  .attr('class','select')
+          .on('change',onchange)
+
+        var options = select
+          .selectAll('option')
+     	    .data(dataBarchartSEH).enter()
+     	    .append('option')
+     		  .text(function (d) { return d.jaarwisseling; });
+
+        function onchange() {
+     	    selectValue = d3.select('select').property('value');
+          updatePiecharts(selectValue, dataPiechartSEHperLeeftijd,
+             dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
+             dataPiechartSEHstatusVuurwerk, false);
+          d3.selectAll("rect").attr('opacity', 0.4);
+          d3.selectAll(".jaarwisseling" + selectValue).attr('opacity', 1);
+     };
     };
 
     //--------FUNCTIONS--------------------------------------------------------
@@ -310,7 +330,7 @@ function afterLoad() {
         colorsPiechartSEHperLeeftijd, labelSEHperLeeftijd, "leeftijd",
         dataPiechartSEHperLeeftijd[jaarwisseling], firstTime);
       makePiechart(gPiechartSEHomstander, pieSEHomstander, pathSEHomstander,
-        colorsPiechartSEHomstander, labelSEHomstander, "omstander",
+        colorsPiechartSEHomstander, labelSEHomstander, "wie",
         dataPiechartSEHomstander[jaarwisseling], firstTime);
       makePiechart(gPiechartSEHperTypeVuurwerk, pieSEHperTypeVuurwerk,
          pathSEHperTypeVuurwerk,
@@ -375,31 +395,31 @@ function afterLoad() {
            .attr("y", function(d) { return y(d[1]); })
            .attr("height", function(d) { return y(d[0]) - y(d[1]); })
            .attr("width", x.bandwidth())
-           .attr('opacity', 0.5)
+           .attr('opacity', 0.4)
            .on("mousemove", function(d) {
-                console.log(+(d[0] - d[1]));
                 div.transition()
                     .duration(5)
                     .style("opacity", 1);
                 div	.html(Math.abs(d[0] - d[1]) + unit )
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
-                d3.select(this).style("opacity", 1);
+                //d3.select(this).style("opacity", 1);
                 })
             .on("mouseout", function(d) {
                 div.transition()
                     .duration(5)
                     .style("opacity", 0);
-                d3.select(this).style("opacity", 0.5);
+                //d3.select(this).style("opacity", 0.5);
             })
 
            .on("click", function(d) {
 
                // obtain x and y position
-               d3.selectAll("rect").attr('opacity', 0.5);
-               d3.selectAll(".jaarwisseling14-15").attr('opacity', 1);
+               d3.selectAll("rect").attr('opacity', 0.4);
+
                var xPosition = d.data.jaarwisseling;
                var yPosition = d3.select(this.parentNode).attr("fill");
+               d3.selectAll(".jaarwisseling" + xPosition).attr('opacity', 1);
 
                // remake piecharts
                updatePiecharts(xPosition, dataPiechartSEHperLeeftijd,

@@ -2,44 +2,44 @@
   "14-15":
     [
       {
-        "omstander": "omstander",
+        "wie": "ander",
         "number": 287
       },
       {
-        "omstander": "zelf",
+        "wie": "zelf",
         "number": 287
       }
     ],
   "15-16":
     [
       {
-        "omstander": "omstander",
+        "wie": "ander",
         "number": 231
       },
       {
-        "omstander": "zelf",
+        "wie": "zelf",
         "number": 251
       }
     ],
   "16-17":
     [
       {
-        "omstander": "omstander",
+        "wie": "ander",
         "number": 289
       },
       {
-        "omstander": "zelf",
+        "wie": "zelf",
         "number": 184
       }
     ],
   "17-18":
     [
       {
-        "omstander": "omstander",
+        "wie": "ander",
         "number": 191
       },
       {
-        "omstander": "zelf",
+        "wie": "zelf",
         "number": 243
       }
     ]

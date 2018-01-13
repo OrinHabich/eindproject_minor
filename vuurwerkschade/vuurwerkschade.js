@@ -19,7 +19,7 @@ function afterLoad() {
         +svgBarchartSEH .attr("width") - margin.left - margin.right,
         heightBarchart =
         +svgBarchartSEH .attr("height") - margin.top - margin.bottom,
-        gBarchartSEH  = svgBarchartSEH .append("g").attr("id", "BarchartSEH ")
+        gBarchartSEH = svgBarchartSEH .append("g").attr("id", "BarchartSEH")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var xSEH = d3.scaleBand()
@@ -33,10 +33,12 @@ function afterLoad() {
 
     var zSEH = d3.scaleOrdinal().range(colorsBarchartSEH );
 
-    var toolTipSEH =
-    d3.select("#svgBarchartSEH").append("div").attr("id", "toolTipSEH");
+    // Define the div for the tooltip
+    var div = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
-    //--------VARIABLES FOR THE BARCHART ABOUT MELDINGEN VUURWERKOVERLAST------------------------------
+    //--------VARIABLES FOR THE BARCHART ABOUT MELDINGEN VUURWERKOVERLAST-------
     var svgBarchartOverlast = d3.select("#svgBarchartOverlast"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
         widthBarchart =
@@ -58,9 +60,6 @@ function afterLoad() {
     ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
 
     var zOverlast = d3.scaleOrdinal().range(colorsBarchartOverlast);
-
-    var toolTipOverlast =
-    d3.select("#svgBarchartOverlast").append("div").attr("id", "toolTipOverlast");
 
     //--------VARIABLES FOR THE BARCHART ABOUT SCHADE---------------------------
     var svgBarchartSchade = d3.select("#svgBarchartSchade"),
@@ -84,10 +83,6 @@ function afterLoad() {
     ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
 
     var zSchade = d3.scaleOrdinal().range(colorsBarchartSchade);
-
-    var toolTipSchade =
-    d3.select("#svgBarchartSchade").append("div").attr("id", "toolTipSchade");
-
 
     //--------VARIABLES FOR THE PIECHART ABOUT 'SEHperLeeftijd'-----------------
     var svgPiechartSEHperLeeftijd = d3.select("#svgPiechartSEHperLeeftijd"),
@@ -139,7 +134,7 @@ function afterLoad() {
     var pathSEHomstander = d3.arc().outerRadius(radius).innerRadius(0);
 
     var labelSEHomstander =
-    d3.arc().outerRadius(radius + 70).innerRadius(radius - 100);
+    d3.arc().outerRadius(radius + 60).innerRadius(radius - 140);
 
     var firstTimePiechartSEHomstander = true;
 
@@ -167,7 +162,7 @@ function afterLoad() {
     var pathSEHperTypeVuurwerk = d3.arc().outerRadius(radius).innerRadius(0);
 
     var labelSEHperTypeVuurwerk =
-    d3.arc().outerRadius(radius + 70).innerRadius(radius - 100);
+    d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
 
     var firstTimePiechartSEHperTypeVuurwerk = true;
 
@@ -201,7 +196,7 @@ function afterLoad() {
     //   border: '1px solid #ccc'
     // });
 
-    // 
+    //
     // var widthImagePoppetje1 = d3.select("#svgImagePoppetje1").attr("width");
     // var heightImagePoppetje1 = d3.select("#svgImagePoppetje1").attr("height");
     //
@@ -272,20 +267,20 @@ function afterLoad() {
         makeBarchart(xSEH, ySEH, zSEH, gBarchartSEH, dataBarchartSEH,
           dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
           dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk,
-          toolTipSEH);
+          " mensen");
 
        makeBarchart(xOverlast, yOverlast, zOverlast, gBarchartOverlast,
           dataBarchartOverlast, dataPiechartSEHperLeeftijd,
           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-          dataPiechartSEHstatusVuurwerk, toolTipOverlast);
+          dataPiechartSEHstatusVuurwerk, " klachten");
 
         makeBarchart(xSchade, ySchade, zSchade, gBarchartSchade,
            dataBarchartSchade, dataPiechartSEHperLeeftijd,
            dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-            dataPiechartSEHstatusVuurwerk, toolTipSchade);
+            dataPiechartSEHstatusVuurwerk, " miljoen euro");
 
         // Draw default piecharts
-        updatePiecharts("2014/2015", dataPiechartSEHperLeeftijd,
+        updatePiecharts("14-15", dataPiechartSEHperLeeftijd,
            dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
            dataPiechartSEHstatusVuurwerk, true);
     };
@@ -355,7 +350,7 @@ function afterLoad() {
     function makeBarchart(x, y, z, gBarchart, dataChosen,
        dataPiechartSEHperLeeftijd,
        dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-        dataPiechartSEHstatusVuurwerk, toolTip) {
+        dataPiechartSEHstatusVuurwerk, unit) {
        /*   Creates a barchart for the given data.
             Args: An appriopiate data set.
        */
@@ -374,25 +369,35 @@ function afterLoad() {
            .selectAll("rect")
            .data(function(d) { return d; })
            .enter().append("rect")
-           .attr("class", function(d) { return "jaarwisseling" + d.data.jaarwisseling; })
+           .attr("class", function(d) { return "jaarwisseling" +
+            d.data.jaarwisseling; })
            .attr("x", function(d) { return x(d.data.jaarwisseling); })
            .attr("y", function(d) { return y(d[1]); })
            .attr("height", function(d) { return y(d[0]) - y(d[1]); })
            .attr("width", x.bandwidth())
            .attr('opacity', 0.5)
-           .on("mousemove", function(d){
-               toolTip
-                 .style("left", d3.event.pageX - 50 + "px")
-                 .style("top", d3.event.pageY - 70 + "px")
-                 .style("display", "inline-block")
-                 .html("tekst");
-           })
-           .on("mouseout", function(d){ toolTip.style("display", "none");})
+           .on("mousemove", function(d) {
+                console.log(+(d[0] - d[1]));
+                div.transition()
+                    .duration(5)
+                    .style("opacity", 1);
+                div	.html(Math.abs(d[0] - d[1]) + unit )
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+                d3.select(this).style("opacity", 1);
+                })
+            .on("mouseout", function(d) {
+                div.transition()
+                    .duration(5)
+                    .style("opacity", 0);
+                d3.select(this).style("opacity", 0.5);
+            })
+
            .on("click", function(d) {
 
                // obtain x and y position
                d3.selectAll("rect").attr('opacity', 0.5);
-               //d3.selectAll(".jaarwisseling2014/2015").attr('opacity', 1);
+               d3.selectAll(".jaarwisseling14-15").attr('opacity', 1);
                var xPosition = d.data.jaarwisseling;
                var yPosition = d3.select(this.parentNode).attr("fill");
 

@@ -1,45 +1,45 @@
 {
-  "2014/2015":
+  "14-15":
     [
       {
         "omstander": "omstander",
         "number": 287
       },
       {
-        "omstander": "zelf afgestoken",
+        "omstander": "zelf",
         "number": 287
       }
     ],
-  "2015/2016":
+  "15-16":
     [
       {
         "omstander": "omstander",
         "number": 231
       },
       {
-        "omstander": "zelf afgestoken",
+        "omstander": "zelf",
         "number": 251
       }
     ],
-  "2016/2017":
+  "16-17":
     [
       {
         "omstander": "omstander",
         "number": 289
       },
       {
-        "omstander": "zelf afgestoken",
+        "omstander": "zelf",
         "number": 184
       }
     ],
-  "2017/2018":
+  "17-18":
     [
       {
         "omstander": "omstander",
         "number": 191
       },
       {
-        "omstander": "zelf afgestoken",
+        "omstander": "zelf",
         "number": 243
       }
     ]

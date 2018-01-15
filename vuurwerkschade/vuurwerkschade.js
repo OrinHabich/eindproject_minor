@@ -214,12 +214,16 @@ function afterLoad() {
       var x = d3.scaleTime().range([0, widthLinechart]);
       var y = d3.scaleLinear().range([heightLinechart, 0]);
 
+      // Define the axes
+    var xAxis = d3.axisBottom(x).tickFormat(d3.timeFormat("%H:%M"));
+    var yAxis = d3.axisLeft(y);
+
       // define the line
       var valueline = d3.line()
           .x(function(d) { return x(d.tijdstip); })
           .y(function(d) { return y(d.waarde); });
 
-
+          //--------VARIABELEN VOOR DROPDOWN------------------------------------
 
 
 
@@ -296,11 +300,14 @@ function afterLoad() {
         .defer(d3.json, "data/SEHperTypeVuurwerk.json")
         .defer(d3.json, "data/SEHstatusVuurwerk.json")
         .defer(d3.csv, "data/fijnstof14-15.csv")
+        .defer(d3.csv, "data/fijnstof15-16.csv")
+        .defer(d3.csv, "data/fijnstof16-17.csv")
       	.await(makeCharts);
 
     function makeCharts(error, dataBarchartSEH, dataBarchartOverlast,
        dataBarchartSchade, dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
-       dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk, dataLinechart) {
+       dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk,
+        dataLinechart14, dataLinechart15, dataLinechart16) {
         /*   Creates charts based on the given data.
              Args: Appriopiate datasets.
         */
@@ -309,17 +316,20 @@ function afterLoad() {
         makeBarchart(xSEH, ySEH, zSEH, gBarchartSEH, dataBarchartSEH,
           dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
           dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk,
-          " mensen", "Aantal");
+          " mensen", "Aantal", dataLinechart14,
+              dataLinechart15, dataLinechart16);
 
        makeBarchart(xOverlast, yOverlast, zOverlast, gBarchartOverlast,
           dataBarchartOverlast, dataPiechartSEHperLeeftijd,
           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-          dataPiechartSEHstatusVuurwerk, " klachten", "Aantal");
+          dataPiechartSEHstatusVuurwerk, " klachten", "Aantal", dataLinechart14,
+              dataLinechart15, dataLinechart16);
 
         makeBarchart(xSchade, ySchade, zSchade, gBarchartSchade,
            dataBarchartSchade, dataPiechartSEHperLeeftijd,
            dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-            dataPiechartSEHstatusVuurwerk, " miljoen euro", "Euro (in miljoenen)");
+            dataPiechartSEHstatusVuurwerk, " miljoen euro", "Euro (in miljoenen)", dataLinechart14,
+                dataLinechart15, dataLinechart16);
 
         // Draw default piecharts
         updatePiecharts("14-15", dataPiechartSEHperLeeftijd,
@@ -333,20 +343,21 @@ function afterLoad() {
         .html("Fijnstof (PM10) rond de jaarwisseling 14-15");
 
 
-
         var select = d3.select("#chooseYear")
           .append('select')
-       	  .attr('class','select')
+          .attr('class','select')
           .on('change',onchange)
 
         var options = select
           .selectAll('option')
-     	    .data(dataBarchartSEH).enter()
-     	    .append('option')
+          .data(dataBarchartSEH).enter()
+          .append('option')
           .attr("id", function(d){return "#j" + d.jaarwisseling;})
-     		  .text(function (d) { return d.jaarwisseling; });
+          .text(function (d) { return d.jaarwisseling; });
+
 
         function onchange() {
+          // results of selecting with dropdown menu
      	    selectValue = d3.select('select').property('value');
           updatePiecharts(selectValue, dataPiechartSEHperLeeftijd,
              dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
@@ -355,58 +366,69 @@ function afterLoad() {
           d3.selectAll(".jaarwisseling" + selectValue).attr('opacity', 1);
           d3.select("#titlePiechartsSection")
           .html("Onderverdeling slachtoffers " + selectValue);
+          d3.select("#titleLinechart")
+          .html("Fijnstof (PM10) rond de jaarwisseling " + selectValue);
+
         };
 
 
         //--------MAKE LINECHART------------------------------------------------
-
-        // format the data
-        dataLinechart.forEach(function(d) {
+        dataLinechart14.forEach(function(d) {
           d.tijdstip = parseTime(d.tijdstip);
           d.waarde = +d.waarde;
         });
 
+        dataLinechart15.forEach(function(d) {
+          d.tijdstip = parseTime(d.tijdstip);
+          d.waarde = +d.waarde;
+        });
+
+        dataLinechart16.forEach(function(d) {
+          d.tijdstip = parseTime(d.tijdstip);
+          d.waarde = +d.waarde;
+        });
 
         // Scale the range of the data
-        x.domain(d3.extent(dataLinechart, function(d) { return d.tijdstip; }));
-        y.domain([0, d3.max(dataLinechart, function(d) { return d.waarde; })]);
+           x.domain(d3.extent(dataLinechart14, function(d) { return d.tijdstip; }));
+           y.domain([0, d3.max(dataLinechart14, function(d) { return d.waarde; })]);
 
-        // Add the valueline path.
-        gLinechart.append("path")
-            .datum(dataLinechart)
-            .attr("class", "line")
-            .attr("fill", "none")
-            .attr("stroke", "blue")
-            .attr("d", valueline);
+           // Add the valueline path.
+           gLinechart.append("path")
+               .attr("class", "line")
+               .attr("fill", "none")
+               .attr("stroke", "blue")
+               .attr("d", valueline(dataLinechart14));
 
-        // Add the x Axis
-        gLinechart.append("g")
-            .attr("transform", "translate(0," + heightLinechart + ")")
-            .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%H:%M")));
-
-        // text label for the x axis
-        gLinechart.append("text")
-            .attr("transform",
-                  "translate(" + widthLinechart + " ," +
-                                 (heightLinechart + margin.top + 20) + ")")
-
-            .style("text-anchor", "middle")
-            .text("Tijdstip");
-
-        // Add the y Axis
-        gLinechart.append("g")
-            .call(d3.axisLeft(y));
-
-        // text label for the y axis
-        gLinechart.append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 0 - margin.left)
-            .attr("x",0 - (heightLinechart / 2))
-            .attr("dy", "1em")
-            .style("text-anchor", "middle")
-            .text("Waarde (\u03BCg/m\u00B3)");
+           // Add the X Axis
+           gLinechart.append("g")
+               .attr("class", "x axis")
+               .attr("transform", "translate(0," + heightLinechart + ")")
+               .call(xAxis);
 
 
+           // Add the Y Axis
+           gLinechart.append("g")
+               .attr("class", "y axis")
+               .call(yAxis);
+
+               // text label for the x axis
+               gLinechart.append("text")
+                   .attr("transform",
+                         "translate(" + widthLinechart + " ," +
+                                        (heightLinechart + margin.top + 20) + ")")
+
+                   .style("text-anchor", "middle")
+                   .text("Tijdstip");
+
+
+               // text label for the y axis
+               gLinechart.append("text")
+                   .attr("transform", "rotate(-90)")
+                   .attr("y", 0 - margin.left)
+                   .attr("x",0 - (heightLinechart / 2))
+                   .attr("dy", "1em")
+                   .style("text-anchor", "middle")
+                   .text("Waarde (\u03BCg/m\u00B3)");
     };
 
 
@@ -480,7 +502,8 @@ function afterLoad() {
     function makeBarchart(x, y, z, gBarchart, dataChosen,
        dataPiechartSEHperLeeftijd,
        dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-        dataPiechartSEHstatusVuurwerk, unit, nameY) {
+        dataPiechartSEHstatusVuurwerk, unit, nameY, dataLinechart14,
+            dataLinechart15, dataLinechart16) {
        /*   Creates a barchart for the given data.
             Args: An appriopiate data set.
        */
@@ -534,6 +557,9 @@ function afterLoad() {
                d3.select("#titlePiechartsSection")
                .html("Onderverdeling slachtoffers " + xPosition);
 
+               d3.select("#titleLinechart")
+               .html("Fijnstof (PM10) rond de jaarwisseling " + xPosition);
+
                // attempt to update the selection in the dropdown menu
                d3.select("#j" + xPosition);
 
@@ -542,13 +568,18 @@ function afterLoad() {
                   dataPiechartSEHomstander,
                   dataPiechartSEHperTypeVuurwerk,
                    dataPiechartSEHstatusVuurwerk, false);
+
+              updateLinechart(xPosition, dataLinechart14,
+                  dataLinechart15, dataLinechart16);
                return
+
+
 
 
 
            });
 
-      // default 14-155 is selected
+      // default 14-15 is selected
       d3.selectAll(".jaarwisseling14-15").attr('opacity', 1);
 
        // make x axis
@@ -599,31 +630,34 @@ function afterLoad() {
            .text(function(d) { return d; });
     };
 
-//HIER BEN IK NU BEZIG
     // ** Update data section (Called from the onclick)
-function updateLinechart(dataChosen) {
+function updateLinechart(gekozenJaarwisseling, dataLinechart14,
+    dataLinechart15, dataLinechart16) {
 
-    // alleen als nog nodig?
-    dataChosen.forEach(function(d) {
-	    	d.date = parseDate(d.date);
-	    	d.close = +d.close;
-      });
+    if (gekozenJaarwisseling == "14-15")
+    { dataChosen = dataLinechart14}
+    else if (gekozenJaarwisseling == "15-16")
+    { dataChosen = dataLinechart15}
+    else if (gekozenJaarwisseling == "16-17")
+    { dataChosen = dataLinechart16}
+
+
 
     	// Scale the range of the data again
-    	x.domain(d3.extent(data, function(d) { return d.date; }));
-	    y.domain([0, d3.max(data, function(d) { return d.close; })]);
+    	x.domain(d3.extent(dataChosen, function(d) { return d.tijdstip; }));
+	    y.domain([0, d3.max(dataChosen, function(d) { return d.waarde; })]);
 
     // Select the section we want to apply our changes to
-    var svg = d3.select("body").transition();
+    var gLinechart = d3.select("#svgLinechart").transition();
 
     // Make the changes
-        svg.select(".line")   // change the line
+        gLinechart.select(".line")   // change the line
             .duration(750)
-            .attr("d", valueline(data));
-        svg.select(".x.axis") // change the x axis
-            .duration(750)
+            .attr("d", valueline(dataChosen));
+        gLinechart.select(".x.axis") // change the x axis
+            .duration(1)
             .call(xAxis);
-        svg.select(".y.axis") // change the y axis
+        gLinechart.select(".y.axis") // change the y axis
             .duration(750)
             .call(yAxis);
 

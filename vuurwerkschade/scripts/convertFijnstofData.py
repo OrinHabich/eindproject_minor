@@ -3,8 +3,8 @@
 
 import csv
 
-infile = 'fijnstof14-15rawdata.csv'
-outfile = 'fijnstof14-15.csv'
+infile = 'fijnstof16-17rawdata.csv'
+outfile = 'fijnstof16-17.csv'
 
 # this array will contain per data-point a dictionary
 data = []

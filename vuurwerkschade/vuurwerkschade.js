@@ -111,6 +111,11 @@ function afterLoad() {
 
     var firstTimePiechartSEHperLeeftijd = true;
 
+    d3.select("#PiechartLeeftijd").append("div")
+    .attr("class", "titlePiechart")
+    .style("opacity", 1)
+    .html("Leeftijd");
+
     //--------VARIABLES FOR THE PIECHART ABOUT OMSTANDER------------------------
     var svgPiechartSEHomstander = d3.select("#svgPiechartSEHomstander"),
         widthPiechart = +svgPiechartSEHomstander.attr("width"),
@@ -139,7 +144,8 @@ function afterLoad() {
     var firstTimePiechartSEHomstander = true;
 
     //--------VARIABLES FOR THE PIECHART ABOUT TYPE FIREWORKS-------------------
-    var svgPiechartSEHperTypeVuurwerk = d3.select("#svgPiechartSEHperTypeVuurwerk"),
+    var svgPiechartSEHperTypeVuurwerk =
+        d3.select("#svgPiechartSEHperTypeVuurwerk"),
         widthPiechart = +svgPiechartSEHperTypeVuurwerk.attr("width"),
         heightPiechart = +svgPiechartSEHperTypeVuurwerk.attr("height"),
         radius = Math.min(widthPiechart, heightPiechart) / 2,
@@ -267,24 +273,27 @@ function afterLoad() {
         makeBarchart(xSEH, ySEH, zSEH, gBarchartSEH, dataBarchartSEH,
           dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
           dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk,
-          " mensen");
+          " mensen", "Aantal");
 
        makeBarchart(xOverlast, yOverlast, zOverlast, gBarchartOverlast,
           dataBarchartOverlast, dataPiechartSEHperLeeftijd,
           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-          dataPiechartSEHstatusVuurwerk, " klachten");
+          dataPiechartSEHstatusVuurwerk, " klachten", "Aantal");
 
         makeBarchart(xSchade, ySchade, zSchade, gBarchartSchade,
            dataBarchartSchade, dataPiechartSEHperLeeftijd,
            dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-            dataPiechartSEHstatusVuurwerk, " miljoen euro");
+            dataPiechartSEHstatusVuurwerk, " miljoen euro", "Euro (in miljoenen)");
 
         // Draw default piecharts
         updatePiecharts("14-15", dataPiechartSEHperLeeftijd,
            dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
            dataPiechartSEHstatusVuurwerk, true);
 
-        var select = d3.select("#title")
+        d3.select("#titlePiechartsSection")
+        .html("Onderverdeling slachtoffers 14-15");
+
+        var select = d3.select("#chooseYear")
           .append('select')
        	  .attr('class','select')
           .on('change',onchange)
@@ -293,6 +302,7 @@ function afterLoad() {
           .selectAll('option')
      	    .data(dataBarchartSEH).enter()
      	    .append('option')
+          .attr("id", function(d){return "#j" + d.jaarwisseling;})
      		  .text(function (d) { return d.jaarwisseling; });
 
         function onchange() {
@@ -302,21 +312,23 @@ function afterLoad() {
              dataPiechartSEHstatusVuurwerk, false);
           d3.selectAll("rect").attr('opacity', 0.4);
           d3.selectAll(".jaarwisseling" + selectValue).attr('opacity', 1);
-     };
+          d3.select("#titlePiechartsSection")
+          .html("Onderverdeling slachtoffers " + selectValue);
+        };
+
     };
 
     //--------FUNCTIONS--------------------------------------------------------
 
-    // // This function should update "jaarwisseling" in the title of the website
-    // function titlePiechart(jaarwisseling) {
+    // function titlePiechart(subject, id) {
     //   /*   Creates a title for the piechart.
     //        Args: The year and the age group.
     //   */
-    //   d3.select(".tooltip").transition().style("opacity", 1);
+    //   d3.select(id).transition().style("opacity", 1);
     //
-    //   d3.select(".tooltip").html("jaarwisseling")
-    //       .style("left", 0)
-    //       .style("top", heightPiechart);
+    //   d3.select(id).html(subject)
+    //       .style("left", 30)
+    //       .style("top", 30);
     // };
 
     function updatePiecharts(jaarwisseling, dataPiechartSEHperLeeftijd,
@@ -359,7 +371,23 @@ function afterLoad() {
       arc.append("path")
           .attr("d", path)
           .attr("fill",
-          function(d) { return colorsPiechart(d.data[dataItem]); });
+          function(d) { return colorsPiechart(d.data[dataItem]); })
+          .on("mousemove", function(d) {
+               div.transition()
+                   .duration(1)
+                   .style("opacity", 1);
+                  //console.log(d.data.number);
+               div.html(d.data.number + " mensen" )
+                   .style("left", (d3.event.pageX) + "px")
+                   .style("top", (d3.event.pageY - 28) + "px");
+               //d3.select(this).style("opacity", 1);
+               })
+           .on("mouseout", function(d) {
+               div.transition()
+                   .duration(1)
+                   .style("opacity", 0);
+               //d3.select(this).style("opacity", 0.5);
+           });
 
       arc.append("text")
           .attr("transform",
@@ -370,7 +398,7 @@ function afterLoad() {
     function makeBarchart(x, y, z, gBarchart, dataChosen,
        dataPiechartSEHperLeeftijd,
        dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-        dataPiechartSEHstatusVuurwerk, unit) {
+        dataPiechartSEHstatusVuurwerk, unit, nameY) {
        /*   Creates a barchart for the given data.
             Args: An appriopiate data set.
        */
@@ -421,14 +449,25 @@ function afterLoad() {
                var yPosition = d3.select(this.parentNode).attr("fill");
                d3.selectAll(".jaarwisseling" + xPosition).attr('opacity', 1);
 
+               d3.select("#titlePiechartsSection")
+               .html("Onderverdeling slachtoffers " + xPosition);
+
+               // attempt to update the selection in the dropdown menu
+               d3.select("#j" + xPosition);
+
                // remake piecharts
                updatePiecharts(xPosition, dataPiechartSEHperLeeftijd,
                   dataPiechartSEHomstander,
                   dataPiechartSEHperTypeVuurwerk,
                    dataPiechartSEHstatusVuurwerk, false);
-
                return
+
+
+
            });
+
+      // default 14-155 is selected
+      d3.selectAll(".jaarwisseling14-15").attr('opacity', 1);
 
        // make x axis
        gBarchart.append("g")
@@ -452,7 +491,7 @@ function afterLoad() {
            .attr("dy", "0.2em")
            .attr("fill", "#000")
            .attr("text-anchor", "start")
-           .text("Aantal");
+           .text(nameY);
 
      // add legend to the barchart
      var legend = gBarchart.append("g")
@@ -476,6 +515,8 @@ function afterLoad() {
            .attr("y", 9.5)
            .attr("dy", "0.32em")
            .text(function(d) { return d; });
+
+
 
     };
 

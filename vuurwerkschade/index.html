@@ -16,48 +16,101 @@ Orin Habich 10689508-->
   <body>
     <div class="row">
       <div class="col-md-6" >
-        <h2><b>Schade door vuurwerk</b></h2>
+        <h1><b>Schade door vuurwerk</b></h1>
       </div>
       <div class="col-md-6" >
-        <h2 id = "title"><b>Jaarwisseling </b></h2>
+        <h4 id = "chooseYear"><b>Kies een jaarwisseling </b></h4>
       </div>
     </div>
     <h5>By Orin Habich 10689508</h5>
     <div class="container-fluid">
-      <div class="row">
-        <h3><b>Mens</b></h3>
+
+        <h2><b>Mens</b></h2>
         <div class="col-md-6" >
+          <h3>Vuurwerkslachtoffers naar de spoedeisende hulp</h3>
           <svg id = "svgBarchartSEH" width="600" height="300"></svg>
         </div>
         <div class="col-md-3" >
-          <svg id = "svgPiechartSEHperTypeVuurwerk" width="150" height="150"></svg>
-          <svg id = "svgPiechartSEHperLeeftijd" width="150" height="150"></svg>
-          <svg id = "svgPiechartSEHomstander" width="150" height="150"></svg>
-          <svg id = "svgPiechartSEHstatusVuurwerk" width="150" height="150"></svg>
+          <div class="row">
+            <b><h3 id = "titlePiechartsSection"></h3></b>
+            <h4>Naar soort vuurwerk</h4>
+            <svg id = "svgPiechartSEHperTypeVuurwerk" width="150" height="150"></svg>
+            <h4>Per leeftijdsklasse</h4>
+            <svg id = "svgPiechartSEHperLeeftijd" width="150" height="150"></svg>
+            <h4>Zelf afgestoken of omstander</h4>
+            <svg id = "svgPiechartSEHomstander" width="150" height="150"></svg>
+            <h4>Legaal of illegaal vuurwerk</h4>
+            <svg id = "svgPiechartSEHstatusVuurwerk" width="150" height="150"></svg>
+          </div>
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourceSEH">Bronnen</button>
+          <div id="sourceSEH" class="collapse">
+            <p>
+                <a href="https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf">
+                 Rapportage vuurwerkongevallen 2016-2018.pdf</a><br>
+                <a href="https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf">
+                Rapportage vuurwerkongevallen 2015-2017.pdf</a>
+            </p>
+          </div>
+      </div>
         </div>
         <div class="col-md-2" >
+          <h3>Letsel</h3>
           <div class="container">
             <img src="images/headBlack.png" alt="headBlack" id = "headBlack" class="image">
             <img src="images/headRed.png" alt="headRed" id = "headRed" class="image">
             <img src="images/poppetje1.png" alt="Poppetje1" id = "body" class="image">
           </div>
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesPoppetje">Bronnen</button>
+          <div id="sourcesPoppetje" class="collapse">
+            <p>
+              Nog invullen
+            </p>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6" >
+          <h3>Meldingen bij <a href="https://vuurwerkoverlast.nl/">
+           Meldpunt vuurwerkoverlast</a></h3>
           <svg id = "svgBarchartOverlast" width="600" height="300"></svg>
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourceOverlast">Bronnen</button>
+          <div id="sourceOverlast" class="collapse">
+            <p>
+                <a href="https://www.google.nl/amp/s/nos.nl/googleamp/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html">
+                 Wanneer?</a><br>
+                <a href="https://www.nrc.nl/nieuws/2016/01/03/bijna-90-000-meldingen-van-vuurwerkoverlast-a1410391">
+                Wanneer?</a><br>
+                <a href="https://www.google.nl/amp/s/www.nu.nl/jaarwisseling/4372970/laagste-aantal-klachten-vuurwerkoverlast-in-vijf-jaar.amp">
+                Wanneer?</a><br>
+                <a href="https://vuurwerkoverlast.nl/">
+                2017-2018</a>
+            </p>
+          </div>
         </div>
       </div>
       <div class="row">
-        <h3><b>Milieu</b></h3>
+        <h2><b>Milieu</b></h2>
         <div class="col-md-6" >
+          <h3>Hier moet een lijngrafiek komen over de piek co2</h3>
           <svg id = "svgTijdelijkVoorOpmaakPagina" width="600" height="200"></svg>
         </div>
       </div>
       <div class="row">
-        <h3><b>Materiaal</b></h3>
+        <h2><b>Materiaal</b></h2>
         <div class="col-md-6" >
+          <h3>Materi&euml;le schade bij particulieren</h3>
           <svg id = "svgBarchartSchade" width="600" height="300"></svg>
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesMateriaal">Bronnen</button>
+          <div id="sourcesMateriaal" class="collapse">
+            <p>
+              <a href="https://l1.nl/content/documents/2016/12/2017-vuurwerkschade.pdf">
+               2015-2016</a><br>
+                <a href="https://nos.nl/artikel/2151143-schade-jaarwisseling-geschat-op-13-miljoen-euro.html">
+                 2016-2017</a><br>
+
+                  De rest? Nog invullen!
+            </p>
+          </div>
         </div>
       </div>
     </div>

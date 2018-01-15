@@ -16,6 +16,6 @@ with open(infile) as csvfile:
         for row in raw_data:
             #print(row)
             if row[2] == 'PM10':
-                dataPoint = row[0] + "," + row[3] + "\n"
+                dataPoint = row[0][0:16] + "," + row[3] + "\n"
                 print(dataPoint)
                 outfile.write(dataPoint)

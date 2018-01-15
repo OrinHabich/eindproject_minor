@@ -198,26 +198,28 @@ function afterLoad() {
     var firstTimePiechartSEHstatusVuurwerk = true;
 
     //-------VARIABELS FOR THE LINECHART------------------------------------
-    // var svgLinechart = d3.select("#svgLinechart"),
-    //     margin = {top: 20, right: 100, bottom: 30, left: 60},
-    //     widthLinechart =
-    //     +svgLinechart .attr("width") - margin.left - margin.right,
-    //     heightLinechart =
-    //     +svgLinechart .attr("height") - margin.top - margin.bottom,
-    //     gLinechart = svgLinechart .append("g").attr("id", "Linechart")
-    //       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    //
-    // // parse the date / time
-    // var parseTime = d3.timeParse("%d-%b-%y");
-    //
-    // // set the ranges
-    // var x = d3.scaleTime().range([0, widthLinechart]);
-    // var y = d3.scaleLinear().range([heightLinechart, 0]);
-    //
-    // // define the line
-    // var valueline = d3.line()
-    // .x(function(d) { return x(d.date); })
-    // .y(function(d) { return y(d.close); });
+    var svgLinechart = d3.select("#svgLinechart"),
+        margin = {top: 20, right: 100, bottom: 50, left: 50},
+        widthLinechart =
+        +svgLinechart .attr("width") - margin.left - margin.right,
+        heightLinechart =
+        +svgLinechart .attr("height") - margin.top - margin.bottom,
+        gLinechart = svgLinechart .append("g").attr("id", "Linechart")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      // parse the date / time
+      var parseTime = d3.timeParse("%Y-%m-%d %H:%M");
+
+      // set the ranges
+      var x = d3.scaleTime().range([0, widthLinechart]);
+      var y = d3.scaleLinear().range([heightLinechart, 0]);
+
+      // define the line
+      var valueline = d3.line()
+          .x(function(d) { return x(d.tijdstip); })
+          .y(function(d) { return y(d.waarde); });
+
+
 
 
 
@@ -288,16 +290,17 @@ function afterLoad() {
         //     d.total = t;
         //     return d;
         // })
-        //.defer(d3.csv, "data/fijnstof14-15.csv")
+
       	.defer(d3.json, "data/SEHperLeeftijd.json")
         .defer(d3.json, "data/SEHomstander.json")
         .defer(d3.json, "data/SEHperTypeVuurwerk.json")
         .defer(d3.json, "data/SEHstatusVuurwerk.json")
+        .defer(d3.csv, "data/fijnstof14-15.csv")
       	.await(makeCharts);
 
     function makeCharts(error, dataBarchartSEH, dataBarchartOverlast,
        dataBarchartSchade, dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
-       dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk) {
+       dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk, dataLinechart) {
         /*   Creates charts based on the given data.
              Args: Appriopiate datasets.
         */
@@ -326,6 +329,11 @@ function afterLoad() {
         d3.select("#titlePiechartsSection")
         .html("Onderverdeling slachtoffers 14-15");
 
+        d3.select("#titleLinechart")
+        .html("Fijnstof (PM10) rond de jaarwisseling 14-15");
+
+
+
         var select = d3.select("#chooseYear")
           .append('select')
        	  .attr('class','select')
@@ -350,35 +358,58 @@ function afterLoad() {
         };
 
 
-        //
-        // // format the data for the linechart
-        // dataLinechart.forEach(function(d) {
-        //     d.date = parseTime(d.date);
-        //     d.close = +d.close;
-        // });
-        //
-        // // Scale the range of the data
-        // x.domain(d3.extent(dataLinechart, function(d) { return d.date; }));
-        // y.domain([0, d3.max(dataLinechart, function(d) { return d.close; })]);
-        //
-        // // Add the valueline path.
-        // svg.append("path")
-        //     .data([dataLinechart])
-        //     .attr("class", "line")
-        //     .attr("d", valueline);
-        //
-        // // Add the X Axis
-        // svg.append("g")
-        //     .attr("transform", "translate(0," + height + ")")
-        //     .call(d3.axisBottom(x));
-        //
-        // // Add the Y Axis
-        // svg.append("g")
-        //     .call(d3.axisLeft(y));
+        //--------MAKE LINECHART------------------------------------------------
 
+        // format the data
+        dataLinechart.forEach(function(d) {
+          d.tijdstip = parseTime(d.tijdstip);
+          d.waarde = +d.waarde;
+        });
+
+
+        // Scale the range of the data
+        x.domain(d3.extent(dataLinechart, function(d) { return d.tijdstip; }));
+        y.domain([0, d3.max(dataLinechart, function(d) { return d.waarde; })]);
+
+        // Add the valueline path.
+        gLinechart.append("path")
+            .datum(dataLinechart)
+            .attr("class", "line")
+            .attr("fill", "none")
+            .attr("stroke", "blue")
+            .attr("d", valueline);
+
+        // Add the x Axis
+        gLinechart.append("g")
+            .attr("transform", "translate(0," + heightLinechart + ")")
+            .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%H:%M")));
+
+        // text label for the x axis
+        gLinechart.append("text")
+            .attr("transform",
+                  "translate(" + widthLinechart + " ," +
+                                 (heightLinechart + margin.top + 20) + ")")
+
+            .style("text-anchor", "middle")
+            .text("Tijdstip");
+
+        // Add the y Axis
+        gLinechart.append("g")
+            .call(d3.axisLeft(y));
+
+        // text label for the y axis
+        gLinechart.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left)
+            .attr("x",0 - (heightLinechart / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Waarde (\u03BCg/m\u00B3)");
 
 
     };
+
+
 
     //--------FUNCTIONS--------------------------------------------------------
 
@@ -566,12 +597,37 @@ function afterLoad() {
            .attr("y", 9.5)
            .attr("dy", "0.32em")
            .text(function(d) { return d; });
-
-
-
     };
 
+//HIER BEN IK NU BEZIG
+    // ** Update data section (Called from the onclick)
+function updateLinechart(dataChosen) {
 
+    // alleen als nog nodig?
+    dataChosen.forEach(function(d) {
+	    	d.date = parseDate(d.date);
+	    	d.close = +d.close;
+      });
+
+    	// Scale the range of the data again
+    	x.domain(d3.extent(data, function(d) { return d.date; }));
+	    y.domain([0, d3.max(data, function(d) { return d.close; })]);
+
+    // Select the section we want to apply our changes to
+    var svg = d3.select("body").transition();
+
+    // Make the changes
+        svg.select(".line")   // change the line
+            .duration(750)
+            .attr("d", valueline(data));
+        svg.select(".x.axis") // change the x axis
+            .duration(750)
+            .call(xAxis);
+        svg.select(".y.axis") // change the y axis
+            .duration(750)
+            .call(yAxis);
+
+    };
 
 
 };

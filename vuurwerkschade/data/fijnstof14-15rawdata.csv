@@ -351,11 +351,3 @@ tijdstip,locatie,component,waarde,LKI
 2015-01-01 23:00:00+01:00,Amsterdam-Vondelpark,NO,1.02,1
 2015-01-01 23:00:00+01:00,Amsterdam-Vondelpark,CO,367.1,2
 2015-01-01 23:00:00+01:00,Amsterdam-Vondelpark,NOx,52.4257,
-2015-01-02 00:00:00+01:00,Amsterdam-Vondelpark,NO2,23.84,3
-2015-01-02 00:00:00+01:00,Amsterdam-Vondelpark,PM25,18.5,3
-2015-01-02 00:00:00+01:00,Amsterdam-Vondelpark,PM10,22.5,3
-2015-01-02 00:00:00+01:00,Amsterdam-Vondelpark,FN,1.26,2
-2015-01-02 00:00:00+01:00,Amsterdam-Vondelpark,O3,41.1,4
-2015-01-02 00:00:00+01:00,Amsterdam-Vondelpark,NO,0.8,1
-2015-01-02 00:00:00+01:00,Amsterdam-Vondelpark,CO,330.3,2
-2015-01-02 00:00:00+01:00,Amsterdam-Vondelpark,NOx,37.6499,

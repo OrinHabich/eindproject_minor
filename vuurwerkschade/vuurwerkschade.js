@@ -3,6 +3,8 @@
   Minor programmeren; Project
   Orin Habich 10689508
 
+  line chart:   https://bl.ocks.org/d3noob/402dd382a51a4f6eea487f9a35566de0
+  update linechart met buttonpress http://bl.ocks.org/d3noob/7030f35b72de721622b8
 */
 
 window.onload = afterLoad;
@@ -195,6 +197,30 @@ function afterLoad() {
 
     var firstTimePiechartSEHstatusVuurwerk = true;
 
+    //-------VARIABELS FOR THE LINECHART------------------------------------
+    // var svgLinechart = d3.select("#svgLinechart"),
+    //     margin = {top: 20, right: 100, bottom: 30, left: 60},
+    //     widthLinechart =
+    //     +svgLinechart .attr("width") - margin.left - margin.right,
+    //     heightLinechart =
+    //     +svgLinechart .attr("height") - margin.top - margin.bottom,
+    //     gLinechart = svgLinechart .append("g").attr("id", "Linechart")
+    //       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    //
+    // // parse the date / time
+    // var parseTime = d3.timeParse("%d-%b-%y");
+    //
+    // // set the ranges
+    // var x = d3.scaleTime().range([0, widthLinechart]);
+    // var y = d3.scaleLinear().range([heightLinechart, 0]);
+    //
+    // // define the line
+    // var valueline = d3.line()
+    // .x(function(d) { return x(d.date); })
+    // .y(function(d) { return y(d.close); });
+
+
+
     //---------IMAGE POPPETJE---------------------------------------------------
     // var svg = d3.select('body').append('svg').attr({
     //   width: 300,
@@ -256,6 +282,13 @@ function afterLoad() {
             d.total = t;
             return d;
         })
+        // .defer(d3.csv, "data/fijnstof14-15.csv", function(d, i, columns) {
+        //     for (i = 1, t = 0; i < columns.length; ++i)
+        //     t += d[columns[i]] = +d[columns[i]];
+        //     d.total = t;
+        //     return d;
+        // })
+        //.defer(d3.csv, "data/fijnstof14-15.csv")
       	.defer(d3.json, "data/SEHperLeeftijd.json")
         .defer(d3.json, "data/SEHomstander.json")
         .defer(d3.json, "data/SEHperTypeVuurwerk.json")
@@ -316,20 +349,38 @@ function afterLoad() {
           .html("Onderverdeling slachtoffers " + selectValue);
         };
 
+
+        //
+        // // format the data for the linechart
+        // dataLinechart.forEach(function(d) {
+        //     d.date = parseTime(d.date);
+        //     d.close = +d.close;
+        // });
+        //
+        // // Scale the range of the data
+        // x.domain(d3.extent(dataLinechart, function(d) { return d.date; }));
+        // y.domain([0, d3.max(dataLinechart, function(d) { return d.close; })]);
+        //
+        // // Add the valueline path.
+        // svg.append("path")
+        //     .data([dataLinechart])
+        //     .attr("class", "line")
+        //     .attr("d", valueline);
+        //
+        // // Add the X Axis
+        // svg.append("g")
+        //     .attr("transform", "translate(0," + height + ")")
+        //     .call(d3.axisBottom(x));
+        //
+        // // Add the Y Axis
+        // svg.append("g")
+        //     .call(d3.axisLeft(y));
+
+
+
     };
 
     //--------FUNCTIONS--------------------------------------------------------
-
-    // function titlePiechart(subject, id) {
-    //   /*   Creates a title for the piechart.
-    //        Args: The year and the age group.
-    //   */
-    //   d3.select(id).transition().style("opacity", 1);
-    //
-    //   d3.select(id).html(subject)
-    //       .style("left", 30)
-    //       .style("top", 30);
-    // };
 
     function updatePiecharts(jaarwisseling, dataPiechartSEHperLeeftijd,
        dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,

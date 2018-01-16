@@ -28,3 +28,8 @@ Vandaar deze oplossing dus met if-statements.
 Het plan was om nog een infographic te maken en een poppetje. Met infographic bedoel ik een plaatje met daarop punten die on-hover een tekstvak geven met informatie over vuurwerk en milieu.
 De technieken die ik hiervoor nodig heb zijn ongeveer hetzelfde als voor het poppetje, maar simpeler. Daarom probeer ik eerst zo'n infographic te maken.
 
+# dag 8
+De infographic is gelukt.
+![](doc/websiteDag7.png)
+Samen met de linechart er naast vertelt dit mooi het milieu-deel van mijn verhaal.
+Voor het poppetje ga ik met http://www.drawsvg.org/drawsvg.html aan de slag.

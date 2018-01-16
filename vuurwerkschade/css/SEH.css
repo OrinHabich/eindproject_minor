@@ -32,26 +32,18 @@ h2 {
 div.tooltip {
     position: absolute;
     text-align: center;
-    width: 90px;
-    height: 30px;
+    width: auto;
+    height: auto;
     padding: 2px;
     font: 12px sans-serif;
-    background: lightsteelblue;
+    background: black;
+    color: #fff;
     border: 0px;
-    border-radius: 8px;
+    border-radius: 4px;
     pointer-events: none;
 }
 
-#toolTipSEH {
-  position: absolute;
-  display: none;
-  min-width: 80px;
-  height: auto;
-  background: none repeat scroll 0 0 #ffffff;
-  border: 1px solid #6F257F;
-  padding: 14px;
-  text-align: center;
-}
+
 
 .tooltip {
     position: relative;
@@ -65,14 +57,15 @@ div.tooltip {
     width: 300px;
     background-color: black;
     color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-    /* Position the tooltip */
+    font: 14px sans-serif;
+    text-align: left;
+    border-radius: 10px;
+    padding: 5px 5px;
     position: absolute;
     z-index: 2;
+    margin-left: -150px;
 }
+
 
 .tooltipInfo{
   color: #fff;
@@ -84,32 +77,36 @@ div.tooltip {
 
 .img-holder #textWindow1 {
     position: relative;
-    bottom: 480px; /*your button position*/
-    left: 30px; /*your button position*/
+    bottom: 500px;
+    left: 30px;
 }
 
 .img-holder #textWindow2 {
     position: relative;
-    bottom: 470px; /*your button position*/
-    left: 250px; /*your button position*/
+    bottom: 470px;
+    left: 360px;
 }
 .img-holder #textWindow3 {
     position: relative;
-    bottom: 430px; /*your button position*/
-    left: 50px; /*your button position*/
+    bottom: 330px;
+    left: 150px;
 }
 
 .img-holder #textWindow4 {
     position: relative;
-    bottom: 440px; /*your button position*/
-    left: 300px; /*your button position*/
+    bottom: 270px;
+    left: 440px;
 }
 .img-holder #textWindow5 {
     position: relative;
-    bottom: 410px; /*your button position*/
-    left: 350px; /*your button position*/
+    bottom: 140px;
+    left: 450px;
 }
-
+.img-holder #textWindow6 {
+    position: relative;
+    bottom: 300px;
+    left: 70px;
+}
 
 
 

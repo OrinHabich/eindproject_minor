@@ -43,8 +43,6 @@ function afterLoad() {
 
     var zSEH = d3.scaleOrdinal().range(colorsBarchartSEH );
 
-
-
     //--------VARIABLES FOR THE BARCHART ABOUT MELDINGEN VUURWERKOVERLAST-------
     var svgBarchartOverlast = d3.select("#svgBarchartOverlast"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
@@ -91,7 +89,7 @@ function afterLoad() {
 
     var zSchade = d3.scaleOrdinal().range(colorsBarchartSchade);
 
-    //--------VARIABLES FOR THE PIECHART ABOUT 'SEHperLeeftijd'-----------------
+    //--------VARIABLES FOR THE PIECHART ABOUT LEEFTIJD-------------------------
     var svgPiechartSEHperLeeftijd = d3.select("#svgPiechartSEHperLeeftijd"),
         widthPiechart = +svgPiechartSEHperLeeftijd.attr("width"),
         heightPiechart = +svgPiechartSEHperLeeftijd.attr("height"),
@@ -100,10 +98,6 @@ function afterLoad() {
         svgPiechartSEHperLeeftijd.append("g").attr("id", "PiechartLeeftijd")
             .attr("transform",
              "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
-
-     var PieTitle = d3.select("#PiechartLeeftijd").append("div")
-     .attr("class", "tooltip")
-     .style("opacity", 0);
 
     var colorsPiechartSEHperLeeftijd = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -118,11 +112,6 @@ function afterLoad() {
 
     var firstTimePiechartSEHperLeeftijd = true;
 
-    d3.select("#PiechartLeeftijd").append("div")
-    .attr("class", "titlePiechart")
-    .style("opacity", 1)
-    .html("Leeftijd");
-
     //--------VARIABLES FOR THE PIECHART ABOUT OMSTANDER------------------------
     var svgPiechartSEHomstander = d3.select("#svgPiechartSEHomstander"),
         widthPiechart = +svgPiechartSEHomstander.attr("width"),
@@ -132,10 +121,6 @@ function afterLoad() {
         svgPiechartSEHomstander.append("g").attr("id", "PiechartOmstander")
             .attr("transform",
              "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
-
-     // var PieTitleSEHomstander = d3.select("#PiechartOmstander").append("div")
-     // .attr("class", "tooltip")
-     // .style("opacity", 0);
 
     var colorsPiechartSEHomstander = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -161,11 +146,6 @@ function afterLoad() {
             .attr("transform",
              "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
 
-     // var PieTitleSEHperTypeVuurwerk
-     //= d3.select("#PiechartperTypeVuurwerk").append("div")
-     // .attr("class", "tooltip")
-     // .style("opacity", 0);
-
     var colorsPiechartSEHperTypeVuurwerk = d3.scaleOrdinal(d3.schemeCategory10);
 
     var pieSEHperTypeVuurwerk = d3.pie()
@@ -179,7 +159,7 @@ function afterLoad() {
 
     var firstTimePiechartSEHperTypeVuurwerk = true;
 
-    //--------VARIABLES FOR THE PIECHART ABOUT STATUS FIREWORKS-------------------
+    //--------VARIABLES FOR THE PIECHART ABOUT STATUS FIREWORKS-----------------
     var svgPiechartSEHstatusVuurwerk = d3.select("#svgPiechartSEHstatusVuurwerk"),
         widthPiechart = +svgPiechartSEHstatusVuurwerk.attr("width"),
         heightPiechart = +svgPiechartSEHstatusVuurwerk.attr("height"),
@@ -202,7 +182,7 @@ function afterLoad() {
 
     var firstTimePiechartSEHstatusVuurwerk = true;
 
-    //-------VARIABELS FOR THE LINECHART------------------------------------
+    //-------VARIABELS FOR THE LINECHART----------------------------------------
     var svgLinechart = d3.select("#svgLinechart"),
         margin = {top: 20, right: 100, bottom: 50, left: 50},
         widthLinechart =
@@ -212,7 +192,7 @@ function afterLoad() {
         gLinechart = svgLinechart .append("g").attr("id", "Linechart")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      // parse the date / time
+      // parse the time
       var parseTime = d3.timeParse("%Y-%m-%d %H:%M");
 
       // set the ranges
@@ -220,58 +200,14 @@ function afterLoad() {
       var y = d3.scaleLinear().range([heightLinechart, 0]);
 
       // Define the axes
-    var xAxis = d3.axisBottom(x).tickFormat(d3.timeFormat("%H:%M"));
-    var yAxis = d3.axisLeft(y);
+      var xAxis = d3.axisBottom(x).tickFormat(d3.timeFormat("%H:%M"));
+      var yAxis = d3.axisLeft(y);
 
       // define the line
       var valueline = d3.line()
           .x(function(d) { return x(d.tijdstip); })
           .y(function(d) { return y(d.waarde); });
 
-          //--------VARIABELEN VOOR DROPDOWN------------------------------------
-
-
-
-    //---------IMAGE POPPETJE---------------------------------------------------
-    // var svg = d3.select('body').append('svg').attr({
-    //   width: 300,
-    //   height: 300,
-    //   border: '1px solid #ccc'
-    // });
-
-    //
-    // var widthImagePoppetje1 = d3.select("#svgImagePoppetje1").attr("width");
-    // var heightImagePoppetje1 = d3.select("#svgImagePoppetje1").attr("height");
-    //
-    // d3.select("#svgImagePoppetje1")
-    // .append("svg:image")
-    // .attr("xlink:href", "images/poppetje1.png")
-    // .attr("width", widthImagePoppetje1)
-    // .attr("height", heightImagePoppetje1)
-    // .attr("x", 0)
-    // .attr("y", 10);
-    //
-    // d3.select("#svgImagePoppetje1")
-    // .append("svg:image")
-    // .attr("xlink:href", "images/head.png")
-    // .attr("width", widthImagePoppetje1/2)
-    // .attr("height", heightImagePoppetje1/2)
-    // .attr("x", 40)
-    // .attr("y", -35)
-    // .on("mouseover", function(d){
-    //   this.style("opacity", 0.1);
-    // });
-
-
-    //--------------------------------------------------------------------------
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
     //--------LOAD DATA---------------------------------------------------------
 
     queue()
@@ -293,13 +229,6 @@ function afterLoad() {
             d.total = t;
             return d;
         })
-        // .defer(d3.csv, "data/fijnstof14-15.csv", function(d, i, columns) {
-        //     for (i = 1, t = 0; i < columns.length; ++i)
-        //     t += d[columns[i]] = +d[columns[i]];
-        //     d.total = t;
-        //     return d;
-        // })
-
       	.defer(d3.json, "data/SEHperLeeftijd.json")
         .defer(d3.json, "data/SEHomstander.json")
         .defer(d3.json, "data/SEHperTypeVuurwerk.json")
@@ -376,6 +305,7 @@ function afterLoad() {
             makeTitels(selectValue);
           };
 
+          d3.select("#headBlack").style("fill", "red");
 
     };
 
@@ -433,13 +363,11 @@ function afterLoad() {
                div.html(d.data.number + " mensen" )
                    .style("left", (d3.event.pageX) + "px")
                    .style("top", (d3.event.pageY - 28) + "px");
-               //d3.select(this).style("opacity", 1);
                })
            .on("mouseout", function(d) {
                div.transition()
                    .duration(1)
                    .style("opacity", 0);
-               //d3.select(this).style("opacity", 0.5);
            });
 
       arc.append("text")
@@ -495,24 +423,19 @@ function afterLoad() {
 
            .on("click", function(d) {
 
-               // obtain x and y position
+               // set all rectangles semi-transparant
                d3.selectAll("rect").attr('opacity', 0.4);
 
+               // except the rectangles in the legends
+               d3.selectAll(".rectLegend").attr('opacity', 1);
+
+              // obtain x and y position
                var xPosition = d.data.jaarwisseling;
                var yPosition = d3.select(this.parentNode).attr("fill");
 
                d3.selectAll(".jaarwisseling" + xPosition).attr('opacity', 1);
 
                makeTitels(xPosition);
-
-               // d3.select("#titlePiechartsSection")
-               // .html("Onderverdeling slachtoffers " + xPosition);
-               //
-               // d3.select("#titleLinechart")
-               // .html("Fijnstof (PM10) rond de jaarwisseling " + xPosition);
-
-               // attempt to update the selection in the dropdown menu
-               //d3.select("#j" + xPosition);
 
                // remake piecharts
                updatePiecharts(xPosition, dataPiechartSEHperLeeftijd,
@@ -521,16 +444,11 @@ function afterLoad() {
                    dataPiechartSEHstatusVuurwerk, false);
 
               updateLinechart(xPosition, dataLinechart);
-               return
-
-
-
-
-
+              return
            });
 
-      // default 14-15 is selected
-      d3.selectAll(".jaarwisseling2017-2018").attr('opacity', 1);
+      // default selected bar
+      d3.selectAll(".jaarwisseling" + defaultJaarwisseling).attr('opacity', 1);
 
        // make x axis
        gBarchart.append("g")
@@ -568,10 +486,12 @@ function afterLoad() {
            function(d, i) { return "translate(0," + i * 20 + ")"; });
 
      legend.append("rect")
+            .attr("class", "rectLegend")
            .attr("x", widthBarchart + 60)
            .attr("width", 19)
            .attr("height", 19)
-           .attr("fill", z);
+           .attr("fill", z)
+           .attr("opacity", 1);
 
      legend.append("text")
            .attr("x", widthBarchart + 50)
@@ -668,6 +588,8 @@ function updateLinechart(gekozenJaarwisseling, dataLinechart) {
                .attr("dy", "1em")
                .style("text-anchor", "middle")
                .text("Waarde (\u03BCg/m\u00B3)");
+
+
         };
 
     function makeTitels(gekozenJaarwisseling) {

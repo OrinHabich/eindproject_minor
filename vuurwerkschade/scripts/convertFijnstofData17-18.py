@@ -1,14 +1,14 @@
-# convertFijnstofData.py
+# convertFijnstofData17-18.py
 # Minor programmeren, Project
-# This script preprocesses the data found on https://www.luchtmeetnet.nl/
+# This script preprocesses the data found on http://samenmeten.rivm.nl/dataportaal/
 # to a csv file appriopiate to make a linechart.
-# Used for all years except 2018.
+# This is just a small variant of convertFijnstofData.py
 
 import csv
 
 # Get files
-infile = 'fijnstof16-17rawdata.csv'
-outfile = 'fijnstof16-17.csv'
+infile = 'fijnstof17-18rawdata.csv'
+outfile = 'fijnstof17-18.csv'
 
 with open(infile) as csvfile:
     raw_data = csv.reader(csvfile)
@@ -21,6 +21,6 @@ with open(infile) as csvfile:
         for row in raw_data:
 
             # Copy relevant parts of lines to outfile
-            if row[2] == 'PM10':
-                dataPoint = row[0][0:16] + "," + row[3] + "\n"
+            if row[0][0] == '2':
+                dataPoint = row[0][0:15] + "," + row[2] + "\n"
                 outfile.write(dataPoint)

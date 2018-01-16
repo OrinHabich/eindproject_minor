@@ -53,6 +53,56 @@ div.tooltip {
   text-align: center;
 }
 
+.img-holder {position: relative;}
+
+div#content1 {
+  display: none;
+}
+button:hover + div#content1 {
+  display: block;
+}
+.img-holder .btn1 {
+    position: relative;
+    bottom: 450px; /*your button position*/
+    left: 50px; /*your button position*/
+}
+
+div#content2 {
+  display: none;
+}
+button:hover + div#content2 {
+  display: block;
+}
+.img-holder .btn2 {
+    position: relative;
+    bottom: 450px; /*your button position*/
+    left: 150px; /*your button position*/
+}
+
+div#content3 {
+  display: none;
+}
+button:hover + div#content3 {
+  display: block;
+}
+.img-holder .btn3 {
+    position: relative;
+    bottom: 300px; /*your button position*/
+    left: 50px; /*your button position*/
+}
+
+div#content4 {
+  display: none;
+}
+button:hover + div#content4 {
+  display: block;
+}
+.img-holder .btn4 {
+    position: relative;
+    bottom: 300px; /*your button position*/
+    left: 150px; /*your button position*/
+}
+
 .container {
   position: relative;
   width: 100%;

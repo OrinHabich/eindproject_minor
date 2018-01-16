@@ -14,8 +14,13 @@ function afterLoad() {
         but it is called only when the window is loaded.
     */
 
-
+    //--------GENERAL VARIABELS-------------------------------------------------
     var defaultJaarwisseling = "2017-2018"
+
+    // Define the div for the tooltip
+    var div = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
     //--------VARIABLES FOR THE BARCHART ABOUT SEH------------------------------
     var svgBarchartSEH = d3.select("#svgBarchartSEH"),
@@ -38,10 +43,7 @@ function afterLoad() {
 
     var zSEH = d3.scaleOrdinal().range(colorsBarchartSEH );
 
-    // Define the div for the tooltip
-    var div = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+
 
     //--------VARIABLES FOR THE BARCHART ABOUT MELDINGEN VUURWERKOVERLAST-------
     var svgBarchartOverlast = d3.select("#svgBarchartOverlast"),
@@ -578,7 +580,7 @@ function afterLoad() {
            .text(function(d) { return d; });
     };
 
-    
+
 function updateLinechart(gekozenJaarwisseling, dataLinechart) {
 
     if (gekozenJaarwisseling == "2014-2015")

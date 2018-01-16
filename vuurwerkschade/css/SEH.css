@@ -53,55 +53,69 @@ div.tooltip {
   text-align: center;
 }
 
-.img-holder {position: relative;}
-
-div#content1 {
-  display: none;
-}
-button:hover + div#content1 {
-  display: block;
-}
-.img-holder .btn1 {
+.tooltip {
     position: relative;
-    bottom: 450px; /*your button position*/
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+
+.tooltipInfo .content {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 2;
+}
+
+.tooltipInfo{
+  color: #fff;
+}
+
+.tooltipInfo:hover .content {
+    visibility: visible;
+}
+
+.img-holder #textWindow1 {
+    position: relative;
+    bottom: 480px; /*your button position*/
+    left: 30px; /*your button position*/
+}
+
+.img-holder #textWindow2 {
+    position: relative;
+    bottom: 470px; /*your button position*/
+    left: 250px; /*your button position*/
+}
+.img-holder #textWindow3 {
+    position: relative;
+    bottom: 430px; /*your button position*/
     left: 50px; /*your button position*/
 }
 
-div#content2 {
-  display: none;
-}
-button:hover + div#content2 {
-  display: block;
-}
-.img-holder .btn2 {
+.img-holder #textWindow4 {
     position: relative;
-    bottom: 450px; /*your button position*/
-    left: 150px; /*your button position*/
+    bottom: 440px; /*your button position*/
+    left: 300px; /*your button position*/
+}
+.img-holder #textWindow5 {
+    position: relative;
+    bottom: 410px; /*your button position*/
+    left: 350px; /*your button position*/
 }
 
-div#content3 {
-  display: none;
-}
-button:hover + div#content3 {
-  display: block;
-}
-.img-holder .btn3 {
-    position: relative;
-    bottom: 300px; /*your button position*/
-    left: 50px; /*your button position*/
-}
 
-div#content4 {
-  display: none;
-}
-button:hover + div#content4 {
-  display: block;
-}
-.img-holder .btn4 {
-    position: relative;
-    bottom: 300px; /*your button position*/
-    left: 150px; /*your button position*/
-}
+
+
+
+
+
 
 .container {
   position: relative;

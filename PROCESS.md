@@ -25,6 +25,6 @@ Maar dit geeft updateLinechart("fijnstof17-18") ipv updateLinechart(fijnstof17-1
 
 Vandaar deze oplossing dus met if-statements.
 
-Het plan was om nog een infographic te maken en een poppetje. De infographic wil zeggen een plaatje met daarop punten die on-hover een tekstvak geven met informatie over vuurwerk en milieu.
-De technieken die ik hiervoor nodig heb zijn ongeveer hetzelfde als voor het poppetje, maar simpeler. Daarom probeer ik eerst dat te maken.
+Het plan was om nog een infographic te maken en een poppetje. Met infographic bedoel ik een plaatje met daarop punten die on-hover een tekstvak geven met informatie over vuurwerk en milieu.
+De technieken die ik hiervoor nodig heb zijn ongeveer hetzelfde als voor het poppetje, maar simpeler. Daarom probeer ik eerst zo'n infographic te maken.
 

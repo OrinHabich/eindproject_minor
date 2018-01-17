@@ -60,3 +60,6 @@ Voorlopig wegen de nadelen niet op tegen de voordelen vind ik, want de informati
 Kortom, het design van de pagina wordt ietsje aangepast.
 Het huidige plan is 
 ![](doc/schetsWebsite5.png)
+
+Een idee is om met checkboxes aan te geven welke piechart gemaakt moeten worden. Dit in plaats van de interactieve tabel over in beslag genomen vuurwerk.
+Voor zo'n tabel moeten weer allerlei andere datasets gezocht worden en het sluit niet helemaal aan op mijn verhaal.

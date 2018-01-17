@@ -41,5 +41,5 @@ De lichaamsdelen waarover ik data heb over letsel lichten rood op bij hover over
 Het poppetje is een svg bestaande uit een tiental componenten die allemaal in de html staan nu, omdat ze allemaal apart toegankelijk moeten zijn. Erg mooi is dit niet.
 ![](doc/groteSVGinHTML.png)
 Een alternatief schijnt te zijn om php te gebruiken met als syntax 
->'<?php echo file_get_contents("icons/my-icon.svg"); ?>'
+>\<?php echo file_get_contents("icons/my-icon.svg"); ?\>
 

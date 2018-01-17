@@ -37,15 +37,18 @@ Voor het poppetje ga ik met http://www.drawsvg.org/drawsvg.html aan de slag.
 # dag 8
 Er is nu een poppetje:
 ![](doc/poppetje.png)
+
 De lichaamsdelen waarover ik data heb over letsel lichten rood op bij hover over.
-Het poppetje is een svg bestaande uit een tiental componenten die allemaal in de html staan nu, omdat ze allemaal apart toegankelijk moeten zijn. Erg mooi is dit niet.
+Het poppetje is een svg bestaande uit een tiental componenten die allemaal in de html staan nu, omdat ze allemaal apart toegankelijk moeten zijn. Erg mooi is dit niet, de svg beslaat het volledige screenshot hieronder.
 ![](doc/groteSVGinHTML.png)
 Een alternatief schijnt te zijn om php te gebruiken met als syntax 
 >\<?php echo file_get_contents("icons/my-icon.svg"); ?\>
+
 Maar dit doet helaas niks.
 Bij het poppetje moet nu nog een tooltip komen.
 
 Het originele plan was om bij de ogen een verdere onderverdeling te geven met oogletsel.
+
 Er zijn een aantal problemen hierbij.
 1.  Van afgelopen jaarwisseling is helaas geen data te vinden.
 2.  De andere data matched niet helemaal met de SEH data (spoedeisende hulp en behandeling door oogarts zijn verschillende datasets )

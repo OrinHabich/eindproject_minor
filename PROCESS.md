@@ -37,21 +37,29 @@ Voor het poppetje ga ik met http://www.drawsvg.org/drawsvg.html aan de slag.
 # dag 8
 Er is nu een poppetje:
 ![](doc/poppetje.png)
+
 De lichaamsdelen waarover ik data heb over letsel lichten rood op bij hover over.
-Het poppetje is een svg bestaande uit een tiental componenten die allemaal in de html staan nu, omdat ze allemaal apart toegankelijk moeten zijn. Erg mooi is dit niet.
+Het poppetje is een svg bestaande uit een tiental componenten die allemaal in de html staan nu, omdat ze allemaal apart toegankelijk moeten zijn. Erg mooi is dit niet, de svg beslaat het volledige screenshot hieronder.
 ![](doc/groteSVGinHTML.png)
 Een alternatief schijnt te zijn om php te gebruiken met als syntax 
 >\<?php echo file_get_contents("icons/my-icon.svg"); ?\>
+
 Maar dit doet helaas niks.
+
 Bij het poppetje moet nu nog een tooltip komen.
 
 Het originele plan was om bij de ogen een verdere onderverdeling te geven met oogletsel.
+
 Er zijn een aantal problemen hierbij.
 1.  Van afgelopen jaarwisseling is helaas geen data te vinden.
 2.  De andere data matched niet helemaal met de SEH data (spoedeisende hulp en behandeling door oogarts zijn verschillende datasets )
 3.  De data over ogen is deels geschikt voor een piechart (blijvend/niet blijvend letsel). Maar het meest interesante deel is meer geschikt voor in een barchart (aantal visusverlies, blind, oog verwijderd). Dit moet dan wel weer een ander soort barchart worden dan die ik nu heb (een andere x-as en met een update-functie).
+
 Voorlopig wegen de nadelen niet op tegen de voordelen vind ik, want de informatie over de ernst van het oogletsel kan ik ook in de tooltip kwijt.
 
 Kortom, het design van de pagina wordt ietsje aangepast.
 Het huidige plan is 
-![](doc/SchetsWebsite5.png)
+![](doc/schetsWebsite5.png)
+
+Een idee is om met checkboxes aan te geven welke piechart gemaakt moeten worden. Dit in plaats van de interactieve tabel over in beslag genomen vuurwerk.
+Voor zo'n tabel moeten weer allerlei andere datasets gezocht worden en het sluit niet helemaal aan op mijn verhaal.

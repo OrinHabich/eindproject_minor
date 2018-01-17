@@ -1,0 +1,50 @@
+{
+  "2014-2015":
+    [
+      {
+        "status": "blijvend",
+        "number": 97
+      },
+      {
+        "status": "tijdelijk",
+        "number": 171
+      }
+    ],
+  "2015-2016":
+    [
+      {
+        "status": "blijvend",
+        "number": 73
+      },
+      {
+        "status": "tijdelijk",
+        "number": 127
+      }
+    ],
+  "2016-2017":
+    [
+      {
+        "status": "blijvend",
+        "number": 80
+      },
+      {
+        "status": "tijdelijk",
+        "number": 144
+      }
+    ],
+  "2017-2018":
+    [
+      {
+        "status": "blijvend",
+        "number": 0
+      },
+      {
+        "status": "tijdelijk",
+        "number": 0
+      },
+      {
+        "status": "geen data",
+        "number": 100
+      }
+    ]
+}

@@ -8,3 +8,6 @@
 8.  Witregels na openen van anonieme functie als deze niet als single line kan, na openen elke functie die aangeroepen wordt en na eindigen van elke functie
 9.  Comments: \\\ een spatie en dan zin zonder hoofdletter en zonder punt
 10. Statements eindigen met ;
+11. Taal: Engels. 
+
+Dus bij Nederlandstalige site alles dat nodig is om de code te begrijpen (namen van variabelen, functies etc en comments) allemaal in Engels.

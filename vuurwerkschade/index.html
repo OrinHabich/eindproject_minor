@@ -16,10 +16,8 @@ Orin Habich 10689508-->
   </head>
   <body>
     <div class="row">
-      <div class="col-md-6" >
+      <div class="col-md-12" >
         <h1><b>Schade door vuurwerk</b></h1>
-      </div>
-      <div class="col-md-6" >
         <h4 id = "chooseYear"><b>Kies een jaarwisseling </b></h4>
       </div>
     </div>
@@ -27,24 +25,8 @@ Orin Habich 10689508-->
     <div class="container-fluid">
 
       <div class="row">
-        <div class="col-md-6" >
+        <div class="col-sm-6" >
           <h2><b>Mens</b></h2>
-          <h3>Vuurwerkslachtoffers naar de spoedeisende hulp</h3>
-          <svg id = "svgBarchartSEH" width="600" height="300"></svg>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12" >
-          <b><h3 id = "titlePiechartsSection"></h3></b>
-          <h4>Per leeftijdsklasse</h4>
-          <svg id = "svgPiechartSEHperLeeftijd" width="200" height="200"></svg>
-          <h4>Naar soort vuurwerk</h4>
-          <svg id = "svgPiechartSEHperTypeVuurwerk" width="150" height="150"></svg>
-          <h4>Zelf afgestoken of omstander</h4>
-          <svg id = "svgPiechartSEHomstander" width="150" height="150"></svg>
-          <h4>Legaal of illegaal vuurwerk</h4>
-          <svg id = "svgPiechartSEHstatusVuurwerk" width="150" height="150"></svg>
           <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourceSEH">Bronnen</button>
           <div id="sourceSEH" class="collapse">
             <p>
@@ -52,15 +34,24 @@ Orin Habich 10689508-->
                 Rapportage vuurwerkongevallen 2015-2017.pdf</a><br>
               <a href="https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf">
                Rapportage vuurwerkongevallen 2016-2018.pdf</a><br>
+               <a href="https://vuurwerkmanifest.nl/#cijfers-oogletsels">
+                cijfers-oogletsels</a><br>
+              <a href="https://nos.nl/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html">
+               vuurwerkoverlast 2014-2015</a><br>
+              <a href="https://www.nrc.nl/nieuws/2016/01/03/bijna-90-000-meldingen-van-vuurwerkoverlast-a1410391">
+              vuurwerkoverlast 2015-2016</a><br>
+              <a href="https://www.nu.nl/jaarwisseling/4372970/laagste-aantal-klachten-vuurwerkoverlast-in-vijf-jaar.html">
+              vuurwerkoverlast 2016-2017</a><br>
+              <a href="https://vuurwerkoverlast.nl/">
+              vuurwerkoverlast 2017-2018</a>
             </p>
           </div>
+          <h3>Vuurwerkslachtoffers naar de spoedeisende hulp</h3>
+          <svg id = "svgBarchartSEH" width="600" height="400"></svg>
         </div>
-      </div>
-
-      <div class="row">
         <div class="col-md-6" >
-          <h3>Letsel</h3>
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400px" height="600px" viewBox="-2341.46 -1201.05 817.904 1429.22" preserveAspectRatio="xMidYMid meet"  >
+          <h3>Lichamelijk letsel</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="350px" height="500px" viewBox="-2341.46 -1201.05 817.904 1429.22" preserveAspectRatio="xMidYMid meet"  >
             <rect id="svgEditorBackground" x="0" y="0" width="1620" height="840" style="fill:none; stroke: none;"/>
             <defs id="svgEditorDefs">
             <polygon id="svgEditorShapeDefs" style="fill:khaki;stroke:black;vector-effect:non-scaling-stroke;stroke-width:1px;"/>
@@ -102,18 +93,32 @@ Orin Habich 10689508-->
             id="heart" transform="matrix(0.968746 0 0 0.968746 -1351 -907.75)"/>
             </svg>
 
-            <div id="windowLetsel1" class="tooltipInfoLetsel"><b>Hoofd</b>
-              <span class="content">
-                Aantal SEH hoofd in gekozen jaarwisseling
-              </span>
-            </div>
-          </div>
-          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesPoppetje">Bronnen</button>
-          <div id="sourcesPoppetje" class="collapse">
-            <p>
-              Nog invullen
-            </p>
-          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <b><h3 id = "titlePiechartsSection"></h3></b>
+        <div class="col-md-3" >
+        <input type="checkbox" id="myCheck1" > Per leeftijdsklasse<br>
+        <input type="checkbox" id="myCheck2" > Naar soort vuurwerk<br>
+        <input type="checkbox" id="myCheck3" > Zelf afgestoken of omstander<br>
+        <input type="checkbox" id="myCheck4" > Legaal of illegaal vuurwerk
+        </div>
+        <div class="col-md-3" >
+          <h4>Per leeftijdsklasse</h4>
+          <svg id = "svgPiechartSEHperLeeftijd" width="200" height="200"></svg>
+        </div>
+        <div class="col-md-2" >
+          <h4>Naar soort vuurwerk</h4>
+            <svg id = "svgPiechartSEHperTypeVuurwerk" width="150" height="150"></svg>
+        </div>
+        <div class="col-md-2" >
+          <h4>Zelf afgestoken of omstander</h4>
+          <svg id = "svgPiechartSEHomstander" width="150" height="150"></svg>
+        </div>
+        <div class="col-md-2" >
+          <h4>Legaal of illegaal vuurwerk</h4>
+          <svg id = "svgPiechartSEHstatusVuurwerk" width="150" height="150"></svg>
         </div>
       </div>
 
@@ -122,27 +127,12 @@ Orin Habich 10689508-->
           <h3>Meldingen bij <a href="https://vuurwerkoverlast.nl/">
            Meldpunt vuurwerkoverlast</a></h3>
           <svg id = "svgBarchartOverlast" width="600" height="300"></svg>
-          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourceOverlast">Bronnen</button>
-          <div id="sourceOverlast" class="collapse">
-            <p>
-                <a href="https://nos.nl/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html">
-                 2014-2015</a><br>
-                <a href="https://www.nrc.nl/nieuws/2016/01/03/bijna-90-000-meldingen-van-vuurwerkoverlast-a1410391">
-                2015-2016</a><br>
-                <a href="https://www.nu.nl/jaarwisseling/4372970/laagste-aantal-klachten-vuurwerkoverlast-in-vijf-jaar.html">
-                2016-2017</a><br>
-                <a href="https://vuurwerkoverlast.nl/">
-                2017-2018</a>
-            </p>
-          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-6" >
           <h2><b>Milieu</b></h2>
-          <b><h3 id = "titleLinechart"></h3></b>
-          <svg id = "svgLinechart" width="800" height="400"></svg>
           <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesFijnstof">Bronnen</button>
           <div id="sourcesFijnstof" class="collapse">
             <p>
@@ -150,8 +140,12 @@ Orin Habich 10689508-->
                fijnstof jaarwisselingen 2014-2015, 2015-2016 en 2016-2017</a><br>
               <a href="http://samenmeten.rivm.nl/dataportaal/">
                  fijnstof jaarwisseling 2017-2018</a><br>
+             <a href="http://www.staakthetvuren.com/Gespreksnotitie%20VITO.pdf">
+              vuurwerk en milieu.pdf</a><br>
             </p>
           </div>
+          <b><h3 id = "titleLinechart"></h3></b>
+          <svg id = "svgLinechart" width="800" height="400"></svg>
         </div>
 
         <div class="col-md-6" >
@@ -209,22 +203,12 @@ Orin Habich 10689508-->
               </span>
             </div>
           </div>
-
-          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesInfoMilieu">Bronnen</button>
-          <div id="sourcesInfoMilieu" class="collapse">
-            <p>
-              <a href="http://www.staakthetvuren.com/Gespreksnotitie%20VITO.pdf">
-               vuurwerk en milieu.pdf</a><br>
-            </p>
-          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-6" >
           <h2><b>Materiaal</b></h2>
-          <h3>Materi&euml;le schade bij particulieren</h3>
-          <svg id = "svgBarchartSchade" width="600" height="300"></svg>
           <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesMateriaal">Bronnen</button>
           <div id="sourcesMateriaal" class="collapse">
             <p>
@@ -236,6 +220,9 @@ Orin Habich 10689508-->
                 2017-2018</a><br>
             </p>
           </div>
+          <h3>Materi&euml;le schade bij particulieren</h3>
+          <svg id = "svgBarchartSchade" width="600" height="300"></svg>
+
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@
 
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, 12px, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, 20px, sans-serif;
   margin: auto;
   position: relative;
 }
@@ -17,6 +17,7 @@ text {
 
 form {
   position: absolute;
+  left: 100px;
   right: 10px;
   top: 10px;
 }
@@ -31,11 +32,11 @@ h2 {
 
 div.tooltip {
     position: absolute;
-    text-align: center;
+    text-align: left;
     width: auto;
     height: auto;
     padding: 2px;
-    font: 12px sans-serif;
+    font: 14px sans-serif;
     background: black;
     color: #fff;
     border: 0px;
@@ -137,30 +138,4 @@ div.tooltip {
 }
 #eye:hover {
   fill: white;
-}
-
-.tooltipInfoLetsel .content {
-    visibility: hidden;
-    width: 300px;
-    background-color: black;
-    color: #fff;
-    font: 14px sans-serif;
-    text-align: left;
-    border-radius: 10px;
-    padding: 5px 5px;
-    position: absolute;
-    z-index: 2;
-    margin-left: -150px;
-}
-.tooltipInfoLetsel{
-  color: black;
-}
-
-.tooltipInfoLetsel:hover .content {
-    visibility: visible;
-}
-.img-holder #windowLetsel1 {
-    position: relative;
-    bottom: 5000px;
-    left: 30px;
 }

@@ -5,6 +5,8 @@
 
   line chart:   https://bl.ocks.org/d3noob/402dd382a51a4f6eea487f9a35566de0
   update linechart met buttonpress http://bl.ocks.org/d3noob/7030f35b72de721622b8
+
+  voor de dropdown stylen: https://www.w3schools.com/howto/howto_custom_select.asp
 */
 
 window.onload = afterLoad;
@@ -25,19 +27,19 @@ function afterLoad() {
     //--------VARIABLES FOR THE BARCHART ABOUT SEH------------------------------
     var svgBarchartSEH = d3.select("#svgBarchartSEH"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchart =
+        widthBarchartSEH =
         +svgBarchartSEH .attr("width") - margin.left - margin.right,
-        heightBarchart =
+        heightBarchartSEH =
         +svgBarchartSEH .attr("height") - margin.top - margin.bottom,
         gBarchartSEH = svgBarchartSEH .append("g").attr("id", "BarchartSEH")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var xSEH = d3.scaleBand()
-        .rangeRound([0, widthBarchart])
+        .rangeRound([0, widthBarchartSEH])
         .paddingInner(0.05)
         .align(0.1);
 
-    var ySEH = d3.scaleLinear().rangeRound([heightBarchart, 0]);
+    var ySEH = d3.scaleLinear().rangeRound([heightBarchartSEH, 0]);
 
     var colorsBarchartSEH  = ["#A9A9A9", "#BDB76B"];
 
@@ -46,20 +48,20 @@ function afterLoad() {
     //--------VARIABLES FOR THE BARCHART ABOUT MELDINGEN VUURWERKOVERLAST-------
     var svgBarchartOverlast = d3.select("#svgBarchartOverlast"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchart =
+        widthBarchartOverlast =
         +svgBarchartOverlast.attr("width") - margin.left - margin.right,
-        heightBarchart =
+        heightBarchartOverlast =
         +svgBarchartOverlast.attr("height") - margin.top - margin.bottom,
         gBarchartOverlast =
         svgBarchartOverlast.append("g").attr("id", "BarchartOverlast")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var xOverlast = d3.scaleBand()
-        .rangeRound([0, widthBarchart])
+        .rangeRound([0, widthBarchartOverlast])
         .paddingInner(0.05)
         .align(0.1);
 
-    var yOverlast = d3.scaleLinear().rangeRound([heightBarchart, 0]);
+    var yOverlast = d3.scaleLinear().rangeRound([heightBarchartOverlast, 0]);
 
     var colorsBarchartOverlast =
     ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
@@ -69,20 +71,20 @@ function afterLoad() {
     //--------VARIABLES FOR THE BARCHART ABOUT SCHADE---------------------------
     var svgBarchartSchade = d3.select("#svgBarchartSchade"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchart =
+        widthBarchartSchade =
         +svgBarchartSchade.attr("width") - margin.left - margin.right,
-        heightBarchart =
+        heightBarchartSchade =
         +svgBarchartSchade.attr("height") - margin.top - margin.bottom,
         gBarchartSchade =
         svgBarchartSchade.append("g").attr("id", "BarchartSchade")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var xSchade = d3.scaleBand()
-        .rangeRound([0, widthBarchart])
+        .rangeRound([0, widthBarchartSchade])
         .paddingInner(0.05)
         .align(0.1);
 
-    var ySchade = d3.scaleLinear().rangeRound([heightBarchart, 0]);
+    var ySchade = d3.scaleLinear().rangeRound([heightBarchartSchade, 0]);
 
     var colorsBarchartSchade =
     ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
@@ -233,6 +235,7 @@ function afterLoad() {
         .defer(d3.json, "data/SEHomstander.json")
         .defer(d3.json, "data/SEHperTypeVuurwerk.json")
         .defer(d3.json, "data/SEHstatusVuurwerk.json")
+        .defer(d3.json, "data/SEHletsel.json")
         .defer(d3.csv, "data/fijnstof14-15.csv")
         .defer(d3.csv, "data/fijnstof15-16.csv")
         .defer(d3.csv, "data/fijnstof16-17.csv")
@@ -241,7 +244,7 @@ function afterLoad() {
 
     function main(error, dataBarchartSEH, dataBarchartOverlast,
        dataBarchartSchade, dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
-       dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk,
+       dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk, dataSEHletsel,
         dataLinechart14, dataLinechart15, dataLinechart16, dataLinechart17 ) {
         /*   Creates charts based on the given data.
              Args: Appriopiate datasets.
@@ -250,17 +253,20 @@ function afterLoad() {
 
         var dataLinechart = [dataLinechart14, dataLinechart15, dataLinechart16, dataLinechart17];
 
-        makeBarchart(xSEH, ySEH, zSEH, gBarchartSEH, dataBarchartSEH,
+        makeBarchart(xSEH, ySEH, zSEH, gBarchartSEH,
+          widthBarchartSEH, heightBarchartSEH, dataBarchartSEH,
           dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
           dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk,
           " mensen", "Aantal", dataLinechart);
 
        makeBarchart(xOverlast, yOverlast, zOverlast, gBarchartOverlast,
+         widthBarchartOverlast, heightBarchartOverlast,
           dataBarchartOverlast, dataPiechartSEHperLeeftijd,
           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
           dataPiechartSEHstatusVuurwerk, " klachten", "Aantal", dataLinechart);
 
         makeBarchart(xSchade, ySchade, zSchade, gBarchartSchade,
+          widthBarchartSchade, heightBarchartSchade,
            dataBarchartSchade, dataPiechartSEHperLeeftijd,
            dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
             dataPiechartSEHstatusVuurwerk, " miljoen euro",
@@ -303,15 +309,100 @@ function afterLoad() {
             d3.selectAll(".jaarwisseling" + selectValue).attr('opacity', 1);
 
             makeTitels(selectValue);
+            addTooltip(dataSEHletsel, selectValue);
           };
 
-          d3.select("#headBlack").style("fill", "red");
+          addTooltip(dataSEHletsel, defaultJaarwisseling);
+
+
+
 
     };
 
 
 
     //--------FUNCTIONS--------------------------------------------------------
+
+
+    function addTooltip(data, gekozenJaarwisseling) {
+
+      d3.select("#eye")
+         .datum(data[gekozenJaarwisseling])
+         .on("mousemove",  function(d) {
+        div.transition()
+            .duration(5)
+            .style("opacity", 1);
+        div.html("Letsel aan ogen: " + d[0].number + "<br>Hierbij waren<br>" +
+          d[0].zichtsverlies + " ogen met zichtsverlies,<br>" +
+          d[0].blind + " ogen werden blind en<br>" + d[0].verwijderd +
+           " ogen werden verwijderd.")
+          .style("left", (d3.event.pageX + 20) + "px")
+          .style("top", (d3.event.pageY - 28) + "px");
+       })
+       .on("mouseout", function(d) {
+           div.transition()
+               .duration(5)
+               .style("opacity", 0);
+       });
+
+       d3.select("#head")
+          .datum(data[gekozenJaarwisseling])
+          .on("mousemove",  function(d) {
+         div.transition()
+             .duration(5)
+             .style("opacity", 1);
+         div.html(d[1].number + " mensen")
+           .style("left", (d3.event.pageX) + "px")
+           .style("top", (d3.event.pageY - 28) + "px");
+        })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(5)
+                .style("opacity", 0);
+        });
+
+        d3.select("#body")
+           .datum(data[gekozenJaarwisseling])
+           .on("mousemove",  function(d) {
+          div.transition()
+              .duration(5)
+              .style("opacity", 1);
+          div.html(d[2].number + " mensen")
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+         })
+         .on("mouseout", function(d) {
+             div.transition()
+                 .duration(5)
+                 .style("opacity", 0);
+         })
+
+
+      // // in for loop:
+      // for (var i = 0; i < data[defaultJaarwisseling].length; i++) {
+      //     d3.select("#" + data[defaultJaarwisseling][i]["bodypart"])
+      //        .datum(data[gekozenJaarwisseling])
+      //        .on("mousemove",  function(d) {
+      //          console.log(d, i, d[i]);
+      //       div.transition()
+      //           .duration(5)
+      //           .style("opacity", 1);
+      //       div.html("Tekst " + d[i].number)
+      //         .style("left", (d3.event.pageX) + "px")
+      //         .style("top", (d3.event.pageY - 28) + "px");
+      //      })
+      //      .on("mouseout", function(d) {
+      //          div.transition()
+      //              .duration(5)
+      //              .style("opacity", 0);
+      //      });
+      // }
+
+
+
+
+
+    }
 
     function updatePiecharts(jaarwisseling, dataPiechartSEHperLeeftijd,
        dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
@@ -376,7 +467,7 @@ function afterLoad() {
           .text(function(d) { return d.data[dataItem]; });
     };
 
-    function makeBarchart(x, y, z, gBarchart, dataChosen,
+    function makeBarchart(x, y, z, gBarchart, widthBarchart, heightBarchart, dataChosen,
        dataPiechartSEHperLeeftijd,
        dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
         dataPiechartSEHstatusVuurwerk, unit, nameY, dataLinechart) {
@@ -598,6 +689,9 @@ function updateLinechart(gekozenJaarwisseling, dataLinechart) {
         d3.select("#titleLinechart")
         .html("Fijnstof (PM10) rond de jaarwisseling "+ gekozenJaarwisseling);
       };
+
+
+
 
 
 };

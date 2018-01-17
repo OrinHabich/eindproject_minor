@@ -42,4 +42,16 @@ Het poppetje is een svg bestaande uit een tiental componenten die allemaal in de
 ![](doc/groteSVGinHTML.png)
 Een alternatief schijnt te zijn om php te gebruiken met als syntax 
 >\<?php echo file_get_contents("icons/my-icon.svg"); ?\>
+Maar dit doet helaas niks.
+Bij het poppetje moet nu nog een tooltip komen.
 
+Het originele plan was om bij de ogen een verdere onderverdeling te geven met oogletsel.
+Er zijn een aantal problemen hierbij.
+1.  Van afgelopen jaarwisseling is helaas geen data te vinden.
+2.  De andere data matched niet helemaal met de SEH data (spoedeisende hulp en behandeling door oogarts zijn verschillende datasets )
+3.  De data over ogen is deels geschikt voor een piechart (blijvend/niet blijvend letsel). Maar het meest interesante deel is meer geschikt voor in een barchart (aantal visusverlies, blind, oog verwijderd). Dit moet dan wel weer een ander soort barchart worden dan die ik nu heb (een andere x-as en met een update-functie).
+Voorlopig wegen de nadelen niet op tegen de voordelen vind ik, want de informatie over de ernst van het oogletsel kan ik ook in de tooltip kwijt.
+
+Kortom, het design van de pagina wordt ietsje aangepast.
+Het huidige plan is 
+![](doc/SchetsWebsite5.png)

@@ -6,5 +6,5 @@
 6.  Gedefinieerde functies beginnen met MLC met functiebeschrijving
 7.  Single Line: 2 spaties indentatie
 8.  Witregels na openen van anonieme functie als deze niet als single line kan, na openen elke functie die aangeroepen wordt en na eindigen van elke functie
-9.  Comments: \\<spatie>zin zonder hoofdletter en zonder punt
+9.  Comments: \\\ een spatie en dan zin zonder hoofdletter en zonder punt
 10. Statements eindigen met ;

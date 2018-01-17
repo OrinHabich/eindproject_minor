@@ -6,7 +6,7 @@ Orin Habich 10689508-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/SEH.css">
+    <link rel="stylesheet" href="css/vuurwerkschade.css">
     <script src="data/jqueryAjax.js"></script>
     <script src="data/bootstrap.js"></script>
     <script src="data/d3version4.js"></script>
@@ -26,56 +26,87 @@ Orin Habich 10689508-->
     <h5>By Orin Habich 10689508</h5>
     <div class="container-fluid">
 
-        <h2><b>Mens</b></h2>
+      <div class="row">
         <div class="col-md-6" >
+          <h2><b>Mens</b></h2>
           <h3>Vuurwerkslachtoffers naar de spoedeisende hulp</h3>
           <svg id = "svgBarchartSEH" width="600" height="300"></svg>
         </div>
-        <div class="col-md-3" >
-          <div class="row">
-            <b><h3 id = "titlePiechartsSection"></h3></b>
-            <h4>Per leeftijdsklasse</h4>
-            <svg id = "svgPiechartSEHperLeeftijd" width="200" height="200"></svg>
-            <h4>Naar soort vuurwerk</h4>
-            <svg id = "svgPiechartSEHperTypeVuurwerk" width="150" height="150"></svg>
-            <h4>Zelf afgestoken of omstander</h4>
-            <svg id = "svgPiechartSEHomstander" width="150" height="150"></svg>
-            <h4>Legaal of illegaal vuurwerk</h4>
-            <svg id = "svgPiechartSEHstatusVuurwerk" width="150" height="150"></svg>
-          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12" >
+          <b><h3 id = "titlePiechartsSection"></h3></b>
+          <h4>Per leeftijdsklasse</h4>
+          <svg id = "svgPiechartSEHperLeeftijd" width="200" height="200"></svg>
+          <h4>Naar soort vuurwerk</h4>
+          <svg id = "svgPiechartSEHperTypeVuurwerk" width="150" height="150"></svg>
+          <h4>Zelf afgestoken of omstander</h4>
+          <svg id = "svgPiechartSEHomstander" width="150" height="150"></svg>
+          <h4>Legaal of illegaal vuurwerk</h4>
+          <svg id = "svgPiechartSEHstatusVuurwerk" width="150" height="150"></svg>
           <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourceSEH">Bronnen</button>
           <div id="sourceSEH" class="collapse">
             <p>
               <a href="https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf">
-                Rapportage vuurwerkongevallen 2015-2017.pdf</a>
-                <a href="https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf">
-                 Rapportage vuurwerkongevallen 2016-2018.pdf</a><br>
-
+                Rapportage vuurwerkongevallen 2015-2017.pdf</a><br>
+              <a href="https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf">
+               Rapportage vuurwerkongevallen 2016-2018.pdf</a><br>
             </p>
           </div>
-      </div>
         </div>
-        <div class="col-md-2" >
-          <h3>Letsel</h3>
-          <div class="container">
+      </div>
 
-            
-            <svg xmlns="http://www.w3.org/2000/svg"
-             xmlns:xlink="http://www.w3.org/1999/xlink"
-             width="456px"
-              height="797px"
-              viewBox="-2341.46 -1201.05 817.904 1429.22"
-               preserveAspectRatio="xMidYMid meet"  >
-               <rect id="svgEditorBackground"
-               x="0" y="0" width="1620" height="840" style="fill:none; stroke: none;"/>
-               <defs id="svgEditorDefs">
-                 <polygon id="svgEditorShapeDefs"
-                 style="fill:khaki;stroke:black;vector-effect:non-scaling-stroke;stroke-width:1px;"/>
-               </defs>
-                 <circle id="headBlack" cx="286" cy="149" style="fill:black;stroke:none;stroke-width:1px;" r="118.891" transform="matrix(1 0 0 1 -2172 -1172)" class="poppetje"/><ellipse id="bodyBlack" cx="288" cy="532" style="fill:black;stroke:none;stroke-width:1px;" rx="122.34" ry="271.548" class="poppetje" transform="matrix(1 0 0 1 -2172 -1172)"/><g id="g_e3_svg" transform="matrix(1 0 0 1 -2172 -1172)"/><ellipse id="legBlack" cx="212" cy="888" style="fill:black;stroke:black;stroke-width:1px;" rx="40" ry="156" transform="matrix(1.1134 0.0933779 -0.0933779 1.1134 -2112.16 -1291.14)"/><ellipse id="e14_ellipse" cx="640.18" cy="870.175" style="fill:black;stroke:black;stroke-width:1px;" rx="40" ry="156" transform="matrix(1.10984 -0.128966 0.128966 1.10984 -2665.36 -1163.7)"/><ellipse id="e15_ellipse" cx="241.104" cy="929.778" style="fill:black;stroke:black;stroke-width:1px;" rx="40" ry="156" transform="matrix(1.11692 -0.0294497 0.0294497 1.11692 -2264.54 -1030.28)"/><ellipse id="e1_ellipse" cx="367.939" cy="936.255" style="fill:black;stroke:black;stroke-width:1px;" rx="40" ry="156" transform="matrix(1.11692 -0.0294497 0.0294497 1.11692 -2264.54 -1030.28)"/><ellipse id="armBlack" cx="426" cy="320" style="fill:black;stroke:black;stroke-width:1px;" rx="132" ry="40" transform="matrix(0.936021 0.351944 -0.351944 0.936021 -2024.12 -1289.45)"/><ellipse id="e16_ellipse" cx="-76.982" cy="461.6" style="fill:black;stroke:black;stroke-width:1px;" rx="132" ry="40" transform="matrix(0.531939 -0.846783 0.846783 0.531939 -2340.56 -1095.21)"/><ellipse id="e17_ellipse" cx="-36.982" cy="501.6" style="fill:black;stroke:black;stroke-width:1px;" rx="132" ry="40" transform="matrix(0.531939 -0.846783 0.846783 0.531939 -2340.56 -1095.21)"/><ellipse id="e2_ellipse" cx="-121.778" cy="109.829" style="fill:black;stroke:black;stroke-width:1px;" rx="132" ry="40" transform="matrix(-0.941915 -0.335851 0.335851 -0.941915 -2295.93 -667.118)"/><ellipse id="e18_ellipse" cx="-1095.66" cy="426.642" style="fill:black;stroke:black;stroke-width:1px;" rx="132" ry="40" transform="matrix(0.346316 -0.938118 0.938118 0.346316 -1693.38 -1868.39)"/><ellipse id="handBlack" cx="-94" cy="376" style="fill:black;stroke:black;stroke-width:1px;" rx="42" ry="34" transform="matrix(1 0 0 1 -2172 -1172)"/><ellipse id="e3_ellipse" cx="448" cy="596" style="fill:black;stroke:black;stroke-width:1px;" rx="42" ry="34" transform="matrix(1 0 0 1 -2172 -1172)"/><ellipse id="footBlack" cx="158" cy="1320" style="fill:black;stroke:black;stroke-width:1px;" rx="80" ry="40" transform="matrix(1 0 0 1 -2172 -1172)"/><ellipse id="e4_ellipse" cx="406" cy="1324" style="fill:black;stroke:black;stroke-width:1px;" rx="80" ry="40" transform="matrix(1 0 0 1 -2172 -1172)"/><circle id="eye" cx="236" cy="136" style="fill:white;stroke:black;stroke-width:1px;" r="20.4162" transform="matrix(1 0 0 1 -2172 -1172)"/><circle id="e2_circle" cx="294" cy="137" style="fill:white;stroke:black;stroke-width:1px;" r="20.4162" transform="matrix(1 0 0 1 -2172 -1172)"/><path d="M-518.1958913584841,127.48429624658229c6.411000000000058,0,12.437000000000012,2.495999999999981,16.971000000000004,7.028999999999996c9.356999999999971,9.357,9.356999999999971,24.583,0,33.941l-48.971000000000004,48.971000000000004l-48.971000000000004,-48.971000000000004c-9.356999999999971,-9.357,-9.356999999999971,-24.583,0,-33.941c4.5330000000000155,-4.531999999999982,10.56000000000006,-7.028999999999996,16.971000000000004,-7.028999999999996s12.437000000000012,2.4960000000000093,16.971000000000004,7.028999999999996l15.028999999999996,15.028999999999996l15.02800000000002,-15.028999999999996c4.533999999999992,-4.531999999999982,10.561000000000035,-7.028999999999996,16.97199999999998,-7.028999999999996ZM-518.1958913584841,119.48429624658229c-8.188999999999965,0,-16.37900000000002,3.1239999999999952,-22.627000000000066,9.37299999999999l-9.372999999999934,9.37299999999999l-9.373000000000047,-9.37299999999999c-6.249000000000024,-6.2479999999999905,-14.437999999999988,-9.37299999999999,-22.62799999999993,-9.37299999999999s-16.37900000000002,3.1239999999999952,-22.628000000000043,9.37299999999999c-12.496999999999957,12.497000000000014,-12.496999999999957,32.75800000000001,0,45.254999999999995l54.62699999999995,54.62700000000001l54.62800000000004,-54.62700000000001c12.497000000000014,-12.496999999999986,12.497000000000014,-32.75799999999998,0,-45.254999999999995c-6.248999999999967,-6.248000000000005,-14.437999999999988,-9.37299999999999,-22.626999999999953,-9.37299999999999v0Z" style="fill:red; stroke:red; vector-effect:non-scaling-stroke;stroke-width:1px;" id="heart" transform="matrix(0.968746 0 0 0.968746 -1351 -907.75)"/></svg>
-            <img src="images/headBlack.png" alt="headBlack" id = "headBlack" class="image">
-            <img src="images/headRed.png" alt="headRed" id = "headRed" class="image">
-            <img src="images/poppetje1.png" alt="Poppetje1" id = "body" class="image">
+      <div class="row">
+        <div class="col-md-6" >
+          <h3>Letsel</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400px" height="600px" viewBox="-2341.46 -1201.05 817.904 1429.22" preserveAspectRatio="xMidYMid meet"  >
+            <rect id="svgEditorBackground" x="0" y="0" width="1620" height="840" style="fill:none; stroke: none;"/>
+            <defs id="svgEditorDefs">
+            <polygon id="svgEditorShapeDefs" style="fill:khaki;stroke:black;vector-effect:non-scaling-stroke;stroke-width:1px;"/>
+            </defs>
+            <circle id="head" cx="286" cy="149" r="118.891" transform="matrix(1 0 0 1 -2172 -1172)"/>
+            <ellipse id="body" cx="288" cy="532" rx="122.34" ry="271.548" class="poppetje" transform="matrix(1 0 0 1 -2172 -1172)"/>
+            <g id="leg">
+              <ellipse class="leg" cx="212" cy="888" rx="40" ry="156" transform="matrix(1.1134 0.0933779 -0.0933779 1.1134 -2112.16 -1291.14)"/>
+              <ellipse class="leg" cx="640.18" cy="870.175" rx="40" ry="156" transform="matrix(1.10984 -0.128966 0.128966 1.10984 -2665.36 -1163.7)"/>
+              <ellipse class="leg" cx="241.104" cy="929.778" rx="40" ry="156" transform="matrix(1.11692 -0.0294497 0.0294497 1.11692 -2264.54 -1030.28)"/>
+              <ellipse class="leg" cx="367.939" cy="936.255" rx="40" ry="156" transform="matrix(1.11692 -0.0294497 0.0294497 1.11692 -2264.54 -1030.28)"/>
+              <ellipse class="leg" cx="158" cy="1320" rx="80" ry="40" transform="matrix(1 0 0 1 -2172 -1172)"/>
+              <ellipse class="leg" cx="406" cy="1324" rx="80" ry="40" transform="matrix(1 0 0 1 -2172 -1172)"/>
+            </g>
+            <g id="arm">
+              <ellipse class="arm" cx="426" cy="320" rx="132" ry="40" transform="matrix(0.936021 0.351944 -0.351944 0.936021 -2024.12 -1289.45)"/>
+              <ellipse class="arm" cx="-76.982" cy="461.6" rx="132" ry="40" transform="matrix(0.531939 -0.846783 0.846783 0.531939 -2340.56 -1095.21)"/>
+              <ellipse class="arm" cx="-121.778" cy="109.829" rx="132" ry="40" transform="matrix(-0.941915 -0.335851 0.335851 -0.941915 -2295.93 -667.118)"/>
+              <ellipse class="arm" cx="-1095.66" cy="426.642" rx="132" ry="40" transform="matrix(0.346316 -0.938118 0.938118 0.346316 -1693.38 -1868.39)"/>
+            </g>
+            <g id="hand">
+              <ellipse class="hand" cx="-94" cy="376" rx="42" ry="34" transform="matrix(1 0 0 1 -2172 -1172)"/>
+              <ellipse class="hand" cx="448" cy="596" rx="42" ry="34" transform="matrix(1 0 0 1 -2172 -1172)"/>
+            </g>
+
+            <g id="eye">
+              <circle class="eye" cx="236" cy="136" r="20.4162" transform="matrix(1 0 0 1 -2172 -1172)"/>
+              <circle class="eye" cx="294" cy="137" r="20.4162" transform="matrix(1 0 0 1 -2172 -1172)"/>
+            </g>
+            <path d="M-518.1958913584841,127.48429624658229c6.411000000000058,0,12.437000000000012,2.495999999999981,16.971000000000004,7.028999999999996c9.356999999999971,9.357,9.356999999999971,
+            24.583,0,33.941l-48.971000000000004,48.971000000000004l-48.971000000000004,-48.971000000000004c-9.356999999999971,-9.357,-9.356999999999971,-24.583,0,-33.941c4.5330000000000155,
+            -4.531999999999982,10.56000000000006,-7.028999999999996,16.971000000000004,-7.028999999999996s12.437000000000012,2.4960000000000093,16.971000000000004,7.028999999999996l15.028999999999996,
+            15.028999999999996l15.02800000000002,-15.028999999999996c4.533999999999992,-4.531999999999982,10.561000000000035,-7.028999999999996,16.97199999999998,-7.028999999999996ZM-518.1958913584841,
+            119.48429624658229c-8.188999999999965,0,-16.37900000000002,3.1239999999999952,-22.627000000000066,9.37299999999999l-9.372999999999934,9.37299999999999l-9.373000000000047,
+            -9.37299999999999c-6.249000000000024,-6.2479999999999905,-14.437999999999988,-9.37299999999999,-22.62799999999993,-9.37299999999999s-16.37900000000002,3.1239999999999952,-22.628000000000043,
+            9.37299999999999c-12.496999999999957,12.497000000000014,-12.496999999999957,32.75800000000001,0,45.254999999999995l54.62699999999995,54.62700000000001l54.62800000000004,
+            -54.62700000000001c12.497000000000014,-12.496999999999986,12.497000000000014,-32.75799999999998,0,-45.254999999999995c-6.248999999999967,-6.248000000000005,-14.437999999999988,
+            -9.37299999999999,-22.626999999999953,-9.37299999999999v0Z" style="fill:red; stroke:red; vector-effect:non-scaling-stroke;stroke-width:1px;"
+            id="heart" transform="matrix(0.968746 0 0 0.968746 -1351 -907.75)"/>
+            </svg>
+
+            <div id="windowLetsel1" class="tooltipInfoLetsel"><b>Hoofd</b>
+              <span class="content">
+                Aantal SEH hoofd in gekozen jaarwisseling
+              </span>
+            </div>
           </div>
           <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesPoppetje">Bronnen</button>
           <div id="sourcesPoppetje" class="collapse">
@@ -85,6 +116,7 @@ Orin Habich 10689508-->
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-md-6" >
           <h3>Meldingen bij <a href="https://vuurwerkoverlast.nl/">
@@ -107,8 +139,8 @@ Orin Habich 10689508-->
       </div>
 
       <div class="row">
-        <h2><b>Milieu</b></h2>
         <div class="col-md-6" >
+          <h2><b>Milieu</b></h2>
           <b><h3 id = "titleLinechart"></h3></b>
           <svg id = "svgLinechart" width="800" height="400"></svg>
           <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesFijnstof">Bronnen</button>
@@ -122,76 +154,75 @@ Orin Habich 10689508-->
           </div>
         </div>
 
-          <div class="col-md-6" >
-            <div class="img-holder">
-              <img src="images/vuurwerkAchtergrond2.png" alt="image description"/>
+        <div class="col-md-6" >
+          <div class="img-holder">
+            <img src="images/vuurwerkAchtergrond2.png" alt="image description"/>
 
-              <div id="textWindow1" class="tooltipInfo"><b>Veel vervuilende stoffen</b>
-                <span class="content">
-                  3.000.000 kilo afval van vuurwerk! Ongeveer 100.000 kilo barium, 40.000 kilo koper, 30.000 kilo
-                  strontium, 10.000 kilo titaan, en 5.000 kilo antimoon, deze giftige stoffen komen elk jaar tijdens de
-                  jaarwisseling bij het afsteken van consumentenvuurwerk in het milieu terecht.
-                </span>
-              </div>
-
-              <div id="textWindow2" class="tooltipInfo"><b>Explosie in de lucht</b>
-                <span class="content">
-                  Bij de explosie in de lucht vindt de grootste uitstoot van milieuvervuilende (en
-                  giftige) stoffen plaats. Vervolgens verspreiden de luchtvervuilende stoffen zich en komen daarna op
-                  de grond terecht.
-                </span>
-              </div>
-
-              <div id="textWindow3" class="tooltipInfo"><b>Zware metalen</b>
-                <span class="content">
-                  De belangrijkste verontreinigende stoffen die ontstaan zijn (ultra)fijn stof en gassen
-                  als koolmonoxide, kooldioxide, stikstof- en zwaveldioxide, maar ook metaalverbindingen
-                  (kaliumsulfaat en kaliumcarbonaat) en zware metalen die zich aan fijn stofdeeltjes hechten (o.a.
-                  barium, koper, strontium, titaan en antimoon).
-                </span>
-              </div>
-
-              <div id="textWindow4" class="tooltipInfo"><b>Directe omgeving</b>
-                <span class="content">
-                  Van de stoffen die in de lucht terecht komen, valt 90
-                  procent in de directe omgeving weer op de grond. Rond 68 procent hiervan spoelt via de riolering
-                  naar een waterzuiveringsinstallatie of valt rechtstreeks op de oppervlakte van het water. De
-                  resterende 22 procent blijft op de grond liggen.
-                </span>
-              </div>
-
-              <div id="textWindow5" class="tooltipInfo"><b>Afvalresten</b>
-                <span class="content">
-                  De resten van de verpakking gemaakt uit karton,
-                  papier, plastic en metaal worden als afval op de grond achtergelaten.
-                </span>
-              </div>
-
-              <div id="textWindow6" class="tooltipInfo"><b>Smog</b>
-                <span class="content">
-                  Meestal is er tijdens de jaarwisseling sprake van smog; een periode van tijdelijk
-                  zeer verontreinigde lucht.
-                  De beperking van het zicht is soms zo ernstig dat hulpdiensten
-                  niet kunnen uitrukken. De vorming van smog hangt sterk af van de
-                  weersomstandigheden.
-                </span>
-              </div>
+            <div id="textWindow1" class="tooltipInfo"><b>Veel vervuilende stoffen</b>
+              <span class="content">
+                3.000.000 kilo afval van vuurwerk! Ongeveer 100.000 kilo barium, 40.000 kilo koper, 30.000 kilo
+                strontium, 10.000 kilo titaan, en 5.000 kilo antimoon, deze giftige stoffen komen elk jaar tijdens de
+                jaarwisseling bij het afsteken van consumentenvuurwerk in het milieu terecht.
+              </span>
             </div>
 
-            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesInfoMilieu">Bronnen</button>
-            <div id="sourcesInfoMilieu" class="collapse">
-              <p>
-                <a href="http://www.staakthetvuren.com/Gespreksnotitie%20VITO.pdf">
-                 vuurwerk en milieu.pdf</a><br>
-              </p>
+            <div id="textWindow2" class="tooltipInfo"><b>Explosie in de lucht</b>
+              <span class="content">
+                Bij de explosie in de lucht vindt de grootste uitstoot van milieuvervuilende (en
+                giftige) stoffen plaats. Vervolgens verspreiden de luchtvervuilende stoffen zich en komen daarna op
+                de grond terecht.
+              </span>
             </div>
+
+            <div id="textWindow3" class="tooltipInfo"><b>Zware metalen</b>
+              <span class="content">
+                De belangrijkste verontreinigende stoffen die ontstaan zijn (ultra)fijn stof en gassen
+                als koolmonoxide, kooldioxide, stikstof- en zwaveldioxide, maar ook metaalverbindingen
+                (kaliumsulfaat en kaliumcarbonaat) en zware metalen die zich aan fijn stofdeeltjes hechten (o.a.
+                barium, koper, strontium, titaan en antimoon).
+              </span>
+            </div>
+
+            <div id="textWindow4" class="tooltipInfo"><b>Directe omgeving</b>
+              <span class="content">
+                Van de stoffen die in de lucht terecht komen, valt 90
+                procent in de directe omgeving weer op de grond. Rond 68 procent hiervan spoelt via de riolering
+                naar een waterzuiveringsinstallatie of valt rechtstreeks op de oppervlakte van het water. De
+                resterende 22 procent blijft op de grond liggen.
+              </span>
+            </div>
+
+            <div id="textWindow5" class="tooltipInfo"><b>Afvalresten</b>
+              <span class="content">
+                De resten van de verpakking gemaakt uit karton,
+                papier, plastic en metaal worden als afval op de grond achtergelaten.
+              </span>
+            </div>
+
+            <div id="textWindow6" class="tooltipInfo"><b>Smog</b>
+              <span class="content">
+                Meestal is er tijdens de jaarwisseling sprake van smog; een periode van tijdelijk
+                zeer verontreinigde lucht.
+                De beperking van het zicht is soms zo ernstig dat hulpdiensten
+                niet kunnen uitrukken. De vorming van smog hangt sterk af van de
+                weersomstandigheden.
+              </span>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesInfoMilieu">Bronnen</button>
+          <div id="sourcesInfoMilieu" class="collapse">
+            <p>
+              <a href="http://www.staakthetvuren.com/Gespreksnotitie%20VITO.pdf">
+               vuurwerk en milieu.pdf</a><br>
+            </p>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <h2><b>Materiaal</b></h2>
         <div class="col-md-6" >
+          <h2><b>Materiaal</b></h2>
           <h3>Materi&euml;le schade bij particulieren</h3>
           <svg id = "svgBarchartSchade" width="600" height="300"></svg>
           <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sourcesMateriaal">Bronnen</button>

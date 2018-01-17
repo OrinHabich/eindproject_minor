@@ -113,42 +113,54 @@ div.tooltip {
 
 
 
-
-.container {
-  position: relative;
-  width: 100%;
+#eye {
+  fill: grey;
 }
 
-/* .image {
-  display: block;
-  width: 100%;
-  height: auto;
-} */
+#head:hover {
+  fill: Red;
+}
+#body:hover {
+  fill: Red;
+}
+#arm:hover {
+  fill: Red;
+}
+#leg:hover {
+  fill: Red;
+}
+#hand:hover {
+  fill: Red;
+}
+#foot:hover {
+  fill: Red;
+}
+#eye:hover {
+  fill: white;
+}
 
-#headBlack {
+.tooltipInfoLetsel .content {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    font: 14px sans-serif;
+    text-align: left;
+    border-radius: 10px;
+    padding: 5px 5px;
     position: absolute;
-    width: 40%;
-    left: 30%;
+    z-index: 2;
+    margin-left: -150px;
+}
+.tooltipInfoLetsel{
+  color: black;
 }
 
-#headRed {
+.tooltipInfoLetsel:hover .content {
+    visibility: visible;
+}
+.img-holder #windowLetsel1 {
     position: relative;
-    width: 50%;
-    left: 25%;
-    opacity: 0;
-}
-
-#body {
-    position: relative;
-    /* top: -100%; */
-    width: 100%;
-}
-
-#headRed:hover {
-  opacity: 1;
-
-}
-
-#headBlack:hover {
-  opacity: 0;
+    bottom: 5000px;
+    left: 30px;
 }

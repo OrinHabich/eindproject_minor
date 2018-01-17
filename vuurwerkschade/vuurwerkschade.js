@@ -237,9 +237,9 @@ function afterLoad() {
         .defer(d3.csv, "data/fijnstof15-16.csv")
         .defer(d3.csv, "data/fijnstof16-17.csv")
         .defer(d3.csv, "data/fijnstof17-18.csv")
-      	.await(makeCharts);
+      	.await(main);
 
-    function makeCharts(error, dataBarchartSEH, dataBarchartOverlast,
+    function main(error, dataBarchartSEH, dataBarchartOverlast,
        dataBarchartSchade, dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
        dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk,
         dataLinechart14, dataLinechart15, dataLinechart16, dataLinechart17 ) {
@@ -389,7 +389,6 @@ function afterLoad() {
        y.domain([0, d3.max(dataChosen, function(d) { return d.total; })]).nice();
        z.domain(keys);
 
-       // make the barchart about SEH
        gBarchart.append("g")
            .selectAll("g")
            .data(d3.stack().keys(keys)(dataChosen))

@@ -81,3 +81,18 @@ Dit is nu de todo lijst:
 6.  Opmaak site mooi maken
 7.  Design en style code verbeteren
 8.  Stap 6 en 7 herhalen
+
+# dag 9 avond
+De checkboxes werken.
+
+![](doc/websiteDag9.png)
+
+Niet mooi nog: 
+Er is nu voor iedere checkbox een andere functie. Deze functies zijn bijna identiek en het zou veel beter worden als het zou lukken om een argument aan de functie mee te geven.
+
+Bij het openen van de site zijn de checkboxes unchecked en de piecharts invisible. Dat lijkt mij het meest logisch denk ik.
+
+De piecharts bestaan gewoon als ze unchecked zijn, maar zijn onzichtbaar. Dit is ietsje langzamer voor de gebruiker die de checkboxes helemaal niet aan-checked, maar veel simpeler qua code.
+
+Als alleen de onderste checkbox aanstaat, dan staat die piechart helemaal rechts. Dat is niet zo mooi maar ik moet nog bedenken wat ik daar aan doe.
+

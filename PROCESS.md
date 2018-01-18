@@ -75,8 +75,9 @@ Dit is nu de todo lijst:
 
 1.  Checkboxes werkend maken (aangenomen dat het als vervanging voor de interactieve tabel mag)
 2.  Een tooltip aan de linegraph toevoegen
-3.  Misschien sterfgevallen toevoegen aan tooltip bij poppetje
-4.  Duplicate code oplossen
-4.  Opmaak site mooi maken
-5.  Design en style code verbeteren
-6.  Stap 4 en 5 herhalen
+3.  Uitzoeken of ik dropdown menu kan updaten
+4.  Misschien sterfgevallen toevoegen aan tooltip bij poppetje
+5.  Duplicate code oplossen
+6.  Opmaak site mooi maken
+7.  Design en style code verbeteren
+8.  Stap 4 en 5 herhalen

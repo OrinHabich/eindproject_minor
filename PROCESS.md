@@ -80,4 +80,4 @@ Dit is nu de todo lijst:
 5.  Duplicate code oplossen
 6.  Opmaak site mooi maken
 7.  Design en style code verbeteren
-8.  Stap 4 en 5 herhalen
+8.  Stap 6 en 7 herhalen

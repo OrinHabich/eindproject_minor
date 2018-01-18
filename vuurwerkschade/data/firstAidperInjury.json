@@ -1,50 +1,50 @@
 {
   "2014-2015":
     {
-      "eye": 2015,
-      "zichtsverlies": 23,
-      "blind": 33,
-      "verwijderd": 34,
-      "head": 287,
-      "body": 287,
-      "arm":  287,
-      "hand": 287,
-      "leg":  287
+      "eye": 210,
+      "zichtsverlies": 31,
+      "blind": 10,
+      "verwijderd": 6,
+      "head": 98,
+      "body": 75,
+      "arm": 17,
+      "hand": 212,
+      "leg":  23
     },
   "2015-2016":
     {
-      "eye": 2016,
-      "zichtsverlies": 23,
-      "blind": 33,
-      "verwijderd": 34,
-      "head": 287,
-      "body": 287,
-      "arm":  287,
-      "hand": 287,
-      "leg":  287
+      "eye": 160,
+      "zichtsverlies": 29,
+      "blind": 15,
+      "verwijderd": 2,
+      "head": 101,
+      "body": 0,
+      "arm":  0,
+      "hand": 183,
+      "leg":  29
     },
   "2016-2017":
     {
-      "eye": 2017,
-      "zichtsverlies": 23,
-      "blind": 33,
-      "verwijderd": 34,
-      "head": 287,
-      "body": 287,
-      "arm":  287,
-      "hand": 287,
-      "leg":  287
+      "eye": 176,
+      "zichtsverlies": 37,
+      "blind": 19,
+      "verwijderd": 5,
+      "head": 128,
+      "body": 28,
+      "arm":  28,
+      "hand": 114,
+      "leg":  0
     },
   "2017-2018":
     {
-      "eye": 2018,
-      "zichtsverlies": 23,
-      "blind": 33,
-      "verwijderd": 34,
-      "head": 287,
-      "body": 287,
-      "arm":  287,
-      "hand": 287,
-      "leg":  287
+      "eye": 117,
+      "zichtsverlies": "",
+      "blind": "",
+      "verwijderd": "",
+      "head": 126,
+      "body": 13,
+      "arm":  17,
+      "hand": 109,
+      "leg":  22
     }
 }

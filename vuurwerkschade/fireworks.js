@@ -111,6 +111,20 @@ function afterLoad() {
 
     var firstTimePerAge = true;
 
+    //--------VARIABLES FOR THE PIECHART GENERAL--------------------------------
+    var colors = d3.scaleOrdinal(d3.schemeCategory10);
+
+    var pie = d3.pie()
+        .sort(null)
+        .value(function(d) { return d.number; });
+
+    var path = d3.arc().outerRadius(radius).innerRadius(0);
+
+    var label =
+    d3.arc().outerRadius(radius + 60).innerRadius(radius - 140);
+
+    var firstTimeBystander = true;
+
     //--------VARIABLES FOR THE PIECHART ABOUT BYSTANDER------------------------
     var svgBystander = d3.select("#svgPerBystander"),
         widthBystander = +svgBystander.attr("width"),
@@ -267,7 +281,7 @@ function afterLoad() {
              "Euro (in miljoenen)", dataLinechart);
 
         // Draw default piecharts
-        updateFirstAidsection(defaultNewYearsEve, dataFirstAidSection, true);
+        makeFirstAidSection(defaultNewYearsEve, dataFirstAidSection, true);
 
            makeLinechart(dataLinechart)
 
@@ -291,7 +305,7 @@ function afterLoad() {
             // results of selecting with dropdown menu
             selectValue = d3.select('select').property('value');
 
-            updateFirstAidsection(defaultNewYearsEve, dataFirstAidSection, false);
+            makeFirstAidSection(defaultNewYearsEve, dataFirstAidSection, false);
            updateLinechart(selectValue, dataLinechart);
 
             // highlight in all bargraphs the bar corresponding to selection
@@ -317,7 +331,7 @@ function afterLoad() {
         div.transition()
             .duration(5)
             .style("opacity", 1);
-        div.html("Letsel aan ogen: " + d.eye + "<br>Hierbij waren<br>" +
+        div.html("Letsel aan ogen bij " + d.eye + " mensen.<br>Hierbij waren<br>" +
           d.zichtsverlies + " ogen met zichtsverlies,<br>" +
           d.blind + " ogen werden blind en<br>" + d.verwijderd +
            " ogen werden verwijderd.")
@@ -333,14 +347,30 @@ function afterLoad() {
        // tooltips for other bodyparts of
        var bodyparts = ["head", "body", "arm", "hand", "leg"];
 
-       for (var i = 0; i < bodyparts.length; i++) {
-          d3.select("#" + bodyparts[i])
+       // for (var i = 0; i < bodyparts.length; i++) {
+       //    d3.select("#" + bodyparts[i])
+       //      .datum(data[newYearsEve])
+       //      .on("mousemove",  function(d, i) {
+       //     div.transition()
+       //         .duration(5)
+       //         .style("opacity", 1);
+       //     div.html(d[bodyparts[i]] + " mensen")
+       //       .style("left", (d3.event.pageX) + "px")
+       //       .style("top", (d3.event.pageY - 28) + "px");
+       //    })
+       //    .on("mouseout", function(d) {
+       //        div.transition()
+       //            .duration(5)
+       //            .style("opacity", 0);
+       //    });
+
+       d3.select("#head")
             .datum(data[newYearsEve])
             .on("mousemove",  function(d, i) {
            div.transition()
                .duration(5)
                .style("opacity", 1);
-           div.html(d[bodyparts[i]] + " mensen")
+           div.html(d["head"] + " mensen")
              .style("left", (d3.event.pageX) + "px")
              .style("top", (d3.event.pageY - 28) + "px");
           })
@@ -349,10 +379,74 @@ function afterLoad() {
                   .duration(5)
                   .style("opacity", 0);
           });
-      }
+
+        d3.select("#body")
+             .datum(data[newYearsEve])
+             .on("mousemove",  function(d, i) {
+            div.transition()
+                .duration(5)
+                .style("opacity", 1);
+            div.html(d["body"] + " mensen")
+              .style("left", (d3.event.pageX) + "px")
+              .style("top", (d3.event.pageY - 28) + "px");
+           })
+           .on("mouseout", function(d) {
+               div.transition()
+                   .duration(5)
+                   .style("opacity", 0);
+           });
+
+       d3.select("#arm")
+            .datum(data[newYearsEve])
+            .on("mousemove",  function(d, i) {
+           div.transition()
+               .duration(5)
+               .style("opacity", 1);
+           div.html(d["arm"] + " mensen")
+             .style("left", (d3.event.pageX) + "px")
+             .style("top", (d3.event.pageY - 28) + "px");
+          })
+          .on("mouseout", function(d) {
+              div.transition()
+                  .duration(5)
+                  .style("opacity", 0);
+          });
+
+      d3.select("#hand")
+           .datum(data[newYearsEve])
+           .on("mousemove",  function(d, i) {
+          div.transition()
+              .duration(5)
+              .style("opacity", 1);
+          div.html(d["hand"] + " mensen")
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+         })
+         .on("mouseout", function(d) {
+             div.transition()
+                 .duration(5)
+                 .style("opacity", 0);
+         });
+
+       d3.select("#leg")
+            .datum(data[newYearsEve])
+            .on("mousemove",  function(d, i) {
+           div.transition()
+               .duration(5)
+               .style("opacity", 1);
+           div.html(d["leg"] + " mensen")
+             .style("left", (d3.event.pageX) + "px")
+             .style("top", (d3.event.pageY - 28) + "px");
+          })
+          .on("mouseout", function(d) {
+              div.transition()
+                  .duration(5)
+                  .style("opacity", 0);
+          });
+
     }
 
-    function updateFirstAidsection(newYearsEve, dataFirstAidSection, firstTime) {
+    function makeFirstAidSection(newYearsEve, dataFirstAidSection, firstTime) {
       /*   Updates the piecharts.
            Args: The year and the age group.
       */
@@ -365,6 +459,8 @@ function afterLoad() {
       // for (var i = 0; i < dataFirstAidSection.length; i++ ) {
       // makePiechart(dataItems[i], dataFirstAidSection[i], firstTime, svgIDs[i]);
       // }
+
+
       makePiechart(gPerAge, piePerAge, pathPerAge, colorsPerAge, labelPerAge,
         "leeftijd", dataFirstAidSection[0][newYearsEve], firstTime);
       makePiechart(gBystander, pieBystander, pathBystander, colorsBystander,
@@ -478,7 +574,7 @@ function afterLoad() {
                makeTitels(xPosition);
 
                // remake piecharts
-               updateFirstAidsection(xPosition, dataFirstAidSection, false);
+               makeFirstAidSection(xPosition, dataFirstAidSection, false);
 
               updateLinechart(xPosition, dataLinechart);
               return

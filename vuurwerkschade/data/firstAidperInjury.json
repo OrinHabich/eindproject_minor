@@ -1,0 +1,50 @@
+{
+  "2014-2015":
+    {
+      "eye": 2015,
+      "zichtsverlies": 23,
+      "blind": 33,
+      "verwijderd": 34,
+      "head": 287,
+      "body": 287,
+      "arm":  287,
+      "hand": 287,
+      "leg":  287
+    },
+  "2015-2016":
+    {
+      "eye": 2016,
+      "zichtsverlies": 23,
+      "blind": 33,
+      "verwijderd": 34,
+      "head": 287,
+      "body": 287,
+      "arm":  287,
+      "hand": 287,
+      "leg":  287
+    },
+  "2016-2017":
+    {
+      "eye": 2017,
+      "zichtsverlies": 23,
+      "blind": 33,
+      "verwijderd": 34,
+      "head": 287,
+      "body": 287,
+      "arm":  287,
+      "hand": 287,
+      "leg":  287
+    },
+  "2017-2018":
+    {
+      "eye": 2018,
+      "zichtsverlies": 23,
+      "blind": 33,
+      "verwijderd": 34,
+      "head": 287,
+      "body": 287,
+      "arm":  287,
+      "hand": 287,
+      "leg":  287
+    }
+}

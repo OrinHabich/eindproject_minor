@@ -1,5 +1,5 @@
 /*
-  vuurwerkschade.js
+  fireworks.js
   Minor programmeren; Project
   Orin Habich 10689508
 
@@ -17,172 +17,169 @@ function afterLoad() {
     */
 
     //--------GENERAL VARIABELS-------------------------------------------------
-    var defaultJaarwisseling = "2017-2018"
+    var defaultNewYearsEve = "2017-2018"
 
     // Define the div for the tooltip
     var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
 
-    //--------VARIABLES FOR THE BARCHART ABOUT SEH------------------------------
-    var svgBarchartSEH = d3.select("#svgBarchartSEH"),
+    //--------VARIABLES FOR THE BARCHART ABOUT FIRST AID------------------------
+    var svgFirstAid = d3.select("#svgFirstAid"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchartSEH =
-        +svgBarchartSEH .attr("width") - margin.left - margin.right,
-        heightBarchartSEH =
-        +svgBarchartSEH .attr("height") - margin.top - margin.bottom,
-        gBarchartSEH = svgBarchartSEH .append("g").attr("id", "BarchartSEH")
+        widthFirstAid =
+        +svgFirstAid .attr("width") - margin.left - margin.right,
+        heightFirstAid =
+        +svgFirstAid .attr("height") - margin.top - margin.bottom,
+        gFirstAid = svgFirstAid .append("g").attr("id", "BarchartFirstAid")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var xSEH = d3.scaleBand()
-        .rangeRound([0, widthBarchartSEH])
+    var xFirstAid = d3.scaleBand()
+        .rangeRound([0, widthFirstAid])
         .paddingInner(0.05)
         .align(0.1);
 
-    var ySEH = d3.scaleLinear().rangeRound([heightBarchartSEH, 0]);
+    var yFirstAid = d3.scaleLinear().rangeRound([heightFirstAid, 0]);
 
-    var colorsBarchartSEH  = ["#A9A9A9", "#BDB76B"];
+    var colorsFirstAid  = ["#A9A9A9", "#BDB76B"];
 
-    var zSEH = d3.scaleOrdinal().range(colorsBarchartSEH );
+    var zFirstAid = d3.scaleOrdinal().range(colorsFirstAid );
 
-    //--------VARIABLES FOR THE BARCHART ABOUT MELDINGEN VUURWERKOVERLAST-------
-    var svgBarchartOverlast = d3.select("#svgBarchartOverlast"),
+    //--------VARIABLES FOR THE BARCHART ABOUT COMPLAINTS-----------------------
+    var svgComplaints = d3.select("#svgComplaints"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchartOverlast =
-        +svgBarchartOverlast.attr("width") - margin.left - margin.right,
-        heightBarchartOverlast =
-        +svgBarchartOverlast.attr("height") - margin.top - margin.bottom,
-        gBarchartOverlast =
-        svgBarchartOverlast.append("g").attr("id", "BarchartOverlast")
+        widthComplaints = +svgComplaints .attr("width") - margin.left - margin.right,
+        heightComplaints =
+        +svgComplaints .attr("height") - margin.top - margin.bottom,
+        gComplaints =
+        svgComplaints.append("g").attr("id", "BarchartComplaints")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var xOverlast = d3.scaleBand()
-        .rangeRound([0, widthBarchartOverlast])
+    var xComplaints = d3.scaleBand()
+        .rangeRound([0, widthComplaints])
         .paddingInner(0.05)
         .align(0.1);
 
-    var yOverlast = d3.scaleLinear().rangeRound([heightBarchartOverlast, 0]);
+    var yComplaints = d3.scaleLinear().rangeRound([heightComplaints, 0]);
 
-    var colorsBarchartOverlast =
+    var colorsComplaints =
     ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
 
-    var zOverlast = d3.scaleOrdinal().range(colorsBarchartOverlast);
+    var zComplaints = d3.scaleOrdinal().range(colorsComplaints);
 
-    //--------VARIABLES FOR THE BARCHART ABOUT SCHADE---------------------------
-    var svgBarchartSchade = d3.select("#svgBarchartSchade"),
+    //--------VARIABLES FOR THE BARCHART ABOUT DAMAGE---------------------------
+    var svgDamage = d3.select("#svgDamage"),
         margin = {top: 20, right: 100, bottom: 30, left: 60},
-        widthBarchartSchade =
-        +svgBarchartSchade.attr("width") - margin.left - margin.right,
-        heightBarchartSchade =
-        +svgBarchartSchade.attr("height") - margin.top - margin.bottom,
-        gBarchartSchade =
-        svgBarchartSchade.append("g").attr("id", "BarchartSchade")
+        widthDamage = +svgDamage .attr("width") - margin.left - margin.right,
+        heightDamage = +svgDamage .attr("height") - margin.top - margin.bottom,
+        gDamage =
+        svgDamage.append("g").attr("id", "BarchartDamage")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var xSchade = d3.scaleBand()
-        .rangeRound([0, widthBarchartSchade])
+    var xDamage = d3.scaleBand()
+        .rangeRound([0, widthDamage])
         .paddingInner(0.05)
         .align(0.1);
 
-    var ySchade = d3.scaleLinear().rangeRound([heightBarchartSchade, 0]);
+    var yDamage = d3.scaleLinear().rangeRound([heightDamage, 0]);
 
-    var colorsBarchartSchade =
+    var colorsDamage =
     ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
 
-    var zSchade = d3.scaleOrdinal().range(colorsBarchartSchade);
+    var zDamage = d3.scaleOrdinal().range(colorsDamage);
 
-    //--------VARIABLES FOR THE PIECHART ABOUT LEEFTIJD-------------------------
-    var svgPiechartSEHperLeeftijd = d3.select("#svgPiechartSEHperLeeftijd"),
-        widthPiechart = +svgPiechartSEHperLeeftijd.attr("width"),
-        heightPiechart = +svgPiechartSEHperLeeftijd.attr("height"),
-        radius = Math.min(widthPiechart, heightPiechart) / 2,
-        gPiechartSEHperLeeftijd =
-        svgPiechartSEHperLeeftijd.append("g").attr("id", "PiechartLeeftijd")
+    //--------VARIABLES FOR THE PIECHART FIRST AID PER AGE----------------------
+    var svgPerAge = d3.select("#svgPerAge"),
+        widthPerAge = +svgPerAge.attr("width"),
+        heightPerAge = +svgPerAge.attr("height"),
+        radius = Math.min(widthPerAge, heightPerAge) / 2,
+        gPerAge =
+        svgPerAge.append("g").attr("id", "PiechartFirstAidperAge")
             .attr("transform",
-             "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
+             "translate(" + widthPerAge / 2 + "," + heightPerAge / 2 + ")");
 
-    var colorsPiechartSEHperLeeftijd = d3.scaleOrdinal(d3.schemeCategory10);
+    var colorsPerAge = d3.scaleOrdinal(d3.schemeCategory10);
 
-    var pieSEHperLeeftijd = d3.pie()
+    var piePerAge = d3.pie()
         .sort(null)
         .value(function(d) { return d.number; });
 
-    var pathSEHperLeeftijd = d3.arc().outerRadius(radius).innerRadius(0);
+    var pathPerAge = d3.arc().outerRadius(radius).innerRadius(0);
 
-    var labelSEHperLeeftijd =
+    var labelPerAge =
     d3.arc().outerRadius(radius - 10).innerRadius(radius - 60);
 
-    var firstTimePiechartSEHperLeeftijd = true;
+    var firstTimePerAge = true;
 
-    //--------VARIABLES FOR THE PIECHART ABOUT OMSTANDER------------------------
-    var svgPiechartSEHomstander = d3.select("#svgPiechartSEHomstander"),
-        widthPiechart = +svgPiechartSEHomstander.attr("width"),
-        heightPiechart = +svgPiechartSEHomstander.attr("height"),
-        radius = Math.min(widthPiechart, heightPiechart) / 2,
-        gPiechartSEHomstander =
-        svgPiechartSEHomstander.append("g").attr("id", "PiechartOmstander")
+    //--------VARIABLES FOR THE PIECHART ABOUT BYSTANDER------------------------
+    var svgBystander = d3.select("#svgPerBystander"),
+        widthBystander = +svgBystander.attr("width"),
+        heightBystander = +svgBystander.attr("height"),
+        radius = Math.min(widthBystander, heightBystander) / 2,
+        gBystander =
+        svgBystander.append("g").attr("id", "PiechartFirstAidperBystander")
             .attr("transform",
-             "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
+             "translate(" + widthBystander / 2 + "," + heightBystander / 2 + ")");
 
-    var colorsPiechartSEHomstander = d3.scaleOrdinal(d3.schemeCategory10);
+    var colorsBystander = d3.scaleOrdinal(d3.schemeCategory10);
 
-    var pieSEHomstander = d3.pie()
+    var pieBystander = d3.pie()
         .sort(null)
         .value(function(d) { return d.number; });
 
-    var pathSEHomstander = d3.arc().outerRadius(radius).innerRadius(0);
+    var pathBystander = d3.arc().outerRadius(radius).innerRadius(0);
 
-    var labelSEHomstander =
+    var labelBystander =
     d3.arc().outerRadius(radius + 60).innerRadius(radius - 140);
 
-    var firstTimePiechartSEHomstander = true;
+    var firstTimeBystander = true;
 
     //--------VARIABLES FOR THE PIECHART ABOUT TYPE FIREWORKS-------------------
-    var svgPiechartSEHperTypeVuurwerk =
-        d3.select("#svgPiechartSEHperTypeVuurwerk"),
-        widthPiechart = +svgPiechartSEHperTypeVuurwerk.attr("width"),
-        heightPiechart = +svgPiechartSEHperTypeVuurwerk.attr("height"),
+    var svgTypeFireworks =
+        d3.select("#svgPerTypeFireworks"),
+        widthPiechart = +svgTypeFireworks.attr("width"),
+        heightPiechart = +svgTypeFireworks.attr("height"),
         radius = Math.min(widthPiechart, heightPiechart) / 2,
-        gPiechartSEHperTypeVuurwerk = svgPiechartSEHperTypeVuurwerk.append("g")
-            .attr("id", "PiechartperTypeVuurwerk")
+        gTypeFireworks = svgTypeFireworks.append("g")
+            .attr("id", "PiechartFirstAidperTypeFireworks")
             .attr("transform",
              "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
 
-    var colorsPiechartSEHperTypeVuurwerk = d3.scaleOrdinal(d3.schemeCategory10);
+    var colorsTypeFireworks = d3.scaleOrdinal(d3.schemeCategory10);
 
-    var pieSEHperTypeVuurwerk = d3.pie()
+    var pieTypeFireworks = d3.pie()
         .sort(null)
         .value(function(d) { return d.number; });
 
-    var pathSEHperTypeVuurwerk = d3.arc().outerRadius(radius).innerRadius(0);
+    var pathTypeFireworks = d3.arc().outerRadius(radius).innerRadius(0);
 
-    var labelSEHperTypeVuurwerk =
+    var labelTypeFireworks =
     d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
 
-    var firstTimePiechartSEHperTypeVuurwerk = true;
+    var firstTimeTypeFireworks = true;
 
     //--------VARIABLES FOR THE PIECHART ABOUT STATUS FIREWORKS-----------------
-    var svgPiechartSEHstatusVuurwerk = d3.select("#svgPiechartSEHstatusVuurwerk"),
-        widthPiechart = +svgPiechartSEHstatusVuurwerk.attr("width"),
-        heightPiechart = +svgPiechartSEHstatusVuurwerk.attr("height"),
+    var svgStatusFireworks = d3.select("#svgPerStatusFireworks"),
+        widthStatusFireworks = +svgStatusFireworks.attr("width"),
+        heightStatusFireworks = +svgStatusFireworks.attr("height"),
         radius = Math.min(widthPiechart, heightPiechart) / 2,
-        gPiechartSEHstatusVuurwerk = svgPiechartSEHstatusVuurwerk.append("g")
+        gStatusFireworks = svgStatusFireworks.append("g")
             .attr("id", "PiechartstatusVuurwerk")
             .attr("transform",
-             "translate(" + widthPiechart / 2 + "," + heightPiechart / 2 + ")");
+             "translate(" + widthStatusFireworks / 2 + "," + heightStatusFireworks / 2 + ")");
 
-    var colorsPiechartSEHstatusVuurwerk = d3.scaleOrdinal(d3.schemeCategory10);
+    var colorsStatusFireworks = d3.scaleOrdinal(d3.schemeCategory10);
 
-    var pieSEHstatusVuurwerk = d3.pie()
+    var pieStatusFireworks = d3.pie()
         .sort(null)
         .value(function(d) { return d.number; });
 
-    var pathSEHstatusVuurwerk = d3.arc().outerRadius(radius).innerRadius(0);
+    var pathStatusFireworks = d3.arc().outerRadius(radius).innerRadius(0);
 
-    var labelSEHstatusVuurwerk =
+    var labelStatusFireworks =
     d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
 
-    var firstTimePiechartSEHstatusVuurwerk = true;
+    var firstTimeStatusFireworks = true;
 
     //-------VARIABELS FOR THE LINECHART----------------------------------------
     var svgLinechart = d3.select("#svgLinechart"),
@@ -213,73 +210,68 @@ function afterLoad() {
     //--------LOAD DATA---------------------------------------------------------
 
     queue()
-        .defer(d3.csv, "data/SEH.csv", function(d, i, columns) {
+        .defer(d3.csv, "data/FirstAid.csv", function(d, i, columns) {
             for (i = 1, t = 0; i < columns.length; ++i)
             t += d[columns[i]] = +d[columns[i]];
             d.total = t;
             return d;
         })
-        .defer(d3.csv, "data/overlast.csv", function(d, i, columns) {
+        .defer(d3.csv, "data/complaints.csv", function(d, i, columns) {
             for (i = 1, t = 0; i < columns.length; ++i)
             t += d[columns[i]] = +d[columns[i]];
             d.total = t;
             return d;
         })
-        .defer(d3.csv, "data/schade.csv", function(d, i, columns) {
+        .defer(d3.csv, "data/damage.csv", function(d, i, columns) {
             for (i = 1, t = 0; i < columns.length; ++i)
             t += d[columns[i]] = +d[columns[i]];
             d.total = t;
             return d;
         })
-      	.defer(d3.json, "data/SEHperLeeftijd.json")
-        .defer(d3.json, "data/SEHomstander.json")
-        .defer(d3.json, "data/SEHperTypeVuurwerk.json")
-        .defer(d3.json, "data/SEHstatusVuurwerk.json")
-        .defer(d3.json, "data/SEHletsel.json")
+      	.defer(d3.json, "data/FirstAidperAge.json")
+        .defer(d3.json, "data/FirstAidBystander.json")
+        .defer(d3.json, "data/FirstAidperTypeFireworks.json")
+        .defer(d3.json, "data/FirstAidperStatusFireworks.json")
+        .defer(d3.json, "data/FirstAidperInjury.json")
         .defer(d3.csv, "data/fijnstof14-15.csv")
         .defer(d3.csv, "data/fijnstof15-16.csv")
         .defer(d3.csv, "data/fijnstof16-17.csv")
         .defer(d3.csv, "data/fijnstof17-18.csv")
       	.await(main);
 
-    function main(error, dataBarchartSEH, dataBarchartOverlast,
-       dataBarchartSchade, dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
-       dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk, dataSEHletsel,
-        dataLinechart14, dataLinechart15, dataLinechart16, dataLinechart17 ) {
+    function main(error, dataFirstAid, dataComplaints, dataDamage,
+       perAge, perBystander, perTypeFireworks, perStatusFireworks, perInjury,
+       smog14, smog15, smog16, smog17 ) {
         /*   Creates charts based on the given data.
              Args: Appriopiate datasets.
         */
         if (error) throw error;
 
-        var dataLinechart = [dataLinechart14, dataLinechart15, dataLinechart16, dataLinechart17];
+        var dataLinechart =
+          [smog14, smog15, smog16, smog17];
 
-        makeBarchart(xSEH, ySEH, zSEH, gBarchartSEH,
-          widthBarchartSEH, heightBarchartSEH, dataBarchartSEH,
-          dataPiechartSEHperLeeftijd, dataPiechartSEHomstander,
-          dataPiechartSEHperTypeVuurwerk, dataPiechartSEHstatusVuurwerk,
-          " mensen", "Aantal", dataLinechart);
+        var dataFirstAidSection =
+          [perAge, perBystander, perTypeFireworks, perStatusFireworks, perInjury]
 
-       makeBarchart(xOverlast, yOverlast, zOverlast, gBarchartOverlast,
-         widthBarchartOverlast, heightBarchartOverlast,
-          dataBarchartOverlast, dataPiechartSEHperLeeftijd,
-          dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-          dataPiechartSEHstatusVuurwerk, " klachten", "Aantal", dataLinechart);
 
-        makeBarchart(xSchade, ySchade, zSchade, gBarchartSchade,
-          widthBarchartSchade, heightBarchartSchade,
-           dataBarchartSchade, dataPiechartSEHperLeeftijd,
-           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-            dataPiechartSEHstatusVuurwerk, " miljoen euro",
+        makeBarchart(xFirstAid, yFirstAid, zFirstAid, gFirstAid,
+          widthFirstAid, heightFirstAid, dataFirstAid, dataFirstAidSection,
+           " mensen", "Aantal", dataLinechart);
+
+       makeBarchart(xComplaints, yComplaints, zComplaints, gComplaints,
+         widthComplaints, heightComplaints, dataComplaints, dataFirstAidSection,
+          " klachten", "Aantal", dataLinechart);
+
+        makeBarchart(xDamage, yDamage, zDamage, gDamage,
+          widthDamage, heightDamage, dataDamage, dataFirstAidSection, " miljoen euro",
              "Euro (in miljoenen)", dataLinechart);
 
         // Draw default piecharts
-        updatePiecharts("2017-2018", dataPiechartSEHperLeeftijd,
-           dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-           dataPiechartSEHstatusVuurwerk, true);
+        updateFirstAidsection(defaultNewYearsEve, dataFirstAidSection, true);
 
            makeLinechart(dataLinechart)
 
-        makeTitels(defaultJaarwisseling)
+        makeTitels(defaultNewYearsEve)
 
         //------DROPDOWN MENU SECTIE, MOET NAAR LOGISCHERE PLEK NOG ------------
         var select = d3.select("#chooseYear")
@@ -289,7 +281,7 @@ function afterLoad() {
 
         var options = select
           .selectAll('option')
-          .data(dataBarchartSEH).enter()
+          .data(dataFirstAid).enter()
           .append('option')
           .attr("id", function(d){return "#j" + d.jaarwisseling;})
           .text(function (d) { return d.jaarwisseling; });
@@ -299,9 +291,7 @@ function afterLoad() {
             // results of selecting with dropdown menu
             selectValue = d3.select('select').property('value');
 
-            updatePiecharts(selectValue, dataPiechartSEHperLeeftijd,
-               dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-               dataPiechartSEHstatusVuurwerk, false);
+            updateFirstAidsection(defaultNewYearsEve, dataFirstAidSection, false);
            updateLinechart(selectValue, dataLinechart);
 
             // highlight in all bargraphs the bar corresponding to selection
@@ -309,32 +299,27 @@ function afterLoad() {
             d3.selectAll(".jaarwisseling" + selectValue).attr('opacity', 1);
 
             makeTitels(selectValue);
-            addTooltip(dataSEHletsel, selectValue);
+            addTooltip(perInjury, selectValue);
           };
 
-          addTooltip(dataSEHletsel, defaultJaarwisseling);
-
-
-
+          addTooltip(perInjury, defaultNewYearsEve);
 
     };
-
-
-
     //--------FUNCTIONS--------------------------------------------------------
 
 
-    function addTooltip(data, gekozenJaarwisseling) {
+    function addTooltip(data, newYearsEve) {
 
+      // tooltip on eyes of
       d3.select("#eye")
-         .datum(data[gekozenJaarwisseling])
+         .datum(data[newYearsEve])
          .on("mousemove",  function(d) {
         div.transition()
             .duration(5)
             .style("opacity", 1);
-        div.html("Letsel aan ogen: " + d[0].number + "<br>Hierbij waren<br>" +
-          d[0].zichtsverlies + " ogen met zichtsverlies,<br>" +
-          d[0].blind + " ogen werden blind en<br>" + d[0].verwijderd +
+        div.html("Letsel aan ogen: " + d.eye + "<br>Hierbij waren<br>" +
+          d.zichtsverlies + " ogen met zichtsverlies,<br>" +
+          d.blind + " ogen werden blind en<br>" + d.verwijderd +
            " ogen werden verwijderd.")
           .style("left", (d3.event.pageX + 20) + "px")
           .style("top", (d3.event.pageY - 28) + "px");
@@ -345,107 +330,74 @@ function afterLoad() {
                .style("opacity", 0);
        });
 
-       d3.select("#head")
-          .datum(data[gekozenJaarwisseling])
-          .on("mousemove",  function(d) {
-         div.transition()
-             .duration(5)
-             .style("opacity", 1);
-         div.html(d[1].number + " mensen")
-           .style("left", (d3.event.pageX) + "px")
-           .style("top", (d3.event.pageY - 28) + "px");
-        })
-        .on("mouseout", function(d) {
-            div.transition()
-                .duration(5)
-                .style("opacity", 0);
-        });
+       // tooltips for other bodyparts of
+       var bodyparts = ["head", "body", "arm", "hand", "leg"];
 
-        d3.select("#body")
-           .datum(data[gekozenJaarwisseling])
-           .on("mousemove",  function(d) {
-          div.transition()
-              .duration(5)
-              .style("opacity", 1);
-          div.html(d[2].number + " mensen")
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY - 28) + "px");
-         })
-         .on("mouseout", function(d) {
-             div.transition()
-                 .duration(5)
-                 .style("opacity", 0);
-         })
-
-
-      // // in for loop:
-      // for (var i = 0; i < data[defaultJaarwisseling].length; i++) {
-      //     d3.select("#" + data[defaultJaarwisseling][i]["bodypart"])
-      //        .datum(data[gekozenJaarwisseling])
-      //        .on("mousemove",  function(d) {
-      //          console.log(d, i, d[i]);
-      //       div.transition()
-      //           .duration(5)
-      //           .style("opacity", 1);
-      //       div.html("Tekst " + d[i].number)
-      //         .style("left", (d3.event.pageX) + "px")
-      //         .style("top", (d3.event.pageY - 28) + "px");
-      //      })
-      //      .on("mouseout", function(d) {
-      //          div.transition()
-      //              .duration(5)
-      //              .style("opacity", 0);
-      //      });
-      // }
-
-
-
-
-
+       for (var i = 0; i < bodyparts.length; i++) {
+          d3.select("#" + bodyparts[i])
+            .datum(data[newYearsEve])
+            .on("mousemove",  function(d, i) {
+           div.transition()
+               .duration(5)
+               .style("opacity", 1);
+           div.html(d[bodyparts[i]] + " mensen")
+             .style("left", (d3.event.pageX) + "px")
+             .style("top", (d3.event.pageY - 28) + "px");
+          })
+          .on("mouseout", function(d) {
+              div.transition()
+                  .duration(5)
+                  .style("opacity", 0);
+          });
+      }
     }
 
-    function updatePiecharts(jaarwisseling, dataPiechartSEHperLeeftijd,
-       dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-       dataPiechartSEHstatusVuurwerk, firstTime) {
+    function updateFirstAidsection(newYearsEve, dataFirstAidSection, firstTime) {
       /*   Updates the piecharts.
            Args: The year and the age group.
       */
 
-      makePiechart(gPiechartSEHperLeeftijd, pieSEHperLeeftijd,
-         pathSEHperLeeftijd,
-        colorsPiechartSEHperLeeftijd, labelSEHperLeeftijd, "leeftijd",
-        dataPiechartSEHperLeeftijd[jaarwisseling], firstTime);
-      makePiechart(gPiechartSEHomstander, pieSEHomstander, pathSEHomstander,
-        colorsPiechartSEHomstander, labelSEHomstander, "wie",
-        dataPiechartSEHomstander[jaarwisseling], firstTime);
-      makePiechart(gPiechartSEHperTypeVuurwerk, pieSEHperTypeVuurwerk,
-         pathSEHperTypeVuurwerk,
-        colorsPiechartSEHperTypeVuurwerk, labelSEHperTypeVuurwerk, "type",
-        dataPiechartSEHperTypeVuurwerk[jaarwisseling], firstTime);
-      makePiechart(gPiechartSEHstatusVuurwerk, pieSEHstatusVuurwerk,
-         pathSEHstatusVuurwerk,
-        colorsPiechartSEHstatusVuurwerk, labelSEHstatusVuurwerk, "status",
-        dataPiechartSEHstatusVuurwerk[jaarwisseling], firstTime);
+      // var svgIDs =
+      // ["svgPerAge", "svgPerTypeFireworks", "svgPerBystander", "svgPerStatusFireworks"];
+      //
+      // var dataItems = ["leeftijd", "wie", "status", "type"];
+
+      // for (var i = 0; i < dataFirstAidSection.length; i++ ) {
+      // makePiechart(dataItems[i], dataFirstAidSection[i], firstTime, svgIDs[i]);
+      // }
+      makePiechart(gPerAge, piePerAge, pathPerAge, colorsPerAge, labelPerAge,
+        "leeftijd", dataFirstAidSection[0][newYearsEve], firstTime);
+      makePiechart(gBystander, pieBystander, pathBystander, colorsBystander,
+        labelBystander, "wie", dataFirstAidSection[1][newYearsEve], firstTime);
+      makePiechart(gTypeFireworks, pieTypeFireworks, pathTypeFireworks,
+        colorsTypeFireworks, labelTypeFireworks, "type",
+        dataFirstAidSection[2][newYearsEve], firstTime);
+      makePiechart(gStatusFireworks, pieStatusFireworks,
+         pathStatusFireworks,
+        colorsStatusFireworks, labelStatusFireworks, "status",
+        dataFirstAidSection[3][newYearsEve], firstTime);
+
+
+      //addTooltip(dataFirstAidletsel, jaarwisseling)
     };
 
-    function makePiechart(gPiechart, pie, path, colorsPiechart,
-       label, dataItem, dataChosen, firstTime) {
+    function makePiechart(g, pie, path, colors, label, dataItem,
+      data, firstTime) {
        /*   Creates a piechart for the given data.
             Args: An appriopiate data set.
        */
        if (!firstTime){
-         gPiechart.selectAll(".arc").data([]).exit().remove();
+         g.selectAll(".arc").data([]).exit().remove();
        };
 
-       var arc = gPiechart.selectAll(".arc")
-          .data(pie(dataChosen))
+       var arc = g.selectAll(".arc")
+          .data(pie(data))
           .enter().append("g")
           .attr("class", "arc");
 
       arc.append("path")
           .attr("d", path)
-          .attr("fill",
-          function(d) { return colorsPiechart(d.data[dataItem]); })
+          .attr("fill", function(d) { return colors(d.data[dataItem]); })
           .on("mousemove", function(d) {
                div.transition()
                    .duration(1)
@@ -467,22 +419,20 @@ function afterLoad() {
           .text(function(d) { return d.data[dataItem]; });
     };
 
-    function makeBarchart(x, y, z, gBarchart, widthBarchart, heightBarchart, dataChosen,
-       dataPiechartSEHperLeeftijd,
-       dataPiechartSEHomstander, dataPiechartSEHperTypeVuurwerk,
-        dataPiechartSEHstatusVuurwerk, unit, nameY, dataLinechart) {
+    function makeBarchart(x, y, z, g, width, height, data,
+       dataFirstAidSection, unit, nameY, dataLinechart) {
        /*   Creates a barchart for the given data.
             Args: An appriopiate data set.
        */
-       var keys = dataChosen.columns.slice(1);
+       var keys = data.columns.slice(1);
 
-       x.domain(dataChosen.map(function(d) { return d.jaarwisseling; }));
-       y.domain([0, d3.max(dataChosen, function(d) { return d.total; })]).nice();
+       x.domain(data.map(function(d) { return d.jaarwisseling; }));
+       y.domain([0, d3.max(data, function(d) { return d.total; })]).nice();
        z.domain(keys);
 
-       gBarchart.append("g")
+       g.append("g")
            .selectAll("g")
-           .data(d3.stack().keys(keys)(dataChosen))
+           .data(d3.stack().keys(keys)(data))
            .enter().append("g")
            .attr("fill", function(d) { return z(d.key); })
            .selectAll("rect")
@@ -528,32 +478,29 @@ function afterLoad() {
                makeTitels(xPosition);
 
                // remake piecharts
-               updatePiecharts(xPosition, dataPiechartSEHperLeeftijd,
-                  dataPiechartSEHomstander,
-                  dataPiechartSEHperTypeVuurwerk,
-                   dataPiechartSEHstatusVuurwerk, false);
+               updateFirstAidsection(xPosition, dataFirstAidSection, false);
 
               updateLinechart(xPosition, dataLinechart);
               return
            });
 
       // default selected bar
-      d3.selectAll(".jaarwisseling" + defaultJaarwisseling).attr('opacity', 1);
+      d3.selectAll(".jaarwisseling" + defaultNewYearsEve).attr('opacity', 1);
 
        // make x axis
-       gBarchart.append("g")
+       g.append("g")
            .attr("class", "axis")
-           .attr("transform", "translate(0," + heightBarchart + ")")
+           .attr("transform", "translate(0," + height + ")")
            .call(d3.axisBottom(x))
            .append("text")
-           .attr("x", widthBarchart + 4)
+           .attr("x", width + 4)
            .attr("dy", "0.2em")
            .attr("fill", "#000")
            .attr("text-anchor", "start")
            .text("Jaarwisseling");
 
      // make y axis
-     gBarchart.append("g")
+     g.append("g")
            .attr("class", "axis")
            .call(d3.axisLeft(y))
            .append("text")
@@ -565,7 +512,7 @@ function afterLoad() {
            .text(nameY);
 
      // add legend to the barchart
-     var legend = gBarchart.append("g")
+     var legend = g.append("g")
            .attr("font-family", "sans-serif")
            .attr("font-size", 10)
            .attr("text-anchor", "end")
@@ -577,14 +524,14 @@ function afterLoad() {
 
      legend.append("rect")
             .attr("class", "rectLegend")
-           .attr("x", widthBarchart + 60)
+           .attr("x", width + 60)
            .attr("width", 19)
            .attr("height", 19)
            .attr("fill", z)
            .attr("opacity", 1);
 
      legend.append("text")
-           .attr("x", widthBarchart + 50)
+           .attr("x", width + 50)
            .attr("y", 9.5)
            .attr("dy", "0.32em")
            .text(function(d) { return d; });

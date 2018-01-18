@@ -4,15 +4,15 @@ Orin Habich 10689508-->
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/vuurwerkschade.css">
+    <link rel="stylesheet" href="css/fireworks.css">
     <script src="data/jqueryAjax.js"></script>
     <script src="data/bootstrap.js"></script>
     <script src="data/d3version4.js"></script>
     <script src="data/tip.js"></script>
     <script src="data/queueVersion1.js"></script>
-    <script src="vuurwerkschade.js"></script>
+    <script src="fireworks.js"></script>
   </head>
   <body>
     <div class="row">
@@ -47,7 +47,7 @@ Orin Habich 10689508-->
             </p>
           </div>
           <h3>Vuurwerkslachtoffers naar de spoedeisende hulp</h3>
-          <svg id = "svgBarchartSEH" width="600" height="400"></svg>
+          <svg id = "svgFirstAid" width="600" height="400"></svg>
         </div>
         <div class="col-md-6" >
           <h3>Lichamelijk letsel</h3>
@@ -56,30 +56,30 @@ Orin Habich 10689508-->
             <defs id="svgEditorDefs">
             <polygon id="svgEditorShapeDefs" style="fill:khaki;stroke:black;vector-effect:non-scaling-stroke;stroke-width:1px;"/>
             </defs>
-            <circle id="head" cx="286" cy="149" r="118.891" transform="matrix(1 0 0 1 -2172 -1172)"/>
-            <ellipse id="body" cx="288" cy="532" rx="122.34" ry="271.548" class="poppetje" transform="matrix(1 0 0 1 -2172 -1172)"/>
+            <circle id="head" class="poppetje" cx="286" cy="149" r="118.891" transform="matrix(1 0 0 1 -2172 -1172)"/>
+            <ellipse id="body" class="poppetje" cx="288" cy="532" rx="122.34" ry="271.548" class="poppetje" transform="matrix(1 0 0 1 -2172 -1172)"/>
             <g id="leg">
-              <ellipse class="leg" cx="212" cy="888" rx="40" ry="156" transform="matrix(1.1134 0.0933779 -0.0933779 1.1134 -2112.16 -1291.14)"/>
-              <ellipse class="leg" cx="640.18" cy="870.175" rx="40" ry="156" transform="matrix(1.10984 -0.128966 0.128966 1.10984 -2665.36 -1163.7)"/>
-              <ellipse class="leg" cx="241.104" cy="929.778" rx="40" ry="156" transform="matrix(1.11692 -0.0294497 0.0294497 1.11692 -2264.54 -1030.28)"/>
-              <ellipse class="leg" cx="367.939" cy="936.255" rx="40" ry="156" transform="matrix(1.11692 -0.0294497 0.0294497 1.11692 -2264.54 -1030.28)"/>
-              <ellipse class="leg" cx="158" cy="1320" rx="80" ry="40" transform="matrix(1 0 0 1 -2172 -1172)"/>
-              <ellipse class="leg" cx="406" cy="1324" rx="80" ry="40" transform="matrix(1 0 0 1 -2172 -1172)"/>
+              <ellipse class="poppetje" cx="212" cy="888" rx="40" ry="156" transform="matrix(1.1134 0.0933779 -0.0933779 1.1134 -2112.16 -1291.14)"/>
+              <ellipse class="poppetje" cx="640.18" cy="870.175" rx="40" ry="156" transform="matrix(1.10984 -0.128966 0.128966 1.10984 -2665.36 -1163.7)"/>
+              <ellipse class="poppetje" cx="241.104" cy="929.778" rx="40" ry="156" transform="matrix(1.11692 -0.0294497 0.0294497 1.11692 -2264.54 -1030.28)"/>
+              <ellipse class="poppetje" cx="367.939" cy="936.255" rx="40" ry="156" transform="matrix(1.11692 -0.0294497 0.0294497 1.11692 -2264.54 -1030.28)"/>
+              <ellipse class="poppetje" cx="158" cy="1320" rx="80" ry="40" transform="matrix(1 0 0 1 -2172 -1172)"/>
+              <ellipse class="poppetje" cx="406" cy="1324" rx="80" ry="40" transform="matrix(1 0 0 1 -2172 -1172)"/>
             </g>
             <g id="arm">
-              <ellipse class="arm" cx="426" cy="320" rx="132" ry="40" transform="matrix(0.936021 0.351944 -0.351944 0.936021 -2024.12 -1289.45)"/>
-              <ellipse class="arm" cx="-76.982" cy="461.6" rx="132" ry="40" transform="matrix(0.531939 -0.846783 0.846783 0.531939 -2340.56 -1095.21)"/>
-              <ellipse class="arm" cx="-121.778" cy="109.829" rx="132" ry="40" transform="matrix(-0.941915 -0.335851 0.335851 -0.941915 -2295.93 -667.118)"/>
-              <ellipse class="arm" cx="-1095.66" cy="426.642" rx="132" ry="40" transform="matrix(0.346316 -0.938118 0.938118 0.346316 -1693.38 -1868.39)"/>
+              <ellipse class="poppetje" cx="426" cy="320" rx="132" ry="40" transform="matrix(0.936021 0.351944 -0.351944 0.936021 -2024.12 -1289.45)"/>
+              <ellipse class="poppetje" cx="-76.982" cy="461.6" rx="132" ry="40" transform="matrix(0.531939 -0.846783 0.846783 0.531939 -2340.56 -1095.21)"/>
+              <ellipse class="poppetje" cx="-121.778" cy="109.829" rx="132" ry="40" transform="matrix(-0.941915 -0.335851 0.335851 -0.941915 -2295.93 -667.118)"/>
+              <ellipse class="poppetje" cx="-1095.66" cy="426.642" rx="132" ry="40" transform="matrix(0.346316 -0.938118 0.938118 0.346316 -1693.38 -1868.39)"/>
             </g>
             <g id="hand">
-              <ellipse class="hand" cx="-94" cy="376" rx="42" ry="34" transform="matrix(1 0 0 1 -2172 -1172)"/>
-              <ellipse class="hand" cx="448" cy="596" rx="42" ry="34" transform="matrix(1 0 0 1 -2172 -1172)"/>
+              <ellipse class="poppetje" cx="-94" cy="376" rx="42" ry="34" transform="matrix(1 0 0 1 -2172 -1172)"/>
+              <ellipse class="poppetje" cx="448" cy="596" rx="42" ry="34" transform="matrix(1 0 0 1 -2172 -1172)"/>
             </g>
 
             <g id="eye">
-              <circle class="eye" cx="236" cy="136" r="20.4162" transform="matrix(1 0 0 1 -2172 -1172)"/>
-              <circle class="eye" cx="294" cy="137" r="20.4162" transform="matrix(1 0 0 1 -2172 -1172)"/>
+              <circle class="poppetje" cx="236" cy="136" r="20.4162" transform="matrix(1 0 0 1 -2172 -1172)"/>
+              <circle class="poppetje" cx="294" cy="137" r="20.4162" transform="matrix(1 0 0 1 -2172 -1172)"/>
             </g>
             <path d="M-518.1958913584841,127.48429624658229c6.411000000000058,0,12.437000000000012,2.495999999999981,16.971000000000004,7.028999999999996c9.356999999999971,9.357,9.356999999999971,
             24.583,0,33.941l-48.971000000000004,48.971000000000004l-48.971000000000004,-48.971000000000004c-9.356999999999971,-9.357,-9.356999999999971,-24.583,0,-33.941c4.5330000000000155,
@@ -106,19 +106,19 @@ Orin Habich 10689508-->
         </div>
         <div class="col-md-3" >
           <h4>Per leeftijdsklasse</h4>
-          <svg id = "svgPiechartSEHperLeeftijd" width="200" height="200"></svg>
+          <svg id = "svgPerAge" width="200" height="200"></svg>
         </div>
         <div class="col-md-2" >
           <h4>Naar soort vuurwerk</h4>
-            <svg id = "svgPiechartSEHperTypeVuurwerk" width="150" height="150"></svg>
+            <svg id = "svgPerTypeFireworks" width="150" height="150"></svg>
         </div>
         <div class="col-md-2" >
           <h4>Zelf afgestoken of omstander</h4>
-          <svg id = "svgPiechartSEHomstander" width="150" height="150"></svg>
+          <svg id = "svgPerBystander" width="150" height="150"></svg>
         </div>
         <div class="col-md-2" >
           <h4>Legaal of illegaal vuurwerk</h4>
-          <svg id = "svgPiechartSEHstatusVuurwerk" width="150" height="150"></svg>
+          <svg id = "svgPerStatusFireworks" width="150" height="150"></svg>
         </div>
       </div>
 
@@ -126,7 +126,7 @@ Orin Habich 10689508-->
         <div class="col-md-6" >
           <h3>Meldingen bij <a href="https://vuurwerkoverlast.nl/">
            Meldpunt vuurwerkoverlast</a></h3>
-          <svg id = "svgBarchartOverlast" width="600" height="300"></svg>
+          <svg id = "svgComplaints" width="600" height="300"></svg>
         </div>
       </div>
 
@@ -221,8 +221,7 @@ Orin Habich 10689508-->
             </p>
           </div>
           <h3>Materi&euml;le schade bij particulieren</h3>
-          <svg id = "svgBarchartSchade" width="600" height="300"></svg>
-
+          <svg id = "svgDamage" width="600" height="300"></svg>
         </div>
       </div>
     </div>

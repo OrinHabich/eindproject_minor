@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<script src="https://d3js.org/d3.v4.0.0-alpha.40.min.js"></script>
+	</head>
+	<body>
+		<input type="checkbox" id="myCheckbox"> Only Even
+		<div id="content"></div>
+		<script>
+			data = [2,4,5,7,12,123,352,1000];
+			table = d3.select("#content")
+					.append("table")
+					.property("border","1px");
+			d3.select("#myCheckbox").on("change",update);
+			update();
+
+
+			function update(){
+				if(d3.select("#myCheckbox").property("checked")){
+					newData = data.filter(function(d,i){return d % 2 == 0;});
+				} else {
+					newData = data;
+				}
+
+				newRows = table.selectAll("tr")
+						.data(newData,function(d){return d;});
+				newRows.enter()
+					.append("tr")
+					.append("td")
+					.text(function(d){return d;});
+				newRows.exit()
+					.remove();
+			}
+		</script>
+	</body>
+</html>

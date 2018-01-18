@@ -70,3 +70,13 @@ Mijn site wordt Nederlandstalig, maar alle code moet begrijpelijk zijn voor Enge
 Ik heb erg veel duplicate code. Zoals alle variabelen voor barcharts en piecharts en de tooltips over het poppetje.
 Het lukt nog niet erg om dit te verbeteren.
 For-loops zouden uitkomst moeten bieden maar deze geven onverwachtte resultaten.
+
+Dit is nu de todo lijst:
+
+1.  Checkboxes werkend maken (aangenomen dat het als vervanging voor de interactieve tabel mag)
+2.  Een tooltip aan de linegraph toevoegen
+3.  Misschien sterfgevallen toevoegen aan tooltip bij poppetje
+4.  Duplicate code oplossen
+4.  Opmaak site mooi maken
+5.  Design en style code verbeteren
+6.  Stap 4 en 5 herhalen

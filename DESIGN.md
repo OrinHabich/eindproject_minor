@@ -20,6 +20,8 @@
   - updatePiecharts   voor het updaten van de piecharts
   - makePiechart      voor het maken van piecharts
   
+  Deze functies komen allemaal in fireworks.js te staan.
+  
   In het schema hieronder is te zien in welke volgorde deze worden aangeroepen.
 
   #### Lijst van databronnen

@@ -63,3 +63,21 @@ Het huidige plan is
 
 Een idee is om met checkboxes aan te geven welke piechart gemaakt moeten worden. Dit in plaats van de interactieve tabel over in beslag genomen vuurwerk.
 Voor zo'n tabel moeten weer allerlei andere datasets gezocht worden en het sluit niet helemaal aan op mijn verhaal.
+
+# dag 9
+Mijn site wordt Nederlandstalig, maar alle code moet begrijpelijk zijn voor Engelstalige mensen vind ik. Alle variabele en functienamen heb ik daarom veranderd.
+
+Ik heb erg veel duplicate code. Zoals alle variabelen voor barcharts en piecharts en de tooltips over het poppetje.
+Het lukt nog niet erg om dit te verbeteren.
+For-loops zouden uitkomst moeten bieden maar deze geven onverwachtte resultaten.
+
+Dit is nu de todo lijst:
+
+1.  Checkboxes werkend maken (aangenomen dat het als vervanging voor de interactieve tabel mag)
+2.  Een tooltip aan de linegraph toevoegen
+3.  Uitzoeken of ik dropdown menu kan updaten
+4.  Misschien sterfgevallen toevoegen aan tooltip bij poppetje
+5.  Duplicate code oplossen
+6.  Opmaak site mooi maken
+7.  Design en style code verbeteren
+8.  Stap 6 en 7 herhalen

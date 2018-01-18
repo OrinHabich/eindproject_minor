@@ -63,3 +63,10 @@ Het huidige plan is
 
 Een idee is om met checkboxes aan te geven welke piechart gemaakt moeten worden. Dit in plaats van de interactieve tabel over in beslag genomen vuurwerk.
 Voor zo'n tabel moeten weer allerlei andere datasets gezocht worden en het sluit niet helemaal aan op mijn verhaal.
+
+# dag 9
+Mijn site wordt Nederlandstalig, maar alle code moet begrijpelijk zijn voor Engelstalige mensen vind ik. Alle variabele en functienamen heb ik daarom veranderd.
+
+Ik heb erg veel duplicate code. Zoals alle variabelen voor barcharts en piecharts en de tooltips over het poppetje.
+Het lukt nog niet erg om dit te verbeteren.
+For-loops zouden uitkomst moeten bieden maar deze geven onverwachtte resultaten.

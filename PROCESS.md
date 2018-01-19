@@ -106,6 +106,5 @@ Er is geen samenhang in de data van de variabelen van de piecharts, maar dat is 
 | Voor                                 | Tegen                                                                     |
 | ------------------------------------ |:-------------------------------------------------------------------------:|
 | Sunburst is cool                     | Piecharts heb ik al, zonde van werk om nu weer iets anders ervan te maken |
-| piecharts zijn misschien te simpel   | Checkboxes vervallen bij sunbust, dus daar moet ik dan weer iets nieuws voor verzinnen en maken. Dubbel werk dus!  |
-| Data wordt compacter gevisualiseerd  | are neat      |
-
+| piecharts zijn misschien te simpel   | Checkboxes vervallen bij sunburst, dus daar moet ik dan weer iets nieuws voor verzinnen en maken. Dubbel werk dus!  |
+| Data wordt compacter gevisualiseerd  | In mijn doelgroep zitten ook laagopgeleiden mensen. Daarom wil ik alle data zo simpel en begrijpelijk mogelijk presenteren. Vandaar ook de piecharts, dit sluit beter aan bij de doelgroep denk ik. Een sunburst is compacter maar ook complexer. Dat vind ik interessanter, maar dat is een slechte reden voor design vindt ik |

@@ -96,3 +96,16 @@ De piecharts bestaan gewoon als ze unchecked zijn, maar zijn onzichtbaar. Dit is
 
 Als alleen de onderste checkbox aanstaat, dan staat die piechart helemaal rechts. Dat is niet zo mooi maar ik moet nog bedenken wat ik daar aan doe.
 
+# dag 10
+Bij de presentatie ontdekt dat debescheckbox nog buggy zijn in combinatie met de barcharts.
+
+Als feedback kreeg ik dat de piecharts in één sunburst zouden kunnen.
+Dit is best een goed idee want een sunburst is tof en interesanter dan piecharts.
+Er is geen samenhang in de data van de variabelen van de piecharts, maar dat is niet per sé nodig voor een sunburst.
+
+| Voor                                 | Tegen                                                                     |
+| ------------------------------------ |:-------------------------------------------------------------------------:|
+| Sunburst is cool                     | Piecharts heb ik al, zonde van werk om nu weer iets anders ervan te maken |
+| piecharts zijn misschien te simpel   | Checkboxes vervallen bij sunbust, dus daar moet ik dan weer iets nieuws voor verzinnen en maken. Dubbel werk dus!  |
+| Data wordt compacter gevisualiseerd  | are neat      |
+

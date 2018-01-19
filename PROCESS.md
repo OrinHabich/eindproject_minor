@@ -103,9 +103,11 @@ Als feedback kreeg ik dat de piecharts in één sunburst zouden kunnen.
 Dit is best een goed idee want een sunburst is tof en interesanter dan piecharts.
 Er is geen samenhang in de data van de variabelen van de piecharts, maar dat is niet per sé nodig voor een sunburst.
 
+Ik twijfel nog of ik het ga doen. Hier is een tabel met mijn voors en tegens.
+
 | Voor                                 | Tegen                                                                     |
 | ------------------------------------ |:-------------------------------------------------------------------------:|
 | Sunburst is cool                     | Piecharts heb ik al, zonde van werk om nu weer iets anders ervan te maken |
 | piecharts zijn misschien te simpel   | Checkboxes vervallen bij sunburst, dus daar moet ik dan weer iets nieuws voor verzinnen en maken. Dubbel werk dus!  |
 | Data wordt compacter gevisualiseerd  | In mijn doelgroep zitten ook laagopgeleiden mensen. Daarom wil ik alle data zo simpel en begrijpelijk mogelijk presenteren. Vandaar ook de piecharts, dit sluit beter aan bij de doelgroep denk ik. Een sunburst is compacter maar ook complexer. Dat vind ik interessanter, maar dat is een slechte reden voor design vindt ik |
-|    | Met de piecharts voldoe ik evengoed aan de eisen vanhet project denk ik, want ik heb ook het poppetje en dat maakt het weer ietsje complexer.  |
+|    | Met de piecharts voldoe ik evengoed aan de eisen van het project denk ik, want ik heb ook het poppetje en dat maakt het weer ietsje complexer.  |

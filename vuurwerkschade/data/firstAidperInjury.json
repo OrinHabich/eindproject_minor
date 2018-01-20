@@ -11,7 +11,7 @@
       "hand": 212,
       "leg":  23,
       "heart": 0,
-      "what happened": ""
+      "whatHappened": ""
     },
   "2015-2016":
     {
@@ -25,7 +25,7 @@
       "hand": 183,
       "leg":  29,
       "heart": 0,
-      "what happened": ""
+      "whatHappened": ""
     },
   "2016-2017":
     {
@@ -39,7 +39,7 @@
       "hand": 114,
       "leg":  0,
       "heart": 1,
-      "what happened": " Een 54-jarige man uit Meppel overleed na een aantal dagen aan zijn verwondingen,<br> die hij tijdens de oudejaarsnacht opliep toen vuurwerk in zijn gezicht ontplofte. "
+      "whatHappened": " Een 54-jarige man uit Meppel overleed na een aantal dagen aan zijn verwondingen,<br> die hij tijdens de oudejaarsnacht opliep toen vuurwerk in zijn gezicht ontplofte. "
     },
   "2017-2018":
     {
@@ -53,6 +53,6 @@
       "hand": 109,
       "leg":  22,
       "heart": 1,
-      "what happened": " In de provincie Flevoland overleed op 30 december een 39-jarige man die een illegale mortierbom afstak."
+      "whatHappened": " In de provincie Flevoland overleed op 30 december een 39-jarige man die een illegale mortierbom afstak."
     }
 }

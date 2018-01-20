@@ -16,6 +16,11 @@ function afterLoad() {
         but it is called only when the window is loaded.
     */
 
+//     d3.xml("images/poppetje.svg").mimeType("image/svg+xml").get(function(error, xml) {
+//   if (error) throw error;
+//   d3.select("#poppetje").appendChild(xml.documentElement);
+// });
+
     //--------GENERAL VARIABELS-------------------------------------------------
     var defaultNewYearsEve = "2017-2018"
 
@@ -139,6 +144,9 @@ function afterLoad() {
         .attr("id", function(d){return "#j" + d.jaarwisseling;})
         .text(function (d) { return d.jaarwisseling; });
 
+        // attempt to have most recent shown by default
+        d3.select("#j" + defaultNewYearsEve).property("selected", true);
+
         function onchange() {
           // results of selecting with dropdown menu
           selectValue = d3.select('select').property('value');
@@ -162,10 +170,14 @@ function afterLoad() {
         div.transition()
             .duration(5)
             .style("opacity", 1);
-        div.html("Letsel aan ogen bij " + d.eye + " mensen.<br>Hierbij waren<br>" +
-          d.zichtsverlies + " ogen met zichtsverlies,<br>" +
-          d.blind + " ogen werden blind en<br>" + d.verwijderd +
-           " ogen werden verwijderd.")
+        div.html("Letsel aan ogen bij " + d.eye + " " +
+         plural(d["eye"], "persoon") + ".<br>Hierbij waren<br>" +
+          d.zichtsverlies + " " + plural(d.zichtsverlies, "oog")  +
+           " met zichtsverlies,<br>" +
+          d.blind + " " + plural(d.blind, "oog")  +
+           " werden blind en<br>" + d.verwijderd + " " +
+            plural(d.verwijderd, "oog") + " " + plural(d.verwijderd, "werd")  +
+           " verwijderd.")
           .style("left", (d3.event.pageX + 20) + "px")
           .style("top", (d3.event.pageY - 28) + "px");
        })
@@ -174,6 +186,23 @@ function afterLoad() {
                .duration(5)
                .style("opacity", 0);
        });
+
+       d3.select("#heart")
+            .datum(data[newYearsEve])
+            .on("mousemove",  function(d, i) {
+           div.transition()
+               .duration(5)
+               .style("opacity", 1);
+           div.html(d["heart"] + " " + plural(d["heart"],"persoon") + " overleden<br>"
+            + d["what happened"])
+             .style("left", (d3.event.pageX) + "px")
+             .style("top", (d3.event.pageY - 28) + "px");
+          })
+          .on("mouseout", function(d) {
+              div.transition()
+                  .duration(5)
+                  .style("opacity", 0);
+          });
 
        // tooltips for other bodyparts of
        var bodyparts = ["head", "body", "arm", "hand", "leg"];
@@ -201,7 +230,7 @@ function afterLoad() {
            div.transition()
                .duration(5)
                .style("opacity", 1);
-           div.html(d["head"] + " mensen")
+           div.html(d["head"] + " " + plural(d["head"],"persoon"))
              .style("left", (d3.event.pageX) + "px")
              .style("top", (d3.event.pageY - 28) + "px");
           })
@@ -217,7 +246,7 @@ function afterLoad() {
             div.transition()
                 .duration(5)
                 .style("opacity", 1);
-            div.html(d["body"] + " mensen")
+            div.html(d["body"] + " " + plural(d["body"],"persoon"))
               .style("left", (d3.event.pageX) + "px")
               .style("top", (d3.event.pageY - 28) + "px");
            })
@@ -233,7 +262,7 @@ function afterLoad() {
            div.transition()
                .duration(5)
                .style("opacity", 1);
-           div.html(d["arm"] + " mensen")
+           div.html(d["arm"] + " " + plural(d["arm"],"persoon"))
              .style("left", (d3.event.pageX) + "px")
              .style("top", (d3.event.pageY - 28) + "px");
           })
@@ -265,7 +294,7 @@ function afterLoad() {
            div.transition()
                .duration(5)
                .style("opacity", 1);
-           div.html(d["leg"] + " mensen")
+           div.html(d["leg"] + plural(d["leg"],"persoon"))
              .style("left", (d3.event.pageX) + "px")
              .style("top", (d3.event.pageY - 28) + "px");
           })
@@ -274,6 +303,27 @@ function afterLoad() {
                   .duration(5)
                   .style("opacity", 0);
           });
+    }
+
+    function plural(n, word) {
+      if (n == 1) {
+        if (word == "persoon") {
+          return "persoon"
+        } else if (word == "oog") {
+          return "oog"
+        } else if (word == "werd") {
+          return "werd"
+        }
+
+      } else {
+        if (word == "persoon") {
+          return "personen"
+        } else if (word == "oog") {
+          return "ogen"
+        } else if (word == "werd") {
+          return "werden"
+        }
+      }
     }
 
     function makeFirstAidSection(newYearsEve, dataFirstAidSection, firstTime) {
@@ -358,6 +408,7 @@ function afterLoad() {
        */
 
 
+
        var svg = d3.select("#" + svgID),
            margin = {top: 20, right: 100, bottom: 30, left: 60},
            width = +svg .attr("width") - margin.left - margin.right,
@@ -431,6 +482,9 @@ function afterLoad() {
                makeFirstAidSection(xPosition, dataFirstAidSection, false);
 
               updateLinechart(xPosition, dataLinechart);
+
+              // attemt to keep choice in dropdown up-to-date
+              d3.select("#j2014-2015").attr('selected', "selected");
               return
            });
 

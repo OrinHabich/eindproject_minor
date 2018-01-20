@@ -36,11 +36,12 @@ function afterLoad() {
         +svgLinechart .attr("width") - margin.left - margin.right,
         heightLinechart =
         +svgLinechart .attr("height") - margin.top - margin.bottom,
-        gLinechart = svgLinechart .append("g").attr("id", "Linechart")
+        gLinechart = svgLinechart .append("g").attr("id", "linechart")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       // parse the time
-      var parseTime = d3.timeParse("%Y-%m-%d %H:%M");
+      var parseTime = d3.timeParse("%Y-%m-%d %H:%M")
+          bisectDate = d3.bisector(function(d) { return d.tijdstip; }).left;;
 
       // set the ranges
       var x = d3.scaleTime().range([0, widthLinechart]);
@@ -273,8 +274,6 @@ function afterLoad() {
                   .duration(5)
                   .style("opacity", 0);
           });
-
-
     }
 
     function makeFirstAidSection(newYearsEve, dataFirstAidSection, firstTime) {
@@ -346,7 +345,10 @@ function afterLoad() {
           .text(function(d) { return d.data[dataItem]; });
 
       // default piechart is invisible
-      svg.style("opacity", 0);
+      if (firstTime) {
+        svg.style("opacity", 0);
+      }
+
     };
 
     function makeBarchart(svgID, data, dataFirstAidSection,
@@ -517,6 +519,53 @@ function updateLinechart(newYearsEve, dataLinechart) {
             .duration(750)
             .call(yAxis);
 
+            var focus = d3.select(".focus");
+            // var focus = gLinechart.append("g")
+            //     .attr("class", "focus")
+            //     .style("display", "none");
+            //
+            //     focus.append("line")
+            //     .attr("class", "x-hover-line hover-line")
+            //     .attr("y1", 0)
+            //     .attr("y2", heightLinechart);
+            //
+            //     focus.append("line")
+            //     .attr("class", "y-hover-line hover-line")
+            //     .attr("x1", widthLinechart)
+            //     .attr("x2", widthLinechart);
+            //
+            //     focus.append("circle")
+            //     .attr("r", 7.5);
+            //
+            //     focus.append("text")
+            //     .attr("x", 15)
+            //     .attr("dy", ".31em");
+
+
+            svgLinechart.append("rect")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .attr("class", "overlay")
+            .attr("width", widthLinechart)
+            .attr("height", heightLinechart)
+            //.style("opacity", 0)
+            .on("mouseover", function() { focus.style("display", null); })
+            .on("mouseout", function() { focus.style("display", "none"); })
+            .on("mousemove", mousemove);
+
+            function mousemove() {
+
+
+              var x0 = x.invert(d3.mouse(this)[0]),
+              i = bisectDate(dataChosen, x0, 1),
+              d0 = dataChosen[i - 1],
+              d1 = dataChosen[i],
+              d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
+              focus.attr("transform", "translate(" + x(d.tijdstip) + "," + y(d.waarde) + ")");
+              focus.select("text").text(function() { return d.waarde; });
+              focus.select(".x-hover-line").attr("y2", heightLinechart - y(d.waarde));
+              focus.select(".y-hover-line").attr("x2", widthLinechart + widthLinechart);
+            }
+
     };
 
     function makeLinechart(dataLinechart) {
@@ -569,6 +618,50 @@ function updateLinechart(newYearsEve, dataLinechart) {
                .attr("dy", "1em")
                .style("text-anchor", "middle")
                .text("Waarde (\u03BCg/m\u00B3)");
+
+           var focus = gLinechart.append("g")
+               .attr("class", "focus")
+               .style("display", "none");
+
+            focus.append("line")
+            .attr("class", "x-hover-line hover-line")
+            .attr("y1", 0)
+            .attr("y2", heightLinechart);
+
+            focus.append("line")
+            .attr("class", "y-hover-line hover-line")
+            .attr("x1", widthLinechart)
+            .attr("x2", widthLinechart);
+
+            focus.append("circle")
+            .attr("r", 7.5);
+
+            focus.append("text")
+            .attr("x", 15)
+            .attr("dy", ".31em");
+
+            svgLinechart.append("rect")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .attr("class", "overlay")
+            .attr("width", widthLinechart)
+            .attr("height", heightLinechart)
+            //.style("opacity", 0)
+            .on("mouseover", function() { focus.style("display", null); })
+            .on("mouseout", function() { focus.style("display", "none"); })
+            .on("mousemove", mousemove);
+
+            function mousemove() {
+
+              var x0 = x.invert(d3.mouse(this)[0]),
+              i = bisectDate(dataLinechart[3], x0, 1),
+              d0 = dataLinechart[3][i - 1],
+              d1 = dataLinechart[3][i],
+              d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
+              focus.attr("transform", "translate(" + x(d.tijdstip) + "," + y(d.waarde) + ")");
+              focus.select("text").text(function() { return d.waarde; });
+              focus.select(".x-hover-line").attr("y2", heightLinechart - y(d.waarde));
+              focus.select(".y-hover-line").attr("x2", widthLinechart + widthLinechart);
+            }
         };
 
     function makeTitels(newYearsEve) {

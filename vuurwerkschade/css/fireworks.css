@@ -160,7 +160,7 @@ div.tooltip {
   pointer-events: all;
 }
 
-.focus circle {
+.tooltipLinechart circle {
   fill: #F1F3F3;
   stroke: #6F257F;
   stroke-width: 1px;

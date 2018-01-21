@@ -22,7 +22,7 @@ function afterLoad() {
 //   d3.select("#figureHuman").appendChild(xml.documentElement);
 // });
 
-  var defaultNewYearsEve = "2017-2018"
+  var defaultNewYearsEve = "2017-2018";
 
   /* Define the div for the tooltip over barcharts and piecharts.
      Note that there is a separate tooltip for the figure of the human body.
@@ -47,7 +47,7 @@ function afterLoad() {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // parse the time
-  var parseTime = d3.timeParse("%Y-%m-%d %H:%M")
+  var parseTime = d3.timeParse("%Y-%m-%d %H:%M");
   var bisectDate = d3.bisector(function(d) { return d.tijdstip; }).left;
 
   // set the ranges
@@ -91,15 +91,12 @@ function afterLoad() {
     .defer(d3.json, "data/FirstAidperTypeFireworks.json")
     .defer(d3.json, "data/FirstAidperStatusFireworks.json")
     .defer(d3.json, "data/FirstAidperInjury.json")
-    .defer(d3.csv, "data/fijnstof14-15.csv")
-    .defer(d3.csv, "data/fijnstof15-16.csv")
-    .defer(d3.csv, "data/fijnstof16-17.csv")
-    .defer(d3.csv, "data/fijnstof17-18.csv")
+    .defer(d3.json, "data/pm10.json")
+
     .await(main);
 
     function main(error, dataFirstAid, dataComplaints, dataDamage, perAge,
-      perBystander, perTypeFireworks, perStatusFireworks, perInjury, smog14,
-      smog15, smog16, smog17) {
+      perBystander, perTypeFireworks, perStatusFireworks, perInjury, dataPM10) {
       /*   Creates charts based on the given data.
            Args:
            error        Boolean, true if error, false otherwise.
@@ -108,25 +105,30 @@ function afterLoad() {
 
       if (error) throw error;
 
-      // put together some datasets
-      var dataLinechart = [smog14, smog15, smog16, smog17];
-      var dataFirstAidSection = [perAge, perBystander, perTypeFireworks,
-        perStatusFireworks, perInjury];
+      // put together datasets for first aid section
+      var dataPiecharts = [perAge, perBystander, perTypeFireworks,
+        perStatusFireworks];
 
       // make the barcharts
-      makeBarchart("svgFirstAid", dataFirstAid, dataFirstAidSection,
-        dataLinechart, " mensen", "Aantal", colorsFirstAid);
-      makeBarchart("svgComplaints", dataComplaints, dataFirstAidSection,
-        dataLinechart, " klachten", "Aantal", colorsComplaints);
-      makeBarchart("svgDamage", dataDamage, dataFirstAidSection,
-        dataLinechart, " miljoen euro", "Euro (in miljoenen)", colorsDamage);
+      makeBarchart("svgFirstAid", dataFirstAid, dataPiecharts, dataPM10,
+        " mensen", "Aantal", colorsFirstAid);
+      makeBarchart("svgComplaints", dataComplaints, dataPiecharts, dataPM10,
+        " klachten", "Aantal", colorsComplaints);
+      makeBarchart("svgDamage", dataDamage, dataPiecharts, dataPM10,
+        " miljoen euro", "Euro (in miljoenen)", colorsDamage);
 
       // make default pie charts, linechart and titles
-      makeFirstAidSection(defaultNewYearsEve, dataFirstAidSection, true);
-      makeLinechart(dataLinechart);
+      makePiecharts(defaultNewYearsEve, dataPiecharts, true);
+      makeLinechart(dataPM10);
       makeTitels(defaultNewYearsEve);
-      onchangeDropdown(dataFirstAid, dataFirstAidSection, dataLinechart);
 
+      // add tooltip to the figure of human
+      addTooltip(perInjury, defaultNewYearsEve);
+
+      // make the dropdown menu (including functionality)
+      makeDropdown(dataFirstAid, perInjury, dataPiecharts, dataPM10);
+
+      // let checkboxes toggle opacity of piecharts
       //d3.selectAll(".checkbox").property("checked", true);
       d3.select("#checkbox1").on("change", togglePiechartPerAge);
       d3.select("#checkbox2").on("change", togglePiechartType);
@@ -135,14 +137,15 @@ function afterLoad() {
   };
 
   //--------FUNCTIONS-----------------------------------------------------------
-  function onchangeDropdown(dataFirstAid, dataFirstAidSection, dataLinechart) {
+  function makeDropdown(dataFirstAid, perInjury, dataPiecharts, dataPM10) {
     /*   Updates site after selection in dropdown menu changes.
          Note: The actual funcionality is in onchange().
          Args:
-           dataFirstAid         Dataset of the barchart about first aid.
-           dataFirstAidSection  Array with datasets for piecharts and
-                                figure of the human.
-           dataLinechart        Array with datasets for linechart.
+           firstAid               Dataset to extract options from.
+           perInjury              Dataset of the barchart about first aid.
+           dataPiechartsAndHuman  Array with datasets for piecharts and
+                                  figure of the human.
+           dataPM10               Dataset for linechart.
     */
 
     var select = d3.select("#chooseYear")
@@ -155,15 +158,15 @@ function afterLoad() {
       .data(dataFirstAid)
       .enter()
       .append("option")
-      .attr("id", function(d){return "#j" + d.jaarwisseling;})
+      .attr("id", function(d) { return "#y" + d.jaarwisseling; })
       .text(function (d) { return d.jaarwisseling; });
 
     // attempt to have most recent shown by default
-    d3.select("#j" + defaultNewYearsEve).property("selected", true);
+    d3.select("#y" + defaultNewYearsEve).property("selected", true);
 
     function onchange() {
       /*   Updates site after selection in dropdown menu changes.
-           Function definition and calling from onchangeDropdown().
+           This function is defined and called from onchangeDropdown().
            This function makes the actual changes.
            Args:  None.
       */
@@ -171,15 +174,15 @@ function afterLoad() {
       // results of selecting with dropdown menu
       var selectValue = d3.select("select").property("value");
 
-      // update the first aid section and the linechart
-      makeFirstAidSection(selectValue, dataFirstAidSection);
-      updateLinechart(selectValue, dataLinechart);
+      // update the piecharts, linechart, titles and tooltip on the human figure
+      makePiecharts(selectValue, dataPiecharts);
+      updateLinechart(dataPM10[selectValue]);
+      makeTitels(selectValue);
+      addTooltip(perInjury, selectValue);
 
       // highlight in all bargraphs the bar corresponding to selection
       d3.selectAll("rect").attr("opacity", 0.4);
-      d3.selectAll(".jaarwisseling" + selectValue).attr("opacity", 1);
-
-      makeTitels(selectValue);
+      d3.selectAll(".newYearsEve" + selectValue).attr("opacity", 1);
     };
   };
 
@@ -191,7 +194,7 @@ function afterLoad() {
            newYearsEve  Chosen new years eve.
     */
 
-    // tooltip on eyes of
+    // tooltip on eyes of figure of human
     d3.select("#eye")
       .datum(data[newYearsEve])
       .on("mousemove",  function(d) {
@@ -214,22 +217,19 @@ function afterLoad() {
           .style("opacity", 0);
         });
 
-d3.select("#heart")
-.datum(data[newYearsEve])
-.on("mousemove",  function(d, i) {
-div.transition()
-.duration(5)
-.style("opacity", 1);
-div.html(d["heart"] + " " + plural(d["heart"],"persoon") + " overleden<br>"
-+ d["whatHappened"])
-.style("left", (d3.event.pageX) + "px")
-.style("top", (d3.event.pageY - 28) + "px");
-})
-.on("mouseout", function(d) {
-div.transition()
-.duration(5)
-.style("opacity", 0);
-});
+    // tooltip on heart of figure of human
+    d3.select("#heart")
+      .datum(data[newYearsEve])
+      .on("mousemove",  function(d, i) {
+        div.style("opacity", 1);
+        div.html(d.heart + " " + plural(d.heart,"persoon") +
+          " overleden<br>" + d.whatHappened)
+          .style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY - 28) + "px");
+      })
+      .on("mouseout", function(d) {
+        div.style("opacity", 0);
+      });
 
 // tooltips for other bodyparts of
 var bodyparts = ["head", "body", "arm", "hand", "leg"];
@@ -330,50 +330,59 @@ div.transition()
 .duration(5)
 .style("opacity", 0);
 });
-}
-
-function plural(n, word) {
-if (n == 1) {
-if (word == "persoon") {
-return "persoon"
-} else if (word == "oog") {
-return "oog"
-} else if (word == "werd") {
-return "werd"
-}
-
-} else {
-if (word == "persoon") {
-return "personen"
-} else if (word == "oog") {
-return "ogen"
-} else if (word == "werd") {
-return "werden"
-}
-}
-}
-
-function makeFirstAidSection(newYearsEve, dataFirstAidSection, firstTime) {
-/*   Updates the piecharts.
-Args: The year and the age group.
-*/
-
-makePiechart("svgPerAge", dataFirstAidSection[0][newYearsEve],
-"leeftijd", firstTime, 10, 60);
-makePiechart("svgPerBystander", dataFirstAidSection[1][newYearsEve],
-"wie", firstTime, -60, 140);
-makePiechart("svgPerTypeFireworks", dataFirstAidSection[2][newYearsEve],
-"type", firstTime, 40, 40);
-makePiechart("svgPerStatusFireworks", dataFirstAidSection[3][newYearsEve],
-"status", firstTime, 40, 40);
-
-addTooltip(dataFirstAidSection[4], newYearsEve)
 };
 
-function makePiechart(svgID, data, dataItem, firstTime, labelPos1, labelPos2) {
-/*   Creates a piechart for the given data.
-Args: An appriopiate data set.
-*/
+  function plural(n, word) {
+    /*   Outputs the correct plural of a word matching the number n.
+         Args:
+           n       A number.
+           word    The word 'persoon', 'oog' or 'werd'.
+    */
+    if (n == 1) {
+      if (word == "persoon") {
+        return "persoon";
+      } else if (word == "oog") {
+        return "oog";
+      } else if (word == "werd") {
+        return "werd";
+      }
+    } else {
+      if (word == "persoon") {
+        return "personen";
+      } else if (word == "oog") {
+        return "ogen";
+      } else if (word == "werd") {
+        return "werden";
+      }
+    };
+  };
+
+  function makePiecharts(newYearsEve, dataPiecharts, firstTime) {
+    /*   Makes the piecharts.
+         Args:
+           newYearsEve      The chosen new years eve.
+           dataPiecharts    The datasets for the piecharts.
+           firstTime        Boolean, to indicate if it is the first time this
+                            function is called.
+    */
+    var svgIDs = ["svgPerAge", "svgPerBystander", "svgPerTypeFireworks",
+      "svgPerStatusFireworks"];
+    var itemName = ["leeftijd", "wie", "type", "status"];
+
+    for (var i = 0; i < svgIDs.length; i++) {
+      makePiechart(svgIDs[i], dataPiecharts[i][newYearsEve], itemName[i],
+        firstTime);
+    };
+  };
+
+  function makePiechart(svgID, data, dataItem, firstTime) {
+    /*   Makes the piecharts.
+         Args:
+           svgID      The id of the svg for the piechart
+           data
+           dataItem
+           firstTime
+    */
 var svg = d3.select("#" + svgID),
 width = +svg.attr("width"),
 height = +svg.attr("height"),
@@ -396,7 +405,7 @@ var arc = g.selectAll(".arc")
 .attr("class", "arc");
 
 var label =
-d3.arc().outerRadius(radius - labelPos1).innerRadius(radius - labelPos2);
+d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
 
 arc.append("path")
 .attr("d", path)
@@ -428,8 +437,8 @@ svg.style("opacity", 0);
 
 };
 
-function makeBarchart(svgID, data, dataFirstAidSection,
-dataLinechart, unit, nameY, colors) {
+function makeBarchart(svgID, data, dataPiecharts,
+dataPM10, unit, nameY, colors) {
 /*   Creates a barchart for the given data.
 Args: An appriopiate data set.
 */
@@ -466,7 +475,7 @@ g.append("g")
 .selectAll("rect")
 .data(function(d) { return d; })
 .enter().append("rect")
-.attr("class", function(d) { return "jaarwisseling" +
+.attr("class", function(d) { return "newYearsEve" +
 d.data.jaarwisseling; })
 .attr("x", function(d) { return x(d.data.jaarwisseling); })
 .attr("y", function(d) { return y(d[1]); })
@@ -501,22 +510,22 @@ d3.selectAll(".rectLegend").attr("opacity", 1);
 var xPosition = d.data.jaarwisseling;
 var yPosition = d3.select(this.parentNode).attr("fill");
 
-d3.selectAll(".jaarwisseling" + xPosition).attr("opacity", 1);
+d3.selectAll(".newYearsEve" + xPosition).attr("opacity", 1);
 
 makeTitels(xPosition);
 
 // remake piecharts
-makeFirstAidSection(xPosition, dataFirstAidSection, false);
+makePiecharts(xPosition, dataPiecharts, false);
 
-updateLinechart(xPosition, dataLinechart);
+updateLinechart(dataPM10[xPosition]);
 
 // attemt to keep choice in dropdown up-to-date
-d3.select("#j2014-2015").attr("selected", "selected");
+d3.select("#y2014-2015").attr("selected", "selected");
 return
 });
 
 // default selected bar
-d3.selectAll(".jaarwisseling" + defaultNewYearsEve).attr("opacity", 1);
+d3.selectAll(".newYearsEve" + defaultNewYearsEve).attr("opacity", 1);
 
 // make x axis
 g.append("g")
@@ -569,22 +578,11 @@ legend.append("text")
 };
 
 
-function updateLinechart(newYearsEve, dataLinechart) {
-
-if (newYearsEve == "2014-2015")
-{ var dataChosen = dataLinechart[0]}
-else if (newYearsEve == "2015-2016")
-{ var dataChosen = dataLinechart[1]}
-else if (newYearsEve == "2016-2017")
-{ var dataChosen = dataLinechart[2]}
-else if (newYearsEve == "2017-2018")
-{ var dataChosen = dataLinechart[3]}
-
-
+function updateLinechart(data) {
 
 // Scale the range of the data again
-x.domain(d3.extent(dataChosen, function(d) { return d.tijdstip; }));
-y.domain([0, d3.max(dataChosen, function(d) { return d.waarde; })]);
+x.domain(d3.extent(data, function(d) { return d.tijdstip; }));
+y.domain([0, d3.max(data, function(d) { return d.waarde; })]);
 
 // Select the section we want to apply our changes to
 var gLinechart = d3.select("#svgLinechart").transition();
@@ -592,7 +590,7 @@ var gLinechart = d3.select("#svgLinechart").transition();
 // Make the changes
 gLinechart.select(".line")   // change the line
 .duration(750)
-.attr("d", valueline(dataChosen));
+.attr("d", valueline(data));
 gLinechart.select(".x.axis") // change the x axis
 .duration(1)
 .call(xAxis);
@@ -616,9 +614,9 @@ function mousemove() {
 
 
 var x0 = x.invert(d3.mouse(this)[0]),
-i = bisectDate(dataChosen, x0, 1),
-d0 = dataChosen[i - 1],
-d1 = dataChosen[i],
+i = bisectDate(data, x0, 1),
+d0 = data[i - 1],
+d1 = data[i],
 d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
 focus.attr("transform", "translate(" + x(d.tijdstip) + "," + y(d.waarde) + ")");
 focus.select("text").text(function() { return d.waarde; });
@@ -628,27 +626,29 @@ focus.select(".y-hover-line").attr("x2", widthLinechart + widthLinechart);
 
 };
 
-function makeLinechart(dataLinechart) {
+function makeLinechart(dataPM10) {
 //http://bl.ocks.org/d3noob/7030f35b72de721622b8
 
-for (var i = 0; i < dataLinechart.length; i++ )
-{
-dataLinechart[i].forEach(function(d) {
-d.tijdstip = parseTime(d.tijdstip);
-d.waarde = +d.waarde;
-});
+var newYearsEves = ["2014-2015", "2015-2016", "2016-2017", "2017-2018"];
+for (var i = 0; i < newYearsEves.length; i++ ) {
+  for (var j = 0; j < dataPM10[newYearsEves[i]].length; j++ ) {
+    dataPM10[newYearsEves[i]][j].tijdstip =
+      parseTime(dataPM10[newYearsEves[i]][j].tijdstip);
+  };
 };
 
+data = dataPM10[defaultNewYearsEve];
+
 // Scale the range of the data
-x.domain(d3.extent(dataLinechart[3], function(d) { return d.tijdstip; }));
-y.domain([0, d3.max(dataLinechart[3], function(d) { return d.waarde; })]);
+x.domain(d3.extent(data, function(d) { return d.tijdstip; }));
+y.domain([0, d3.max(data, function(d) { return d.waarde; })]);
 
 // Add the valueline path.
 gLinechart.append("path")
 .attr("class", "line")
 .attr("fill", "none")
 .attr("stroke", "blue")
-.attr("d", valueline(dataLinechart[3]));
+.attr("d", valueline(data));
 
 // Add the X Axis
 gLinechart.append("g")
@@ -713,9 +713,9 @@ svgLinechart.append("rect")
 function mousemove() {
 
 var x0 = x.invert(d3.mouse(this)[0]),
-i = bisectDate(dataLinechart[3], x0, 1),
-d0 = dataLinechart[3][i - 1],
-d1 = dataLinechart[3][i],
+i = bisectDate(data, x0, 1),
+d0 = data[i - 1],
+d1 = data[i],
 d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
 focus.attr("transform", "translate(" + x(d.tijdstip) + "," + y(d.waarde) + ")");
 focus.select("text").text(function() { return d.waarde; });

@@ -123,7 +123,7 @@ Het verhaal dat bij de cijfers over materiële schade hoort is het volgende.
 1.  Er is veel schade ieder jaar.
 2.  Maar we geven met zijn allen nog veel meer uit aan vuurwerk ieder jaar. Vuurwerk levert de maatschappij dus netto geld op.
 3.  Maar we kijken nu alleen naar materiële schade, er zijn nog veel meer kosten voor de maatschappij. Als we die kosten meerekenen komen we netto juist negatief uit. 
-Op verschillende https://www.rtlz.nl/algemeen/binnenland/zo-hoog-zijn-de-kosten-van-oud-en-nieuw
+Het volgende rekenplaatje maakt dit duidelijk.
 
 >Maar de echte schade zit in het verlies van levenskwaliteit. Als we het leed van lichamelijke schade uitdrukken in geld, is het bedrag >schrikbarend. Het Oogziekenhuis gebruikte daarvoor de Qaly-maatstaf, waarmee verlies van levenskwaliteit wordt uitgedrukt in >economische waarde.
 >
@@ -132,3 +132,6 @@ Op verschillende https://www.rtlz.nl/algemeen/binnenland/zo-hoog-zijn-de-kosten-
 >In negen jaar tijd gingen er 158 ogen verloren door vuurwerk bij mensen met een gemiddelde leeftijd van 20 jaar. Ervan uitgaande dat >zij 88 jaar worden, levert dat een kostenplaatje op van 134,3 miljoen euro. Alleen al aan verloren levenskwaliteit door oogschade dus.
 >
 >Alles bij elkaar opgeteld kost het jaarlijkse feest de maatschappij dus zeker 30 miljoen euro, waarbij moet aangetekend worden dat we >veel kosten dus nog niet eens kennen. 
+>Bron: https://www.rtlz.nl/algemeen/binnenland/zo-hoog-zijn-de-kosten-van-oud-en-nieuw
+
+Het probleem voor mijn visualisaties is dat er hier geen harde cijfers meer zijn. Bovenstaand stukje is al een vrij wilde schatting. Dit in een visualisatie stoppen zou teveel natte-vinger-werk worden naar mijn smaak.

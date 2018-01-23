@@ -111,3 +111,10 @@ Ik twijfel nog of ik het ga doen. Hier is een tabel met mijn voors en tegens.
 | piecharts zijn misschien te simpel   | Checkboxes vervallen bij sunburst, dus daar moet ik dan weer iets nieuws voor verzinnen en maken. Dubbel werk dus!  |
 | Data wordt compacter gevisualiseerd  | In mijn doelgroep zitten ook laagopgeleiden mensen. Daarom wil ik alle data zo simpel en begrijpelijk mogelijk presenteren. Vandaar ook de piecharts, dit sluit beter aan bij de doelgroep denk ik. Een sunburst is compacter maar ook complexer. Dat vind ik interessanter, maar dat is een slechte reden voor design vindt ik |
 |    | Met de piecharts voldoe ik evengoed aan de eisen van het project denk ik, want ik heb ook het poppetje en dat maakt het weer ietsje complexer.  |
+
+# dag 11
+Ziek
+
+# dag 12
+Het onderdeel over materiële schade vind ik eigenlijk best mager. Het zou leu zijn als er nog iets bij kwam hier. Maar er is verder eigenlijk geen data over te vinden. Ik heb wel van twee jaarwisselingen een onderverdeling gevonden maar deze sluiten slecht op elkaar aan. Het ziet er ook niet aannemelijk uit dat die onderverdelingen kloppen. Daarom haal ik dat er weer uit.
+![](doc/websiteDag12.png)

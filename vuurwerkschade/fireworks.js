@@ -112,11 +112,11 @@ function afterLoad() {
         perStatusFireworks];
 
       // make the barcharts
-      makeBarchart("svgFirstAid", dataFirstAid, perInjury, dataPiecharts,
+      makeBarchart("FirstAid", dataFirstAid, perInjury, dataPiecharts,
         dataPM10, " mensen", "Aantal", colorsFirstAid);
-      makeBarchart("svgComplaints", dataComplaints, perInjury, dataPiecharts,
+      makeBarchart("Complaints", dataComplaints, perInjury, dataPiecharts,
         dataPM10, " klachten", "Aantal", colorsComplaints);
-      makeBarchart("svgDamage", dataDamage, perInjury, dataPiecharts, dataPM10,
+      makeBarchart("Damage", dataDamage, perInjury, dataPiecharts, dataPM10,
         " miljoen euro", "Euro (in miljoenen)", colorsDamage);
 
       // make default pie charts, linechart and titles
@@ -152,11 +152,11 @@ function afterLoad() {
            nameY        The text for on the label along the y axis.
     */
 
-    var svg = d3.select("#" + svgID),
+    var svg = d3.select("#svg" + svgID),
       margin = {top: 20, right: 100, bottom: 30, left: 60},
       width = +svg .attr("width") - margin.left - margin.right,
       height = +svg .attr("height") - margin.top - margin.bottom,
-      g = svg .append("g").attr("id", "BarchartFirstAid")
+      g = svg .append("g").attr("id", "barchart" + svgID)
        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var x = d3.scaleBand()
@@ -169,6 +169,8 @@ function afterLoad() {
     var z = d3.scaleOrdinal().range(colors);
 
     var keys = data.columns.slice(1);
+
+    var selectedNewYearsEve = defaultNewYearsEve;
 
     x.domain(data.map(function(d) { return d.jaarwisseling; }));
     y.domain([0, d3.max(data, function(d) { return d.total; })]).nice();
@@ -194,13 +196,12 @@ function afterLoad() {
       .attr("opacity", 0.4)
       .on("mousemove", function(d) {
         generalTooltip.style("opacity", 1);
-        generalTooltip.html(Math.abs(d[0] - d[1]) + unit)
+        generalTooltip.html(Math.round((d[1] - d[0]) * 10) / 10 + unit)
           .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
-      //d3.select(this).style("opacity", 1);
+          .style("top", (d3.event.pageY - 28) + "px")
+        return;
       })
-      .on("mouseout", function(d) { generalTooltip.style("opacity", 0);
-      //d3.select(this).style("opacity", 0.5);
+      .on("mouseout", function(d) { generalTooltip.style("opacity", 0)
         return;
       })
       .on("click", function(d) {
@@ -223,6 +224,7 @@ function afterLoad() {
 
         // attemt to keep choice in dropdown up-to-date
         d3.select("#y2014-2015").attr("selected", "selected");
+
         return;
       });
 
@@ -432,9 +434,7 @@ function afterLoad() {
     d3.select("#eye")
       .datum(data[newYearsEve])
       .on("mousemove",  function(d) {
-        generalTooltip.transition()
-          .duration(5)
-          .style("opacity", 1);
+        generalTooltip.style("opacity", 1);
         generalTooltip.html("Letsel aan ogen bij " + d.eye + " " +
           plural(d.eye, "persoon") + ".<br>Hierbij waren<br>" +
           d.zichtsverlies + " " + plural(d.zichtsverlies, "oog")  +
@@ -444,12 +444,8 @@ function afterLoad() {
           " verwijderd.")
           .style("left", (d3.event.pageX + 20) + "px")
           .style("top", (d3.event.pageY - 28) + "px");
-        })
-      .on("mouseout", function(d) {
-        generalTooltip.transition()
-          .duration(5)
-          .style("opacity", 0);
-        });
+      })
+      .on("mouseout", function(d) { generalTooltip.style("opacity", 0); });
 
     // tooltip on heart of figure of human
     d3.select("#heart")
@@ -461,109 +457,106 @@ function afterLoad() {
           .style("left", (d3.event.pageX) + "px")
           .style("top", (d3.event.pageY - 28) + "px");
       })
-      .on("mouseout", function(d) {
-        generalTooltip.style("opacity", 0);
-      });
+      .on("mouseout", function(d) { generalTooltip.style("opacity", 0); });
 
-                // tooltips for other bodyparts of
-                var bodyparts = ["head", "body", "arm", "hand", "leg"];
 
-                // for (var i = 0; i < bodyparts.length; i++) {
-                //    d3.select("#" + bodyparts[i])
-                //      .datum(data[newYearsEve])
-                //      .on("mousemove",  function(d, i) {
-                //     div.transition()
-                //         .duration(5)
-                //         .style("opacity", 1);
-                //     div.html(d[bodyparts[i]] + " mensen")
-                //       .style("left", (d3.event.pageX) + "px")
-                //       .style("top", (d3.event.pageY - 28) + "px");
-                //    })
-                //    .on("mouseout", function(d) {
-                //        div.transition()
-                //            .duration(5)
-                //            .style("opacity", 0);
-                //    });
 
-                d3.select("#head")
-                .datum(data[newYearsEve])
-                .on("mousemove",  function(d, i) {
-                generalTooltip.transition()
-                .duration(5)
-                .style("opacity", 1);
-                generalTooltip.html(d["head"] + " " + plural(d["head"],"persoon"))
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
-                })
-                .on("mouseout", function(d) {
-                generalTooltip.transition()
-                .duration(5)
-                .style("opacity", 0);
-                });
+          // tooltips for other bodyparts of
+          var bodyparts = ["head", "body", "arm", "hand", "leg"];
 
-                d3.select("#body")
-                .datum(data[newYearsEve])
-                .on("mousemove",  function(d, i) {
-                generalTooltip.transition()
-                .duration(5)
-                .style("opacity", 1);
-                generalTooltip.html(d["body"] + " " + plural(d["body"],"persoon"))
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
-                })
-                .on("mouseout", function(d) {
-                generalTooltip.transition()
-                .duration(5)
-                .style("opacity", 0);
-                });
 
-                d3.select("#arm")
-                .datum(data[newYearsEve])
-                .on("mousemove",  function(d, i) {
-                generalTooltip.transition()
-                .duration(5)
-                .style("opacity", 1);
-                generalTooltip.html(d["arm"] + " " + plural(d["arm"],"persoon"))
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
-                })
-                .on("mouseout", function(d) {
-                generalTooltip.transition()
-                .duration(5)
-                .style("opacity", 0);
-                });
+             d3.select("#svgFigureHuman")
+               .datum(data)
+               .selectAll("g")
+               .data(function(d) { return d; })
+               .on("mousemove",  function(d) {
+                 console.log(d);
+                 generalTooltip.style("opacity", 1);
+                 generalTooltip.html( " mensen")
+                  .style("left", (d3.event.pageX) + "px")
+                  .style("top", (d3.event.pageY - 28) + "px");
+               })
+               .on("mouseout", function(d) { generalTooltip.style("opacity", 0); });
 
-                d3.select("#hand")
-                .datum(data[newYearsEve])
-                .on("mousemove",  function(d, i) {
-                generalTooltip.transition()
-                .duration(5)
-                .style("opacity", 1);
-                generalTooltip.html(d["hand"] + " mensen")
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
-                })
-                .on("mouseout", function(d) {
-                generalTooltip.transition()
-                .duration(5)
-                .style("opacity", 0);
-                });
-
-                d3.select("#leg")
-                .datum(data[newYearsEve])
-                .on("mousemove",  function(d, i) {
-                generalTooltip.transition()
-                .duration(5)
-                .style("opacity", 1);
-                generalTooltip.html(d["leg"] + plural(d["leg"],"persoon"))
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
-                })
-                .on("mouseout", function(d) {
-                generalTooltip.transition()
-                .duration(5)
-                .style("opacity", 0);
-                });
+                // d3.select("#head")
+                // .datum(data[newYearsEve])
+                // .on("mousemove",  function(d, i) {
+                // generalTooltip.transition()
+                // .duration(5)
+                // .style("opacity", 1);
+                // generalTooltip.html(d["head"] + " " + plural(d["head"],"persoon"))
+                // .style("left", (d3.event.pageX) + "px")
+                // .style("top", (d3.event.pageY - 28) + "px");
+                // })
+                // .on("mouseout", function(d) {
+                // generalTooltip.transition()
+                // .duration(5)
+                // .style("opacity", 0);
+                // });
+                //
+                // d3.select("#body")
+                // .datum(data[newYearsEve])
+                // .on("mousemove",  function(d, i) {
+                // generalTooltip.transition()
+                // .duration(5)
+                // .style("opacity", 1);
+                // generalTooltip.html(d["body"] + " " + plural(d["body"],"persoon"))
+                // .style("left", (d3.event.pageX) + "px")
+                // .style("top", (d3.event.pageY - 28) + "px");
+                // })
+                // .on("mouseout", function(d) {
+                // generalTooltip.transition()
+                // .duration(5)
+                // .style("opacity", 0);
+                // });
+                //
+                // d3.select("#arm")
+                // .datum(data[newYearsEve])
+                // .on("mousemove",  function(d, i) {
+                // generalTooltip.transition()
+                // .duration(5)
+                // .style("opacity", 1);
+                // generalTooltip.html(d["arm"] + " " + plural(d["arm"],"persoon"))
+                // .style("left", (d3.event.pageX) + "px")
+                // .style("top", (d3.event.pageY - 28) + "px");
+                // })
+                // .on("mouseout", function(d) {
+                // generalTooltip.transition()
+                // .duration(5)
+                // .style("opacity", 0);
+                // });
+                //
+                // d3.select("#hand")
+                // .datum(data[newYearsEve])
+                // .on("mousemove",  function(d, i) {
+                // generalTooltip.transition()
+                // .duration(5)
+                // .style("opacity", 1);
+                // generalTooltip.html(d["hand"] + " mensen")
+                // .style("left", (d3.event.pageX) + "px")
+                // .style("top", (d3.event.pageY - 28) + "px");
+                // })
+                // .on("mouseout", function(d) {
+                // generalTooltip.transition()
+                // .duration(5)
+                // .style("opacity", 0);
+                // });
+                //
+                // d3.select("#leg")
+                // .datum(data[newYearsEve])
+                // .on("mousemove",  function(d, i) {
+                // generalTooltip.transition()
+                // .duration(5)
+                // .style("opacity", 1);
+                // generalTooltip.html(d["leg"] + plural(d["leg"],"persoon"))
+                // .style("left", (d3.event.pageX) + "px")
+                // .style("top", (d3.event.pageY - 28) + "px");
+                // })
+                // .on("mouseout", function(d) {
+                // generalTooltip.transition()
+                // .duration(5)
+                // .style("opacity", 0);
+                // });
   }
 
   function makeDropdown(dataFirstAid, perInjury, dataPiecharts, dataPM10) {

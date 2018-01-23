@@ -69,33 +69,33 @@ function checkReady() {
 
   //--------LOAD DATA---------------------------------------------------------
   queue()
-    .defer(d3.csv, "data/FirstAid.csv", function(d, i, columns) {
+    .defer(d3.csv, "vuurwerkschade/data/FirstAid.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.csv, "data/complaints.csv", function(d, i, columns) {
+    .defer(d3.csv, "vuurwerkschade/data/complaints.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.csv, "data/damage.csv", function(d, i, columns) {
+    .defer(d3.csv, "vuurwerkschade/data/damage.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.json, "data/FirstAidperAge.json")
-    .defer(d3.json, "data/FirstAidBystander.json")
-    .defer(d3.json, "data/FirstAidperTypeFireworks.json")
-    .defer(d3.json, "data/FirstAidperStatusFireworks.json")
-    .defer(d3.json, "data/FirstAidperInjury.json")
-    .defer(d3.json, "data/pm10.json")
+    .defer(d3.json, "vuurwerkschade/data/FirstAidperAge.json")
+    .defer(d3.json, "vuurwerkschade/data/FirstAidBystander.json")
+    .defer(d3.json, "vuurwerkschade/data/FirstAidperTypeFireworks.json")
+    .defer(d3.json, "vuurwerkschade/data/FirstAidperStatusFireworks.json")
+    .defer(d3.json, "vuurwerkschade/data/FirstAidperInjury.json")
+    .defer(d3.json, "vuurwerkschade/data/pm10.json")
 
     .await(main);
 

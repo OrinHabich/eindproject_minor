@@ -136,3 +136,6 @@ Het volgende rekenplaatje maakt dit duidelijk.
 >Bron: https://www.rtlz.nl/algemeen/binnenland/zo-hoog-zijn-de-kosten-van-oud-en-nieuw
 
 Het probleem voor mijn visualisaties is dat er hier geen harde cijfers meer zijn. Bovenstaand stukje is al een vrij wilde schatting. Dit in een visualisatie stoppen zou teveel natte-vinger-werk worden naar mijn smaak.
+
+Vragen kunnen stellen dus er is weer wat opgelost:
+De duplicate code voor de piecharts is opgelost, voor de tooltips op het poppetje heb ik een for-loop als oplossing. Een oplossing zonder for-loop is mooier en mogelijk, maar lukt nog niet. Het inladen van de svg van het poppetje lukt nu ook. Dus die svg staat niet meer geheel in index.html.

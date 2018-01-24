@@ -140,3 +140,12 @@ Het probleem voor mijn visualisaties is dat er hier geen harde cijfers meer zijn
 De duplicate code voor de piecharts is opgelost, voor de tooltips op het poppetje heb ik een for-loop als oplossing. Een oplossing zonder for-loop is mooier en mogelijk, maar lukt nog niet. Het inladen van de svg van het poppetje lukt nu ook. Dus die svg staat niet meer geheel in index.html.
 
 De dataset voor de linegraph bestond uit losse csv files. Dat leek mij vorige week nog een goed idee. Bij nader inzien vind ik één json-file toch logischer. Daarom heb ik dit veranderd. Nu zijn alle datasets waarmee ge-update wordt van dezelfde structuur.
+
+# Dag 13
+Voornaamste issue op dit moment is dat ik meerdere stukjes code zodanig gemaakt heb dat acties van de gebruiker de DOM laat groeien.
+Door .append() te gebruiken in .on("click) bijvoorbeeld.
+Een voorbeeld hiervan is makePiechart(), die een hele nieuwe piechart over de oude maakt, terwijl de oude ook blijft bestaan.
+
+Iets anders dat ik wil veranderen aan de makePiechart is dat als de data geupdate wordt de piechart in hetzelfde tempo veranderd als de linechart. En niet in 0 seconden zoals nu.
+
+Beide problemen los ik op door een updatePiechart() functie te maken, similar aan de updateLinechart() functie.

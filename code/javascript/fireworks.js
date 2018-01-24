@@ -28,6 +28,7 @@ function checkReady() {
   } else {
 
   var defaultNewYearsEve = "2017-2018";
+  var timeDuration = 1000;
 
   var generalTooltip = d3.select("body")
     .append("div")
@@ -40,6 +41,9 @@ function checkReady() {
   var colorsComplaints = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32",
     "#C0C0C0"];
   var colorsDamage = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
+
+  //--------VARIABELS FOR THE PIECHARTS-----------------------------------------
+  var colorsPiecharts = d3.scaleOrdinal(d3.schemeCategory10);
 
   //--------VARIABELS FOR THE LINECHART-----------------------------------------
   var svgLinechart = d3.select("#svgLinechart"),
@@ -68,33 +72,33 @@ function checkReady() {
 
   //--------LOAD DATA---------------------------------------------------------
   queue()
-    .defer(d3.csv, "data/firstAid.csv", function(d, i, columns) {
+    .defer(d3.csv, "/data/firstAid.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.csv, "data/complaints.csv", function(d, i, columns) {
+    .defer(d3.csv, "/data/complaints.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.csv, "data/damage.csv"), function(d, i, columns) {
+    .defer(d3.csv, "/data/damage.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.json, "data/firstAidperAge.json")
-    .defer(d3.json, "data/firstAidBystander.json")
-    .defer(d3.json, "data/firstAidperTypeFireworks.json")
-    .defer(d3.json, "data/firstAidperStatusFireworks.json")
-    .defer(d3.json, "data/firstAidperInjury.json")
-    .defer(d3.json, "data/pm10.json")
+    .defer(d3.json, "/data/firstAidperAge.json")
+    .defer(d3.json, "/data/firstAidBystander.json")
+    .defer(d3.json, "/data/firstAidperTypeFireworks.json")
+    .defer(d3.json, "/data/firstAidperStatusFireworks.json")
+    .defer(d3.json, "/data/firstAidperInjury.json")
+    .defer(d3.json, "/data/pm10.json")
     //.defer(d3.json, "data/infographic.json")
 
     .await(main);
@@ -110,19 +114,25 @@ function checkReady() {
       if (error) throw error;
 
       // put together datasets for first aid section
-      var dataPiecharts = [perAge, perBystander, perTypeFireworks,
-        perStatusFireworks];
+      // var dataPiecharts = [perAge, perBystander, perTypeFireworks,
+      //   perStatusFireworks];
 
       // make the barcharts
-      makeBarchart("FirstAid", dataFirstAid, perInjury, dataPiecharts,
-        dataPM10, " mensen", "Aantal", colorsFirstAid);
-      makeBarchart("Complaints", dataComplaints, perInjury, dataPiecharts,
-        dataPM10, " klachten", "Aantal", colorsComplaints);
-      makeBarchart("Damage", dataDamage, perInjury, dataPiecharts, dataPM10,
-        " miljoen euro", "Euro (in miljoenen)", colorsDamage);
+      makeBarchart("FirstAid", dataFirstAid, perInjury, perAge, perBystander, perTypeFireworks,
+        perStatusFireworks,
+        dataPM10, " mensen", "Aantal", colorsFirstAid, true);
+      makeBarchart("Complaints", dataComplaints, perInjury, perAge, perBystander, perTypeFireworks,
+        perStatusFireworks,
+        dataPM10, " klachten", "Aantal", colorsComplaints, true);
+      makeBarchart("Damage", dataDamage, perInjury, perAge, perBystander, perTypeFireworks,
+        perStatusFireworks, dataPM10,
+        " miljoen euro", "Euro (in miljoenen)", colorsDamage, false);
 
       // make default pie charts, linechart and titles
-      makePiecharts(defaultNewYearsEve, dataPiecharts, true);
+      makePiechart("PerAge", perAge, "leeftijd");
+      makePiechart("PerBystander", perBystander, "wie");
+      makePiechart("PerTypeFireworks", perTypeFireworks, "type");
+      makePiechart("PerStatusFireworks", perStatusFireworks, "status");
       makeLinechart(dataPM10);
       makeTitles(defaultNewYearsEve);
 
@@ -130,7 +140,8 @@ function checkReady() {
       tooltipFigureHuman(perInjury, defaultNewYearsEve);
 
       // make the dropdown menu (including functionality)
-      makeDropdown(dataFirstAid, perInjury, dataPiecharts, dataPM10);
+      makeDropdown(dataFirstAid, perInjury, perAge, perBystander,
+        perTypeFireworks, perStatusFireworks, dataPM10);
 
       //tooltipInfographic(dataInfographic);
 
@@ -157,8 +168,8 @@ function checkReady() {
 
   //--------FUNCTIONS-----------------------------------------------------------
 
-  function makeBarchart(svgID, data, perInjury, dataPiecharts, dataPM10, unit,
-    nameY, colors) {
+  function makeBarchart(svgID, data, perInjury, perAge, perBystander,
+    perTypeFireworks, perStatusFireworks, dataPM10, unit, nameY, colors, legend) {
     /*   Makes a stacked barchart.
          Args:
            svgID        The id of the svg for the barchart.
@@ -167,6 +178,8 @@ function checkReady() {
            dataPM10     The dataset for the linechart.
            unit         The unit on the y axis.
            nameY        The text for on the label along the y axis.
+           colors
+           legends      Boolean to indicate if a legend should be added.
     */
 
     var svg = d3.select("#svg" + svgID),
@@ -234,7 +247,8 @@ function checkReady() {
         d3.selectAll(".newYearsEve" + xPosition).attr("opacity", 1);
 
         // update the piecharts, linechart, titles and tooltip on human figure
-        makePiecharts(xPosition, dataPiecharts, false);
+        updatePiecharts(perAge, perBystander, perTypeFireworks,
+          perStatusFireworks, xPosition);
         updateLinechart(dataPM10[xPosition]);
         makeTitles(xPosition);
         tooltipFigureHuman(perInjury, xPosition);
@@ -272,34 +286,54 @@ function checkReady() {
       .attr("text-anchor", "start")
       .text(nameY);
 
-    // make legend
-    var legend = g.append("g")
-      .attr("font-family", "sans-serif")
-      //.attr("font-size", 30)
-      .attr("text-anchor", "end")
-      .selectAll("g")
-      .data(keys.slice().reverse())
-      .enter().append("g")
-      .attr("transform", function(d, i) {
-        return "translate(0," + i * 20 + ")";
-      });
+    if (legend) {
+      // make legend
+      var legend = g.append("g")
+        .attr("font-family", "sans-serif")
+        //.attr("font-size", 30)
+        .attr("text-anchor", "end")
+        .selectAll("g")
+        .data(keys.slice().reverse())
+        .enter().append("g")
+        .attr("transform", function(d, i) {
+          return "translate(0," + i * 20 + ")";
+        });
 
-    legend.append("rect")
-      .attr("class", "rectLegend")
-      .attr("x", width + 60)
-      .attr("width", 19)
-      .attr("height", 19)
-      .attr("fill", z)
-      .attr("opacity", 1);
+      legend.append("rect")
+        .attr("class", "rectLegend")
+        .attr("x", width + 60)
+        .attr("width", 19)
+        .attr("height", 19)
+        .attr("fill", z)
+        .attr("opacity", 1);
 
-    legend.append("text")
-      .attr("x", width + 50)
-      .attr("y", 9.5)
-      .attr("dy", "0.32em")
-      .text(function(d) { return d; });
+      legend.append("text")
+        .attr("x", width + 50)
+        .attr("y", 9.5)
+        .attr("dy", "0.32em")
+        .text(function(d) { return d; });
+    }
   }
 
-  function makePiecharts(newYearsEve, dataPiecharts, firstTime) {
+  // function makePiecharts(dataPiecharts) {
+  //   /*   Makes the piecharts.
+  //        Args:
+  //          newYearsEve      The chosen new years eve.
+  //          dataPiecharts    The datasets for the piecharts.
+  //          firstTime        Boolean, to indicate if it is the first time this
+  //                           function is called.
+  //   */
+  //   var svgIDs = ["PerAge", "PerBystander", "PerTypeFireworks",
+  //     "PerStatusFireworks"];
+  //   var itemNames = ["leeftijd", "wie", "type", "status"];
+  //
+  //   for (var i = 0; i < svgIDs.length; i++) {
+  //
+  //   };
+  // }
+
+  function updatePiecharts(perAge, perBystander, perTypeFireworks,
+    perStatusFireworks, newYearsEve) {
     /*   Makes the piecharts.
          Args:
            newYearsEve      The chosen new years eve.
@@ -307,14 +341,12 @@ function checkReady() {
            firstTime        Boolean, to indicate if it is the first time this
                             function is called.
     */
-    var svgIDs = ["PerAge", "PerBystander", "PerTypeFireworks",
-      "PerStatusFireworks"];
-    var itemNames = ["leeftijd", "wie", "type", "status"];
 
-    for (var i = 0; i < svgIDs.length; i++) {
-      makePiechart(svgIDs[i], dataPiecharts[i][newYearsEve], itemNames[i],
-        firstTime);
-    };
+    updatePiechart(perAge, "PerAge", newYearsEve, "leeftijd");
+    updatePiechart(perBystander, "PerBystander",newYearsEve , "wie");
+    updatePiechart(perTypeFireworks, "PerTypeFireworks", newYearsEve, "type");
+    updatePiechart(perStatusFireworks, "PerStatusFireworks", newYearsEve,
+      "status");
   }
 
   function makeLinechart(dataPM10) {
@@ -439,20 +471,6 @@ function checkReady() {
       .html("Fijnstof (PM10) rond de jaarwisseling "+ newYearsEve);
   }
 
-  function tooltipInfographic(data) {
-    d3.selectAll(".tooltipInfo")
-      .datum(data)
-      .on("mousemove",  function(d) {
-        generalTooltip.style("opacity", 1);
-        generalTooltip.html(d)
-          .style("left", (d3.event.pageX + 40) + "px")
-          .style("top", (d3.event.pageY - 25) + "px");
-      })
-      .on("mouseout", function(d) {
-        generalTooltip.style("opacity", 0);
-      });
-  }
-
   function tooltipFigureHuman(data, newYearsEve) {
     /*   Makes a tooltip on a specific bodypart of the human figure.
          Args:
@@ -497,7 +515,34 @@ function checkReady() {
     }
   }
 
-  function makeDropdown(dataFirstAid, perInjury, dataPiecharts, dataPM10) {
+  function plural(n, word) {
+    /*  Outputs the correct plural of a word matching the number n.
+        This ensures correct grammar on the tooltip over the human figure.
+         Args:
+           n       A number.
+           word    The word 'persoon', 'oog' or 'werd'.
+    */
+    if (n == 1) {
+      if (word == "persoon") {
+        return "persoon";
+      } else if (word == "oog") {
+        return "oog";
+      } else if (word == "werd") {
+        return "werd";
+      }
+    } else {
+      if (word == "persoon") {
+        return "personen";
+      } else if (word == "oog") {
+        return "ogen";
+      } else if (word == "werd") {
+        return "werden";
+      }
+    };
+  }
+
+  function makeDropdown(dataFirstAid, perInjury, perAge, perBystander,
+    perTypeFireworks, perStatusFireworks, dataPM10) {
     /*   Updates site after selection in dropdown menu changes.
          Note: The actual funcionality is in onchange().
          Args:
@@ -535,43 +580,22 @@ function checkReady() {
       var selectValue = d3.select("select").property("value");
 
       // update the piecharts, linechart, titles and tooltip on the human figure
-      makePiecharts(selectValue, dataPiecharts);
+      //makePiecharts(selectValue, dataPiecharts);
+      updatePiecharts(perAge, perBystander, perTypeFireworks,
+        perStatusFireworks, selectValue);
       updateLinechart(dataPM10[selectValue]);
       makeTitles(selectValue);
       tooltipFigureHuman(perInjury, selectValue);
 
-      // highlight in all bargraphs the bar corresponding to selection
+      // highlight in all bargraphs the bar corresponding to the selection
       d3.selectAll("rect").attr("opacity", 0.4);
       d3.selectAll(".newYearsEve" + selectValue).attr("opacity", 1);
     };
   }
 
-  function plural(n, word) {
-    /*   Outputs the correct plural of a word matching the number n.
-         Args:
-           n       A number.
-           word    The word 'persoon', 'oog' or 'werd'.
-    */
-    if (n == 1) {
-      if (word == "persoon") {
-        return "persoon";
-      } else if (word == "oog") {
-        return "oog";
-      } else if (word == "werd") {
-        return "werd";
-      }
-    } else {
-      if (word == "persoon") {
-        return "personen";
-      } else if (word == "oog") {
-        return "ogen";
-      } else if (word == "werd") {
-        return "werden";
-      }
-    };
-  }
 
-  function makePiechart(svgID, data, itemName, firstTime) {
+
+  function makePiechart(svgID, data, itemName) {
     /*   Makes the piecharts.
          Args:
            svgID        The id of the svg for the piechart.
@@ -588,8 +612,6 @@ function checkReady() {
       g = svg.append("g").attr("id", "Piechart" + svgID).attr("transform",
         "translate(" + width / 2 + "," + height / 2 + ")");
 
-    var colors = d3.scaleOrdinal(d3.schemeCategory10);
-
     var pie = d3.pie()
       .sort(null)
       .value(function(d) { return d.number; });
@@ -597,26 +619,23 @@ function checkReady() {
     var path = d3.arc().outerRadius(radius).innerRadius(0);
 
     var arc = g.selectAll(".arc")
-      .data(pie(data))
+      .data(pie(data[defaultNewYearsEve]))
       .enter().append("g")
       .attr("class", "arc");
 
     var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
 
     // create separate tooltip per piechart to have mutual independent opacities
-    if (firstTime) {
-      var tooltip = d3.select("body")
+    var tooltip = d3.select("body")
         .append("div")
         .attr("class", "tooltip")
         .attr("id", "tooltip" + svgID)
         .style("opacity", 0);
-    } else {
-      var tooltip = d3.select("#tooltip" + svgID);
-    }
+
 
     arc.append("path")
       .attr("d", path)
-      .attr("fill", function(d) { return colors(d.data[itemName]); })
+      .attr("fill", function(d) { return colorsPiecharts(d.data[itemName]); })
       .on("mousemove", function(d) {
         if (svg.style("opacity") == 0) {
           tooltip.style("opacity", 0);
@@ -638,10 +657,48 @@ function checkReady() {
       .text(function(d) { return d.data[itemName]; });
 
     // by default piechart is invisible
-    if (firstTime) {
-      svg.style("opacity", 0);
-    }
+    svg.style("opacity", 0);
+
   }
+
+  function updatePiechart(data, svgID, newYearsEve, itemName) {
+    /*   Updates the linechart.
+         Args:
+          data    An appropriate dataset.
+    */
+
+    var svg = d3.select("#svg" + svgID),
+      width = +svg.attr("width"),
+      height = +svg.attr("height"),
+      radius = Math.min(width, height) / 2,
+      g = d3.select("#Piechart" + svgID);
+
+    var pie = d3.pie()
+      .sort(null)
+      .value(function(d) { return d.number; });
+
+    var path = d3.arc().outerRadius(radius).innerRadius(0);
+
+    var arc = g.selectAll(".arc")
+      .data(pie(data[newYearsEve]));
+
+    arc.select("path").transition()
+      .attr("d", path)
+      .attr("fill", function(d) { return colorsPiecharts(d.data[itemName]); })
+      .duration(timeDuration);
+
+  }
+
+
+
+
+
+
+
+
+
+
+
 
   function updateLinechart(data) {
     /*   Updates the linechart.
@@ -696,6 +753,7 @@ function checkReady() {
         tooltipLinechart.select(".y-hover-line").attr("x2", widthLinechart + widthLinechart);
     }
   }
+
 
 
   }

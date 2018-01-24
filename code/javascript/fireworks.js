@@ -82,7 +82,7 @@ function checkReady() {
       d.total = t;
       return d;
     })
-    .defer(d3.csv, "data/damage.csv", function(d, i, columns) {
+    .defer(d3.csv, "data/damage.csv"), function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
@@ -95,12 +95,12 @@ function checkReady() {
     .defer(d3.json, "data/firstAidperStatusFireworks.json")
     .defer(d3.json, "data/firstAidperInjury.json")
     .defer(d3.json, "data/pm10.json")
-    //.defer(d3.json, "vuurwerkschade/data/infographic.json")
+    //.defer(d3.json, "data/infographic.json")
 
     .await(main);
 
     function main(error, dataFirstAid, dataComplaints, dataDamage, perAge,
-      perBystander, perTypeFireworks, perStatusFireworks, perInjury, dataPM10, dataInfographic) {
+      perBystander, perTypeFireworks, perStatusFireworks, perInjury, dataPM10) {
       /*   Creates charts based on the given data.
            Args:
            error        Boolean, true if error, false otherwise.

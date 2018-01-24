@@ -68,7 +68,7 @@ function checkReady() {
 
   //--------LOAD DATA---------------------------------------------------------
   queue()
-    .defer(d3.csv, "../data/firstAid.csv", function(d, i, columns) {
+    .defer(d3.csv, "../../data/firstAid.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
@@ -89,8 +89,8 @@ function checkReady() {
       d.total = t;
       return d;
     })
-    .defer(d3.json, "../data/firstAidperAge.json")
-    .defer(d3.json, "../data/firstAidBystander.json")
+    .defer(d3.json, "../../data/firstAidperAge.json")
+    .defer(d3.json, "../../data/firstAidBystander.json")
     .defer(d3.json, "../data/firstAidperTypeFireworks.json")
     .defer(d3.json, "../data/firstAidperStatusFireworks.json")
     .defer(d3.json, "../data/firstAidperInjury.json")

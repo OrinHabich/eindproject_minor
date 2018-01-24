@@ -136,3 +136,7 @@ Het volgende rekenplaatje maakt dit duidelijk.
 >Bron: https://www.rtlz.nl/algemeen/binnenland/zo-hoog-zijn-de-kosten-van-oud-en-nieuw
 
 Het probleem voor mijn visualisaties is dat er hier geen harde cijfers meer zijn. Bovenstaand stukje is al een vrij wilde schatting. Dit in een visualisatie stoppen zou teveel natte-vinger-werk worden naar mijn smaak.
+
+De duplicate code voor de piecharts is opgelost, voor de tooltips op het poppetje heb ik een for-loop als oplossing. Een oplossing zonder for-loop is mooier en mogelijk, maar lukt nog niet. Het inladen van de svg van het poppetje lukt nu ook. Dus die svg staat niet meer geheel in index.html.
+
+De dataset voor de linegraph bestond uit losse csv files. Dat leek mij vorige week nog een goed idee. Bij nader inzien vind ik één json-file toch logischer. Daarom heb ik dit veranderd. Nu zijn alle datasets waarmee ge-update wordt van dezelfde structuur.

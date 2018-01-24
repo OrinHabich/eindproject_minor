@@ -715,17 +715,17 @@ function checkReady() {
 
     // change the line
     gLinechart.select(".line")
-      .duration(1000)
+      .duration(timeDuration)
       .attr("d", valueline(data));
 
     // change the x axis
     gLinechart.select(".x.axis")
-      .duration(1)
+      .duration(0)
       .call(xAxis);
 
     // change the y axis
     gLinechart.select(".y.axis")
-      .duration(1000)
+      .duration(timeDuration)
      .call(yAxis);
 
     // add tooltip

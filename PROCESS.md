@@ -149,3 +149,8 @@ Een voorbeeld hiervan is makePiechart(), die een hele nieuwe piechart over de ou
 Iets anders dat ik wil veranderen aan de makePiechart is dat als de data geupdate wordt de piechart in hetzelfde tempo veranderd als de linechart. En niet in 0 seconden zoals nu.
 
 Beide problemen los ik op door een updatePiechart() functie te maken, similar aan de updateLinechart() functie.
+
+Zo'n updatePiechart() functie heb ik gemaakt. Deze werkt wel, maar bevat rare bugs en geeft een error. 
+
+Een ander probleem is dat ik de mappenstructuur in mijn repository heb aangepast en in github pages de databestanden vaak niet meer gevonden worden.
+![](doc/websiteDag13.png)

@@ -113,7 +113,12 @@ div.tooltip {
 
 
 
-
+#eye {
+  fill: White;
+}
+#heart {
+  fill: White;
+}
 
 #head:hover {
   fill: Red;
@@ -134,7 +139,10 @@ div.tooltip {
   fill: Red;
 }
 #eye:hover {
-  fill: white;
+  fill: Red;
+}
+#heart:hover {
+  fill: Red;
 }
 
 

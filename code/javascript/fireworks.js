@@ -9,18 +9,23 @@
   voor de dropdown stylen: https://www.w3schools.com/howto/howto_custom_select.asp
 */
 
-window.onload = afterLoad;
+//window.onload = afterLoad;
 
-function afterLoad() {
+//function afterLoad() {
   /*  This executes the whole script,
       but it is called only when the window is loaded.
       Args: none.
   */
 
-//     d3.xml("images/figureHuman.svg").mimeType("image/svg+xml").get(function(error, xml) {
-//   if (error) throw error;
-//   d3.select("#figureHuman").appendChild(xml.documentElement);
-// });
+function checkReady() {
+  /*  This executes the whole script,
+      but it is called only when the window is loaded.
+      Args: none.
+  */
+  var svg = d3.select("#svgFigureHuman");
+  if (svg == null) {
+    setTimeout("checkReady()", 300);
+  } else {
 
   var defaultNewYearsEve = "2017-2018";
 
@@ -29,10 +34,6 @@ function afterLoad() {
     .attr("class", "tooltip")
     .attr("id", "tooltipGeneral")
     .style("opacity", 0);
-
-  /* Define the div for the tooltip over barcharts and piecharts.
-     Note that there is a separate tooltip for the figure of the human body.
-  */
 
   //--------COLOR ARRAYS FOR THE BARCHARTS--------------------------------------
   var colorsFirstAid  = ["#A9A9A9", "#BDB76B"];
@@ -67,38 +68,39 @@ function afterLoad() {
 
   //--------LOAD DATA---------------------------------------------------------
   queue()
-    .defer(d3.csv, "data/FirstAid.csv", function(d, i, columns) {
+    .defer(d3.csv, "../data/firstAid.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.csv, "data/complaints.csv", function(d, i, columns) {
+    .defer(d3.csv, "../data/complaints.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.csv, "data/damage.csv", function(d, i, columns) {
+    .defer(d3.csv, "../data/damage.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.json, "data/FirstAidperAge.json")
-    .defer(d3.json, "data/FirstAidBystander.json")
-    .defer(d3.json, "data/FirstAidperTypeFireworks.json")
-    .defer(d3.json, "data/FirstAidperStatusFireworks.json")
-    .defer(d3.json, "data/FirstAidperInjury.json")
-    .defer(d3.json, "data/pm10.json")
+    .defer(d3.json, "../data/firstAidperAge.json")
+    .defer(d3.json, "../data/firstAidBystander.json")
+    .defer(d3.json, "../data/firstAidperTypeFireworks.json")
+    .defer(d3.json, "../data/firstAidperStatusFireworks.json")
+    .defer(d3.json, "../data/firstAidperInjury.json")
+    .defer(d3.json, "../data/pm10.json")
+    //.defer(d3.json, "vuurwerkschade/data/infographic.json")
 
     .await(main);
 
     function main(error, dataFirstAid, dataComplaints, dataDamage, perAge,
-      perBystander, perTypeFireworks, perStatusFireworks, perInjury, dataPM10) {
+      perBystander, perTypeFireworks, perStatusFireworks, perInjury, dataPM10, dataInfographic) {
       /*   Creates charts based on the given data.
            Args:
            error        Boolean, true if error, false otherwise.
@@ -125,17 +127,32 @@ function afterLoad() {
       makeTitles(defaultNewYearsEve);
 
       // add tooltip to the figure of human
-      addTooltip(perInjury, defaultNewYearsEve);
+      tooltipFigureHuman(perInjury, defaultNewYearsEve);
 
       // make the dropdown menu (including functionality)
       makeDropdown(dataFirstAid, perInjury, dataPiecharts, dataPM10);
 
+      //tooltipInfographic(dataInfographic);
+
       // let checkboxes toggle opacity of piecharts
-      //d3.selectAll(".checkbox").property("checked", true);
-      d3.select("#checkbox1").on("change", togglePiechartPerAge);
-      d3.select("#checkbox2").on("change", togglePiechartType);
-      d3.select("#checkbox3").on("change", togglePiechartBystander);
-      d3.select("#checkbox4").on("change", togglePiechartStatus);
+      d3.selectAll(".checkbox").on("change", function(d) {
+        if (this.value == "Age") {
+          var htmlString = "Per leeftijdsklasse";
+        } else if (this.value == "TypeFireworks") {
+          var htmlString = "Naar soort vuurwerk"
+        } else if (this.value == "Bystander") {
+          var htmlString = "Zelf afgestoken of omstander"
+        } else if (this.value == "StatusFireworks") {
+          var htmlString = "Legaal of illegaal vuurwerk"
+        }
+        if (d3.select("#svgPer" + this.value).style("opacity") == 0) {
+          d3.select("#svgPer" + this.value).style("opacity", 1);
+          d3.select("#title" + this.value).html(htmlString);
+        } else {
+          d3.select("#svgPer" + this.value).style("opacity", 0);
+          d3.select("#title" + this.value).html("");
+        }
+      });
   }
 
   //--------FUNCTIONS-----------------------------------------------------------
@@ -220,7 +237,7 @@ function afterLoad() {
         makePiecharts(xPosition, dataPiecharts, false);
         updateLinechart(dataPM10[xPosition]);
         makeTitles(xPosition);
-        addTooltip(perInjury, xPosition);
+        tooltipFigureHuman(perInjury, xPosition);
 
         // attemt to keep choice in dropdown up-to-date
         d3.select("#y2014-2015").attr("selected", "selected");
@@ -422,141 +439,62 @@ function afterLoad() {
       .html("Fijnstof (PM10) rond de jaarwisseling "+ newYearsEve);
   }
 
-  function addTooltip(data, newYearsEve) {
-    /*   Adds a tooltip to the figure of the human body.
+  function tooltipInfographic(data) {
+    d3.selectAll(".tooltipInfo")
+      .datum(data)
+      .on("mousemove",  function(d) {
+        generalTooltip.style("opacity", 1);
+        generalTooltip.html(d)
+          .style("left", (d3.event.pageX + 40) + "px")
+          .style("top", (d3.event.pageY - 25) + "px");
+      })
+      .on("mouseout", function(d) {
+        generalTooltip.style("opacity", 0);
+      });
+  }
+
+  function tooltipFigureHuman(data, newYearsEve) {
+    /*   Makes a tooltip on a specific bodypart of the human figure.
          Args:
            data         Dataset of injuries.
            newYearsEve  Chosen new years eve.
+           bodypart     Chosen bodypart.
     */
 
-    // tooltip on eyes of figure of human
-
-    d3.select("#eye")
+    d3.selectAll(".figureHuman")
       .datum(data[newYearsEve])
       .on("mousemove",  function(d) {
         generalTooltip.style("opacity", 1);
-        generalTooltip.html("Letsel aan ogen bij " + d.eye + " " +
-          plural(d.eye, "persoon") + ".<br>Hierbij waren<br>" +
-          d.zichtsverlies + " " + plural(d.zichtsverlies, "oog")  +
-          " met zichtsverlies,<br>" + d.blind + " " + plural(d.blind, "oog")  +
-          " werden blind en<br>" + d.verwijderd + " " +
-          plural(d.verwijderd, "oog") + " " + plural(d.verwijderd, "werd")  +
-          " verwijderd.")
-          .style("left", (d3.event.pageX + 20) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
+        generalTooltip.html(makeHTMLstring(d, this.parentNode.id))
+          .style("left", (d3.event.pageX + 40) + "px")
+          .style("top", (d3.event.pageY - 25) + "px");
       })
-      .on("mouseout", function(d) { generalTooltip.style("opacity", 0); });
+      .on("mouseout", function(d) {
+        generalTooltip.style("opacity", 0);
+      });
 
-    // tooltip on heart of figure of human
-    d3.select("#heart")
-      .datum(data[newYearsEve])
-      .on("mousemove",  function(d, i) {
-        generalTooltip.style("opacity", 1);
-        generalTooltip.html(d.heart + " " + plural(d.heart,"persoon") +
-          " overleden<br>" + d.whatHappened)
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
-      })
-      .on("mouseout", function(d) { generalTooltip.style("opacity", 0); });
+  }
 
-
-
-          // tooltips for other bodyparts of
-          var bodyparts = ["head", "body", "arm", "hand", "leg"];
-
-
-             d3.select("#svgFigureHuman")
-               .datum(data)
-               .selectAll("g")
-               .data(function(d) { return d; })
-               .on("mousemove",  function(d) {
-                 console.log(d);
-                 generalTooltip.style("opacity", 1);
-                 generalTooltip.html( " mensen")
-                  .style("left", (d3.event.pageX) + "px")
-                  .style("top", (d3.event.pageY - 28) + "px");
-               })
-               .on("mouseout", function(d) { generalTooltip.style("opacity", 0); });
-
-                // d3.select("#head")
-                // .datum(data[newYearsEve])
-                // .on("mousemove",  function(d, i) {
-                // generalTooltip.transition()
-                // .duration(5)
-                // .style("opacity", 1);
-                // generalTooltip.html(d["head"] + " " + plural(d["head"],"persoon"))
-                // .style("left", (d3.event.pageX) + "px")
-                // .style("top", (d3.event.pageY - 28) + "px");
-                // })
-                // .on("mouseout", function(d) {
-                // generalTooltip.transition()
-                // .duration(5)
-                // .style("opacity", 0);
-                // });
-                //
-                // d3.select("#body")
-                // .datum(data[newYearsEve])
-                // .on("mousemove",  function(d, i) {
-                // generalTooltip.transition()
-                // .duration(5)
-                // .style("opacity", 1);
-                // generalTooltip.html(d["body"] + " " + plural(d["body"],"persoon"))
-                // .style("left", (d3.event.pageX) + "px")
-                // .style("top", (d3.event.pageY - 28) + "px");
-                // })
-                // .on("mouseout", function(d) {
-                // generalTooltip.transition()
-                // .duration(5)
-                // .style("opacity", 0);
-                // });
-                //
-                // d3.select("#arm")
-                // .datum(data[newYearsEve])
-                // .on("mousemove",  function(d, i) {
-                // generalTooltip.transition()
-                // .duration(5)
-                // .style("opacity", 1);
-                // generalTooltip.html(d["arm"] + " " + plural(d["arm"],"persoon"))
-                // .style("left", (d3.event.pageX) + "px")
-                // .style("top", (d3.event.pageY - 28) + "px");
-                // })
-                // .on("mouseout", function(d) {
-                // generalTooltip.transition()
-                // .duration(5)
-                // .style("opacity", 0);
-                // });
-                //
-                // d3.select("#hand")
-                // .datum(data[newYearsEve])
-                // .on("mousemove",  function(d, i) {
-                // generalTooltip.transition()
-                // .duration(5)
-                // .style("opacity", 1);
-                // generalTooltip.html(d["hand"] + " mensen")
-                // .style("left", (d3.event.pageX) + "px")
-                // .style("top", (d3.event.pageY - 28) + "px");
-                // })
-                // .on("mouseout", function(d) {
-                // generalTooltip.transition()
-                // .duration(5)
-                // .style("opacity", 0);
-                // });
-                //
-                // d3.select("#leg")
-                // .datum(data[newYearsEve])
-                // .on("mousemove",  function(d, i) {
-                // generalTooltip.transition()
-                // .duration(5)
-                // .style("opacity", 1);
-                // generalTooltip.html(d["leg"] + plural(d["leg"],"persoon"))
-                // .style("left", (d3.event.pageX) + "px")
-                // .style("top", (d3.event.pageY - 28) + "px");
-                // })
-                // .on("mouseout", function(d) {
-                // generalTooltip.transition()
-                // .duration(5)
-                // .style("opacity", 0);
-                // });
+  function makeHTMLstring(d, bodypart) {
+    /*  Makes a HTML string for in the tooltip on the human figure.
+         Args:
+           d            Dataset of injuries.
+           bodypart     Chosen bodypart.
+    */
+    if (bodypart == "eye"){
+      return "Letsel aan ogen bij " + d.eye + " " +
+        plural(d.eye, "persoon") + ".<br>Hierbij waren<br>" +
+        d.zichtsverlies + " " + plural(d.zichtsverlies, "oog")  +
+        " met zichtsverlies,<br>" + d.blind + " " + plural(d.blind, "oog")  +
+        " werden blind en<br>" + d.verwijderd + " " +
+        plural(d.verwijderd, "oog") + " " + plural(d.verwijderd, "werd")  +
+        " verwijderd.";
+    } else if (bodypart == "heart") {
+      return d.heart + " " + plural(d.heart,"persoon") +
+        " overleden<br>" + d.whatHappened;
+    } else {
+      return d[bodypart] + " " + plural(d[bodypart],"persoon");
+    }
   }
 
   function makeDropdown(dataFirstAid, perInjury, dataPiecharts, dataPM10) {
@@ -600,7 +538,7 @@ function afterLoad() {
       makePiecharts(selectValue, dataPiecharts);
       updateLinechart(dataPM10[selectValue]);
       makeTitles(selectValue);
-      addTooltip(perInjury, selectValue);
+      tooltipFigureHuman(perInjury, selectValue);
 
       // highlight in all bargraphs the bar corresponding to selection
       d3.selectAll("rect").attr("opacity", 0.4);
@@ -760,43 +698,5 @@ function afterLoad() {
   }
 
 
-              function  togglePiechartPerAge() {
-              if (d3.select("#svgPerAge").style("opacity") == 0) {
-              d3.select("#svgPerAge").style("opacity", 1);
-              d3.select("#titlePerAge").html("Per leeftijdsklasse");
-              } else {
-              d3.select("#svgPerAge").style("opacity", 0);
-              d3.select("#titlePerAge").html("");
-              }
-              };
-
-              function  togglePiechartType() {
-              if (d3.select("#svgPerTypeFireworks").style("opacity") == 0) {
-              d3.select("#svgPerTypeFireworks").style("opacity", 1);
-              d3.select("#titleTypeFireworks").html("Naar soort vuurwerk");
-              } else {
-              d3.select("#svgPerTypeFireworks").style("opacity", 0);
-              d3.select("#titleTypeFireworks").html("");
-              }
-              };
-
-              function  togglePiechartBystander() {
-              if (d3.select("#svgPerBystander").style("opacity") == 0) {
-              d3.select("#svgPerBystander").style("opacity", 1);
-              d3.select("#titleBystander").html("Zelf afgestoken of omstander");
-              } else {
-              d3.select("#svgPerBystander").style("opacity", 0);
-              d3.select("#titleBystander").html("");
-              }
-              };
-
-              function  togglePiechartStatus() {
-              if (d3.select("#svgPerStatusFireworks").style("opacity") == 0) {
-              d3.select("#svgPerStatusFireworks").style("opacity", 1);
-              d3.select("#titleStatusFireworks").html("Legaal of illegaal vuurwerk");
-              } else {
-              d3.select("#svgPerStatusFireworks").style("opacity", 0);
-              d3.select("#titleStatusFireworks").html("");
-              }
-              };
+  }
 }

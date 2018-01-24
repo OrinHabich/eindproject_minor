@@ -154,3 +154,6 @@ Zo'n updatePiechart() functie heb ik gemaakt. Deze werkt wel, maar bevat rare bu
 
 Een ander probleem is dat ik de mappenstructuur in mijn repository heb aangepast en in github pages de databestanden vaak niet meer gevonden worden.
 ![](doc/websiteDag13.png)
+
+Ik zie wat er verkeerd gaat denk ik (de folder "project" wordt overgeslagen, het moet zijn *https://orinhabich.github.io/project/data/firstAid.csv* )
+Maar ik weet niet hoe ik dit verander of waarom sommige datafiles wel gevonden worden.

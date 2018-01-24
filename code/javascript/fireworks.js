@@ -68,7 +68,7 @@ function checkReady() {
 
   //--------LOAD DATA---------------------------------------------------------
   queue()
-    .defer(d3.csv, "../data/firstAid.csv", function(d, i, columns) {
+    .defer(d3.csv, "data/firstAid.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }

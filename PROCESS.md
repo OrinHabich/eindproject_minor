@@ -157,3 +157,36 @@ Een ander probleem is dat ik de mappenstructuur in mijn repository heb aangepast
 
 Ik zie wat er verkeerd gaat denk ik (de folder "project" wordt overgeslagen, het moet zijn *https://orinhabich.github.io/project/data/firstAid.csv* )
 Maar ik weet niet hoe ik dit verander of waarom sommige datafiles wel gevonden worden.
+
+# Dag 14
+De volgende issues heb ik vandaag aangepakt (dankzij hulp)
+1. github pages. ik kreeg het pad naar mijn data niet goed. 
+
+Dit kwam doordat ik ten onrechte dacht dat het pad vanaf het .js bestand loopt. 
+Dit is echter vanaf het .html bestand, want dáárin wordt het script ingeladen dat de data gaat inladen.
+
+2. updatefunctie voor piecharts: Werkt wel, maar doet paar rare dingen en geeft errors.
+
+Dit was een lastige. De gouden tip was verdiepen in de 'tween' functions die zich ontfermen over style tijdens transitions.
+
+Dit leverde deze functie als oplossing:
+
+>    function arcTween(a) {
+>      /*  Takes care of the path elements during the transition.
+>          Normal transition/tween functions to animate radial charts don't work.
+>          See https://stackoverflow.com/questions/21285385/d3-pie-chart-arc-is-invisible-in-transition-to-180
+>          for a good explanation. This function solves that problem and comes
+>          from https://bl.ocks.org/mbostock/1346410 (which turned out a usefull
+>          example after all.)
+>      */
+>      var i = d3.interpolate(this._current, a);
+>      this._current = i(0);
+>      return function(t) { return path(i(t)); };
+>    }
+
+3. Een externe svg inladen werkt, maar daar elementen van selecteren niet.
+
+Dit was gewoon een onhandig gevolg van de gebruikte manier voor het inladen van de svg.
+Uiteindelijk gebruik ik nu d3.xml. Dit werkte eerst juist niet, geen idee waarom, nu werkt het wel.
+
+

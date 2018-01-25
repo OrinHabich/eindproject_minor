@@ -169,20 +169,7 @@ Dit is echter vanaf het .html bestand, want dáárin wordt het script ingeladen 
 
 Dit was een lastige. De gouden tip was verdiepen in de 'tween' functions die zich ontfermen over style tijdens transitions.
 
-Dit leverde deze functie als oplossing:
-
->    function arcTween(a) {
->      /*  Takes care of the path elements during the transition.
->          Normal transition/tween functions to animate radial charts don't work.
->          See https://stackoverflow.com/questions/21285385/d3-pie-chart-arc-is-invisible-in-transition-to-180
->          for a good explanation. This function solves that problem and comes
->          from https://bl.ocks.org/mbostock/1346410 (which turned out a usefull
->          example after all.)
->      */
->      var i = d3.interpolate(this._current, a);
->      this._current = i(0);
->      return function(t) { return path(i(t)); };
->    }
+Op https://stackoverflow.com/questions/21285385/d3-pie-chart-arc-is-invisible-in-transition-to-180 stond het antwoord.
 
 3. Een externe svg inladen werkt, maar daar elementen van selecteren niet.
 

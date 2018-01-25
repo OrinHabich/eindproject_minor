@@ -73,7 +73,7 @@ function checkReady() {
 
   //--------LOAD DATA---------------------------------------------------------
   queue()
-    .defer(d3.csv, "../../data/firstAid.csv", function(d, i, columns) {
+    .defer(d3.csv, "project/data/firstAid.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
@@ -395,7 +395,7 @@ function checkReady() {
 
     // text label for the x axis
     gLinechart.append("text")
-      .attr("transform", "translate(" + (widthLinechart - 20) + " ," +
+      .attr("transform", "translate(" + (widthLinechart - 30) + " ," +
         (heightLinechart + margin.top + 20) + ")")
       .style("text-anchor", "middle")
       .text("Tijdstip");
@@ -568,10 +568,11 @@ function checkReady() {
       .enter()
       .append("option")
       .attr("id", function(d) { return "#y" + d.jaarwisseling; })
-      .attr("selected", "selected")
+      //.attr("selected", "selected")
       .text(function (d) { return d.jaarwisseling; });
 
     // attempt to have most recent shown by default
+    console.log("#y" + defaultNewYearsEve);
     d3.select("#y" + defaultNewYearsEve).attr("selected", "selected");
 
     function onchange() {
@@ -606,8 +607,7 @@ function checkReady() {
            svgID        The id of the svg for the piechart.
            data         The dataset for the piechart.
            itemName     The name of an item in the dataset.
-           firstTime    Boolean, to indicate if it is the first time this
-                        function is called.
+           colors        The colors for the piechart.
     */
 
     var svg = d3.select("#svg" + svgID),
@@ -637,7 +637,6 @@ function checkReady() {
         .attr("id", "tooltip" + svgID)
         .style("opacity", 0);
 
-
     arc.append("path")
       .attr("d", path)
       .attr("fill", function(d) { return colors(d.data[itemName]); })
@@ -661,15 +660,19 @@ function checkReady() {
       })
       .text(function(d) { return d.data[itemName]; });
 
-    // by default piechart is invisible
+    // by default piecharts are invisible, the checkboxes toggle the visibility
     svg.style("opacity", 0);
 
   }
 
   function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
-    /*   Updates the linechart.
+    /*   Updates a piechart.
          Args:
           data    An appropriate dataset.
+          svgID   The id of the svg for the piechart.
+          newYearsEve   The chosen new years eve.
+          itemName      The name of an item in the dataset.
+          colors        The colors for the piechart.
     */
 
     var svg = d3.select("#svg" + svgID),

@@ -9,24 +9,17 @@
   font-family: "Helvetica Neue", Helvetica, Arial, 20px, sans-serif;
   margin: auto;
   position: relative;
-}
-
-text {
-  font: 12px sans-serif;
 } */
 
-form {
-  position: absolute;
-  left: 100px;
-  right: 10px;
-  top: 10px;
+text {
+  font: 14px sans-serif;
 }
 
-input {
-  margin: 0 7px;
+body {
+  font: 14px sans-serif;
 }
 
-h2 {
+.subheader {
     color: blue;
 }
 
@@ -42,6 +35,10 @@ div.tooltip {
     border: 0px;
     border-radius: 4px;
     pointer-events: none;
+}
+
+.arc {
+  font: 6px sans-serif;
 }
 
 

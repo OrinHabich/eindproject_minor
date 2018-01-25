@@ -167,7 +167,7 @@ Dit is echter vanaf het .html bestand, want dáárin wordt het script ingeladen 
 
 2. updatefunctie voor piecharts: Werkt wel, maar doet paar rare dingen en geeft errors.
 
-Dit was een lastige. De gouden tip was verdiepen in de 'tween' functions die zich ontfermen over style tijdens transitions.
+Dit was een lastige. De gouden tip was verdiepen in de 'tween' functions die zich ontfermen over style en attr tijdens transitions.
 
 Op https://stackoverflow.com/questions/21285385/d3-pie-chart-arc-is-invisible-in-transition-to-180 stond het antwoord.
 
@@ -175,5 +175,7 @@ Op https://stackoverflow.com/questions/21285385/d3-pie-chart-arc-is-invisible-in
 
 Dit was gewoon een onhandig gevolg van de gebruikte manier voor het inladen van de svg.
 Uiteindelijk gebruik ik nu d3.xml. Dit werkte eerst juist niet, geen idee waarom, nu werkt het wel.
+
+Het enige wat nu nog niet lukt is om de keus in het dropdown menu up-to-date te houden.
 
 

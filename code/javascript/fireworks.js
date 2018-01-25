@@ -17,19 +17,6 @@
       Args: none.
   */
 
-// function checkReady() {
-//   /*  This executes the whole script,
-//       but it is called only when the window is loaded.
-//       Args: none.
-//   */
-//   var svg = d3.select("#objectFigureHuman");
-//   if (svg._groups[0][0] == null) {
-//     document.body.append();
-//     //console.log(svg._groups[0]);
-//     setTimeout("checkReady()", 300);
-//   }
-//   else {
-
   d3.xml("images/figureHuman.svg").mimeType("image/svg+xml").get(function(error, xml) {
     if (error) throw error;
     document.getElementById("placeForFigureHuman").appendChild(xml.documentElement);
@@ -150,10 +137,10 @@
       tooltipFigureHuman(perInjury, defaultNewYearsEve);
 
       // make the dropdown menu (including functionality)
-      makeDropdown(dataFirstAid, perInjury, perAge, perBystander,
+      listenToDropdown(dataFirstAid, perInjury, perAge, perBystander,
         perTypeFireworks, perStatusFireworks, dataPM10);
 
-      //tooltipInfographic(dataInfographic);
+      d3.selectAll("#y" + defaultNewYearsEve).attr("selected", true);
 
       // let checkboxes toggle opacity of piecharts
       d3.selectAll(".checkbox").on("change", function(d) {
@@ -265,7 +252,8 @@
         tooltipFigureHuman(perInjury, xPosition);
 
         // attemt to keep choice in dropdown up-to-date
-        d3.select("#y" + xPosition).attr("selected", "selected");
+        d3.selectAll(".option").property("selected", false);
+        d3.select("#y" + xPosition).property("selected", true);
 
         return;
       });
@@ -552,7 +540,7 @@
     };
   }
 
-  function makeDropdown(dataFirstAid, perInjury, perAge, perBystander,
+  function listenToDropdown(dataFirstAid, perInjury, perAge, perBystander,
     perTypeFireworks, perStatusFireworks, dataPM10) {
     /*   Updates site after selection in dropdown menu changes.
          Note: The actual funcionality is in onchange().
@@ -564,23 +552,7 @@
            dataPM10               Dataset for linechart.
     */
 
-    var select = d3.select("#chooseYear")
-      .append("select")
-      .attr("class","select")
-      .on("change", onchange);
-
-    var options = select
-      .selectAll("option")
-      .data(dataFirstAid)
-      .enter()
-      .append("option")
-      .attr("id", function(d) { return "#y" + d.jaarwisseling; })
-      //.attr("selected", "selected")
-      .text(function (d) { return d.jaarwisseling; });
-
-    // attempt to have most recent shown by default
-    console.log(d3.select(".select").select("#y" + defaultNewYearsEve));
-    d3.select("#y" + defaultNewYearsEve).attr("selected", "selected");
+    d3.select(".select").on("change", onchange);
 
     function onchange() {
       /*   Updates site after selection in dropdown menu changes.
@@ -605,8 +577,6 @@
       d3.selectAll(".newYearsEve" + selectValue).attr("opacity", 1);
     };
   }
-
-
 
   function makePiechart(svgID, data, itemName, colors) {
     /*   Makes the piecharts.
@@ -727,19 +697,6 @@
     }
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   function updateLinechart(data) {
     /*   Updates the linechart.
          Args:
@@ -795,6 +752,4 @@
   }
 
 
-
-  //}
 }

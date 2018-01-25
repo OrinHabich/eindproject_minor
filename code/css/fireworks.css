@@ -1,11 +1,11 @@
 /*
-  SEH.css
+  fireworks.css
   Minor programmeren, project
   Orin Habich 10689508
 */
 
 
-body {
+/* body {
   font-family: "Helvetica Neue", Helvetica, Arial, 20px, sans-serif;
   margin: auto;
   position: relative;
@@ -13,7 +13,7 @@ body {
 
 text {
   font: 12px sans-serif;
-}
+} */
 
 form {
   position: absolute;

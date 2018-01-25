@@ -43,7 +43,8 @@ function checkReady() {
   var colorsDamage = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
 
   //--------VARIABELS FOR THE PIECHARTS-----------------------------------------
-  var colorsPiecharts = d3.scaleOrdinal(d3.schemeCategory10);
+  var colorsAge = d3.scaleOrdinal(d3.schemeCategory10);
+  var colorsPie2Slices = d3.scaleOrdinal(["#A9A9A9", "#BDB76B"]);
 
   //--------VARIABELS FOR THE LINECHART-----------------------------------------
   var svgLinechart = d3.select("#svgLinechart"),
@@ -72,7 +73,7 @@ function checkReady() {
 
   //--------LOAD DATA---------------------------------------------------------
   queue()
-    .defer(d3.csv, "/data/firstAid.csv", function(d, i, columns) {
+    .defer(d3.csv, "../../data/firstAid.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
@@ -129,10 +130,10 @@ function checkReady() {
         " miljoen euro", "Euro (in miljoenen)", colorsDamage, false);
 
       // make default pie charts, linechart and titles
-      makePiechart("PerAge", perAge, "leeftijd");
-      makePiechart("PerBystander", perBystander, "wie");
-      makePiechart("PerTypeFireworks", perTypeFireworks, "type");
-      makePiechart("PerStatusFireworks", perStatusFireworks, "status");
+      makePiechart("PerAge", perAge, "leeftijd", colorsAge);
+      makePiechart("PerBystander", perBystander, "wie", colorsPie2Slices);
+      makePiechart("PerTypeFireworks", perTypeFireworks, "type", colorsPie2Slices);
+      makePiechart("PerStatusFireworks", perStatusFireworks, "status", colorsPie2Slices);
       makeLinechart(dataPM10);
       makeTitles(defaultNewYearsEve);
 
@@ -254,7 +255,10 @@ function checkReady() {
         tooltipFigureHuman(perInjury, xPosition);
 
         // attemt to keep choice in dropdown up-to-date
-        d3.select("#y2014-2015").attr("selected", "selected");
+        d3.select("#y" + xPosition).attr("selected", "selected");
+
+        var sel = d3.select("#y" + xPosition);
+        console.log(sel);
 
         return;
       });
@@ -342,11 +346,11 @@ function checkReady() {
                             function is called.
     */
 
-    updatePiechart(perAge, "PerAge", newYearsEve, "leeftijd");
-    updatePiechart(perBystander, "PerBystander",newYearsEve , "wie");
-    updatePiechart(perTypeFireworks, "PerTypeFireworks", newYearsEve, "type");
+    updatePiechart(perAge, "PerAge", newYearsEve, "leeftijd", colorsAge);
+    updatePiechart(perBystander, "PerBystander",newYearsEve , "wie", colorsPie2Slices);
+    updatePiechart(perTypeFireworks, "PerTypeFireworks", newYearsEve, "type", colorsPie2Slices);
     updatePiechart(perStatusFireworks, "PerStatusFireworks", newYearsEve,
-      "status");
+      "status", colorsPie2Slices);
   }
 
   function makeLinechart(dataPM10) {
@@ -564,10 +568,11 @@ function checkReady() {
       .enter()
       .append("option")
       .attr("id", function(d) { return "#y" + d.jaarwisseling; })
+      .attr("selected", "selected")
       .text(function (d) { return d.jaarwisseling; });
 
     // attempt to have most recent shown by default
-    d3.select("#y" + defaultNewYearsEve).property("selected", true);
+    d3.select("#y" + defaultNewYearsEve).attr("selected", "selected");
 
     function onchange() {
       /*   Updates site after selection in dropdown menu changes.
@@ -595,7 +600,7 @@ function checkReady() {
 
 
 
-  function makePiechart(svgID, data, itemName) {
+  function makePiechart(svgID, data, itemName, colors) {
     /*   Makes the piecharts.
          Args:
            svgID        The id of the svg for the piechart.
@@ -635,7 +640,7 @@ function checkReady() {
 
     arc.append("path")
       .attr("d", path)
-      .attr("fill", function(d) { return colorsPiecharts(d.data[itemName]); })
+      .attr("fill", function(d) { return colors(d.data[itemName]); })
       .on("mousemove", function(d) {
         if (svg.style("opacity") == 0) {
           tooltip.style("opacity", 0);
@@ -661,7 +666,7 @@ function checkReady() {
 
   }
 
-  function updatePiechart(data, svgID, newYearsEve, itemName) {
+  function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
     /*   Updates the linechart.
          Args:
           data    An appropriate dataset.
@@ -682,11 +687,19 @@ function checkReady() {
     var arc = g.selectAll(".arc")
       .data(pie(data[newYearsEve]));
 
+    var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
+
     arc.select("path").transition()
       .attr("d", path)
-      .attr("fill", function(d) { return colorsPiecharts(d.data[itemName]); })
+      .attr("fill", function(d) { return colors(d.data[itemName]); })
       .duration(timeDuration);
 
+    arc.select("text").transition()
+      .attr("transform", function(d) {
+        return "translate(" + label.centroid(d) + ")";
+      })
+      .text(function(d) { return d.data[itemName]; })
+      .duration(timeDuration);
   }
 
 

@@ -157,3 +157,25 @@ Een ander probleem is dat ik de mappenstructuur in mijn repository heb aangepast
 
 Ik zie wat er verkeerd gaat denk ik (de folder "project" wordt overgeslagen, het moet zijn *https://orinhabich.github.io/project/data/firstAid.csv* )
 Maar ik weet niet hoe ik dit verander of waarom sommige datafiles wel gevonden worden.
+
+# Dag 14
+De volgende issues heb ik vandaag aangepakt (dankzij hulp)
+1. github pages. ik kreeg het pad naar mijn data niet goed. 
+
+Dit kwam doordat ik ten onrechte dacht dat het pad vanaf het .js bestand loopt. 
+Dit is echter vanaf het .html bestand, want dáárin wordt het script ingeladen dat de data gaat inladen.
+
+2. updatefunctie voor piecharts: Werkt wel, maar doet paar rare dingen en geeft errors.
+
+Dit was een lastige. De gouden tip was verdiepen in de 'tween' functions die zich ontfermen over style en attr tijdens transitions.
+
+Op https://stackoverflow.com/questions/21285385/d3-pie-chart-arc-is-invisible-in-transition-to-180 stond het antwoord.
+
+3. Een externe svg inladen werkt, maar daar elementen van selecteren niet.
+
+Dit was gewoon een onhandig gevolg van de gebruikte manier voor het inladen van de svg.
+Uiteindelijk gebruik ik nu d3.xml. Dit werkte eerst juist niet, geen idee waarom, nu werkt het wel.
+
+Het is nu ook gelukt om de keus in het dropdown menu up-to-date te houden :)
+
+

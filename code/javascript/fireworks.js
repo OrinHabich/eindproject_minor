@@ -9,23 +9,32 @@
   voor de dropdown stylen: https://www.w3schools.com/howto/howto_custom_select.asp
 */
 
-//window.onload = afterLoad;
+ window.onload = afterLoad;
 
-//function afterLoad() {
+ function afterLoad() {
   /*  This executes the whole script,
       but it is called only when the window is loaded.
       Args: none.
   */
 
-function checkReady() {
-  /*  This executes the whole script,
-      but it is called only when the window is loaded.
-      Args: none.
-  */
-  var svg = d3.select("#svgFigureHuman");
-  if (svg == null) {
-    setTimeout("checkReady()", 300);
-  } else {
+// function checkReady() {
+//   /*  This executes the whole script,
+//       but it is called only when the window is loaded.
+//       Args: none.
+//   */
+//   var svg = d3.select("#objectFigureHuman");
+//   if (svg._groups[0][0] == null) {
+//     document.body.append();
+//     //console.log(svg._groups[0]);
+//     setTimeout("checkReady()", 300);
+//   }
+//   else {
+
+  d3.xml("images/figureHuman.svg").mimeType("image/svg+xml").get(function(error, xml) {
+    if (error) throw error;
+    document.getElementById("placeForFigureHuman").appendChild(xml.documentElement);
+    //document.body.appendChild(xml.documentElement);
+  });
 
   var defaultNewYearsEve = "2017-2018";
   var timeDuration = 1000;
@@ -165,6 +174,7 @@ function checkReady() {
           d3.select("#title" + this.value).html("");
         }
       });
+
   }
 
   //--------FUNCTIONS-----------------------------------------------------------
@@ -256,9 +266,6 @@ function checkReady() {
 
         // attemt to keep choice in dropdown up-to-date
         d3.select("#y" + xPosition).attr("selected", "selected");
-
-        var sel = d3.select("#y" + xPosition);
-        console.log(sel);
 
         return;
       });
@@ -572,7 +579,7 @@ function checkReady() {
       .text(function (d) { return d.jaarwisseling; });
 
     // attempt to have most recent shown by default
-    console.log("#y" + defaultNewYearsEve);
+    console.log(d3.select(".select").select("#y" + defaultNewYearsEve));
     d3.select("#y" + defaultNewYearsEve).attr("selected", "selected");
 
     function onchange() {
@@ -668,8 +675,8 @@ function checkReady() {
   function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
     /*   Updates a piechart.
          Args:
-          data    An appropriate dataset.
-          svgID   The id of the svg for the piechart.
+          data          An appropriate dataset.
+          svgID         The id of the svg for the piechart.
           newYearsEve   The chosen new years eve.
           itemName      The name of an item in the dataset.
           colors        The colors for the piechart.
@@ -689,13 +696,13 @@ function checkReady() {
 
     var arc = g.selectAll(".arc")
       .data(pie(data[newYearsEve]));
+      var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
 
-    var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
-
-    arc.select("path").transition()
-      .attr("d", path)
-      .attr("fill", function(d) { return colors(d.data[itemName]); })
-      .duration(timeDuration);
+      arc.select("path").transition()
+        .attr("d", path)
+        .attr("fill", function(d) { return colors(d.data[itemName]); })
+        .duration(timeDuration)
+        .attrTween("d", arcTween);
 
     arc.select("text").transition()
       .attr("transform", function(d) {
@@ -703,7 +710,24 @@ function checkReady() {
       })
       .text(function(d) { return d.data[itemName]; })
       .duration(timeDuration);
+
+    function arcTween(a) {
+      /*  Takes care of the path elements during the transition.
+          Normal transition/tween functions to animate radial charts don't work.
+          See https://stackoverflow.com/questions/21285385/d3-pie-chart-arc-is-invisible-in-transition-to-180
+          for a good explanation. This function solves that problem and comes
+          from https://bl.ocks.org/mbostock/1346410 (which turned out a usefull
+          example after all.)
+           Args:
+            a       <?>
+      */
+      var i = d3.interpolate(this._current, a);
+      this._current = i(0);
+      return function(t) { return path(i(t)); };
+    }
   }
+
+
 
 
 
@@ -772,5 +796,5 @@ function checkReady() {
 
 
 
-  }
+  //}
 }

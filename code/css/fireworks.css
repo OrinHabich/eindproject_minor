@@ -41,6 +41,11 @@ div.tooltip {
   font: 6px sans-serif;
 }
 
+#svgFigureHuman {
+  width: 400px;
+  height: 600px;
+}
+
 
 
 .tooltip {

@@ -80,26 +80,26 @@ function checkReady() {
       d.total = t;
       return d;
     })
-    .defer(d3.csv, "/data/complaints.csv", function(d, i, columns) {
+    .defer(d3.csv, "project/data/complaints.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.csv, "/data/damage.csv", function(d, i, columns) {
+    .defer(d3.csv, "project/data/damage.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i) {
         t += d[columns[i]] = +d[columns[i]];
       }
       d.total = t;
       return d;
     })
-    .defer(d3.json, "/data/firstAidperAge.json")
-    .defer(d3.json, "/data/firstAidBystander.json")
-    .defer(d3.json, "/data/firstAidperTypeFireworks.json")
-    .defer(d3.json, "/data/firstAidperStatusFireworks.json")
-    .defer(d3.json, "/data/firstAidperInjury.json")
-    .defer(d3.json, "/data/pm10.json")
+    .defer(d3.json, "project/data/firstAidperAge.json")
+    .defer(d3.json, "project/data/firstAidBystander.json")
+    .defer(d3.json, "project/data/firstAidperTypeFireworks.json")
+    .defer(d3.json, "project/data/firstAidperStatusFireworks.json")
+    .defer(d3.json, "project/data/firstAidperInjury.json")
+    .defer(d3.json, "project/data/pm10.json")
     //.defer(d3.json, "data/infographic.json")
 
     .await(main);

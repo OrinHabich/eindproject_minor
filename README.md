@@ -3,6 +3,8 @@
 
 https://OrinHabich.github.io/project
 
+<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
+
 ### 1. Probleemstelling
 Over het algemeen zijn mensen zich onvoldoende bewust van de hoeveelheid schade door vuurwerk. 
 De discussie rondom vuurwerk slingert meestal tussen "het is traditie" en "het veroorzaakt veel schade."

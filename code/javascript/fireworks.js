@@ -20,7 +20,6 @@
   d3.xml("images/figureHuman.svg").mimeType("image/svg+xml").get(function(error, xml) {
     if (error) throw error;
     document.getElementById("placeForFigureHuman").appendChild(xml.documentElement);
-    //document.body.appendChild(xml.documentElement);
   });
 
   var defaultNewYearsEve = "2017-2018";
@@ -223,26 +222,29 @@
       .attr("width", x.bandwidth())
       .attr("opacity", 0.4)
       .on("mousemove", function(d) {
-        generalTooltip.style("opacity", 1);
-        generalTooltip.html(Math.round((d[1] - d[0]) * 10) / 10 + unit)
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY - 28) + "px")
-        return;
+        if (d[1] - d[0] != 0) {
+          generalTooltip.style("opacity", 1);
+          generalTooltip.html(d[1] - d[0] + unit)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px")
+        };
+        d3.select(this).style("stroke-width", 2).style("stroke", "black");
       })
-      .on("mouseout", function(d) { generalTooltip.style("opacity", 0)
-        return;
+      .on("mouseout", function(d) {
+        generalTooltip.style("opacity", 0);
+        d3.select(this).style("stroke-width", 0);
       })
       .on("click", function(d) {
 
         // set all rectangles semi-transparant except those in the legends
-        d3.selectAll("rect").attr("opacity", 0.4);
-        d3.selectAll(".rectLegend").attr("opacity", 1);
+        d3.selectAll("rect").style("opacity", 0.4);
+        d3.selectAll(".rectLegend").style("opacity", 1);
 
         // obtain x and y position
         var xPosition = d.data.jaarwisseling;
         var yPosition = d3.select(this.parentNode).attr("fill");
 
-        d3.selectAll(".newYearsEve" + xPosition).attr("opacity", 1);
+      d3.selectAll(".newYearsEve" + xPosition).style("opacity", 1);
 
         // update the piecharts, linechart, titles and tooltip on human figure
         updatePiecharts(perAge, perBystander, perTypeFireworks,
@@ -313,23 +315,6 @@
         .text(function(d) { return d; });
     }
   }
-
-  // function makePiecharts(dataPiecharts) {
-  //   /*   Makes the piecharts.
-  //        Args:
-  //          newYearsEve      The chosen new years eve.
-  //          dataPiecharts    The datasets for the piecharts.
-  //          firstTime        Boolean, to indicate if it is the first time this
-  //                           function is called.
-  //   */
-  //   var svgIDs = ["PerAge", "PerBystander", "PerTypeFireworks",
-  //     "PerStatusFireworks"];
-  //   var itemNames = ["leeftijd", "wie", "type", "status"];
-  //
-  //   for (var i = 0; i < svgIDs.length; i++) {
-  //
-  //   };
-  // }
 
   function updatePiecharts(perAge, perBystander, perTypeFireworks,
     perStatusFireworks, newYearsEve) {

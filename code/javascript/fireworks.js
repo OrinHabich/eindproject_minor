@@ -38,6 +38,10 @@
     "#C0C0C0"];
   var colorsDamage = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
 
+
+  var colorsAge = d3.scaleOrdinal(d3.schemeCategory10);
+  var colorsPie2Slices = d3.scaleOrdinal(["#A9A9A9", "#BDB76B"]);
+
   //--------VARIABELS FOR THE LINECHART-----------------------------------------
   var svgLinechart = d3.select("#svgLinechart"),
     margin = {top: 20, right: 0, bottom: 50, left: 60},
@@ -140,9 +144,12 @@
 
       // add functionality to checkboxes
       checkboxes();
+
+
   }
 
   //--------FUNCTIONS-----------------------------------------------------------
+
 
   function makeBarchart(svgID, data, perInjury, perAge, perBystander,
     perTypeFireworks, perStatusFireworks, dataPM10, unit, nameY, colors, legend) {
@@ -295,23 +302,6 @@
     }
   }
 
-  // function updatePiecharts(perAge, perBystander, perTypeFireworks,
-  //   perStatusFireworks, newYearsEve) {
-  //   /*   Makes the piecharts.
-  //        Args:
-  //          newYearsEve      The chosen new years eve.
-  //          dataPiecharts    The datasets for the piecharts.
-  //          firstTime        Boolean, to indicate if it is the first time this
-  //                           function is called.
-  //   */
-  //
-  //   updatePiechart(perAge, "PerAge", newYearsEve, "leeftijd", colorsAge);
-  //   updatePiechart(perBystander, "PerBystander",newYearsEve , "wie", colorsPie2Slices);
-  //   updatePiechart(perTypeFireworks, "PerTypeFireworks", newYearsEve, "type", colorsPie2Slices);
-  //   updatePiechart(perStatusFireworks, "PerStatusFireworks", newYearsEve,
-  //     "status", colorsPie2Slices);
-  // }
-
   function makeLinechart(data) {
     /*   Makes a linechart about PM10.
          Based on http://bl.ocks.org/d3noob/7030f35b72de721622b8
@@ -405,6 +395,60 @@
     }
 }
 
+function updateLinechart(data) {
+  /*   Updates the linechart.
+       Args:
+        data    An appropriate dataset.
+  */
+
+  // scale domain and range of data
+  x.domain(d3.extent(data, function(d) { return d.tijdstip; }));
+  y.domain([0, d3.max(data, function(d) { return d.waarde; })]);
+
+  // select the section we want to apply our changes to
+  var gLinechart = d3.select("#svgLinechart").transition();
+
+  // change the line
+  gLinechart.select(".line")
+    .duration(timeDuration)
+    .attr("d", valueline(data));
+
+  // change the x axis
+  gLinechart.select(".x.axis")
+    .duration(0)
+    .call(xAxis);
+
+  // change the y axis
+  gLinechart.select(".y.axis")
+    .duration(timeDuration)
+   .call(yAxis);
+
+  // add tooltip
+  var tooltipLinechart = d3.select(".tooltipLinechart");
+
+  d3.select(".overlay")
+    .on("mouseover", function() { tooltipLinechart.style("display", null); })
+    .on("mouseout", function() { tooltipLinechart.style("display", "none"); })
+    .on("mousemove", mousemove);
+
+  function mousemove() {
+    /*   Takes care of the tooltip on the linechart when the mouse moves.
+         Args: none
+    */
+
+    var x0 = x.invert(d3.mouse(this)[0]),
+      i = bisectDate(data, x0, 1),
+      d0 = data[i - 1],
+      d1 = data[i],
+      d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
+      tooltipLinechart.attr("transform", "translate(" + x(d.tijdstip) + "," +
+        y(d.waarde) + ")");
+      tooltipLinechart.select("text").text(function() { return d.waarde; });
+      tooltipLinechart.select(".x-hover-line").attr("y2", heightLinechart - y(d.waarde));
+      tooltipLinechart.select(".y-hover-line").attr("x2", widthLinechart + widthLinechart);
+  }
+}
+
   function tooltipFigureHuman(data, newYearsEve) {
     /*   Makes a tooltip on a specific bodypart of the human figure.
          Args:
@@ -435,7 +479,8 @@
 
   function dropdown(perInjury, perAge, perBystander,
     perTypeFireworks, perStatusFireworks, dataPM10) {
-    /*   Updates site after selection in dropdown menu changes.
+    /*   Takes care of the dropdown menu. Adds all options and updates the
+         site after selection in dropdown menu changes.
          Note: The actual funcionality is in onchange().
          Args:
            firstAid               Dataset to extract options from.
@@ -475,62 +520,8 @@
       tooltipFigureHuman(perInjury, selectValue);
 
       // highlight in all bargraphs the bar corresponding to the selection
-      d3.selectAll("rect").attr("opacity", 0.4);
-      d3.selectAll(".newYearsEve" + selectValue).attr("opacity", 1);
+      d3.selectAll("rect").style("opacity", 0.4);
+      d3.selectAll(".newYearsEve" + selectValue).style("opacity", 1);
     };
-  }
-
-  function updateLinechart(data) {
-    /*   Updates the linechart.
-         Args:
-          data    An appropriate dataset.
-    */
-
-    // scale domain and range of data
-    x.domain(d3.extent(data, function(d) { return d.tijdstip; }));
-    y.domain([0, d3.max(data, function(d) { return d.waarde; })]);
-
-    // select the section we want to apply our changes to
-    var gLinechart = d3.select("#svgLinechart").transition();
-
-    // change the line
-    gLinechart.select(".line")
-      .duration(timeDuration)
-      .attr("d", valueline(data));
-
-    // change the x axis
-    gLinechart.select(".x.axis")
-      .duration(0)
-      .call(xAxis);
-
-    // change the y axis
-    gLinechart.select(".y.axis")
-      .duration(timeDuration)
-     .call(yAxis);
-
-    // add tooltip
-    var tooltipLinechart = d3.select(".tooltipLinechart");
-
-    d3.select(".overlay")
-      .on("mouseover", function() { tooltipLinechart.style("display", null); })
-      .on("mouseout", function() { tooltipLinechart.style("display", "none"); })
-      .on("mousemove", mousemove);
-
-    function mousemove() {
-      /*   Takes care of the tooltip on the linechart when the mouse moves.
-           Args: none
-      */
-
-      var x0 = x.invert(d3.mouse(this)[0]),
-        i = bisectDate(data, x0, 1),
-        d0 = data[i - 1],
-        d1 = data[i],
-        d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
-        tooltipLinechart.attr("transform", "translate(" + x(d.tijdstip) + "," +
-          y(d.waarde) + ")");
-        tooltipLinechart.select("text").text(function() { return d.waarde; });
-        tooltipLinechart.select(".x-hover-line").attr("y2", heightLinechart - y(d.waarde));
-        tooltipLinechart.select(".y-hover-line").attr("x2", widthLinechart + widthLinechart);
-    }
   }
 }

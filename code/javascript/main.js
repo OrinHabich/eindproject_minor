@@ -33,14 +33,14 @@
     .style("opacity", 0);
 
   //--------COLOR ARRAYS FOR THE BARCHARTS--------------------------------------
-  var colorsFirstAid  = ["#A9A9A9", "#BDB76B"];
-  var colorsComplaints = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32",
-    "#C0C0C0"];
-  var colorsDamage = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
+  var colorsFirstAid  = ["#fc8d59", "#d73027"];
+  var colorsComplaints = ["#fc8d59", "#4575b4",
+    "#91bfdb", "#ffffbf", "#fee090"];
+  var colorsDamage = ["#fc8d59"];
 
 
-  var colorsAge = d3.scaleOrdinal(d3.schemeCategory10);
-  var colorsPie2Slices = d3.scaleOrdinal(["#A9A9A9", "#BDB76B"]);
+  //var colorsAge = d3.scaleOrdinal(d3.schemeCategory10);
+  var colorsPie2Slices = d3.scaleOrdinal(["#91bfdb", "#4575b4", "#d73027", "#fc8d59", "#fee090", "#ffffbf"]);
 
   //--------VARIABELS FOR THE LINECHART-----------------------------------------
   var svgLinechart = d3.select("#svgLinechart"),
@@ -460,7 +460,7 @@ function updateLinechart(data) {
     d3.selectAll(".figureHuman")
       .datum(data[newYearsEve])
       .on("mousemove",  function(d) {
-        d3.select(this.parentNode).style("fill", "red");
+        d3.select(this.parentNode).style("fill", "#d73027");
         generalTooltip.style("opacity", 1);
         generalTooltip.html(makeHTMLstring(d, this.parentNode.id))
           .style("left", (d3.event.pageX + 40) + "px")

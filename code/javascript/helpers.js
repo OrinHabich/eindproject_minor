@@ -34,7 +34,7 @@ function makeTitles(newYearsEve) {
     .html("Onderverdeling slachtoffers "+ newYearsEve);
 
   d3.select("#titleInjuriesSection")
-    .html("Lichamelijk letsel,<br>jaarwisseling "+ newYearsEve);
+    .html("Lichamelijk letsel "+ newYearsEve);
 
   d3.select("#titleLinechart")
     .html("Fijnstof (PM10) rond de jaarwisseling "+ newYearsEve);

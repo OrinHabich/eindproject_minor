@@ -2,8 +2,10 @@ var newYearsEves = ["2014-2015", "2015-2016", "2016-2017", "2017-2018"];
 var defaultNewYearsEve = newYearsEves[newYearsEves.length - 1];
 var timeDuration = 1000;
 
-var colorsAge = d3.scaleOrdinal(d3.schemeCategory10);
-var colorsPie2Slices = d3.scaleOrdinal(["#A9A9A9", "#BDB76B"]);
+//var colorsAge = d3.scaleOrdinal(d3.schemeCategory10);
+//var colorsPie2Slices = d3.scaleOrdinal(["#A9A9A9", "#BDB76B"]);
+var colorsPie2Slices = d3.scaleOrdinal(["#91bfdb", "#4575b4"]);
+var colorsAge = d3.scaleOrdinal(["#91bfdb", "#4575b4", "#d73027", "#fc8d59", "#fee090", "#ffffbf"]);
 
 function makePiecharts(perAge, perBystander, perTypeFireworks, perStatusFireworks) {
   makePiechart("PerAge", perAge, "leeftijd", colorsAge);
@@ -56,7 +58,7 @@ function makePiechart(svgID, data, itemName, colors) {
     .enter().append("g")
     .attr("class", "arc");
 
-  var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
+  var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 50);
 
   // create separate tooltip per piechart to have mutual independent opacities
   var tooltip = d3.select("body")
@@ -120,7 +122,7 @@ function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
   var arc = g.selectAll(".arc")
     .data(pie(data[newYearsEve]));
 
-  var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
+  var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 50);
 
   arc.select("path").transition()
     .attr("d", path)

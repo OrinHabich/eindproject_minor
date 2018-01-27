@@ -11,17 +11,30 @@
   position: relative;
 } */
 
+
+
 text {
   font: 16px sans-serif;
 }
 
 body {
   font: 16px sans-serif;
+  background: AliceBlue;
+}
+
+#mainTitle {
+  background: #d73027;
+  color: white;
+}
+
+.btn btn-info {
+  background: black;
+  color: white;
 }
 
 
 .subheader {
-    color: blue;
+  color: #d73027;
 }
 
 div.tooltip {
@@ -38,10 +51,7 @@ div.tooltip {
     pointer-events: none;
 }
 
-.arc {
-  font: 1px sans-serif;
-  color: blue;
-}
+
 
 #svgFigureHuman {
   width: 400px;
@@ -134,8 +144,8 @@ input[type=checkbox] {
 
 .line {
   fill: none;
-  stroke: Blue;
-  stroke-width: 1px;
+  stroke: #4575b4;
+  stroke-width: 2px;
 }
 
 .overlay {
@@ -176,4 +186,9 @@ LABEL.indented-checkbox-text
   position: relative;
   margin-top: 0em;  /* make this margin match whatever your line-height is */
   line-height: 2em;  /* can be set here, or elsewehere */
+}
+
+.arc {
+  font: 1px sans-serif;
+  color: blue;
 }

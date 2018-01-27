@@ -178,4 +178,17 @@ Uiteindelijk gebruik ik nu d3.xml. Dit werkte eerst juist niet, geen idee waarom
 
 Het is nu ook gelukt om de keus in het dropdown menu up-to-date te houden :)
 
+# Dag 15
+Ik was bezig geweest de barcharts en piecharts een highlight on hoover te geven, maar dit leverde problemen op met de highlight die ik al had. Een bar highlight namelijk ook al als die desbetreffende jaarwisseling gekozen is. Bij de presentatie kreeg ik de tip om de omlijning te veranderen bij mouse-over, ipv de opacity. Dat was een goed idee.
+De tekst in de toolltip bij het poppetje heb ik ook uitgebreidt naar aanleiding van de presentatie.
+
+Ik heb een poging gedaan de code te verdelen over meerdere scripts. Dit levert veel problemen op. Uiteindelijk heb ik de code voor de piecharts en een aantal helperfuncties in aparte files weten te zetten. Dit maakt main.js file ietsje overzichtelijker.
+
+Ik heb de verdeling over de webpagina iets verbeterd. 
+
+Ik heb kleuren gekozen voor de website. Deze komen van http://colorbrewer2.org/#type=diverging&scheme=RdYlBu&n=7
+en zijn geschikt voor kleurenblinden.
+
+De opmaak van de website is nu grotendeels af.
+Voornaamste todo's zijn nog de tooltip bij de lijngrafiek stylen en de text in de piecharts. 
 

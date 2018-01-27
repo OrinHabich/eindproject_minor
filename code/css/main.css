@@ -25,6 +25,7 @@ body {
 #barTitle {
   background: #d73027;
   color: white;
+  text-align: center;
 }
 
 .select {
@@ -65,7 +66,7 @@ div.tooltip {
 }
 
 input[type=checkbox] {
-  transform: scale(1.5);
+  transform: scale(2);
 }
 
 

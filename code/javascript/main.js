@@ -125,7 +125,7 @@
         dataPM10, " klachten", "Aantal", colorsComplaints, true);
       makeBarchart("Damage", dataDamage, perInjury, perAge, perBystander, perTypeFireworks,
         perStatusFireworks, dataPM10,
-        " miljoen euro", "Euro (in miljoenen)", colorsDamage, false);
+        " miljoen euro", "Bedrag (in miljoenen euro)", colorsDamage, false);
 
       // make default pie charts, linechart and titles
       makePiecharts(perAge, perBystander, perTypeFireworks, perStatusFireworks);

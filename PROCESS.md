@@ -36,7 +36,7 @@ Voor het poppetje ga ik met http://www.drawsvg.org/drawsvg.html aan de slag.
 
 # dag 8
 Er is nu een poppetje:
-![](doc/poppetje.png)
+![](doc/poppetje.png =250x250)
 
 De lichaamsdelen waarover ik data heb over letsel lichten rood op bij hover over.
 Het poppetje is een svg bestaande uit een tiental componenten die allemaal in de html staan nu, omdat ze allemaal apart toegankelijk moeten zijn. Erg mooi is dit niet, de svg beslaat het volledige screenshot hieronder.

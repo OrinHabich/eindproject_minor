@@ -4,7 +4,7 @@
 # dag 6
 Een lijngrafiek is vervallen wegens gebrek aan toegevoegde waarde aan het verhaal.
 Voor de andere lijngrafiek heb ik andere data gezocht. Ik wil namelijk alle grafieken over dezelfde jaarwisselingen laten gaan, en bovendien de meest recente jaarwisselingen laten zien.
-![](doc/schetsWebsite3.png)
+![](doc/schetsWebsite3.png = 250x250)
 Van de meest recente jaarwisseling heb ik alleen een interactieve grafiek online waaruit ik waarschijnlijk de benodigde data kan scrapen.
 De data voor de lijngrafiek komt niet allemaal in één json file, maar in meerdere csv files.
 Dit is enerzijds omdat dit beter matched met de gevonden voorbeelden over linecharts.

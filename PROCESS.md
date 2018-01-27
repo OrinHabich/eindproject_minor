@@ -15,7 +15,7 @@ Dit geeft toch wat problemen met de updateLinechart-functie en de scope van de i
 Hiervoor heb ik nu als tijdelijke oplossing om alle datasets mee te geven aan updateLinechart() maar dat kan waarschijnlijk beter.
 De flow van het programma begint erg onlogisch te worden.
 Het is nu zoals in onderstaand schema.
-![](doc/functies2.png)
+![](doc/functies2.png =250x250)
 
 # dag 7
 De updateLinechart functie begint met een aantal if-statements om de data van de gekozen jaarwisseling te selecteren. Liever zou ik deze keuze meegeven aan de functie, ipv zoals nu alle data en de gekozen jaar wisseling meegeven en dan in de functie pas de juiste data selecteren.

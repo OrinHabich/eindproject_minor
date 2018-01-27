@@ -4,7 +4,7 @@
 # dag 6
 Een lijngrafiek is vervallen wegens gebrek aan toegevoegde waarde aan het verhaal.
 Voor de andere lijngrafiek heb ik andere data gezocht. Ik wil namelijk alle grafieken over dezelfde jaarwisselingen laten gaan, en bovendien de meest recente jaarwisselingen laten zien.
-![](doc/schetsWebsite3.png)
+![](doc/schetsWebsite3.png width="200" height="400" )
 Van de meest recente jaarwisseling heb ik alleen een interactieve grafiek online waaruit ik waarschijnlijk de benodigde data kan scrapen.
 De data voor de lijngrafiek komt niet allemaal in één json file, maar in meerdere csv files.
 Dit is enerzijds omdat dit beter matched met de gevonden voorbeelden over linecharts.
@@ -15,7 +15,7 @@ Dit geeft toch wat problemen met de updateLinechart-functie en de scope van de i
 Hiervoor heb ik nu als tijdelijke oplossing om alle datasets mee te geven aan updateLinechart() maar dat kan waarschijnlijk beter.
 De flow van het programma begint erg onlogisch te worden.
 Het is nu zoals in onderstaand schema.
-![](doc/functies2.png =250x250)
+![](doc/functies2.png)
 
 # dag 7
 De updateLinechart functie begint met een aantal if-statements om de data van de gekozen jaarwisseling te selecteren. Liever zou ik deze keuze meegeven aan de functie, ipv zoals nu alle data en de gekozen jaar wisseling meegeven en dan in de functie pas de juiste data selecteren.
@@ -36,7 +36,7 @@ Voor het poppetje ga ik met http://www.drawsvg.org/drawsvg.html aan de slag.
 
 # dag 8
 Er is nu een poppetje:
-![](doc/poppetje.png =250x250)
+![](doc/poppetje.png)
 
 De lichaamsdelen waarover ik data heb over letsel lichten rood op bij hover over.
 Het poppetje is een svg bestaande uit een tiental componenten die allemaal in de html staan nu, omdat ze allemaal apart toegankelijk moeten zijn. Erg mooi is dit niet, de svg beslaat het volledige screenshot hieronder.

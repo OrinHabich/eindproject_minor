@@ -22,10 +22,16 @@ body {
   background: AliceBlue;
 }
 
-#mainTitle {
+#barTitle {
   background: #d73027;
   color: white;
 }
+
+.select {
+  color: black;
+}
+
+
 
 .btn btn-info {
   background: black;
@@ -191,4 +197,8 @@ LABEL.indented-checkbox-text
 .arc {
   font: 1px sans-serif;
   color: blue;
+}
+
+#placeholderTitle {
+  opacity: 0;
 }

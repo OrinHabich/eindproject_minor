@@ -22,7 +22,8 @@
     document.getElementById("placeForFigureHuman").appendChild(xml.documentElement);
   });
 
-  var defaultNewYearsEve = "2017-2018";
+  var newYearsEves = ["2014-2015", "2015-2016", "2016-2017", "2017-2018"];
+  var defaultNewYearsEve = newYearsEves[newYearsEves.length - 1];
   var timeDuration = 1000;
 
   var generalTooltip = d3.select("body")
@@ -37,13 +38,9 @@
     "#C0C0C0"];
   var colorsDamage = ["#B8860B", "#EE82EE", "	#F5DEB3", "#9ACD32", "#C0C0C0"];
 
-  //--------VARIABELS FOR THE PIECHARTS-----------------------------------------
-  var colorsAge = d3.scaleOrdinal(d3.schemeCategory10);
-  var colorsPie2Slices = d3.scaleOrdinal(["#A9A9A9", "#BDB76B"]);
-
   //--------VARIABELS FOR THE LINECHART-----------------------------------------
   var svgLinechart = d3.select("#svgLinechart"),
-    margin = {top: 20, right: 0, bottom: 50, left: 50},
+    margin = {top: 20, right: 0, bottom: 50, left: 60},
     widthLinechart = +svgLinechart .attr("width") - margin.left - margin.right,
     heightLinechart = +svgLinechart .attr("height") - margin.top - margin.bottom,
     gLinechart = svgLinechart .append("g").attr("id", "linechart")
@@ -95,12 +92,10 @@
     .defer(d3.json, "data/firstAidperStatusFireworks.json")
     .defer(d3.json, "data/firstAidperInjury.json")
     .defer(d3.json, "data/pm10.json")
-    //.defer(d3.json, "data/infographic.json")
-
     .await(main);
 
     function main(error, dataFirstAid, dataComplaints, dataDamage, perAge,
-      perBystander, perTypeFireworks, perStatusFireworks, perInjury, dataPM10) {
+      perBystander, perTypeFireworks, perStatusFireworks, perInjury, dataPM10, mouemove) {
       /*   Creates charts based on the given data.
            Args:
            error        Boolean, true if error, false otherwise.
@@ -109,9 +104,13 @@
 
       if (error) throw error;
 
-      // put together datasets for first aid section
-      // var dataPiecharts = [perAge, perBystander, perTypeFireworks,
-      //   perStatusFireworks];
+      // pre-process data linechart
+      for (var i = 0; i < newYearsEves.length; i++) {
+        for (var j = 0; j < dataPM10[newYearsEves[i]].length; j++) {
+          dataPM10[newYearsEves[i]][j].tijdstip =
+          parseTime(dataPM10[newYearsEves[i]][j].tijdstip);
+        }
+      }
 
       // make the barcharts
       makeBarchart("FirstAid", dataFirstAid, perInjury, perAge, perBystander, perTypeFireworks,
@@ -125,42 +124,22 @@
         " miljoen euro", "Euro (in miljoenen)", colorsDamage, false);
 
       // make default pie charts, linechart and titles
-      makePiechart("PerAge", perAge, "leeftijd", colorsAge);
-      makePiechart("PerBystander", perBystander, "wie", colorsPie2Slices);
-      makePiechart("PerTypeFireworks", perTypeFireworks, "type", colorsPie2Slices);
-      makePiechart("PerStatusFireworks", perStatusFireworks, "status", colorsPie2Slices);
-      makeLinechart(dataPM10);
+      makePiecharts(perAge, perBystander, perTypeFireworks, perStatusFireworks);
+      makeLinechart(dataPM10[defaultNewYearsEve]);
       makeTitles(defaultNewYearsEve);
 
       // add tooltip to the figure of human
       tooltipFigureHuman(perInjury, defaultNewYearsEve);
 
       // make the dropdown menu (including functionality)
-      listenToDropdown(dataFirstAid, perInjury, perAge, perBystander,
-        perTypeFireworks, perStatusFireworks, dataPM10);
+      dropdown(perInjury, perAge, perBystander, perTypeFireworks,
+        perStatusFireworks, dataPM10);
 
+      // set default new years eve on dropdown
       d3.selectAll("#y" + defaultNewYearsEve).attr("selected", true);
 
-      // let checkboxes toggle opacity of piecharts
-      d3.selectAll(".checkbox").on("change", function(d) {
-        if (this.value == "Age") {
-          var htmlString = "Per leeftijdsklasse";
-        } else if (this.value == "TypeFireworks") {
-          var htmlString = "Naar soort vuurwerk"
-        } else if (this.value == "Bystander") {
-          var htmlString = "Zelf afgestoken of omstander"
-        } else if (this.value == "StatusFireworks") {
-          var htmlString = "Legaal of illegaal vuurwerk"
-        }
-        if (d3.select("#svgPer" + this.value).style("opacity") == 0) {
-          d3.select("#svgPer" + this.value).style("opacity", 1);
-          d3.select("#title" + this.value).html(htmlString);
-        } else {
-          d3.select("#svgPer" + this.value).style("opacity", 0);
-          d3.select("#title" + this.value).html("");
-        }
-      });
-
+      // add functionality to checkboxes
+      checkboxes();
   }
 
   //--------FUNCTIONS-----------------------------------------------------------
@@ -244,7 +223,7 @@
         var xPosition = d.data.jaarwisseling;
         var yPosition = d3.select(this.parentNode).attr("fill");
 
-      d3.selectAll(".newYearsEve" + xPosition).style("opacity", 1);
+        d3.selectAll(".newYearsEve" + xPosition).style("opacity", 1);
 
         // update the piecharts, linechart, titles and tooltip on human figure
         updatePiecharts(perAge, perBystander, perTypeFireworks,
@@ -316,40 +295,29 @@
     }
   }
 
-  function updatePiecharts(perAge, perBystander, perTypeFireworks,
-    perStatusFireworks, newYearsEve) {
-    /*   Makes the piecharts.
-         Args:
-           newYearsEve      The chosen new years eve.
-           dataPiecharts    The datasets for the piecharts.
-           firstTime        Boolean, to indicate if it is the first time this
-                            function is called.
-    */
+  // function updatePiecharts(perAge, perBystander, perTypeFireworks,
+  //   perStatusFireworks, newYearsEve) {
+  //   /*   Makes the piecharts.
+  //        Args:
+  //          newYearsEve      The chosen new years eve.
+  //          dataPiecharts    The datasets for the piecharts.
+  //          firstTime        Boolean, to indicate if it is the first time this
+  //                           function is called.
+  //   */
+  //
+  //   updatePiechart(perAge, "PerAge", newYearsEve, "leeftijd", colorsAge);
+  //   updatePiechart(perBystander, "PerBystander",newYearsEve , "wie", colorsPie2Slices);
+  //   updatePiechart(perTypeFireworks, "PerTypeFireworks", newYearsEve, "type", colorsPie2Slices);
+  //   updatePiechart(perStatusFireworks, "PerStatusFireworks", newYearsEve,
+  //     "status", colorsPie2Slices);
+  // }
 
-    updatePiechart(perAge, "PerAge", newYearsEve, "leeftijd", colorsAge);
-    updatePiechart(perBystander, "PerBystander",newYearsEve , "wie", colorsPie2Slices);
-    updatePiechart(perTypeFireworks, "PerTypeFireworks", newYearsEve, "type", colorsPie2Slices);
-    updatePiechart(perStatusFireworks, "PerStatusFireworks", newYearsEve,
-      "status", colorsPie2Slices);
-  }
-
-  function makeLinechart(dataPM10) {
+  function makeLinechart(data) {
     /*   Makes a linechart about PM10.
          Based on http://bl.ocks.org/d3noob/7030f35b72de721622b8
          Args:
            dataPM10     An appropriate dataset.
     */
-
-    var newYearsEves = ["2014-2015", "2015-2016", "2016-2017", "2017-2018"];
-
-    // preproces data
-    for (var i = 0; i < newYearsEves.length; i++) {
-      for (var j = 0; j < dataPM10[newYearsEves[i]].length; j++) {
-        dataPM10[newYearsEves[i]][j].tijdstip =
-        parseTime(dataPM10[newYearsEves[i]][j].tijdstip);
-      }
-    }
-    data = dataPM10[defaultNewYearsEve];
 
     // scale domain and range of data
     x.domain(d3.extent(data, function(d) { return d.tijdstip; }));
@@ -419,41 +387,23 @@
       .on("mouseout", function() { tooltipLinechart.style("display", "none"); })
       .on("mousemove", mousemove);
 
-      function mousemove() {
-        /*   Takes care of the tooltip on the linechart when the mouse moves.
-             Args: none, but maybe data
-        */
+    function mousemove() {
+      /*   Takes care of the tooltip on the linechart when the mouse moves.
+           Args: none
+      */
 
-        var x0 = x.invert(d3.mouse(this)[0]),
-          i = bisectDate(data, x0, 1),
-          d0 = data[i - 1],
-          d1 = data[i],
-          d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
-          tooltipLinechart.attr("transform", "translate(" + x(d.tijdstip) + ","
-            + y(d.waarde) + ")");
-          tooltipLinechart.select("text").text(function() { return d.waarde; });
-          tooltipLinechart.select(".x-hover-line")
-            .attr("y2", heightLinechart - y(d.waarde));
-          tooltipLinechart.select(".y-hover-line")
-            .attr("x2", widthLinechart + widthLinechart);
-      }
-  }
-
-  function makeTitles(newYearsEve) {
-    /*   Makes correct titles on the webpage.
-         Args:
-           newYearsEve    The chosen new years eve.
-    */
-
-    d3.select("#titlePiechartsSection")
-      .html("Onderverdeling slachtoffers "+ newYearsEve);
-
-    d3.select("#titleInjuriesSection")
-      .html("Lichamelijk letsel "+ newYearsEve);
-
-    d3.select("#titleLinechart")
-      .html("Fijnstof (PM10) rond de jaarwisseling "+ newYearsEve);
-  }
+      var x0 = x.invert(d3.mouse(this)[0]),
+        i = bisectDate(data, x0, 1),
+        d0 = data[i - 1],
+        d1 = data[i],
+        d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
+        tooltipLinechart.attr("transform", "translate(" + x(d.tijdstip) + "," +
+          y(d.waarde) + ")");
+        tooltipLinechart.select("text").text(function() { return d.waarde; });
+        tooltipLinechart.select(".x-hover-line").attr("y2", heightLinechart - y(d.waarde));
+        tooltipLinechart.select(".y-hover-line").attr("x2", widthLinechart + widthLinechart);
+    }
+}
 
   function tooltipFigureHuman(data, newYearsEve) {
     /*   Makes a tooltip on a specific bodypart of the human figure.
@@ -466,66 +416,24 @@
     d3.selectAll(".figureHuman")
       .datum(data[newYearsEve])
       .on("mousemove",  function(d) {
+        d3.select(this.parentNode).style("fill", "red");
         generalTooltip.style("opacity", 1);
         generalTooltip.html(makeHTMLstring(d, this.parentNode.id))
           .style("left", (d3.event.pageX + 40) + "px")
           .style("top", (d3.event.pageY - 25) + "px");
       })
       .on("mouseout", function(d) {
+        if (this.parentNode.id == "eye" || this.parentNode.id == "heart") {
+          d3.select(this.parentNode).style("fill", "white");
+        } else {
+          d3.select(this.parentNode).style("fill", "black");
+        }
         generalTooltip.style("opacity", 0);
       });
 
   }
 
-  function makeHTMLstring(d, bodypart) {
-    /*  Makes a HTML string for in the tooltip on the human figure.
-         Args:
-           d            Dataset of injuries.
-           bodypart     Chosen bodypart.
-    */
-    if (bodypart == "eye"){
-      return "Letsel aan ogen bij " + d.eye + " " +
-        plural(d.eye, "persoon") + ".<br>Hierbij waren<br>" +
-        d.zichtsverlies + " " + plural(d.zichtsverlies, "oog")  +
-        " met zichtsverlies,<br>" + d.blind + " " + plural(d.blind, "oog")  +
-        " werden blind en<br>" + d.verwijderd + " " +
-        plural(d.verwijderd, "oog") + " " + plural(d.verwijderd, "werd")  +
-        " verwijderd.";
-    } else if (bodypart == "heart") {
-      return d.heart + " " + plural(d.heart,"persoon") +
-        " overleden<br>" + d.whatHappened;
-    } else {
-      return d[bodypart] + " " + plural(d[bodypart],"persoon");
-    }
-  }
-
-  function plural(n, word) {
-    /*  Outputs the correct plural of a word matching the number n.
-        This ensures correct grammar on the tooltip over the human figure.
-         Args:
-           n       A number.
-           word    The word 'persoon', 'oog' or 'werd'.
-    */
-    if (n == 1) {
-      if (word == "persoon") {
-        return "persoon";
-      } else if (word == "oog") {
-        return "oog";
-      } else if (word == "werd") {
-        return "werd";
-      }
-    } else {
-      if (word == "persoon") {
-        return "personen";
-      } else if (word == "oog") {
-        return "ogen";
-      } else if (word == "werd") {
-        return "werden";
-      }
-    };
-  }
-
-  function listenToDropdown(dataFirstAid, perInjury, perAge, perBystander,
+  function dropdown(perInjury, perAge, perBystander,
     perTypeFireworks, perStatusFireworks, dataPM10) {
     /*   Updates site after selection in dropdown menu changes.
          Note: The actual funcionality is in onchange().
@@ -537,12 +445,21 @@
            dataPM10               Dataset for linechart.
     */
 
+    // make the dropdown menu, e.i. add the options
+    for (var i = 0; i < newYearsEves.length; i++){
+      d3.select(".select")
+        .append("option")
+        .attr("id", "y" + newYearsEves[i])
+        .attr("class", "option")
+        .attr("value", newYearsEves[i])
+        .text(newYearsEves[i]);
+    }
+
+    // add listener, listen for changes in selection
     d3.select(".select").on("change", onchange);
 
     function onchange() {
       /*   Updates site after selection in dropdown menu changes.
-           This function is defined and called from onchangeDropdown().
-           This function makes the actual changes.
            Args:  None.
       */
 
@@ -561,125 +478,6 @@
       d3.selectAll("rect").attr("opacity", 0.4);
       d3.selectAll(".newYearsEve" + selectValue).attr("opacity", 1);
     };
-  }
-
-  function makePiechart(svgID, data, itemName, colors) {
-    /*   Makes the piecharts.
-         Args:
-           svgID        The id of the svg for the piechart.
-           data         The dataset for the piechart.
-           itemName     The name of an item in the dataset.
-           colors        The colors for the piechart.
-    */
-
-    var svg = d3.select("#svg" + svgID),
-      width = +svg.attr("width"),
-      height = +svg.attr("height"),
-      radius = Math.min(width, height) / 2,
-      g = svg.append("g").attr("id", "Piechart" + svgID).attr("transform",
-        "translate(" + width / 2 + "," + height / 2 + ")");
-
-    var pie = d3.pie()
-      .sort(null)
-      .value(function(d) { return d.number; });
-
-    var path = d3.arc().outerRadius(radius).innerRadius(0);
-
-    var arc = g.selectAll(".arc")
-      .data(pie(data[defaultNewYearsEve]))
-      .enter().append("g")
-      .attr("class", "arc");
-
-    var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
-
-    // create separate tooltip per piechart to have mutual independent opacities
-    var tooltip = d3.select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .attr("id", "tooltip" + svgID)
-        .style("opacity", 0);
-
-    arc.append("path")
-      .attr("d", path)
-      .attr("fill", function(d) { return colors(d.data[itemName]); })
-      .on("mousemove", function(d) {
-        if (svg.style("opacity") == 0) {
-          tooltip.style("opacity", 0);
-        } else {
-          tooltip.style("opacity", 1);
-        }
-        tooltip.html(d.data.number + " mensen" )
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
-      })
-      .on("mouseout", function(d) {
-        tooltip.style("opacity", 0);
-      });
-
-    arc.append("text")
-      .attr("transform", function(d) {
-        return "translate(" + label.centroid(d) + ")";
-      })
-      .text(function(d) { return d.data[itemName]; });
-
-    // by default piecharts are invisible, the checkboxes toggle the visibility
-    svg.style("opacity", 0);
-
-  }
-
-  function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
-    /*   Updates a piechart.
-         Args:
-          data          An appropriate dataset.
-          svgID         The id of the svg for the piechart.
-          newYearsEve   The chosen new years eve.
-          itemName      The name of an item in the dataset.
-          colors        The colors for the piechart.
-    */
-
-    var svg = d3.select("#svg" + svgID),
-      width = +svg.attr("width"),
-      height = +svg.attr("height"),
-      radius = Math.min(width, height) / 2,
-      g = d3.select("#Piechart" + svgID);
-
-    var pie = d3.pie()
-      .sort(null)
-      .value(function(d) { return d.number; });
-
-    var path = d3.arc().outerRadius(radius).innerRadius(0);
-
-    var arc = g.selectAll(".arc")
-      .data(pie(data[newYearsEve]));
-      var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
-
-      arc.select("path").transition()
-        .attr("d", path)
-        .attr("fill", function(d) { return colors(d.data[itemName]); })
-        .duration(timeDuration)
-        .attrTween("d", arcTween);
-
-    arc.select("text").transition()
-      .attr("transform", function(d) {
-        return "translate(" + label.centroid(d) + ")";
-      })
-      .text(function(d) { return d.data[itemName]; })
-      .duration(timeDuration);
-
-    function arcTween(a) {
-      /*  Takes care of the path elements during the transition.
-          Normal transition/tween functions to animate radial charts don't work.
-          See https://stackoverflow.com/questions/21285385/d3-pie-chart-arc-is-invisible-in-transition-to-180
-          for a good explanation. This function solves that problem and comes
-          from https://bl.ocks.org/mbostock/1346410 (which turned out a usefull
-          example after all.)
-           Args:
-            a       <?>
-      */
-      var i = d3.interpolate(this._current, a);
-      this._current = i(0);
-      return function(t) { return path(i(t)); };
-    }
   }
 
   function updateLinechart(data) {
@@ -720,7 +518,7 @@
 
     function mousemove() {
       /*   Takes care of the tooltip on the linechart when the mouse moves.
-           Args: none, but maybe data
+           Args: none
       */
 
       var x0 = x.invert(d3.mouse(this)[0]),
@@ -735,6 +533,4 @@
         tooltipLinechart.select(".y-hover-line").attr("x2", widthLinechart + widthLinechart);
     }
   }
-
-
 }

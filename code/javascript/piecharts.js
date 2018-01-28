@@ -1,34 +1,51 @@
-var newYearsEves = ["2014-2015", "2015-2016", "2016-2017", "2017-2018"];
-var defaultNewYearsEve = newYearsEves[newYearsEves.length - 1];
-var timeDuration = 1000;
+/*
+  piecharts.js
+  Minor programmeren; project
+  Orin Habich 10689508
 
-//var colorsAge = d3.scaleOrdinal(d3.schemeCategory10);
-//var colorsPie2Slices = d3.scaleOrdinal(["#A9A9A9", "#BDB76B"]);
-var colorsPie2Slices = d3.scaleOrdinal(["#91bfdb", "#4575b4"]);
-var colorsAge = d3.scaleOrdinal(["#91bfdb", "#4575b4", "#d73027", "#fc8d59", "#fee090", "#ffffbf"]);
+  Takes care of the make- and update functions for the piecharts in this project.
+  Code is based on:
+  https://bl.ocks.org/santi698/f3685ca8a1a7f5be1967f39f367437c0
+*/
 
-function makePiecharts(perAge, perBystander, perTypeFireworks, perStatusFireworks) {
-  makePiechart("PerAge", perAge, "leeftijd", colorsAge);
-  makePiechart("PerBystander", perBystander, "wie", colorsPie2Slices);
-  makePiechart("PerTypeFireworks", perTypeFireworks, "type", colorsPie2Slices);
-  makePiechart("PerStatusFireworks", perStatusFireworks, "status", colorsPie2Slices);
+
+var sixColors = d3.scaleOrdinal(["#91bfdb", "#4575b4"]);
+var twoColors = d3.scaleOrdinal(["#91bfdb", "#4575b4", "#d73027", "#fc8d59",
+  "#fee090", "#ffffbf"]);
+
+function makePiecharts(perAge, perBystander, perTypeFireworks,
+  perStatusFireworks) {
+  /*  Makes all the piecharts.
+      Args:
+        perAge              Appriopiate dataset.
+        perBystander        Appriopiate dataset.
+        perTypeFireworks    Appriopiate dataset.
+        perStatusFireworks  Appriopiate dataset.
+  */
+
+  makePiechart("PerAge", perAge, "leeftijd", twoColors);
+  makePiechart("PerBystander", perBystander, "wie", sixColors);
+  makePiechart("PerTypeFireworks", perTypeFireworks, "type", sixColors);
+  makePiechart("PerStatusFireworks", perStatusFireworks, "status", sixColors);
 }
 
 function updatePiecharts(perAge, perBystander, perTypeFireworks,
   perStatusFireworks, newYearsEve) {
-  /*   Makes the piecharts.
-       Args:
-         newYearsEve      The chosen new years eve.
-         dataPiecharts    The datasets for the piecharts.
-         firstTime        Boolean, to indicate if it is the first time this
-                          function is called.
+  /*  Updates all the piecharts.
+      Args:
+        perAge              Appriopiate dataset.
+        perBystander        Appriopiate dataset.
+        perTypeFireworks    Appriopiate dataset.
+        perStatusFireworks  Appriopiate dataset.
+        newYearsEve         The chosen new years eve.
   */
 
-  updatePiechart(perAge, "PerAge", newYearsEve, "leeftijd", colorsAge);
-  updatePiechart(perBystander, "PerBystander",newYearsEve , "wie", colorsPie2Slices);
-  updatePiechart(perTypeFireworks, "PerTypeFireworks", newYearsEve, "type", colorsPie2Slices);
+  updatePiechart(perAge, "PerAge", newYearsEve, "leeftijd", twoColors);
+  updatePiechart(perBystander, "PerBystander",newYearsEve , "wie", sixColors);
+  updatePiechart(perTypeFireworks, "PerTypeFireworks", newYearsEve, "type",
+    sixColors);
   updatePiechart(perStatusFireworks, "PerStatusFireworks", newYearsEve,
-    "status", colorsPie2Slices);
+    "status", sixColors);
 }
 
 function makePiechart(svgID, data, itemName, colors) {
@@ -54,7 +71,7 @@ function makePiechart(svgID, data, itemName, colors) {
   var path = d3.arc().outerRadius(radius).innerRadius(0);
 
   var arc = g.selectAll(".arc")
-    .data(pie(data[defaultNewYearsEve]))
+    .data(pie(data[DEFAULTNEWYEARSEVE]))
     .enter().append("g")
     .attr("class", "arc");
 
@@ -128,14 +145,14 @@ function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
     .attr("d", path)
     .attr("fill", function(d) { return colors(d.data[itemName]); })
     .attrTween("d", arcTween)
-    .duration(timeDuration);
+    .duration(TIMEDURATION);
 
   arc.select("text").transition()
     .attr("transform", function(d) {
       return "translate(" + label.centroid(d) + ")";
     })
     .text(function(d) { return d.data[itemName]; })
-    .duration(timeDuration);
+    .duration(TIMEDURATION);
 
   function arcTween(a) {
     /*  Takes care of the path elements during the transition.
@@ -145,7 +162,7 @@ function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
         from https://bl.ocks.org/mbostock/1346410 (which turned out a usefull
         example after all.)
          Args:
-          a       <?>
+          a       data
     */
     var i = d3.interpolate(this._current, a);
     this._current = i(0);

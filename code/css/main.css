@@ -166,19 +166,6 @@ input[type=checkbox] {
   stroke-width: 1px;
 }
 
-.tooltipLinechart {
-  position: absolute;
-  text-align: left;
-  width: auto;
-  height: auto;
-  padding: 2px;
-  font: 16px sans-serif;
-  background: black;
-  color: #fff;
-  border: 0px;
-  border-radius: 4px;
-  pointer-events: none;
-}
 
 .hover-line {
   stroke: Black;

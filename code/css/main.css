@@ -1,17 +1,10 @@
 /*
-  fireworks.css
+  main.css
   Minor programmeren, project
   Orin Habich 10689508
+
+  All styling for the website 'Schade door vuurwerk'
 */
-
-
-/* body {
-  font-family: "Helvetica Neue", Helvetica, Arial, 20px, sans-serif;
-  margin: auto;
-  position: relative;
-} */
-
-
 
 text {
   font: 16px sans-serif;
@@ -28,17 +21,13 @@ body {
   text-align: center;
 }
 
+#placeholderTitle {
+  opacity: 0;
+}
+
 .select {
-  color: black;
+  color: #d73027;
 }
-
-
-
-.btn btn-info {
-  background: black;
-  color: white;
-}
-
 
 .subheader {
   color: #d73027;
@@ -58,24 +47,22 @@ div.tooltip {
     pointer-events: none;
 }
 
-
-
 #svgFigureHuman {
   width: 400px;
   height: 600px;
 }
-
-input[type=checkbox] {
-  transform: scale(2);
+#eye {
+  fill: White;
 }
-
+#heart {
+  fill: White;
+}
 
 .tooltip {
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black;
 }
-
 
 .tooltipInfo .content {
     visibility: hidden;
@@ -91,7 +78,6 @@ input[type=checkbox] {
     margin-left: -150px;
 }
 
-
 .tooltipInfo{
   color: #fff;
   font: 18px sans-Serif;
@@ -106,7 +92,6 @@ input[type=checkbox] {
     bottom: 500px;
     left: 30px;
 }
-
 .img-holder #textWindow2 {
     position: relative;
     bottom: 470px;
@@ -117,7 +102,6 @@ input[type=checkbox] {
     bottom: 330px;
     left: 150px;
 }
-
 .img-holder #textWindow4 {
     position: relative;
     bottom: 270px;
@@ -132,13 +116,6 @@ input[type=checkbox] {
     position: relative;
     bottom: 300px;
     left: 70px;
-}
-
-#eye {
-  fill: White;
-}
-#heart {
-  fill: White;
 }
 
 .axis path,
@@ -166,11 +143,14 @@ input[type=checkbox] {
   stroke-width: 1px;
 }
 
-
 .hover-line {
   stroke: Black;
   stroke-width: 1px;
   stroke-dasharray: 5,3;
+}
+
+input[type=checkbox] {
+  transform: scale(2);
 }
 
 LABEL.indented-checkbox-text
@@ -178,15 +158,6 @@ LABEL.indented-checkbox-text
   margin-left: 2em;
   display: block;
   position: relative;
-  margin-top: 0em;  /* make this margin match whatever your line-height is */
-  line-height: 2em;  /* can be set here, or elsewehere */
-}
-
-.arc {
-  font: 1px sans-serif;
-  color: blue;
-}
-
-#placeholderTitle {
-  opacity: 0;
+  margin-top: 0em;
+  line-height: 2em;
 }

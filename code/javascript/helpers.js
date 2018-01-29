@@ -5,10 +5,10 @@
 
   Contains the following functions for the project:
   checkboxes()
-  makeHTMLstring()
-  plural()
   makeTitles()
   tooltipFigureHuman()
+  makeHTMLstring()
+  plural()
   dropdown()
 */
 
@@ -40,56 +40,6 @@ function checkboxes() {
       d3.select("#title" + this.value).html("");
     }
   });
-}
-
-function makeHTMLstring(d, bodypart) {
-  /*  Makes a HTML string for in the tooltip on the human figure.
-       Args:
-         d            Dataset of injuries.
-         bodypart     Chosen bodypart.
-  */
-
-  if (bodypart == "eye"){
-    return "Letsel aan ogen bij " + d.eye + " " +
-      plural(d.eye, "persoon") + ".<br>Hierbij waren<br>" +
-      d.zichtsverlies + " " + plural(d.zichtsverlies, "oog") +
-      " met zichtsverlies,<br>" + d.blind + " " + plural(d.blind, "oog") +
-      " werden blind en<br>" + d.verwijderd + " " +
-      plural(d.verwijderd, "oog") + " " + plural(d.verwijderd, "werd") +
-      " verwijderd.";
-  } else if (bodypart == "heart") {
-    return d.heart + " " + plural(d.heart,"persoon") +
-      " overleden<br>" + d.whatHappened;
-  } else {
-    return "Letsel aan dit lichaamsdeel bij " + d[bodypart] + " " +
-      plural(d[bodypart],"persoon");
-  }
-}
-
-function plural(n, word) {
-  /*  Outputs the correct plural of a word matching the number n.
-      This ensures correct grammar on the tooltip over the human figure.
-       Args:
-         n       A number.
-         word    The word 'persoon', 'oog' or 'werd'.
-  */
-  if (n == 1) {
-    if (word == "persoon") {
-      return "persoon";
-    } else if (word == "oog") {
-      return "oog";
-    } else if (word == "werd") {
-      return "werd";
-    }
-  } else {
-    if (word == "persoon") {
-      return "personen";
-    } else if (word == "oog") {
-      return "ogen";
-    } else if (word == "werd") {
-      return "werden";
-    }
-  };
 }
 
 function makeTitles(newYearsEve) {
@@ -141,6 +91,56 @@ function tooltipFigureHuman(data, newYearsEve) {
       TOOLTIP.style("opacity", 0);
     });
 
+}
+
+function makeHTMLstring(d, bodypart) {
+  /*  Makes a HTML string for in the tooltip on the human figure.
+       Args:
+         d            Dataset of injuries.
+         bodypart     Chosen bodypart.
+  */
+
+  if (bodypart == "eye"){
+    return "Letsel aan ogen bij " + d.eye + " " +
+      plural(d.eye, "persoon") + ".<br>Hierbij waren<br>" +
+      d.zichtsverlies + " " + plural(d.zichtsverlies, "oog") +
+      " met zichtsverlies,<br>" + d.blind + " " + plural(d.blind, "oog") +
+      " werden blind en<br>" + d.verwijderd + " " +
+      plural(d.verwijderd, "oog") + " " + plural(d.verwijderd, "werd") +
+      " verwijderd.";
+  } else if (bodypart == "heart") {
+    return d.heart + " " + plural(d.heart,"persoon") +
+      " overleden<br>" + d.whatHappened;
+  } else {
+    return "Letsel aan dit lichaamsdeel bij " + d[bodypart] + " " +
+      plural(d[bodypart],"persoon");
+  }
+}
+
+function plural(n, word) {
+  /*  Outputs the correct plural of a word matching the number n.
+      This ensures correct grammar on the tooltip over the human figure.
+       Args:
+         n       A number.
+         word    The word 'persoon', 'oog' or 'werd'.
+  */
+  if (n == 1) {
+    if (word == "persoon") {
+      return "persoon";
+    } else if (word == "oog") {
+      return "oog";
+    } else if (word == "werd") {
+      return "werd";
+    }
+  } else {
+    if (word == "persoon") {
+      return "personen";
+    } else if (word == "oog") {
+      return "ogen";
+    } else if (word == "werd") {
+      return "werden";
+    }
+  };
 }
 
 function dropdown(perInjury, dataPie1, dataPie2, dataPie3, dataPie4, dataPM10) {

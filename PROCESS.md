@@ -127,11 +127,11 @@ Het volgende rekenplaatje maakt dit duidelijk.
 
 >Maar de echte schade zit in het verlies van levenskwaliteit. Als we het leed van lichamelijke schade uitdrukken in geld, is het bedrag schrikbarend. Het Oogziekenhuis gebruikte daarvoor de Qaly-maatstaf, waarmee verlies van levenskwaliteit wordt uitgedrukt in economische waarde.
 
-Als voorbeeld geeft de OVV het verlies van een oog op achtjarige leeftijd. De 'kosten' daarvan worden jaarlijks uitgedrukt als 12.500  euro. Op een mensenleven levert dat een miljoen euro aan leed op.
+>Als voorbeeld geeft de OVV het verlies van een oog op achtjarige leeftijd. De 'kosten' daarvan worden jaarlijks uitgedrukt als 12.500  euro. Op een mensenleven levert dat een miljoen euro aan leed op.
 
-In negen jaar tijd gingen er 158 ogen verloren door vuurwerk bij mensen met een gemiddelde leeftijd van 20 jaar. Ervan uitgaande dat zij 88 jaar worden, levert dat een kostenplaatje op van 134,3 miljoen euro. Alleen al aan verloren levenskwaliteit door oogschade dus.
+>In negen jaar tijd gingen er 158 ogen verloren door vuurwerk bij mensen met een gemiddelde leeftijd van 20 jaar. Ervan uitgaande dat zij 88 jaar worden, levert dat een kostenplaatje op van 134,3 miljoen euro. Alleen al aan verloren levenskwaliteit door oogschade dus.
 
-Alles bij elkaar opgeteld kost het jaarlijkse feest de maatschappij dus zeker 30 miljoen euro, waarbij moet aangetekend worden dat we veel kosten dus nog niet eens kennen. 
+>Alles bij elkaar opgeteld kost het jaarlijkse feest de maatschappij dus zeker 30 miljoen euro, waarbij moet aangetekend worden dat we veel kosten dus nog niet eens kennen. 
 
 >Bron: https://www.rtlz.nl/algemeen/binnenland/zo-hoog-zijn-de-kosten-van-oud-en-nieuw
 

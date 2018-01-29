@@ -23,7 +23,7 @@ De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen v
  -  https://vuurwerkoverlast.nl/
  
    ##### Milieu
-   -  https://www.luchtmeetnet.nl/"
+   -  https://www.luchtmeetnet.nl/
    -  http://samenmeten.rivm.nl/dataportaal/
    -  http://www.staakthetvuren.com/Gespreksnotitie%20VITO.pdf
    

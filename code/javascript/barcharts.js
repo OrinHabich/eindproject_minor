@@ -4,7 +4,7 @@
   Orin Habich 10689508
 
   Takes care of the barcharts in this project.
-  Code is based on:
+  This code is based on:
   https://bl.ocks.org/mbostock/3886208
 */
 
@@ -14,14 +14,17 @@ var colorsComplaints = ["#fc8d59", "#4575b4", "#91bfdb", "#ffffbf",
   "#fee090"];
 var colorsDamage = ["#fc8d59"];
 
-function makeBarchart(svgID, data, perInjury, perAge, perBystander,
-  perTypeFireworks, perStatusFireworks, dataPM10, unit, nameY, colors,
-  legend) {
+function makeBarchart(svgID, data, perInjury, dataPie1, dataPie2, dataPie3,
+  dataPie4, dataPM10, unit, nameY, colors, legend) {
   /*   Makes a stacked barchart.
        Args:
          svgID        The id of the svg for the barchart.
          data         The dataset for the barchart.
          perInjury    Dataset for the figure of human.
+         dataPie1     Appriopiate dataset for piechart.
+         dataPie2     Appriopiate dataset for piechart.
+         dataPie3     Appriopiate dataset for piechart.
+         dataPie4     Appriopiate dataset for piechart.
          dataPM10     The dataset for the linechart.
          unit         The unit on the y axis.
          nameY        The text for on the label along the y axis.
@@ -29,6 +32,7 @@ function makeBarchart(svgID, data, perInjury, perAge, perBystander,
          legend       Boolean to indicate if a legend should be added.
   */
 
+  // put (properties of) svg in variables.
   var svg = d3.select("#svg" + svgID),
     margin = {top: 20, right: 100, bottom: 30, left: 60},
     width = +svg .attr("width") - margin.left - margin.right,
@@ -36,13 +40,9 @@ function makeBarchart(svgID, data, perInjury, perAge, perBystander,
     g = svg .append("g").attr("id", "barchart" + svgID)
      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var x = d3.scaleBand()
-    .rangeRound([0, width])
-    .paddingInner(0.05)
-    .align(0.1);
-
+  // set the ranges
+  var x = d3.scaleBand().rangeRound([0, width]).paddingInner(0.05).align(0.1);
   var y = d3.scaleLinear().rangeRound([height, 0]);
-
   var z = d3.scaleOrdinal().range(colors);
 
   var keys = data.columns.slice(1);
@@ -72,6 +72,8 @@ function makeBarchart(svgID, data, perInjury, perAge, perBystander,
     .attr("width", x.bandwidth())
     .attr("opacity", 0.4)
     .on("mousemove", function(d) {
+
+      // show tooltip if content not 0
       if (d[1] - d[0] != 0) {
         TOOLTIP.style("opacity", 1);
         TOOLTIP.html(d[1] - d[0] + unit)
@@ -81,6 +83,8 @@ function makeBarchart(svgID, data, perInjury, perAge, perBystander,
       d3.select(this).style("stroke-width", 2).style("stroke", "black");
     })
     .on("mouseout", function(d) {
+
+      // hide tooltip
       TOOLTIP.style("opacity", 0);
       d3.select(this).style("stroke-width", 0);
     })
@@ -94,16 +98,16 @@ function makeBarchart(svgID, data, perInjury, perAge, perBystander,
       var xPosition = d.data.jaarwisseling;
       var yPosition = d3.select(this.parentNode).attr("fill");
 
+      // highlight chosen bar
       d3.selectAll(".newYearsEve" + xPosition).style("opacity", 1);
 
       // update the piecharts, linechart, titles and tooltip on human figure
-      updatePiecharts(perAge, perBystander, perTypeFireworks,
-        perStatusFireworks, xPosition);
+      updatePiecharts(dataPie1, dataPie2, dataPie3, dataPie4, xPosition);
       updateLinechart(dataPM10[xPosition]);
       makeTitles(xPosition);
       tooltipFigureHuman(perInjury, xPosition);
 
-      // attemt to keep choice in dropdown up-to-date
+      // keep choice in dropdown up-to-date
       d3.selectAll(".option").property("selected", false);
       d3.select("#y" + xPosition).property("selected", true);
 
@@ -137,11 +141,10 @@ function makeBarchart(svgID, data, perInjury, perAge, perBystander,
     .attr("text-anchor", "start")
     .text(nameY);
 
+  // make legend
   if (legend) {
-    // make legend
     var legend = g.append("g")
       .attr("font-family", "sans-serif")
-      //.attr("font-size", 30)
       .attr("text-anchor", "end")
       .selectAll("g")
       .data(keys.slice().reverse())

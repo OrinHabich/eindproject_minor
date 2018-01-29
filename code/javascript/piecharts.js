@@ -2,50 +2,46 @@
   piecharts.js
   Minor programmeren; project
   Orin Habich 10689508
-
   Takes care of the make- and update functions for the piecharts in this project.
   Code is based on:
   https://bl.ocks.org/santi698/f3685ca8a1a7f5be1967f39f367437c0
 */
 
-
-var sixColors = d3.scaleOrdinal(["#91bfdb", "#4575b4"]);
-var twoColors = d3.scaleOrdinal(["#91bfdb", "#4575b4", "#d73027", "#fc8d59",
+// colors for the piecharts
+var sixColors = d3.scaleOrdinal(["#91bfdb", "#4575b4", "#d73027", "#fc8d59",
   "#fee090", "#ffffbf"]);
+var twoColors = d3.scaleOrdinal(["#91bfdb", "#4575b4"]);
 
-function makePiecharts(perAge, perBystander, perTypeFireworks,
-  perStatusFireworks) {
+function makePiecharts(dataPie1, dataPie2, dataPie3, dataPie4) {
   /*  Makes all the piecharts.
       Args:
-        perAge              Appriopiate dataset.
-        perBystander        Appriopiate dataset.
-        perTypeFireworks    Appriopiate dataset.
-        perStatusFireworks  Appriopiate dataset.
+        dataPie1    Appriopiate dataset.
+        dataPie2    Appriopiate dataset.
+        dataPie3    Appriopiate dataset.
+        dataPie4    Appriopiate dataset.
   */
 
-  makePiechart("PerAge", perAge, "leeftijd", twoColors);
-  makePiechart("PerBystander", perBystander, "wie", sixColors);
-  makePiechart("PerTypeFireworks", perTypeFireworks, "type", sixColors);
-  makePiechart("PerStatusFireworks", perStatusFireworks, "status", sixColors);
+  makePiechart("PerAge", dataPie1, "leeftijd", sixColors);
+  makePiechart("PerBystander", dataPie2, "wie", twoColors);
+  makePiechart("PerTypeFireworks", dataPie3, "type", twoColors);
+  makePiechart("PerStatusFireworks", dataPie4, "status", twoColors);
 }
 
-function updatePiecharts(perAge, perBystander, perTypeFireworks,
-  perStatusFireworks, newYearsEve) {
+function updatePiecharts(dataPie1, dataPie2, dataPie3, dataPie4, newYearsEve) {
   /*  Updates all the piecharts.
       Args:
-        perAge              Appriopiate dataset.
-        perBystander        Appriopiate dataset.
-        perTypeFireworks    Appriopiate dataset.
-        perStatusFireworks  Appriopiate dataset.
-        newYearsEve         The chosen new years eve.
+        dataPie1        Appriopiate dataset.
+        dataPie2        Appriopiate dataset.
+        dataPie3        Appriopiate dataset.
+        dataPie4        Appriopiate dataset.
+        newYearsEve     The chosen new years eve.
   */
 
-  updatePiechart(perAge, "PerAge", newYearsEve, "leeftijd", twoColors);
-  updatePiechart(perBystander, "PerBystander",newYearsEve , "wie", sixColors);
-  updatePiechart(perTypeFireworks, "PerTypeFireworks", newYearsEve, "type",
-    sixColors);
-  updatePiechart(perStatusFireworks, "PerStatusFireworks", newYearsEve,
-    "status", sixColors);
+  updatePiechart(dataPie1, "PerAge", newYearsEve, "leeftijd", sixColors);
+  updatePiechart(dataPie2, "PerBystander",newYearsEve , "wie", twoColors);
+  updatePiechart(dataPie3, "PerTypeFireworks", newYearsEve, "type", twoColors);
+  updatePiechart(dataPie4, "PerStatusFireworks", newYearsEve, "status",
+    twoColors);
 }
 
 function makePiechart(svgID, data, itemName, colors) {

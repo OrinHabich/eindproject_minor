@@ -1,5 +1,5 @@
 /*
-  linchart.js
+  linechart.js
   Minor programmeren; project
   Orin Habich 10689508
 
@@ -166,7 +166,7 @@ function makeLinechart(dataPM10) {
   x.domain(d3.extent(data, function(d) { return d.tijdstip; }));
   y.domain([0, d3.max(data, function(d) { return d.waarde; })]);
 
-  // select the section we want to apply our changes to
+  // select the section we want to apply the changes to
   var gLinechart = d3.select("#svgLinechart").transition();
 
   // change the line

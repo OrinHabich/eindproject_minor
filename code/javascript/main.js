@@ -1,11 +1,11 @@
 /*
   main.js
-  Minor programmeren; Project
+  Minor programmeren; project
   Orin Habich 10689508
 
   This is the main file for this project. In this file:
-  Is an external svg loaded for the figure of the human.
   Are all global variabels defined.
+  Is an external svg loaded for the figure of the human.
   Is all data loaded.
   Are several function called (which often call other functions).
 
@@ -24,28 +24,22 @@
       Args: none.
   */
 
-  d3.xml("images/figureHuman.svg").mimeType("image/svg+xml")
-    .get(function(error, xml) {
-      if (error) throw error;
-      document.getElementById("placeForFigureHuman")
-        .appendChild(xml.documentElement);
-    });
-
   NEWYEARSEVES = ["2014-2015", "2015-2016", "2016-2017", "2017-2018"];
   DEFAULTNEWYEARSEVE = NEWYEARSEVES[NEWYEARSEVES.length - 1];
   TIMEDURATION = 1000;
-
   TOOLTIP = d3.select("body")
     .append("div")
     .attr("class", "tooltip")
     .attr("id", "tooltipGeneral")
     .style("opacity", 0);
 
-  // // colors for the barcharts
-  // var colorsFirstAid  = ["#fc8d59", "#d73027"];
-  // var colorsComplaints = ["#fc8d59", "#4575b4", "#91bfdb", "#ffffbf",
-  //   "#fee090"];
-  // var colorsDamage = ["#fc8d59"];
+  // load svg of figure of human
+  d3.xml("images/figureHuman.svg").mimeType("image/svg+xml")
+    .get(function(error, xml) {
+      if (error) throw error;
+      document.getElementById("placeForFigureHuman")
+        .appendChild(xml.documentElement);
+    });
 
   // load data
   queue()

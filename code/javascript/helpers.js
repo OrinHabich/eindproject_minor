@@ -17,7 +17,10 @@ function checkboxes() {
        Args: none
   */
 
+  // listen for changes on the checkboxes
   d3.selectAll(".checkbox").on("change", function(d) {
+
+    // determine which checkbox is changed
     if (this.value == "Age") {
       var htmlString = "Per leeftijdsklasse";
     } else if (this.value == "TypeFireworks") {
@@ -27,6 +30,8 @@ function checkboxes() {
     } else if (this.value == "StatusFireworks") {
       var htmlString = "Legaal of illegaal vuurwerk"
     }
+
+    // toggle the opacity of the appropriate piechart
     if (d3.select("#svgPer" + this.value).style("opacity") == 0) {
       d3.select("#svgPer" + this.value).style("opacity", 1);
       d3.select("#title" + this.value).html(htmlString);
@@ -43,6 +48,7 @@ function makeHTMLstring(d, bodypart) {
          d            Dataset of injuries.
          bodypart     Chosen bodypart.
   */
+
   if (bodypart == "eye"){
     return "Letsel aan ogen bij " + d.eye + " " +
       plural(d.eye, "persoon") + ".<br>Hierbij waren<br>" +
@@ -93,13 +99,13 @@ function makeTitles(newYearsEve) {
   */
 
   d3.select("#titlePiechartsSection")
-    .html("Onderverdeling slachtoffers "+ newYearsEve);
+    .html("Onderverdeling slachtoffers " + newYearsEve);
 
   d3.select("#titleInjuriesSection")
-    .html("Lichamelijk letsel "+ newYearsEve);
+    .html("Lichamelijk letsel " + newYearsEve);
 
   d3.select("#titleLinechart")
-    .html("Fijnstof (PM10) rond de jaarwisseling "+ newYearsEve);
+    .html("Fijnstof (PM10) rond de jaarwisseling " + newYearsEve);
 }
 
 function tooltipFigureHuman(data, newYearsEve) {
@@ -107,31 +113,37 @@ function tooltipFigureHuman(data, newYearsEve) {
        Args:
          data         Dataset of injuries.
          newYearsEve  Chosen new years eve.
-         bodypart     Chosen bodypart.
   */
 
   d3.selectAll(".figureHuman")
     .datum(data[newYearsEve])
     .on("mousemove",  function(d) {
+
+      // change color
       d3.select(this.parentNode).style("fill", "#d73027");
+
+      // show tooltip
       TOOLTIP.style("opacity", 1);
       TOOLTIP.html(makeHTMLstring(d, this.parentNode.id))
         .style("left", (d3.event.pageX + 40) + "px")
         .style("top", (d3.event.pageY - 25) + "px");
     })
     .on("mouseout", function(d) {
+
+      // change color back
       if (this.parentNode.id == "eye" || this.parentNode.id == "heart") {
         d3.select(this.parentNode).style("fill", "white");
       } else {
         d3.select(this.parentNode).style("fill", "black");
       }
+
+      // hide tooltip
       TOOLTIP.style("opacity", 0);
     });
 
 }
 
-function dropdown(perInjury, perAge, perBystander, perTypeFireworks,
-  perStatusFireworks, dataPM10) {
+function dropdown(perInjury, dataPie1, dataPie2, dataPie3, dataPie4, dataPM10) {
   /*   Takes care of the dropdown menu. Adds all options and updates the
        site after selection in dropdown menu changes.
        Note: The actual funcionality is in onchange().
@@ -166,8 +178,7 @@ function dropdown(perInjury, perAge, perBystander, perTypeFireworks,
 
     // update the piecharts, linechart, titles and tooltip on the human figure
     //makePiecharts(selectValue, dataPiecharts);
-    updatePiecharts(perAge, perBystander, perTypeFireworks,
-      perStatusFireworks, selectValue);
+    updatePiecharts(dataPie1, dataPie2, dataPie3, dataPie4, selectValue);
     updateLinechart(dataPM10[selectValue]);
     makeTitles(selectValue);
     tooltipFigureHuman(perInjury, selectValue);

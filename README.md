@@ -1,22 +1,16 @@
-# Vuurwerkschade 
+# Schade door vuurwerk 
 #### Orin Habich
 
 https://OrinHabich.github.io/project
 
-<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
-
-### 1. Probleemstelling
 Over het algemeen zijn mensen zich onvoldoende bewust van de hoeveelheid schade door vuurwerk. 
 De discussie rondom vuurwerk slingert meestal tussen "het is traditie" en "het veroorzaakt veel schade."
 Dit laatste argument is veelomvattend en rationeel, maar de informatie over vuurwerkschade is erg versnipperd en ontoegankelijk. 
+Daarom is er nu deze website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
+De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** van de website is toegankelijk en begrijpelijk.
 
-### 2. Oplossing
-In één zin is de beoogde oplosing een beknopte heldere website met visualisaties van data over drie soorten vuurwerkschade: schade aan mensen (zoals letselschade), schade aan milieu (zoals fijnstof) en materiële schade (zoals brand).  
-De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** is toegankelijk, bij voorkeur is de website begrijpelijk voor basisschoolkinderen.
+<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
 
-### 3. Gedetailleerde omschrijving van de oplossing
-
-Het doel is zoveel mogelijk relevante data weer te geven. Deze data blijkt erg versnipperd en zal grotendeels uit nieuwsberichten en rapporten komen. Dit betekent dat het voorbereiden van de data veel werk gaat kosten, maar het is ook een extra motivatie voor het maken van de website.
 
   #### Lijst van databronnen 
 - https://www.google.nl/amp/s/nos.nl/googleamp/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html
@@ -36,4 +30,5 @@ Het doel is zoveel mogelijk relevante data weer te geven. Deze data blijkt erg v
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf
 - https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf
 - https://www.veiligheid.nl/organisatie/actueel/nieuws/cijfers-vuurwerkgewonden-2017-2018?gclid=EAIaIQobChMIudCMlqrI2AIV5rftCh20jAmDEAAYASAAEgInePD_BwE
-![](doc/schetsWebsite2.png)
+
+![](doc/websiteDag16.png)

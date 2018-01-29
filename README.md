@@ -12,7 +12,7 @@ De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen v
 <img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
 
 
-  #### Lijst van databronnen 
+  ## Lijst van databronnen 
   ##### Mensen
  -  https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf
  -  https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf
@@ -22,16 +22,21 @@ De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen v
  -  https://indebuurt.nl/arnhem/nieuws/zoveel-meldingen-van-vuurwerkoverlast-waren-er-in-arnhem~14226/
  -  https://vuurwerkoverlast.nl/
  
-   ##### Milieu
+   #### Milieu
    -  https://www.luchtmeetnet.nl/
    -  http://samenmeten.rivm.nl/dataportaal/
    -  http://www.staakthetvuren.com/Gespreksnotitie%20VITO.pdf
    
    
-   ##### Materiaal
+   #### Materiaal
    -  https://l1.nl/content/documents/2016/12/2017-vuurwerkschade.pdf
    -  https://nos.nl/artikel/2151143-schade-jaarwisseling-geschat-op-13-miljoen-euro.html
    -  https://www.consumentenbond.nl/autoverzekering/minder-schade-tijdens-jaarwisseling
  
+## License
 
+Copyright © 2018, [Orin Habich](https://github.com/orinhabich).
+Released as [unlicensed](LICENSE) public domain release.
+
+## Screenshot of total overview of website
 ![](doc/websiteDag16.png)

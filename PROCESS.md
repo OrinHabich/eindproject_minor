@@ -192,3 +192,10 @@ en zijn geschikt voor kleurenblinden.
 De opmaak van de website is nu grotendeels af.
 Voornaamste todo's zijn nog de tooltip bij de lijngrafiek stylen en de text in de piecharts. 
 
+# Dag 16
+Gedaan:
+- De code verdeeld over bestanden om het overzichtelijker te maken. 
+- De code doorgelopen op stijl.
+- Een LICENSE toegevoegd.
+- Een start gemaakt met REPORT.md
+

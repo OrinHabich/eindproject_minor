@@ -2,8 +2,6 @@
 
 Een website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
 
-<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
-
 ## Het technische ontwerp
 Er is één html-pagina voor de site. Dit is index.html.
 De functionaliteit is verdeeld over meerdere JavaScript files.
@@ -27,5 +25,7 @@ Vooral de data over de afgelopen jaarwisseling compleet krijgen was een google-u
 
 Het poppetje leek mij een leuke en originele visualisatie, maar ik had geen idee hoe
 zoiets gemaakt kon worden toen ik het bedacht.
-Verrassend genoeg bestaan er dus teken-programmaatjes om svg's mee te maken.
+Verrassend genoeg bestaan er dus teken-programmaatjes om svg's mee te maken, zoals http://www.drawsvg.org/drawsvg.html.
 Hierin kunnen id's en class names meegegeven worden aan alle componenten van de tekening.
+
+De infographic is 

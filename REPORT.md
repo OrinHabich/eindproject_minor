@@ -2,8 +2,6 @@
 
 Een website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
 
-<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
-
 ## Het technische ontwerp
 Er is één html-pagina voor de site. Dit is index.html.
 De functionaliteit is verdeeld over meerdere JavaScript files.
@@ -25,7 +23,29 @@ Vanaf het begin was duidelijk dat er veel kleine datasets nodig zouden zijn.
 Eerst moest worden uitgezocht hoe deze datasets op elkaar aan gingen sluiten, en in hoeverre deze binnen het verhaal gingen passen.
 Vooral de data over de afgelopen jaarwisseling compleet krijgen was een google-uitdaging.
 
-Het poppetje leek mij een leuke en originele visualisatie, maar ik had geen idee hoe
-zoiets gemaakt kon worden toen ik het bedacht.
+Op zich was het voor het doel van de website niet essentieel om data van meerdere jaren te hebben, maar dit maakt het
+verhaal wel sterker. Data van slechts één jaar kan immers ook op toeval berusten. Door data van meerdere jaarwisselingen te laten zien, zie je ook een ontwikkeling over de tijd.
+De data van de meest recente jaarwisseling is naar mijn mening wel essentieel.
+
+In het staafdiagram over overlast van vuurwerk wilde ik graag een onderverdeling maken
+naar soort klacht. Deze verdeling heb ik van slechts twee jaarwisselingen kunnen vinden, maar daarmee voegt het alsnog iets toe.
+Dat niet iedere staaf in dit diagram uit dezelfde componenten bestaat, heb ik opgelost door sommige
+componenten op 0 te zetten in de dataset. De tooltip merkte dit helaas wel op. Dus er kwam dan '0 klachten' te staan
+bijvoorbeeeld. Een if-statement loste dit op.
+
+In het staafdiagram over materiële schade wilde ik ook een onderverdeling. De data die ik vond bleek bij nadere inspectie helaas inconsistent en dubieus. Daarom heb ik deze eruit gelaten. Hierdoor was een legenda ook niet meer nodig bij dit staafdiagram.
+
+De taartdiagrammen hadden eventueel ook in één sunburst gekund. Dit zou echter weinig toevoegen omdat de data daar niet de geschikte
+structuur voor heeft. Taartdiagrammen zijn simpeler en gezien de gekozen doelgroep had dat mijn voorkeur.
+
+De lijngrafiek was een concreet idee met een voor de hand liggende uitvoering. Toch vertelt deze grafiek naar mijn smaak niet genoeg. Daarom heb ik een infographic bedacht voor ernaast. In deze infographic kon ik feiten en cijfers kwijt die het onderwerp vuurwerk en milieu aanvullen.
+
+Het poppetje leek mij een leuke en originele visualisatie, maar ik had geen idee hoe ik zoiets kon maken.
 Verrassend genoeg bestaan er dus teken-programmaatjes om svg's mee te maken.
+In dit geval heb ik http://www.drawsvg.org/drawsvg.html gebruikt.
 Hierin kunnen id's en class names meegegeven worden aan alle componenten van de tekening.
+
+Uiteindelijk was het bij elkaar sprokkelen van alle data mijn grootste struikelblok. Met de data die ik uiteindelijk gevonden heb, heb ik precies kunnen maken wat ik in mijn hoofd had.
+Als de gevonden data uitgebreider en complexer zou zijn geweest had ik interesantere visualisaties kunnen maken. In dat opzicht is het zoeken van een geschikt onderwerp met passende data echt een lastige stap. Aan de andere kant heb ik nu wel iets kunnen maken wat nog niet bestond, iets wat best opmerkelijk is gezien de jaarlijks terugkerende discussie over een vuurwerkverbod voor consumenten.
+Als ik meer tijd gehad zou hebben zou ik, in plaats van de data uit nieuwsberichten filteren,
+datasets opvragen bij de desbetreffende partijen.

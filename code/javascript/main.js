@@ -34,7 +34,7 @@ function afterLoad() {
     .style("opacity", 0);
 
   // load svg of figure of human
-  d3.xml("images/figureHuman.svg").mimeType("image/svg+xml")
+  d3.xml("docs/figureHuman.svg").mimeType("image/svg+xml")
     .get(function(error, xml) {
       if (error) throw error;
       document.getElementById("placeForFigureHuman")

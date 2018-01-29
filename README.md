@@ -39,4 +39,4 @@ Copyright © 2018, [Orin Habich](https://github.com/orinhabich).
 Released as [unlicensed](LICENSE) public domain release.
 
 ## Screenshot of total overview of website
-![](doc/websiteDag16.png)
+![](docs/imagesProcess/websiteDag16.png)

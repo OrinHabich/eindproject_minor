@@ -4,7 +4,7 @@
 # dag 6
 Een lijngrafiek is vervallen wegens gebrek aan toegevoegde waarde aan het verhaal.
 Voor de andere lijngrafiek heb ik andere data gezocht. Ik wil namelijk alle grafieken over dezelfde jaarwisselingen laten gaan, en bovendien de meest recente jaarwisselingen laten zien.
-![](doc/schetsWebsite3.png)
+![](docs/imagesProcess/schetsWebsite3.png)
 Van de meest recente jaarwisseling heb ik alleen een interactieve grafiek online waaruit ik waarschijnlijk de benodigde data kan scrapen.
 De data voor de lijngrafiek komt niet allemaal in één json file, maar in meerdere csv files.
 Dit is enerzijds omdat dit beter matched met de gevonden voorbeelden over linecharts.
@@ -15,7 +15,7 @@ Dit geeft toch wat problemen met de updateLinechart-functie en de scope van de i
 Hiervoor heb ik nu als tijdelijke oplossing om alle datasets mee te geven aan updateLinechart() maar dat kan waarschijnlijk beter.
 De flow van het programma begint erg onlogisch te worden.
 Het is nu zoals in onderstaand schema.
-![](doc/functies2.png)
+![](docs/imagesProcess/functies2.png)
 
 # dag 7
 De updateLinechart functie begint met een aantal if-statements om de data van de gekozen jaarwisseling te selecteren. Liever zou ik deze keuze meegeven aan de functie, ipv zoals nu alle data en de gekozen jaar wisseling meegeven en dan in de functie pas de juiste data selecteren.
@@ -30,13 +30,13 @@ De technieken die ik hiervoor nodig heb zijn ongeveer hetzelfde als voor het pop
 
 # dag 7 avond
 De infographic is gelukt.
-![](doc/websiteDag7.png)
+![](docs/imagesProcess/websiteDag7.png)
 Samen met de linechart er naast vertelt dit mooi het milieu-deel van mijn verhaal.
 Voor het poppetje ga ik met http://www.drawsvg.org/drawsvg.html aan de slag.
 
 # dag 8
 Er is nu een poppetje:
-![](doc/poppetje.png)
+![](docs/imagesProcess/poppetje.png)
 
 De lichaamsdelen waarover ik data heb over letsel lichten rood op bij hover over.
 Het poppetje is een svg bestaande uit een tiental componenten die allemaal in de html staan nu, omdat ze allemaal apart toegankelijk moeten zijn. Erg mooi is dit niet, de svg beslaat het volledige screenshot hieronder.
@@ -59,7 +59,7 @@ Voorlopig wegen de nadelen niet op tegen de voordelen vind ik, want de informati
 
 Kortom, het design van de pagina wordt ietsje aangepast.
 Het huidige plan is 
-![](doc/schetsWebsite5.png)
+![](docs/imagesProcess/schetsWebsite5.png)
 
 Een idee is om met checkboxes aan te geven welke piechart gemaakt moeten worden. Dit in plaats van de interactieve tabel over in beslag genomen vuurwerk.
 Voor zo'n tabel moeten weer allerlei andere datasets gezocht worden en het sluit niet helemaal aan op mijn verhaal.
@@ -85,7 +85,7 @@ Dit is nu de todo lijst:
 # dag 9 avond
 De checkboxes werken.
 
-![](doc/websiteDag9.png)
+![](docs/imagesProcess/websiteDag9.png)
 
 Niet mooi nog: 
 Er is nu voor iedere checkbox een andere functie. Deze functies zijn bijna identiek en het zou veel beter worden als het zou lukken om een argument aan de functie mee te geven.
@@ -153,7 +153,7 @@ Beide problemen los ik op door een updatePiechart() functie te maken, similar aa
 Zo'n updatePiechart() functie heb ik gemaakt. Deze werkt wel, maar bevat rare bugs en geeft een error. 
 
 Een ander probleem is dat ik de mappenstructuur in mijn repository heb aangepast en in github pages de databestanden vaak niet meer gevonden worden.
-![](doc/websiteDag13.png)
+![](docs/imagesProcess/websiteDag13.png)
 
 Ik zie wat er verkeerd gaat denk ik (de folder "project" wordt overgeslagen, het moet zijn *https://orinhabich.github.io/project/data/firstAid.csv* )
 Maar ik weet niet hoe ik dit verander of waarom sommige datafiles wel gevonden worden.

@@ -12,38 +12,12 @@ Dit laatste argument is veelomvattend en rationeel, maar de informatie over vuur
 
 ### 2. Oplossing
 In één zin is de beoogde oplosing een beknopte heldere website met visualisaties van data over drie soorten vuurwerkschade: schade aan mensen (zoals letselschade), schade aan milieu (zoals fijnstof) en materiële schade (zoals brand).  
-De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** is toegankelijk, bij voorkeur is de website begrijpelijk voor kinderen vanaf 12 jaar.
+De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** is toegankelijk, bij voorkeur is de website begrijpelijk voor basisschoolkinderen.
 
 ### 3. Gedetailleerde omschrijving van de oplossing
-Zie de schets onderaan. De visualisaties zijn ingedeeld naar Mens, Milieu en Materieel. Alles staat bij voorkeur op één pagina, of misschien wordt het een pagina per onderwerp.
- ### Mensen
- #### Letsel 
 
-- Een staafdiagram geeft het aantal mensen dat tijdens een jaarwisseling naar de spoedeisende hulp moest. Het aanklikken van een staafje selecteert een jaarwisseling. 
-- Taartdiagrammen geven diverse aspecten (zoals leeftijdsverdeling) bij de gekozen jaarwisseling.
-- Voor de plaats van het letsel is een poppetje in plaats van een taartdiagram. De ledematen en percentages highlighten bij mouse-over.
- - Bij mouse-over over de ogen highlight het taartdiagram met een verdere specificatie van de soorten oogletsel. 	  
- - Bij mouse-over over het hart highlight het aantal doden door vuurwerk. Daarbij zit een knop voor meer informatie over deze sterfgevallen.
-
- ####  Overlast
-  - Een staafdiagram met het aantal meldingen van overlast door vuurwerk bij Meldpunt Vuurwerkoverlast per jaarwisseling. Per staaf is er een onderverdeling naar soort overlast (indien deze data gevonden wordt.)
-
-### Milieu
-- Een infographic over de vervuiling. 
-- Een lijngrafiek met de gemiddelde hoeveelheid smog met crosshair die (net als het staafje in de barchart hierboven) een jaarwisseling selecteert. 
-- Een lijngrafiek die de piek in concentratie fijnstof rond de jaarwisseling weergeeft. 
-Deze twee lijngrafieken zijn zoals [hier](http://www.clo.nl/indicatoren/nl0570-luchtverontreiniging-tijdens-de-jaarwisseling).
-
-### Materieel
-- Een staafdiagram met de hoeveelheid schade per jaarwisseling.  Het aanklikken van een staafje selecteert een jaarwisseling. Per staaf is er een onderverdeling naar soort schade (indien data gevonden wordt.)
-
-### 4. Minimale onderdelen en optionele onderdelen
-Minimaal moeten de staafdiagram met het aantal mensen dat tijdens een jaarwisseling naar de spoedeisende hulp moest erin, de taartdiagrammen die hierbij horen, de infographic over milieuvervuiling door vuurwerk, de piek in luchtvervuiling rond de jaarwisseling en de hoeveelheid schade.
-Het poppetje met het letsel moet er ook in want dat is een leuke visualisatie. 
-Er komt een dropdown menu om een jaarwisseling te kiezen en een interactieve tabel over in beslag genomen vuurwerk. 
-
-### 5. Vereisten
 Het doel is zoveel mogelijk relevante data weer te geven. Deze data blijkt erg versnipperd en zal grotendeels uit nieuwsberichten en rapporten komen. Dit betekent dat het voorbereiden van de data veel werk gaat kosten, maar het is ook een extra motivatie voor het maken van de website.
+
   #### Lijst van databronnen 
 - https://www.google.nl/amp/s/nos.nl/googleamp/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html
 - https://www.nrc.nl/nieuws/2016/01/03/bijna-90-000-meldingen-van-vuurwerkoverlast-a1410391

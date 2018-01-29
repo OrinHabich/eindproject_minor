@@ -36,7 +36,7 @@ De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen v
 #### License
 
 Copyright © 2018, [Orin Habich](https://github.com/orinhabich).
-Released as public domain release under the [unlicense](LICENSE) 
+Released as [unlicensed](LICENSE) public domain release.
 
 #### Screenshot of total overview of website
 ![](doc/websiteDag16.png)

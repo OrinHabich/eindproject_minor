@@ -33,5 +33,10 @@ De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen v
    -  https://nos.nl/artikel/2151143-schade-jaarwisseling-geschat-op-13-miljoen-euro.html
    -  https://www.consumentenbond.nl/autoverzekering/minder-schade-tijdens-jaarwisseling
  
+#### License
 
+Copyright © 2018, [Orin Habich](https://github.com/orinhabich).
+Released as public domain release under the [unlicense](LICENSE) 
+
+#### Screenshot of total overview of website
 ![](doc/websiteDag16.png)

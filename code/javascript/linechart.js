@@ -31,9 +31,9 @@ function makeLinechart(dataPM10) {
 
   var svgLinechart = d3.select("#svgLinechart"),
     margin = {top: 20, right: 0, bottom: 50, left: 60},
-    widthLinechart = +svgLinechart .attr("width") - margin.left - margin.right,
-    heightLinechart = +svgLinechart .attr("height") - margin.top - margin.bottom,
-    gLinechart = svgLinechart .append("g").attr("id", "linechart")
+    widthLinechart = +svgLinechart.attr("width") - margin.left - margin.right,
+    heightLinechart = +svgLinechart.attr("height") - margin.top - margin.bottom,
+    gLinechart = svgLinechart.append("g").attr("id", "linechart")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // set the ranges
@@ -136,17 +136,17 @@ function makeLinechart(dataPM10) {
   }
 }
 
-  function updateLinechart(data) {
-    /*   Updates the linechart.
+function updateLinechart(data) {
+  /*   Updates the linechart.
          Args:
           data    An appropriate dataset.
-    */
+  */
 
   var svgLinechart = d3.select("#svgLinechart"),
     margin = {top: 20, right: 0, bottom: 50, left: 60},
-    widthLinechart = +svgLinechart .attr("width") - margin.left - margin.right,
-    heightLinechart = +svgLinechart .attr("height") - margin.top - margin.bottom,
-    gLinechart = svgLinechart .append("g").attr("id", "linechart")
+    widthLinechart = +svgLinechart.attr("width") - margin.left - margin.right,
+    heightLinechart = +svgLinechart.attr("height") - margin.top - margin.bottom,
+    gLinechart = svgLinechart.append("g").attr("id", "linechart")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // set the ranges

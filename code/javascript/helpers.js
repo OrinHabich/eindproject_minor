@@ -52,10 +52,10 @@ function makeHTMLstring(d, bodypart) {
   if (bodypart == "eye"){
     return "Letsel aan ogen bij " + d.eye + " " +
       plural(d.eye, "persoon") + ".<br>Hierbij waren<br>" +
-      d.zichtsverlies + " " + plural(d.zichtsverlies, "oog")  +
-      " met zichtsverlies,<br>" + d.blind + " " + plural(d.blind, "oog")  +
+      d.zichtsverlies + " " + plural(d.zichtsverlies, "oog") +
+      " met zichtsverlies,<br>" + d.blind + " " + plural(d.blind, "oog") +
       " werden blind en<br>" + d.verwijderd + " " +
-      plural(d.verwijderd, "oog") + " " + plural(d.verwijderd, "werd")  +
+      plural(d.verwijderd, "oog") + " " + plural(d.verwijderd, "werd") +
       " verwijderd.";
   } else if (bodypart == "heart") {
     return d.heart + " " + plural(d.heart,"persoon") +
@@ -117,7 +117,7 @@ function tooltipFigureHuman(data, newYearsEve) {
 
   d3.selectAll(".figureHuman")
     .datum(data[newYearsEve])
-    .on("mousemove",  function(d) {
+    .on("mousemove", function(d) {
 
       // change color
       d3.select(this.parentNode).style("fill", "#d73027");

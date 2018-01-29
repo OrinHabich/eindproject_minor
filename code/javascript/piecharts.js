@@ -2,6 +2,7 @@
   piecharts.js
   Minor programmeren; project
   Orin Habich 10689508
+
   Takes care of the make- and update functions for the piecharts in this project.
   Code is based on:
   https://bl.ocks.org/santi698/f3685ca8a1a7f5be1967f39f367437c0
@@ -13,7 +14,7 @@ var sixColors = d3.scaleOrdinal(["#91bfdb", "#4575b4", "#d73027", "#fc8d59",
 var twoColors = d3.scaleOrdinal(["#91bfdb", "#4575b4"]);
 
 function makePiecharts(dataPie1, dataPie2, dataPie3, dataPie4) {
-  /*  Makes all the piecharts.
+  /*  Makes all the piecharts, for the default new years eve.
       Args:
         dataPie1    Appriopiate dataset.
         dataPie2    Appriopiate dataset.
@@ -38,7 +39,7 @@ function updatePiecharts(dataPie1, dataPie2, dataPie3, dataPie4, newYearsEve) {
   */
 
   updatePiechart(dataPie1, "PerAge", newYearsEve, "leeftijd", sixColors);
-  updatePiechart(dataPie2, "PerBystander",newYearsEve , "wie", twoColors);
+  updatePiechart(dataPie2, "PerBystander", newYearsEve, "wie", twoColors);
   updatePiechart(dataPie3, "PerTypeFireworks", newYearsEve, "type", twoColors);
   updatePiechart(dataPie4, "PerStatusFireworks", newYearsEve, "status",
     twoColors);
@@ -84,17 +85,21 @@ function makePiechart(svgID, data, itemName, colors) {
     .attr("d", path)
     .attr("fill", function(d) { return colors(d.data[itemName]); })
     .on("mousemove", function(d) {
+
+      // only show tooltip if piechart is visible
       if (svg.style("opacity") == 0) {
         tooltip.style("opacity", 0);
       } else {
         tooltip.style("opacity", 1);
         d3.select(this).style("stroke-width", 2).style("stroke", "black");
       }
-      tooltip.html(d.data.number + " mensen" )
+      tooltip.html(d.data.number + " mensen")
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY - 28) + "px");
     })
     .on("mouseout", function(d) {
+
+      // hide tooltip
       tooltip.style("opacity", 0);
       d3.select(this).style("stroke-width", 0);
     });

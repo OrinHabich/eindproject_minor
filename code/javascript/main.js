@@ -16,9 +16,9 @@
   helpers.js
 */
 
- window.onload = afterLoad;
+window.onload = afterLoad;
 
- function afterLoad() {
+function afterLoad() {
   /*  This executes the whole script,
       but it is called only when the window is loaded.
       Args: none.

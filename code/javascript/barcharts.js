@@ -9,7 +9,7 @@
 */
 
 // colors for the barcharts
-var colorsFirstAid  = ["#fc8d59", "#d73027"];
+var colorsFirstAid = ["#fc8d59", "#d73027"];
 var colorsComplaints = ["#fc8d59", "#4575b4", "#91bfdb", "#ffffbf",
   "#fee090"];
 var colorsDamage = ["#fc8d59"];
@@ -35,9 +35,9 @@ function makeBarchart(svgID, data, perInjury, dataPie1, dataPie2, dataPie3,
   // put (properties of) svg in variables.
   var svg = d3.select("#svg" + svgID),
     margin = {top: 20, right: 100, bottom: 30, left: 60},
-    width = +svg .attr("width") - margin.left - margin.right,
-    height = +svg .attr("height") - margin.top - margin.bottom,
-    g = svg .append("g").attr("id", "barchart" + svgID)
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom,
+    g = svg.append("g").attr("id", "barchart" + svgID)
      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // set the ranges

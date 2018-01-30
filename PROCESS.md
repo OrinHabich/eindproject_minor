@@ -199,3 +199,6 @@ Gedaan:
 - Een LICENSE toegevoegd.
 - Een start gemaakt met REPORT.md
 
+# Dag 17
+Zoeken naar foutjes en deze oplossen. Allerlei heel kleine details gefixt. Verder gewerkt aan REPORT.md
+

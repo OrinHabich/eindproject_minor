@@ -20,9 +20,11 @@ body {
 }
 
 #barTitle {
+  position: fixed;
   background: #d73027;
   color: white;
   text-align: center;
+  z-index: 10;
 }
 
 #placeholderTitle {

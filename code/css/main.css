@@ -15,6 +15,10 @@ body {
   background: AliceBlue;
 }
 
+.arc text {
+  font: 14px sans-serif;
+}
+
 #barTitle {
   background: #d73027;
   color: white;
@@ -129,7 +133,7 @@ div.tooltip {
 .line {
   fill: none;
   stroke: #4575b4;
-  stroke-width: 2px;
+  stroke-width: 4px;
 }
 
 .overlay {
@@ -147,6 +151,10 @@ div.tooltip {
   stroke: Black;
   stroke-width: 1px;
   stroke-dasharray: 5,3;
+}
+
+.tooltipLinechart text {
+  font: 20px sans-serif;
 }
 
 input[type=checkbox] {

@@ -2,7 +2,6 @@
   linechart.js
   Minor programmeren; project
   Orin Habich 10689508
-
   Takes care of the make- and update functions for the linechart in this project.
   Code is based on:
   https://bl.ocks.org/d3noob/402dd382a51a4f6eea487f9a35566de0
@@ -128,7 +127,8 @@ function makeLinechart(dataPM10) {
       d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
       tooltipLinechart.attr("transform", "translate(" + x(d.tijdstip) + "," +
         y(d.waarde) + ")");
-      tooltipLinechart.select("text").text(function() { return d.waarde; });
+      tooltipLinechart.select("text")
+        .text(function() { return d.waarde; });
       tooltipLinechart.select(".x-hover-line")
         .attr("y2", heightLinechart - y(d.waarde));
       tooltipLinechart.select(".y-hover-line")

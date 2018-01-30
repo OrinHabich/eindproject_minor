@@ -1,7 +1,5 @@
 # Schade door vuurwerk 
-#### Orin Habich
-
-https://OrinHabich.github.io/project
+#### Orin Habich  https://OrinHabich.github.io/project <img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
 
 Over het algemeen zijn mensen zich onvoldoende bewust van de hoeveelheid schade door vuurwerk. 
 De discussie rondom vuurwerk slingert meestal tussen "het is traditie" en "het veroorzaakt veel schade."
@@ -9,10 +7,10 @@ Dit laatste argument is veelomvattend en rationeel, maar de informatie over vuur
 Daarom is er nu deze website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
 De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** van de website is toegankelijk en begrijpelijk.
 
-<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
 
 
-  ## Lijst van databronnen 
+
+  ## Lijst van gebruikte bronnen 
   ##### Mensen
  -  https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf
  -  https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf
@@ -26,13 +24,17 @@ De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen v
    -  https://www.luchtmeetnet.nl/
    -  http://samenmeten.rivm.nl/dataportaal/
    -  http://www.staakthetvuren.com/Gespreksnotitie%20VITO.pdf
+   -  https://wallpapers-achtergronden.blogspot.nl/2011/11/vuurwerk-achtergronden.html
    
    
    #### Materiaal
    -  https://l1.nl/content/documents/2016/12/2017-vuurwerkschade.pdf
    -  https://nos.nl/artikel/2151143-schade-jaarwisseling-geschat-op-13-miljoen-euro.html
    -  https://www.consumentenbond.nl/autoverzekering/minder-schade-tijdens-jaarwisseling
- 
+   
+   #### code
+   -  https://bl.ocks.org/d3noob
+  
 ## License
 
 Copyright © 2018, [Orin Habich](https://github.com/orinhabich).

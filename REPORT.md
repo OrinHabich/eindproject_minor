@@ -61,8 +61,5 @@ Het was daarom niet duidelijk wat bij een taartdiagram over oogletsel het totaal
 Uiteindelijk kwam het er op neer dat de extra data over oogletsel makkelijker en beter in de tooltip kon staan.
 Dit gold ook voor de dodelijke vuurwerkslachtoffers.
 
-### resultaat
-Uiteindelijk was het bij elkaar sprokkelen van alle data mijn grootste struikelblok. Met de data die ik uiteindelijk gevonden heb, heb ik precies kunnen maken wat ik in mijn hoofd had.
-Als de gevonden data uitgebreider en complexer zou zijn geweest had ik interesantere visualisaties kunnen maken. In dat opzicht is het zoeken van een geschikt onderwerp met passende data echt een lastige stap. Aan de andere kant heb ik nu wel iets kunnen maken wat nog niet bestond, iets wat best opmerkelijk is gezien de jaarlijks terugkerende discussie over een vuurwerkverbod voor consumenten.
-Als ik meer tijd gehad zou hebben zou ik, in plaats van de data uit nieuwsberichten filteren,
-datasets opvragen bij de desbetreffende partijen.
+## beslissingen
+Uiteindelijk was het bij elkaar sprokkelen van alle data mijn grootste struikelblok. Als de gevonden data uitgebreider en complexer zou zijn geweest had ik interesantere visualisaties kunnen maken. In dat opzicht is het zoeken van een geschikt onderwerp met passende data echt een lastige stap. Aan de andere kant heb ik nu wel iets kunnen maken wat nog niet bestond, iets wat best opmerkelijk is gezien de jaarlijks terugkerende discussie over een vuurwerkverbod voor consumenten. Als ik meer tijd gehad zou hebben zou ik, in plaats van de data uit nieuwsberichten filteren, datasets opvragen bij de desbetreffende partijen. 

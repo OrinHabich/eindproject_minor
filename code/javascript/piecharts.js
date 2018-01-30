@@ -78,7 +78,7 @@ function makePiechart(svgID, data, itemName, colors) {
     .enter().append("g")
     .attr("class", "arc");
 
-  var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 50);
+  var label = d3.arc().outerRadius(radius - 50).innerRadius(radius - 50);
 
   // create separate tooltip per piechart to have mutual independent opacities
   var tooltip = d3.select("body")
@@ -151,7 +151,7 @@ function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
   var arc = g.selectAll(".arc")
     .data(pie(data[newYearsEve]));
 
-  var label = d3.arc().outerRadius(radius - 40).innerRadius(radius - 50);
+  var label = d3.arc().outerRadius(radius - 50).innerRadius(radius - 50);
 
   arc.select("path").transition()
     .attr("d", path)

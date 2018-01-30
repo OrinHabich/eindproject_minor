@@ -24,7 +24,7 @@ function checkboxes() {
     if (this.value == "Age") {
       var htmlString = "Per leeftijdsklasse";
     } else if (this.value == "TypeFireworks") {
-      var htmlString = "Naar soort vuurwerk"
+      var htmlString = "Sier- of knalvuurwerk"
     } else if (this.value == "Bystander") {
       var htmlString = "Zelf afgestoken of omstander"
     } else if (this.value == "StatusFireworks") {

@@ -82,7 +82,7 @@ function makeBarchart(svgID, data, perInjury, dataPie1, dataPie2, dataPie3,
       };
       d3.select(this).style("stroke-width", 2).style("stroke", "black");
     })
-    .on("mouseout", function(d) {
+    .on("mouseout", function() {
 
       // hide tooltip
       TOOLTIP.style("opacity", 0);
@@ -94,9 +94,8 @@ function makeBarchart(svgID, data, perInjury, dataPie1, dataPie2, dataPie3,
       d3.selectAll("rect").style("opacity", 0.4);
       d3.selectAll(".rectLegend").style("opacity", 1);
 
-      // obtain x and y position
+      // obtain x position
       var xPosition = d.data.jaarwisseling;
-      var yPosition = d3.select(this.parentNode).attr("fill");
 
       // highlight chosen bar
       d3.selectAll(".newYearsEve" + xPosition).style("opacity", 1);
@@ -110,8 +109,6 @@ function makeBarchart(svgID, data, perInjury, dataPie1, dataPie2, dataPie3,
       // keep choice in dropdown up-to-date
       d3.selectAll(".option").property("selected", false);
       d3.select("#y" + xPosition).property("selected", true);
-
-      return;
     });
 
   // default selected bar

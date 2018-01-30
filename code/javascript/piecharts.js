@@ -13,6 +13,8 @@ var sixColors = d3.scaleOrdinal(["#91bfdb", "#4575b4", "#d73027", "#fc8d59",
   "#fee090", "#ffffbf"]);
 var twoColors = d3.scaleOrdinal(["#91bfdb", "#4575b4"]);
 
+var newYear;
+
 function makePiecharts(dataPie1, dataPie2, dataPie3, dataPie4) {
   /*  Makes all the piecharts, for the default new years eve.
       Args:
@@ -21,6 +23,8 @@ function makePiecharts(dataPie1, dataPie2, dataPie3, dataPie4) {
         dataPie3    Appriopiate dataset.
         dataPie4    Appriopiate dataset.
   */
+
+  newYear = DEFAULTNEWYEARSEVE;
 
   makePiechart("PerAge", dataPie1, "leeftijd", sixColors);
   makePiechart("PerBystander", dataPie2, "wie", twoColors);
@@ -37,6 +41,8 @@ function updatePiecharts(dataPie1, dataPie2, dataPie3, dataPie4, newYearsEve) {
         dataPie4        Appriopiate dataset.
         newYearsEve     The chosen new years eve.
   */
+
+  newYear = newYearsEve;
 
   updatePiechart(dataPie1, "PerAge", newYearsEve, "leeftijd", sixColors);
   updatePiechart(dataPie2, "PerBystander", newYearsEve, "wie", twoColors);
@@ -92,12 +98,17 @@ function makePiechart(svgID, data, itemName, colors) {
       } else {
         tooltip.style("opacity", 1);
         d3.select(this).style("stroke-width", 2).style("stroke", "black");
+        var total = 0;
+        for (var i = 0; i < data[newYear].length; i++) {
+          total += data[newYear][i].number;
+        };
+        var perc = Math.round(d.data.number / total * 100);
+        tooltip.html(d.data.number + " mensen<br>" + perc + "&#37;")
+          .style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY - 40) + "px");
       }
-      tooltip.html(d.data.number + " mensen")
-        .style("left", (d3.event.pageX) + "px")
-        .style("top", (d3.event.pageY - 28) + "px");
     })
-    .on("mouseout", function(d) {
+    .on("mouseout", function() {
 
       // hide tooltip
       tooltip.style("opacity", 0);

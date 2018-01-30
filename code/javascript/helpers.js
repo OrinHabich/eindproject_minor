@@ -144,15 +144,16 @@ function plural(n, word) {
 }
 
 function dropdown(perInjury, dataPie1, dataPie2, dataPie3, dataPie4, dataPM10) {
-  /*   Takes care of the dropdown menu. Adds all options and updates the
-       site after selection in dropdown menu changes.
-       Note: The actual funcionality is in onchange().
+  /*   Takes care of the dropdown menu. Adds all options to dropdown menu
+       Updates the site after selection in dropdown changes.
+       Note: The actual functionality is in onchange().
        Args:
-         firstAid               Dataset to extract options from.
-         perInjury              Dataset of the barchart about first aid.
-         dataPiechartsAndHuman  Array with datasets for piecharts and
-                                figure of the human.
-         dataPM10               Dataset for linechart.
+         perInjury       Dataset for the human figure.
+         dataPie1        Appriopiate dataset for piechart.
+         dataPie2        Appriopiate dataset for piechart.
+         dataPie3        Appriopiate dataset for piechart.
+         dataPie4        Appriopiate dataset for piechart.
+         dataPM10        Dataset for linechart.
   */
 
   // make the dropdown menu, e.i. add the options
@@ -173,11 +174,10 @@ function dropdown(perInjury, dataPie1, dataPie2, dataPie3, dataPie4, dataPM10) {
          Args:  None.
     */
 
-    // results of selecting with dropdown menu
+    // get current selection from dropdown menu
     var selectValue = d3.select("select").property("value");
 
     // update the piecharts, linechart, titles and tooltip on the human figure
-    //makePiecharts(selectValue, dataPiecharts);
     updatePiecharts(dataPie1, dataPie2, dataPie3, dataPie4, selectValue);
     updateLinechart(dataPM10[selectValue]);
     makeTitles(selectValue);

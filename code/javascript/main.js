@@ -72,44 +72,41 @@ function afterLoad() {
     .defer(d3.json, "data/pm10.json")
     .await(main);
 
-    function main(error, dataFirstAid, dataComplaints, dataDamage, perAge,
-      perBystander, perTypeFireworks, perStatusFireworks, perInjury, dataPM10,
-      mouemove) {
-      /*   Creates charts based on the given data.
-           Args:
-           error        Boolean, true if error, false otherwise.
-           all others   Appriopiate datasets.
-      */
+  function main(error, dataFirstAid, dataComplaints, dataDamage, perAge,
+    perBystander, perTypeFireworks, perStatusFireworks, perInjury, dataPM10,
+    mouemove) {
+    /*   Creates charts based on the given data.
+         Args:
+         error        Boolean, true if error, false otherwise.
+         all others   Appriopiate datasets.
+    */
 
-      if (error) throw error;
+    if (error) throw error;
 
-      // make the barcharts
-      makeBarchart("FirstAid", dataFirstAid, perInjury, perAge, perBystander,
-        perTypeFireworks, perStatusFireworks, dataPM10, " mensen", "Aantal",
-        colorsFirstAid, true);
-      makeBarchart("Complaints", dataComplaints, perInjury, perAge, perBystander,
-        perTypeFireworks, perStatusFireworks, dataPM10, " klachten", "Aantal",
-        colorsComplaints, true);
-      makeBarchart("Damage", dataDamage, perInjury, perAge, perBystander,
-        perTypeFireworks, perStatusFireworks, dataPM10, " miljoen euro",
-        "Bedrag (in miljoenen euro)", colorsDamage, false);
+    // make the barcharts
+    makeBarchart("FirstAid", dataFirstAid, perInjury, perAge, perBystander,
+      perTypeFireworks, perStatusFireworks, dataPM10, " mensen", "Aantal",
+      colorsFirstAid, true);
+    makeBarchart("Complaints", dataComplaints, perInjury, perAge, perBystander,
+      perTypeFireworks, perStatusFireworks, dataPM10, " klachten", "Aantal",
+      colorsComplaints, true);
+    makeBarchart("Damage", dataDamage, perInjury, perAge, perBystander,
+      perTypeFireworks, perStatusFireworks, dataPM10, " miljoen euro",
+      "Bedrag (in miljoenen euro)", colorsDamage, false);
 
-      // make default pie charts, linechart and titles
-      makePiecharts(perAge, perBystander, perTypeFireworks, perStatusFireworks);
-      makeLinechart(dataPM10);
-      makeTitles(DEFAULTNEWYEARSEVE);
+    // make default pie charts, linechart and titles
+    makePiecharts(perAge, perBystander, perTypeFireworks, perStatusFireworks);
+    makeLinechart(dataPM10);
+    makeTitles(DEFAULTNEWYEARSEVE);
 
-      // add tooltip to the figure of human
-      tooltipFigureHuman(perInjury, DEFAULTNEWYEARSEVE);
+    // add tooltip to the figure of human
+    tooltipFigureHuman(perInjury, DEFAULTNEWYEARSEVE);
 
-      // make the dropdown menu (including functionality)
-      dropdown(perInjury, perAge, perBystander, perTypeFireworks,
-        perStatusFireworks, dataPM10);
+    // make the dropdown menu (including functionality)
+    dropdown(perInjury, perAge, perBystander, perTypeFireworks,
+      perStatusFireworks, dataPM10);
 
-      // set default new years eve on dropdown
-      d3.selectAll("#y" + DEFAULTNEWYEARSEVE).attr("selected", true);
-
-      // add functionality to checkboxes
-      checkboxes();
+    // add functionality to checkboxes
+    checkboxes();
   }
 }

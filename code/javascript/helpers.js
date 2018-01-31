@@ -18,7 +18,7 @@ function checkboxes() {
   */
 
   // listen for changes on the checkboxes
-  d3.selectAll(".checkbox").on("change", function(d) {
+  d3.selectAll(".checkbox").on("change", function() {
 
     // toggle the visibility of the appropriate piechart
     if (d3.select("#" + this.value).style("display") == "none") {
@@ -65,7 +65,7 @@ function tooltipFigureHuman(data, newYearsEve) {
         .style("left", (d3.event.pageX + 40) + "px")
         .style("top", (d3.event.pageY - 25) + "px");
     })
-    .on("mouseout", function(d) {
+    .on("mouseout", function() {
 
       // change color back
       if (this.parentNode.id == "eye" || this.parentNode.id == "heart") {
@@ -153,6 +153,9 @@ function dropdown(perInjury, dataPie1, dataPie2, dataPie3, dataPie4, dataPM10) {
       .text(NEWYEARSEVES[i]);
   }
 
+  // set default new years eve on dropdown
+  d3.selectAll("#y" + DEFAULTNEWYEARSEVE).attr("selected", true);
+
   // add listener, listen for changes in selection
   d3.select(".select").on("change", onchange);
 
@@ -164,14 +167,16 @@ function dropdown(perInjury, dataPie1, dataPie2, dataPie3, dataPie4, dataPM10) {
     // get current selection from dropdown menu
     var selectValue = d3.select("select").property("value");
 
+    // highlight in all bargraphs the bar corresponding to the selection
+    d3.selectAll("rect").style("opacity", 0.4);
+    d3.selectAll(".newYearsEve" + selectValue).style("opacity", 1);
+
     // update the piecharts, linechart, titles and tooltip on the human figure
     updatePiecharts(dataPie1, dataPie2, dataPie3, dataPie4, selectValue);
     updateLinechart(dataPM10[selectValue]);
     makeTitles(selectValue);
     tooltipFigureHuman(perInjury, selectValue);
 
-    // highlight in all bargraphs the bar corresponding to the selection
-    d3.selectAll("rect").style("opacity", 0.4);
-    d3.selectAll(".newYearsEve" + selectValue).style("opacity", 1);
+
   };
 }

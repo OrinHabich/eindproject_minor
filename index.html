@@ -3,233 +3,237 @@ Minor programmeren; project
 Orin Habich 10689508-->
 <!DOCTYPE html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8">
-    <title>Schade door vuurwerk</title>
-    <link rel="shortcut icon" href="docs/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="code/css/bootstrap.css">
-    <link rel="stylesheet" href="code/css/main.css">
-    <script src="code/javascript/libraries/jqueryAjax.js"></script>
-    <script src="code/javascript/libraries/bootstrap.js"></script>
-    <script src="code/javascript/libraries/d3version4.js"></script>
-    <script src="code/javascript/libraries//queueVersion1.js"></script>
-    <script src="code/javascript/helpers.js"></script>
-    <script src="code/javascript/piecharts.js"></script>
-    <script src="code/javascript/linechart.js"></script>
-    <script src="code/javascript/barcharts.js"></script>
-    <script src="code/javascript/main.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Schade door vuurwerk</title>
+  <link rel="shortcut icon" href="docs/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="code/css/bootstrap.css">
+  <link rel="stylesheet" href="code/css/main.css">
+  <script src="code/javascript/libraries/jqueryAjax.js"></script>
+  <script src="code/javascript/libraries/bootstrap.js"></script>
+  <script src="code/javascript/libraries/d3version4.js"></script>
+  <script src="code/javascript/libraries//queueVersion1.js"></script>
+  <script src="code/javascript/helpers.js"></script>
+  <script src="code/javascript/piecharts.js"></script>
+  <script src="code/javascript/linechart.js"></script>
+  <script src="code/javascript/barcharts.js"></script>
+  <script src="code/javascript/main.js"></script>
+</head>
 
-  <body >
+<body >
+<div class="container-fluid">
 
   <!--main title -->
-  <div class="container-fluid">
-    <div class="row"  >
-      <div id="barTitle" class="col-md-12" >
-        <h1 id="mainTitle"><b>Schade door vuurwerk</b></h1>
-        <h4 id="chooseYear"><b>Jaarwisseling</b>
-          <select class="select"></select></h4>
-      </div>
+  <div class="row"  >
+    <div id="barTitle" class="col-md-12" >
+      <h1 id="mainTitle"><b>Schade door vuurwerk</b></h1>
+      <h4 id="chooseYear"><b>Jaarwisseling</b>
+        <select class="select"></select></h4>
     </div>
+  </div>
 
-    <!--title 'mens' section  -->
-    <div class="row">
-      <div class="col-sm-12" >
-        <h2 id="placeholderTitle">placeholderTitle<br>line two</h2>
-        <h2 class="subheader"><b>Mens</b></h2>
-        <button type="button" class="btn btn-info" data-toggle="collapse"
-          data-target="#sourceSEH">Bronnen</button>
-        <div id="sourceSEH" class="collapse">
-          <p>
-            <a href="https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf">
-              Rapportage vuurwerkongevallen 2015-2017.pdf</a><br>
-            <a href="https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf">
-             Rapportage vuurwerkongevallen 2016-2018.pdf</a><br>
-             <a href="https://vuurwerkmanifest.nl/#cijfers-oogletsels">
-              cijfers-oogletsels</a><br>
-            <a href="https://nos.nl/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html">
-             vuurwerkoverlast 2014-2015</a><br>
-            <a href="https://www.nrc.nl/nieuws/2016/01/03/bijna-90-000-meldingen-van-vuurwerkoverlast-a1410391">
-            vuurwerkoverlast 2015-2016</a><br>
-            <a href="https://www.nu.nl/jaarwisseling/4372970/laagste-aantal-klachten-vuurwerkoverlast-in-vijf-jaar.html">
-            vuurwerkoverlast 2016-2017</a><br>
-            <a href="https://indebuurt.nl/arnhem/nieuws/zoveel-meldingen-van-vuurwerkoverlast-waren-er-in-arnhem~14226/">
-            vuurwerkoverlast 2017-2018</a>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!--barchart first aid and figure human  -->
-    <div class="row">
-      <div class="col-sm-6" >
-        <h3>Vuurwerkslachtoffers naar de spoedeisende hulp</h3>
-        <svg id="svgFirstAid" width="700" height="400"></svg>
-      </div>
-      <div class="col-md-6" id="placeForFigureHuman">
-        <h3 id="titleInjuriesSection">Lichamelijk letsel</h3>
-      </div>
-    </div>
-
-    <!--piecharts -->
-    <div class="row">
-      <h3 id="titlePiechartsSection">Onderverdeling slachtoffers</h3>
-      <div class="col-md-4" >
-      <input class="checkbox" type="checkbox" value = "PerAge"
-        style="float: left; margin-top: 8px;">
-        <label class="indented-checkbox-text">
-          Per leeftijdsklasse<br>
-        </label>
-      <input class="checkbox" type="checkbox" value="PerTypeFireworks"
-        style="float: left; margin-top: 8px;">
-        <label class="indented-checkbox-text">
-            Sier- of knalvuurwerk<br>
-        </label>
-      <input class="checkbox" type="checkbox" value="PerBystander"
-        style="float: left; margin-top: 8px;">
-        <label class="indented-checkbox-text">
-          Zelf afgestoken of omstander<br>
-        </label>
-      <input class="checkbox" type="checkbox" value="PerStatusFireworks"
-        style="float: left; margin-top: 8px;">
-        <label class="indented-checkbox-text">
-          Legaal of illegaal vuurwerk<br>
-        </label>
-      </div>
-      <div class="col-md-2" id="PerAge">
-        <h4><b>Per leeftijdsklasse</b></h4>
-        <svg id="svgPerAge" width="250" height="250"></svg>
-      </div>
-      <div class="col-md-2" id="PerTypeFireworks">
-        <h4><b>Sier- of knalvuurwerk</b></h4>
-          <svg id="svgPerTypeFireworks" width="250" height="250"></svg>
-      </div>
-      <div class="col-md-2" id="PerBystander">
-        <h4><b>Zelf afgestoken of omstander</b></h4>
-        <svg id="svgPerBystander" width="250" height="250"></svg>
-      </div>
-      <div class="col-md-2" id="PerStatusFireworks">
-        <h4><b>Legaal of illegaal vuurwerk</b></h4>
-        <svg id="svgPerStatusFireworks" width="250" height="250"></svg>
-      </div>
-    </div>
-
-    <!--barchart complaints -->
-    <div class="row">
-      <div class="col-md-6">
-        <h3>Meldingen bij <a href="https://vuurwerkoverlast.nl/">
-         Meldpunt vuurwerkoverlast</a></h3>
-        <svg id="svgComplaints" width="700" height="400"></svg>
-      </div>
-    </div>
-
-    <!--title 'milieu' section -->
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="subheader"><b>Milieu</b></h2>
-        <button type="button" class="btn btn-info" data-toggle="collapse"
-          data-target="#sourcesFijnstof">Bronnen</button>
-        <div id="sourcesFijnstof" class="collapse">
-          <p>
-            <a href="https://www.luchtmeetnet.nl/">
-              fijnstof jaarwisselingen 2014-2015, 2015-2016 en 2016-2017</a><br>
-            <a href="http://samenmeten.rivm.nl/dataportaal/">
-              fijnstof jaarwisseling 2017-2018</a><br>
-            <a href="http://www.staakthetvuren.com/Gespreksnotitie%20VITO.pdf">
-              vuurwerk en milieu.pdf</a><br>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!--linechart and infographic-->
-    <div class="row">
-      <div class="col-md-6">
-        <h3 id="titleLinechart">Fijnstof (PM10) rond de jaarwisseling</h3>
-        <svg id="svgLinechart" width="800" height="400"></svg>
-      </div>
-      <div class="col-md-6" id="infographic">
-        <div class="img-holder">
-          <img src="docs/backgroundFireworks.png" class="img-rounded"
-            alt="image description"/>
-          <div id="textWindow1" class="tooltipInfo" style="position: relative;
-              bottom: 500px; left: 30px;"><b>Veel vervuilende stoffen</b>
-            <span class="content">
-              Ongeveer 100.000 kilo barium,
-              40.000 kilo koper, 30.000 kilo strontium, 10.000 kilo titaan, en
-              5.000 kilo antimoon, deze giftige stoffen komen elk jaar tijdens de
-              jaarwisseling bij het afsteken van consumentenvuurwerk in het
-              milieu terecht.
-            </span></div>
-          <div id="textWindow2" class="tooltipInfo" style="position: relative;
-          bottom: 470px; left: 360px;"><b>Explosie in de lucht</b>
-            <span class="content">
-              Bij de explosie in de lucht vindt de grootste uitstoot van
-              milieuvervuilende (en giftige) stoffen plaats. Vervolgens
-              verspreiden de luchtvervuilende stoffen zich en komen daarna op
-              de grond terecht.
-            </span></div>
-          <div id="textWindow3" class="tooltipInfo" style="position: relative;
-              bottom: 330px; left: 150px;"><b>Zware metalen</b>
-            <span class="content">
-              De belangrijkste verontreinigende stoffen die ontstaan zijn
-              (ultra)fijn stof en gassen als koolmonoxide, kooldioxide, stikstof-
-              en zwaveldioxide, maar ook metaalverbindingen (kaliumsulfaat en
-              kaliumcarbonaat) en zware metalen die zich aan fijn stofdeeltjes
-              hechten (o.a. barium, koper, strontium, titaan en antimoon).
-            </span></div>
-          <div id="textWindow4" class="tooltipInfo" style="position: relative;
-          bottom: 270px; left: 440px;"><b>Directe omgeving</b>
-            <span class="content">
-              Van de stoffen die in de lucht terecht komen, valt 90
-              procent in de directe omgeving weer op de grond. Rond 68 procent
-              spoelt via de riolering naar een waterzuiveringsinstallatie of valt
-              rechtstreeks op de oppervlakte van het water. De resterende 22
-              procent blijft op de grond liggen.
-            </span></div>
-          <div id="textWindow5" class="tooltipInfo" style="position: relative;
-              bottom: 140px; left: 450px;"><b>Afvalresten</b>
-            <span class="content">
-              De resten van de verpakking gemaakt uit karton,
-              papier, plastic en metaal worden als afval op de grond
-              achtergelaten. Bij elkaar is dit bijna 3.000.000 kilo.
-            </span></div>
-          <div id="textWindow6" class="tooltipInfo" style="position: relative;
-              bottom: 300px; left: 70px;"><b>Smog</b>
-            <span class="content">
-              Meestal is er tijdens de jaarwisseling sprake van smog; een
-              periode van tijdelijk zeer verontreinigde lucht.
-              De beperking van het zicht is soms zo ernstig dat hulpdiensten
-              niet kunnen uitrukken.
-            </span></div>
-        </div>
-      </div>
-    </div>
-
-    <!--title 'materiaal' section  -->
-    <div class="row">
-      <div class="col-md-6" >
-        <h2 class="subheader"><b>Materiaal</b></h2>
-        <button type="button" class="btn btn-info" data-toggle="collapse"
-          data-target="#sourcesMateriaal">Bronnen</button>
-        <div id="sourcesMateriaal" class="collapse">
-          <p>
-            <a href="https://l1.nl/content/documents/2016/12/2017-vuurwerkschade.pdf">
-              2014-2015, 2015-2016</a><br>
-            <a href="https://nos.nl/artikel/2151143-schade-jaarwisseling-geschat-op-13-miljoen-euro.html">
-              2016-2017</a><br>
-            <a href="https://www.consumentenbond.nl/autoverzekering/minder-schade-tijdens-jaarwisseling">
-              2017-2018</a><br>
-          </p>
-        </div>
-
-        <!--barchart damage -->
-        <h3>Materi&euml;le schade bij particulieren</h3>
-        <svg id="svgDamage" width="700" height="400"></svg>
+  <!--title 'mens' section  -->
+  <div class="row">
+    <div class="col-sm-12" >
+      <h2 id="placeholderTitle">placeholderTitle<br>line two</h2>
+      <h2 class="subheader"><b>Mens</b></h2>
+      <button type="button" class="btn btn-info" data-toggle="collapse"
+        data-target="#sourceSEH">Bronnen</button>
+      <div id="sourceSEH" class="collapse">
+        <p>
+          <a href="https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf">
+            Rapportage vuurwerkongevallen 2015-2017.pdf</a><br>
+          <a href="https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf">
+           Rapportage vuurwerkongevallen 2016-2018.pdf</a><br>
+           <a href="https://vuurwerkmanifest.nl/#cijfers-oogletsels">
+            cijfers-oogletsels</a><br>
+          <a href="https://nos.nl/artikel/2011650-70-000-meldingen-bij-meldpunt-vuurwerkoverlast.html">
+           vuurwerkoverlast 2014-2015</a><br>
+          <a href="https://www.nrc.nl/nieuws/2016/01/03/bijna-90-000-meldingen-van-vuurwerkoverlast-a1410391">
+          vuurwerkoverlast 2015-2016</a><br>
+          <a href="https://www.nu.nl/jaarwisseling/4372970/laagste-aantal-klachten-vuurwerkoverlast-in-vijf-jaar.html">
+          vuurwerkoverlast 2016-2017</a><br>
+          <a href="https://indebuurt.nl/arnhem/nieuws/zoveel-meldingen-van-vuurwerkoverlast-waren-er-in-arnhem~14226/">
+          vuurwerkoverlast 2017-2018</a>
+        </p>
       </div>
     </div>
   </div>
 
+  <!--barchart first aid and figure human  -->
+  <div class="row">
+    <div class="col-sm-6" >
+      <h3>Vuurwerkslachtoffers naar de spoedeisende hulp</h3>
+      <svg id="svgFirstAid" width="700" height="400"></svg>
+    </div>
+    <div class="col-md-6" id="placeForFigureHuman">
+      <h3 id="titleInjuriesSection">Lichamelijk letsel</h3>
+    </div>
+  </div>
+
+  <!--piecharts -->
+  <div class="row">
+    <h3 id="titlePiechartsSection">Onderverdeling slachtoffers</h3>
+    <div class="col-md-4" >
+    <input class="checkbox" type="checkbox" value = "PerAge"
+      style="float: left; margin-top: 8px;">
+      <label class="indented-checkbox-text">
+        Per leeftijdsklasse<br>
+      </label>
+    <input class="checkbox" type="checkbox" value="PerTypeFireworks"
+      style="float: left; margin-top: 8px;">
+      <label class="indented-checkbox-text">
+          Sier- of knalvuurwerk<br>
+      </label>
+    <input class="checkbox" type="checkbox" value="PerBystander"
+      style="float: left; margin-top: 8px;">
+      <label class="indented-checkbox-text">
+        Zelf afgestoken of omstander<br>
+      </label>
+    <input class="checkbox" type="checkbox" value="PerStatusFireworks"
+      style="float: left; margin-top: 8px;">
+      <label class="indented-checkbox-text">
+        Legaal of illegaal vuurwerk<br>
+      </label>
+    </div>
+    <div class="col-md-2" id="PerAge">
+      <h4><b>Per leeftijdsklasse</b></h4>
+      <svg id="svgPerAge" width="250" height="250"></svg>
+    </div>
+    <div class="col-md-2" id="PerTypeFireworks">
+      <h4><b>Sier- of knalvuurwerk</b></h4>
+        <svg id="svgPerTypeFireworks" width="250" height="250"></svg>
+    </div>
+    <div class="col-md-2" id="PerBystander">
+      <h4><b>Zelf afgestoken of omstander</b></h4>
+      <svg id="svgPerBystander" width="250" height="250"></svg>
+    </div>
+    <div class="col-md-2" id="PerStatusFireworks">
+      <h4><b>Legaal of illegaal vuurwerk</b></h4>
+      <svg id="svgPerStatusFireworks" width="250" height="250"></svg>
+    </div>
+  </div>
+
+  <!--barchart complaints -->
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Meldingen bij <a href="https://vuurwerkoverlast.nl/">
+       Meldpunt vuurwerkoverlast</a></h3>
+      <svg id="svgComplaints" width="700" height="400"></svg>
+    </div>
+  </div>
+
+  <!--title 'milieu' section -->
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="subheader"><b>Milieu</b></h2>
+      <button type="button" class="btn btn-info" data-toggle="collapse"
+        data-target="#sourcesFijnstof">Bronnen</button>
+      <div id="sourcesFijnstof" class="collapse">
+        <p>
+          <a href="https://www.luchtmeetnet.nl/">
+            fijnstof jaarwisselingen 2014-2015, 2015-2016 en 2016-2017</a><br>
+          <a href="http://samenmeten.rivm.nl/dataportaal/">
+            fijnstof jaarwisseling 2017-2018</a><br>
+          <a href="http://www.staakthetvuren.com/Gespreksnotitie%20VITO.pdf">
+            vuurwerk en milieu.pdf</a><br>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!--linechart and infographic-->
+  <div class="row">
+    <div class="col-md-6">
+      <h3 id="titleLinechart">Fijnstof (PM10) rond de jaarwisseling</h3>
+      <svg id="svgLinechart" width="800" height="400"></svg>
+    </div>
+    <div class="col-md-6" id="infographic">
+      <div class="img-holder">
+        <img src="docs/backgroundFireworks.png" class="img-rounded"
+          alt="image description"/>
+        <div id="textWindow1" class="tooltipInfo" style="position: relative;
+            bottom: 500px; left: 30px;"><b>Veel vervuilende stoffen</b>
+          <span class="content">
+            Ongeveer 100.000 kilo barium,
+            40.000 kilo koper, 30.000 kilo strontium, 10.000 kilo titaan, en
+            5.000 kilo antimoon, deze giftige stoffen komen elk jaar tijdens de
+            jaarwisseling bij het afsteken van consumentenvuurwerk in het
+            milieu terecht.
+          </span></div>
+        <div id="textWindow2" class="tooltipInfo" style="position: relative;
+        bottom: 470px; left: 360px;"><b>Explosie in de lucht</b>
+          <span class="content">
+            Bij de explosie in de lucht vindt de grootste uitstoot van
+            milieuvervuilende (en giftige) stoffen plaats. Vervolgens
+            verspreiden de luchtvervuilende stoffen zich en komen daarna op
+            de grond terecht.
+          </span></div>
+        <div id="textWindow3" class="tooltipInfo" style="position: relative;
+            bottom: 330px; left: 150px;"><b>Zware metalen</b>
+          <span class="content">
+            De belangrijkste verontreinigende stoffen die ontstaan zijn
+            (ultra)fijn stof en gassen als koolmonoxide, kooldioxide, stikstof-
+            en zwaveldioxide, maar ook metaalverbindingen (kaliumsulfaat en
+            kaliumcarbonaat) en zware metalen die zich aan fijn stofdeeltjes
+            hechten (o.a. barium, koper, strontium, titaan en antimoon).
+          </span></div>
+        <div id="textWindow4" class="tooltipInfo" style="position: relative;
+        bottom: 270px; left: 440px;"><b>Directe omgeving</b>
+          <span class="content">
+            Van de stoffen die in de lucht terecht komen, valt 90
+            procent in de directe omgeving weer op de grond. Rond 68 procent
+            spoelt via de riolering naar een waterzuiveringsinstallatie of valt
+            rechtstreeks op de oppervlakte van het water. De resterende 22
+            procent blijft op de grond liggen.
+          </span></div>
+        <div id="textWindow5" class="tooltipInfo" style="position: relative;
+            bottom: 140px; left: 450px;"><b>Afvalresten</b>
+          <span class="content">
+            De resten van de verpakking gemaakt uit karton,
+            papier, plastic en metaal worden als afval op de grond
+            achtergelaten. Bij elkaar is dit bijna 3.000.000 kilo.
+          </span></div>
+        <div id="textWindow6" class="tooltipInfo" style="position: relative;
+            bottom: 300px; left: 70px;"><b>Smog</b>
+          <span class="content">
+            Meestal is er tijdens de jaarwisseling sprake van smog; een
+            periode van tijdelijk zeer verontreinigde lucht.
+            De beperking van het zicht is soms zo ernstig dat hulpdiensten
+            niet kunnen uitrukken.
+          </span></div>
+      </div>
+    </div>
+  </div>
+
+  <!--title 'materiaal' section  -->
+  <div class="row">
+    <div class="col-md-12" >
+      <h2 class="subheader"><b>Materiaal</b></h2>
+      <button type="button" class="btn btn-info" data-toggle="collapse"
+        data-target="#sourcesMateriaal">Bronnen</button>
+      <div id="sourcesMateriaal" class="collapse">
+        <p>
+          <a href="https://l1.nl/content/documents/2016/12/2017-vuurwerkschade.pdf">
+            2014-2015, 2015-2016</a><br>
+          <a href="https://nos.nl/artikel/2151143-schade-jaarwisseling-geschat-op-13-miljoen-euro.html">
+            2016-2017</a><br>
+          <a href="https://www.consumentenbond.nl/autoverzekering/minder-schade-tijdens-jaarwisseling">
+            2017-2018</a><br>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!--barchart damage -->
+  <div class="row">
+    <div class="col-md-12" >
+      <h3>Materi&euml;le schade bij particulieren</h3>
+      <svg id="svgDamage" width="700" height="400"></svg>
+    </div>
+  </div>
+
   <h5 style="float: right">By Orin Habich 10689508</h5>
-  </body>
+</div>
+</body>
 </html>

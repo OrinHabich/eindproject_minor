@@ -1,5 +1,6 @@
 # Schade door vuurwerk 
 #### Orin Habich  10689508
+<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
 
 ## Beschrijving
 Over het algemeen zijn mensen zich onvoldoende bewust van de hoeveelheid schade door vuurwerk. 
@@ -10,8 +11,6 @@ De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen v
 
 ## Screenshot van de website
 ![](docs/imagesProcess/websiteDag16.png)
-
-<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
 
 ## Link naar de website
 https://OrinHabich.github.io/project 

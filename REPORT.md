@@ -2,7 +2,7 @@
 
 Een website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
 
-## Het technische ontwerp
+## Technisch ontwerp
 Er is één html-pagina voor de site. Dit is index.html.
 De functionaliteit is verdeeld over meerdere JavaScript files.
 Er is een main.js welke wordt uitgevoerd na het laden van de pagina.
@@ -70,5 +70,5 @@ Het was daarom niet duidelijk wat bij een taartdiagram over oogletsel het totaal
 Uiteindelijk kwam het er op neer dat de extra data over oogletsel makkelijker en beter in de tooltip kon staan.
 Dit gold ook voor de dodelijke vuurwerkslachtoffers.
 
-## beslissingen
+## Beslissingen
 Uiteindelijk was het bij elkaar sprokkelen van alle data mijn grootste struikelblok. Als de gevonden data uitgebreider en complexer zou zijn geweest had ik interesantere visualisaties kunnen maken. In dat opzicht is het zoeken van een geschikt onderwerp met passende data echt een lastige stap. Aan de andere kant heb ik nu wel iets kunnen maken wat nog niet bestond, iets wat best opmerkelijk is gezien de jaarlijks terugkerende discussie over een vuurwerkverbod voor consumenten. Als ik meer tijd gehad zou hebben zou ik, in plaats van de data uit nieuwsberichten filteren, datasets opvragen bij de desbetreffende partijen. 

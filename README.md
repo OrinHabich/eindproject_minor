@@ -47,7 +47,13 @@ https://youtu.be/dPZREgvmL-E
    -  https://bl.ocks.org/d3noob
    
 ## Gebruikte software
-Dit project is gemaakt in Atom met versie 4 van D3. Verder zijn Paint en http://www.drawsvg.org/drawsvg.html gebruikt.
+- Atom
+- D3 versie 4
+- Bootstrap
+- jQueryAjax
+- Queue versie 1
+- Paint
+- http://www.drawsvg.org/drawsvg.html
   
 ## License
 

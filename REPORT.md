@@ -19,11 +19,11 @@ De tweede manier is doormiddel van het dropdown menu.
 Met de checkboxes is aan te geven welke taartdiagrammen zichtbaar moeten zijn.
 
 De verdeling van de code over de files is als volgt:
-In main wordt de svg van het poppetje ingeladen, globals gedefinieerd, data geladen en worden de 'kern'-functies aangeroepen.
-In barcharts.js staat alle code met betrekking tot de staafdiagrammen.
-In linechart.js staat alle code met betrekking tot de lijngrafiek.
-In piecharts.js staat alle code met betrekking tot de taartdiagrammen.
-Alle andere functies staan in helpers.js.
+- In main wordt de svg van het poppetje ingeladen, globals gedefinieerd, data geladen en worden de 'kern'-functies aangeroepen.
+- In barcharts.js staat alle code met betrekking tot de staafdiagrammen.
+- In linechart.js staat alle code met betrekking tot de lijngrafiek.
+- In piecharts.js staat alle code met betrekking tot de taartdiagrammen.
+- Alle andere functies staan in helpers.js.
 De namen van de functies zeggen precies wat de functies doen.
 Het schema hierboven laat de samenhang tussen alle functies zien.
 

@@ -43,7 +43,20 @@ De functie main() doet het volgende:
 - dropdown() wordt aangeroepen om het dropdown menu te maken.
 - checkboxes() wordt aangeroepen om de functionaliteit van de checkboxes te verzorgen.
 
+De staafjes in de staafdiagrammen hebben een 'onclick'. Het aanklikken van een staaf doet het volgende:
+- De staaf van de geselecteerde jaarwisseling highlight in alle staafdiagrammen.
+- updatePiecharts() wordt aangeroepen om de taartdiagrammen te updaten met de data van de gekozen jaarwisseling. De functie updatePiecharts() roept updatePiechart() aan voor ieder taartdiagram op de website.
+- updateLinechart() wordt aangeroepen om de lijngrafiek te updaten met de data van de gekozen jaarwisseling.
+- makeTitles() wordt aangeroepen om de titels die een jaarwisseling bevatten up te daten.
+- tooltipFigureHuman() wordt aangeroepen om de data in de tooltip op het poppetje up to date te maken.
+- Als laatst wordt de gekozen jaarwisseling in het dropdown menu aangepast.
 
+Het dropdown menu heeft een 'onchange'. Het veranderen van de geselecteerde jaarwisseling in dit menu doet het volgende:
+- De staaf van de geselecteerde jaarwisseling highlight in alle staafdiagrammen.
+- updatePiecharts() wordt aangeroepen om de taartdiagrammen te updaten met de data van de gekozen jaarwisseling. De functie updatePiecharts() roept updatePiechart() aan voor ieder taartdiagram op de website.
+- updateLinechart() wordt aangeroepen om de lijngrafiek te updaten met de data van de gekozen jaarwisseling.
+- makeTitles() wordt aangeroepen om de titels die een jaarwisseling bevatten up te daten.
+- tooltipFigureHuman() wordt aangeroepen om de data in de tooltip op het poppetje up to date te maken.
 
 ## Ontwikkeling
 

@@ -1,13 +1,18 @@
 # Schade door vuurwerk 
-#### Orin Habich  https://OrinHabich.github.io/project <img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
-https://youtu.be/dPZREgvmL-E
+#### Orin Habich  
 
+## Beschrijving
 Over het algemeen zijn mensen zich onvoldoende bewust van de hoeveelheid schade door vuurwerk. 
 De discussie rondom vuurwerk slingert meestal tussen "het is traditie" en "het veroorzaakt veel schade."
 Dit laatste argument is veelomvattend en rationeel, maar de informatie over vuurwerkschade is erg versnipperd en ontoegankelijk. 
 Daarom is er nu deze website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
 De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** van de website is toegankelijk en begrijpelijk.
 
+## Link naar de website
+https://OrinHabich.github.io/project 
+
+## Product Demo
+https://youtu.be/dPZREgvmL-E
 
 
 
@@ -43,3 +48,5 @@ Released as [unlicensed](LICENSE) public domain release.
 
 ## Screenshot of total overview of website
 ![](docs/imagesProcess/websiteDag16.png)
+
+<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>

@@ -20,24 +20,11 @@ function checkboxes() {
   // listen for changes on the checkboxes
   d3.selectAll(".checkbox").on("change", function(d) {
 
-    // determine which checkbox is changed
-    if (this.value == "Age") {
-      var htmlString = "Per leeftijdsklasse";
-    } else if (this.value == "TypeFireworks") {
-      var htmlString = "Sier- of knalvuurwerk"
-    } else if (this.value == "Bystander") {
-      var htmlString = "Zelf afgestoken of omstander"
-    } else if (this.value == "StatusFireworks") {
-      var htmlString = "Legaal of illegaal vuurwerk"
-    }
-
-    // toggle the opacity of the appropriate piechart
-    if (d3.select("#svgPer" + this.value).style("opacity") == 0) {
-      d3.select("#svgPer" + this.value).style("opacity", 1);
-      d3.select("#title" + this.value).html(htmlString);
-    } else {
-      d3.select("#svgPer" + this.value).style("opacity", 0);
-      d3.select("#title" + this.value).html("");
+    // toggle the visibility of the appropriate piechart
+    if (d3.select("#" + this.value).style("display") == "none") {
+      d3.select("#" + this.value).style("display", null);
+      } else {
+      d3.select("#" + this.value).style("display", "none");
     }
   });
 }

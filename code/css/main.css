@@ -64,12 +64,6 @@ div.tooltip {
   fill: White;
 }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-}
-
 .tooltipInfo .content {
     visibility: hidden;
     width: 300px;
@@ -93,37 +87,6 @@ div.tooltip {
     visibility: visible;
 }
 
-.img-holder #textWindow1 {
-    position: relative;
-    bottom: 500px;
-    left: 30px;
-}
-.img-holder #textWindow2 {
-    position: relative;
-    bottom: 470px;
-    left: 360px;
-}
-.img-holder #textWindow3 {
-    position: relative;
-    bottom: 330px;
-    left: 150px;
-}
-.img-holder #textWindow4 {
-    position: relative;
-    bottom: 270px;
-    left: 440px;
-}
-.img-holder #textWindow5 {
-    position: relative;
-    bottom: 140px;
-    left: 450px;
-}
-.img-holder #textWindow6 {
-    position: relative;
-    bottom: 300px;
-    left: 70px;
-}
-
 .axis path,
 .axis line {
   fill: none;
@@ -135,7 +98,7 @@ div.tooltip {
 .line {
   fill: none;
   stroke: #4575b4;
-  stroke-width: 4px;
+  stroke-width: 3px;
 }
 
 .overlay {

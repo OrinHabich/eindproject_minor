@@ -122,7 +122,7 @@ function makePiechart(svgID, data, itemName, colors) {
     .text(function(d) { return d.data[itemName]; });
 
   // by default piecharts are invisible, the checkboxes toggle the visibility
-  svg.style("opacity", 0);
+  d3.select("#" + svgID).style("display", "none");
 
 }
 

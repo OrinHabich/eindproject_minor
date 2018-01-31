@@ -58,6 +58,8 @@ Het dropdown menu heeft een 'onchange'. Het veranderen van de geselecteerde jaar
 - makeTitles() wordt aangeroepen om de titels die een jaarwisseling bevatten up te daten.
 - tooltipFigureHuman() wordt aangeroepen om de data in de tooltip op het poppetje up to date te maken.
 
+De checkboxes bevatten een 'on change' waardoor de zichtbaarheid van de taartdiagrammen aan- of uitgezet kan worden.
+
 ## Ontwikkeling
 
 ### data zoeken

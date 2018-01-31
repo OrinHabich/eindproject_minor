@@ -100,7 +100,7 @@ Het volgende rekenplaatje maakt dit duidelijk.
 
 Het probleem voor mijn visualisaties was dat er hier geen harde cijfers meer zijn. Bovenstaand stukje is al een vrij wilde schatting. Dit in een visualisatie stoppen zou teveel natte-vinger-werk worden naar mijn smaak.
 
-Wat de website nu laat zien is dat data over lichamelijk letsel veel uitgebreider bijgehouden wordt dan materiële schade. Dit laatste wordt simpelweg gedeclareerd bij de verzekeringen, en vinden we verder blijkbaar niet zo interessant. De beschikbare data laat dus zien dat we materiële schade minder belangrijk vinden dan letselschade.
+Wat de website nu laat zien is dat data over lichamelijk letsel veel uitgebreider bijgehouden wordt dan materiële schade. Dit laatste wordt simpelweg gedeclareerd bij de verzekeringen, en vinden we verder blijkbaar niet zo interessant. De beschikbare data laat dus zien dat we materiële schade minder belangrijk vinden dan letselschade. Dit wordt nu indirect ook gevisualiseerd door de website.
 
 ### taartdiagrammen
 De taartdiagrammen hadden eventueel ook in één sunburst gekund. Dit zou echter weinig toevoegen omdat de data daar niet de geschikte

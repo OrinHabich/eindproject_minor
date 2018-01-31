@@ -3,6 +3,7 @@
 Een website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
 
 ## Technisch ontwerp
+### files
 Er is één html-pagina voor de site. Dit is index.html.
 De functionaliteit is verdeeld over meerdere JavaScript files.
 Er is een main.js welke wordt uitgevoerd na het laden van de pagina.
@@ -10,6 +11,7 @@ Verder zijn er barcharts.js, linechart.js, piecharts.js en helpers.js.
 
 ![](docs/imagesProcess/flowFunctions.png)
 
+### functionaliteit
 Op twee manieren kan de data op de webpagina veranderd worden.
 
 De eerste manier is door een staaf in één van de drie staafdiagrammen aan te klikken. Dit zorgt dat de taartdiagrammen en de lijngrafiek worden geupdate naar de jaarwisseling van de aangeklikte staaf. Ook de titels worden aangepast, en de keuze in het dropdown menu.
@@ -18,6 +20,7 @@ De tweede manier is doormiddel van het dropdown menu.
 
 Met de checkboxes is aan te geven welke taartdiagrammen zichtbaar moeten zijn.
 
+### verdeling code over files
 De verdeling van de code over de files is als volgt:
 - In main wordt de svg van het poppetje ingeladen, globals gedefinieerd, data geladen en worden de 'kern'-functies aangeroepen.
 - In barcharts.js staat alle code met betrekking tot de staafdiagrammen.
@@ -25,6 +28,7 @@ De verdeling van de code over de files is als volgt:
 - In piecharts.js staat alle code met betrekking tot de taartdiagrammen.
 - Alle andere functies staan in helpers.js.
 
+### gedetailleerde omschrijving van de werking van de code
 De namen van de functies zeggen wat de functies doen.
 Het schema hierboven laat de samenhang tussen alle functies zien.
 

@@ -24,7 +24,8 @@ De verdeling van de code over de files is als volgt:
 - In linechart.js staat alle code met betrekking tot de lijngrafiek.
 - In piecharts.js staat alle code met betrekking tot de taartdiagrammen.
 - Alle andere functies staan in helpers.js.
-De namen van de functies zeggen precies wat de functies doen.
+
+De namen van de functies zeggen wat de functies doen.
 Het schema hierboven laat de samenhang tussen alle functies zien.
 
 ## Ontwikkeling

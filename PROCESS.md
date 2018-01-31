@@ -202,3 +202,16 @@ Gedaan:
 # Dag 17
 Zoeken naar foutjes en deze oplossen. Allerlei heel kleine details gefixt. Verder gewerkt aan REPORT.md
 
+# Dag 18
+Ik heb de feedback van Dataprocessing naast mijn project gehouden om te proberen niet dezelfde fouten te maken.
+
+Bij de laatste opdracht voor dat vak stond dat het qua design goed is bij een piechart als er percentages bij staan.
+Dit heb ik dus gemaakt. De tooltip laat nu zowel het absolute aantal als het percentage zien. Om de percentages uit te rekenen had ik de totale aantallen nodig. Om het totale aantal te bepalen heb ik een for-loop toegevoegd. Verder had ik een extra variabele nodig met de gekozen jaarwisseling. Deze variabele heb ik globaal gemaakt binnnen de file piecharts.js. De functies in deze file geven de waarde aan  deze variabele. Op deze manier had ik geen extra argumenten nodig in functies.
+
+Als alleen de onderste checkbox was aangeklikt kwam deze piechart helemaal rechts te staan. Dit heb ik verbeterd door niet 'opacity' maar 'display' te toggelen met de checkboxes. Dit stukje code kon sowieso veel korter bleek.
+
+Ik had mijn code al eerder door een HTML-validater gehaald (https://www.freeformatter.com/html-validator.html). Hier kwamen geen errors meer uit, maar wel warnings. Deze heb ik opgelost, de validator zegt nu dat het allemaal goed is.
+
+Na flink zoeken heb ik http://nederlandvuurwerkvrij.nl gevonden. Ik kon mij niet voorstellen dat er niet al een soortgelijke website bestond. Deze pagina lijkt inhoudelijk het meest op mijn project. Het verschil is dat mijn website zich vooral op het visualiseren van de beschikbare cijfers richt. Terwijl nederlandvuurwerkvrij vooral om de discussie draait.
+
+

@@ -2,7 +2,8 @@
 
 Een website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
 
-## Het technische ontwerp
+## Technisch ontwerp
+### files
 Er is één html-pagina voor de site. Dit is index.html.
 De functionaliteit is verdeeld over meerdere JavaScript files.
 Er is een main.js welke wordt uitgevoerd na het laden van de pagina.
@@ -10,6 +11,7 @@ Verder zijn er barcharts.js, linechart.js, piecharts.js en helpers.js.
 
 ![](docs/imagesProcess/flowFunctions.png)
 
+### functionaliteit
 Op twee manieren kan de data op de webpagina veranderd worden.
 
 De eerste manier is door een staaf in één van de drie staafdiagrammen aan te klikken. Dit zorgt dat de taartdiagrammen en de lijngrafiek worden geupdate naar de jaarwisseling van de aangeklikte staaf. Ook de titels worden aangepast, en de keuze in het dropdown menu.
@@ -17,6 +19,50 @@ De eerste manier is door een staaf in één van de drie staafdiagrammen aan te k
 De tweede manier is doormiddel van het dropdown menu.
 
 Met de checkboxes is aan te geven welke taartdiagrammen zichtbaar moeten zijn.
+
+### verdeling code over files
+De verdeling van de code over de files is als volgt:
+- In main wordt de svg van het poppetje ingeladen, globals gedefinieerd, data geladen en worden de 'kern'-functies aangeroepen.
+- In barcharts.js staat alle code met betrekking tot de staafdiagrammen.
+- In linechart.js staat alle code met betrekking tot de lijngrafiek.
+- In piecharts.js staat alle code met betrekking tot de taartdiagrammen.
+- Alle andere functies staan in helpers.js.
+
+### gedetailleerde omschrijving van de werking van de code
+De namen van de functies zeggen wat de functies doen.
+Het schema hierboven laat de samenhang tussen alle functies zien.
+
+Als de pagina geladen is wordt afterload() aangeroepen.
+Hierin worden eerst de benodigde globale variabelen gedefinieerd.
+Dan wordt de svg van het poppetje ingeladen.
+Daarna wordt alle data ingeladen.
+Nadat de data ingeladen is wordt main() aangeroepen.
+
+De functie main() doet het volgende:
+- makeBarchart() wordt drie keer aangeroepen. Dit is om de drie staafdiagrammen te maken.
+- makePiecharts() aangeroepen om alle taartdiagrammen te maken. De functie makePiecharts() roept de functie makePiechart() aan voor ieder taartdiagram op de website. 
+- linechart() wordt aangeroepen om de lijngrafiek te maken.
+- makeTitles() wordt aangeroepen om de titels te maken die de gekozen jaarwisseling bevatten.
+- tooltipFigureHuman() wordt aangeroepen om de tooltip op het poppetje te verzorgen. Deze functie maakt gebruik van de helpers-functie makeHTMLstring(). Deze maakt een correcte zin voor de data en het gekozen lichaamsdeel. De functie makeHTMLstring() maakt weer gebruik van de functie plural(). Deze laatste functie verzorgt de meervoudsvormen in de tooltip op het poppetje.
+- dropdown() wordt aangeroepen om het dropdown menu te maken.
+- checkboxes() wordt aangeroepen om de functionaliteit van de checkboxes te verzorgen.
+
+De staafjes in de staafdiagrammen hebben een 'onclick'. Het aanklikken van een staaf doet het volgende:
+- De staaf van de geselecteerde jaarwisseling highlight in alle staafdiagrammen.
+- updatePiecharts() wordt aangeroepen om de taartdiagrammen te updaten met de data van de gekozen jaarwisseling. De functie updatePiecharts() roept updatePiechart() aan voor ieder taartdiagram op de website.
+- updateLinechart() wordt aangeroepen om de lijngrafiek te updaten met de data van de gekozen jaarwisseling.
+- makeTitles() wordt aangeroepen om de titels die een jaarwisseling bevatten up te daten.
+- tooltipFigureHuman() wordt aangeroepen om de data in de tooltip op het poppetje up to date te maken.
+- Als laatst wordt de gekozen jaarwisseling in het dropdown menu aangepast.
+
+Het dropdown menu heeft een 'onchange'. Het veranderen van de geselecteerde jaarwisseling in dit menu doet het volgende:
+- De staaf van de geselecteerde jaarwisseling highlight in alle staafdiagrammen.
+- updatePiecharts() wordt aangeroepen om de taartdiagrammen te updaten met de data van de gekozen jaarwisseling. De functie updatePiecharts() roept updatePiechart() aan voor ieder taartdiagram op de website.
+- updateLinechart() wordt aangeroepen om de lijngrafiek te updaten met de data van de gekozen jaarwisseling.
+- makeTitles() wordt aangeroepen om de titels die een jaarwisseling bevatten up te daten.
+- tooltipFigureHuman() wordt aangeroepen om de data in de tooltip op het poppetje up to date te maken.
+
+De checkboxes bevatten een 'on change' waardoor de zichtbaarheid van de taartdiagrammen aan- of uitgezet kan worden.
 
 ## Ontwikkeling
 
@@ -61,5 +107,6 @@ Het was daarom niet duidelijk wat bij een taartdiagram over oogletsel het totaal
 Uiteindelijk kwam het er op neer dat de extra data over oogletsel makkelijker en beter in de tooltip kon staan.
 Dit gold ook voor de dodelijke vuurwerkslachtoffers.
 
-## beslissingen
-Uiteindelijk was het bij elkaar sprokkelen van alle data mijn grootste struikelblok. Als de gevonden data uitgebreider en complexer zou zijn geweest had ik interesantere visualisaties kunnen maken. In dat opzicht is het zoeken van een geschikt onderwerp met passende data echt een lastige stap. Aan de andere kant heb ik nu wel iets kunnen maken wat nog niet bestond, iets wat best opmerkelijk is gezien de jaarlijks terugkerende discussie over een vuurwerkverbod voor consumenten. Als ik meer tijd gehad zou hebben zou ik, in plaats van de data uit nieuwsberichten filteren, datasets opvragen bij de desbetreffende partijen. 
+## Beslissingen
+Uiteindelijk was het bij elkaar sprokkelen van alle data mijn grootste struikelblok. Als de gevonden data uitgebreider en complexer zou zijn geweest had ik interesantere visualisaties kunnen maken. In dat opzicht is het zoeken van een geschikt onderwerp met passende data echt een lastige stap. Aan de andere kant heb ik nu wel iets kunnen maken wat nog niet bestond, iets wat best opmerkelijk is gezien de jaarlijks terugkerende discussie over een vuurwerkverbod voor consumenten. 
+Als ik meer tijd gehad zou hebben zou ik, in plaats van de data uit nieuwsberichten filteren, datasets opvragen bij de desbetreffende partijen. 

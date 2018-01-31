@@ -28,6 +28,23 @@ De verdeling van de code over de files is als volgt:
 De namen van de functies zeggen wat de functies doen.
 Het schema hierboven laat de samenhang tussen alle functies zien.
 
+Als de pagina geladen is wordt afterload() aangeroepen.
+Hierin worden eerst de benodigde globale variabelen gedefinieerd.
+Dan wordt de svg van het poppetje ingeladen.
+Daarna wordt alle data ingeladen.
+Nadat de data ingeladen is wordt main() aangeroepen.
+
+De functie main() doet het volgende:
+- makeBarchart() wordt drie keer aangeroepen. Dit is om de drie staafdiagrammen te maken.
+- makePiecharts() aangeroepen om alle taartdiagrammen te maken. De functie makePiecharts() roept de functie makePiechart() aan voor ieder taartdiagram op de website. 
+- linechart() wordt aangeroepen om de lijngrafiek te maken.
+- makeTitles() wordt aangeroepen om de titels te maken die de gekozen jaarwisseling bevatten.
+- tooltipFigureHuman() wordt aangeroepen om de tooltip op het poppetje te verzorgen.
+- dropdown() wordt aangeroepen om het dropdown menu te maken.
+- checkboxes() wordt aangeroepen om de functionaliteit van de checkboxes te verzorgen.
+
+
+
 ## Ontwikkeling
 
 ### data zoeken

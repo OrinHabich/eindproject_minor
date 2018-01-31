@@ -39,7 +39,7 @@ De functie main() doet het volgende:
 - makePiecharts() aangeroepen om alle taartdiagrammen te maken. De functie makePiecharts() roept de functie makePiechart() aan voor ieder taartdiagram op de website. 
 - linechart() wordt aangeroepen om de lijngrafiek te maken.
 - makeTitles() wordt aangeroepen om de titels te maken die de gekozen jaarwisseling bevatten.
-- tooltipFigureHuman() wordt aangeroepen om de tooltip op het poppetje te verzorgen.
+- tooltipFigureHuman() wordt aangeroepen om de tooltip op het poppetje te verzorgen. Deze functie maakt gebruik van de helpers-functie makeHTMLstring(). Deze maakt een correcte zin voor de data en het gekozen lichaamsdeel. De functie makeHTMLstring() maakt weer gebruik van de functie plural(). Deze laatste functie verzorgt de meervoudsvormen in de tooltip op het poppetje.
 - dropdown() wordt aangeroepen om het dropdown menu te maken.
 - checkboxes() wordt aangeroepen om de functionaliteit van de checkboxes te verzorgen.
 

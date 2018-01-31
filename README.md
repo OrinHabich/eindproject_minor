@@ -8,6 +8,11 @@ Dit laatste argument is veelomvattend en rationeel, maar de informatie over vuur
 Daarom is er nu deze website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
 De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** van de website is toegankelijk en begrijpelijk.
 
+## Screenshot van de website
+![](docs/imagesProcess/websiteDag16.png)
+
+<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
+
 ## Link naar de website
 https://OrinHabich.github.io/project 
 
@@ -46,7 +51,4 @@ https://youtu.be/dPZREgvmL-E
 Copyright © 2018, [Orin Habich](https://github.com/orinhabich).
 Released as [unlicensed](LICENSE) public domain release.
 
-## Screenshot of total overview of website
-![](docs/imagesProcess/websiteDag16.png)
 
-<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>

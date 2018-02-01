@@ -123,7 +123,6 @@ function makePiechart(svgID, data, itemName, colors) {
 
   // by default piecharts are invisible, the checkboxes toggle the visibility
   d3.select("#" + svgID).style("display", "none");
-
 }
 
 function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
@@ -176,6 +175,7 @@ function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
          Args:
           a       data
     */
+
     var i = d3.interpolate(this._current, a);
     this._current = i(0);
     return function(t) { return path(i(t)); };

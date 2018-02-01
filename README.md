@@ -41,8 +41,11 @@ https://youtu.be/dPZREgvmL-E
    -  https://nos.nl/artikel/2151143-schade-jaarwisseling-geschat-op-13-miljoen-euro.html
    -  https://www.consumentenbond.nl/autoverzekering/minder-schade-tijdens-jaarwisseling
    
-   #### code
+   #### Code
    -  https://bl.ocks.org/d3noob
+   
+   #### Afbeeldingen
+   -  https://wallpapers-achtergronden.blogspot.nl/2011/11/vuurwerk-achtergronden.html
    
 ## Gebruikte software
 - Atom

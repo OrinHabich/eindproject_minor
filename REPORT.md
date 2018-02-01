@@ -126,5 +126,5 @@ Uiteindelijk kwam het er op neer dat de extra data over oogletsel makkelijker en
 Dit gold ook voor de dodelijke vuurwerkslachtoffers.
 
 ## Beslissingen
-Uiteindelijk was het bij elkaar sprokkelen van alle data mijn grootste struikelblok. Als de gevonden data uitgebreider en complexer zou zijn geweest had ik interesantere visualisaties kunnen maken. In dat opzicht is het zoeken van een geschikt onderwerp met passende data echt een lastige stap. Aan de andere kant heb ik nu wel iets kunnen maken wat nog niet bestond, iets wat best opmerkelijk is gezien de jaarlijks terugkerende discussie over een vuurwerkverbod voor consumenten. 
+Het bij elkaar sprokkelen van alle data was mijn grootste struikelblok. Als de gevonden data uitgebreider en complexer zou zijn geweest had ik interesantere visualisaties kunnen maken. In dat opzicht is het zoeken van een geschikt onderwerp met passende data echt een lastige stap. Aan de andere kant heb ik nu wel iets kunnen maken wat nog niet bestond, iets wat best opmerkelijk is gezien de jaarlijks terugkerende discussie over een vuurwerkverbod voor consumenten. 
 Als ik meer tijd gehad zou hebben zou ik, in plaats van de data uit nieuwsberichten filteren, datasets opvragen bij de desbetreffende partijen. 

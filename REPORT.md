@@ -84,6 +84,24 @@ bijvoorbeeeld. Een if-statement loste dit op.
 
 In het staafdiagram over materiële schade wilde ik ook een onderverdeling. De data die ik vond bleek bij nadere inspectie helaas inconsistent en dubieus. Daarom heb ik deze eruit gelaten. Hierdoor was een legenda ook niet meer nodig bij dit staafdiagram.
 
+Het onderdeel over materiële schade vind ik uiteindelijk een beetje mager geworden. Ik heb gezocht of ik hier iets bij kon bedenken, maar er was was geen goede data over te vinden. 
+
+Het verhaal dat bij de cijfers over materiële schade hoort is het volgende.
+1.  Er is veel schade ieder jaar.
+2.  Maar we geven met zijn allen nog veel meer uit aan vuurwerk ieder jaar. Vuurwerk levert de maatschappij dus netto geld op.
+3.  Maar we kijken nu alleen naar materiële schade, er zijn nog veel meer kosten voor de maatschappij. Als we die kosten meerekenen komen we netto juist negatief uit. 
+Het volgende rekenplaatje maakt dit duidelijk.
+
+>Maar de echte schade zit in het verlies van levenskwaliteit. Als we het leed van lichamelijke schade uitdrukken in geld, is het bedrag schrikbarend. Het Oogziekenhuis gebruikte daarvoor de Qaly-maatstaf, waarmee verlies van levenskwaliteit wordt uitgedrukt in economische waarde.
+>Als voorbeeld geeft de OVV het verlies van een oog op achtjarige leeftijd. De 'kosten' daarvan worden jaarlijks uitgedrukt als 12.500  euro. Op een mensenleven levert dat een miljoen euro aan leed op.
+>In negen jaar tijd gingen er 158 ogen verloren door vuurwerk bij mensen met een gemiddelde leeftijd van 20 jaar. Ervan uitgaande dat zij 88 jaar worden, levert dat een kostenplaatje op van 134,3 miljoen euro. Alleen al aan verloren levenskwaliteit door oogschade dus.
+>Alles bij elkaar opgeteld kost het jaarlijkse feest de maatschappij dus zeker 30 miljoen euro, waarbij moet aangetekend worden dat we veel kosten dus nog niet eens kennen. 
+>Bron: https://www.rtlz.nl/algemeen/binnenland/zo-hoog-zijn-de-kosten-van-oud-en-nieuw
+
+Het probleem voor mijn visualisaties was dat er hier geen harde cijfers meer zijn. Bovenstaand stukje is al een vrij wilde schatting. Dit in een visualisatie stoppen zou teveel natte-vinger-werk worden naar mijn smaak.
+
+Wat de website nu laat zien is dat data over lichamelijk letsel veel uitgebreider bijgehouden wordt dan materiële schade. Dit laatste wordt simpelweg gedeclareerd bij de verzekeringen, en vinden we verder blijkbaar niet zo interessant. De beschikbare data laat dus zien dat we materiële schade minder belangrijk vinden dan letselschade. Dit wordt nu indirect ook gevisualiseerd door de website.
+
 ### taartdiagrammen
 De taartdiagrammen hadden eventueel ook in één sunburst gekund. Dit zou echter weinig toevoegen omdat de data daar niet de geschikte
 structuur voor heeft. Taartdiagrammen zijn simpeler en gezien de gekozen doelgroep had dat mijn voorkeur.

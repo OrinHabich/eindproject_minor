@@ -1,16 +1,26 @@
 # Schade door vuurwerk 
-#### Orin Habich  https://OrinHabich.github.io/project <img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
+#### Orin Habich  10689508
+<img src='https://bettercodehub.com/edge/badge/OrinHabich/project?branch=master'>
 
+## Beschrijving
 Over het algemeen zijn mensen zich onvoldoende bewust van de hoeveelheid schade door vuurwerk. 
 De discussie rondom vuurwerk slingert meestal tussen "het is traditie" en "het veroorzaakt veel schade."
 Dit laatste argument is veelomvattend en rationeel, maar de informatie over vuurwerkschade is erg versnipperd en ontoegankelijk. 
 Daarom is er nu deze website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
 De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** van de website is toegankelijk en begrijpelijk.
 
+## Screenshot van de website
+![](docs/imagesProcess/websiteDag16.png)
+
+## Link naar de website
+https://OrinHabich.github.io/project 
+
+## Product Demo
+https://youtu.be/dPZREgvmL-E
 
 
 
-  ## Lijst van gebruikte bronnen 
+  ## Gebruikte bronnen 
   ##### Mensen
  -  https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/2A7658DAEF2FFAC0C125809D005C344C/asset/Ongevallen%20met%20vuurwerk%202016-2017%20v2.pdf
  -  https://www.veiligheid.nl/.ibmmodres/domino/OpenAttachment/veiligheid/website.nsf/736AD758CB2AB716C125820B0052595F/asset/Rapportage%20vuurwerkongevallen%202017-2018.pdf
@@ -34,11 +44,19 @@ De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen v
    
    #### code
    -  https://bl.ocks.org/d3noob
+   
+## Gebruikte software
+- Atom
+- D3 versie 4
+- Bootstrap
+- jQueryAjax
+- Queue versie 1
+- Paint
+- http://www.drawsvg.org/drawsvg.html
   
 ## License
 
 Copyright © 2018, [Orin Habich](https://github.com/orinhabich).
 Released as [unlicensed](LICENSE) public domain release.
 
-## Screenshot of total overview of website
-![](docs/imagesProcess/websiteDag16.png)
+

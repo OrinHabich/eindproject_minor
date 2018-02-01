@@ -212,6 +212,6 @@ Als alleen de onderste checkbox was aangeklikt kwam deze piechart helemaal recht
 
 Ik had mijn code al eerder door een HTML-validater gehaald (https://www.freeformatter.com/html-validator.html). Hier kwamen geen errors meer uit, maar wel warnings. Deze heb ik opgelost, de validator zegt nu dat het allemaal goed is.
 
-Na flink zoeken heb ik http://nederlandvuurwerkvrij.nl gevonden. Ik kon mij niet voorstellen dat er niet al een soortgelijke website bestond. Deze pagina lijkt inhoudelijk het meest op mijn project. Het verschil is dat mijn website zich vooral op het visualiseren van de beschikbare cijfers richt. Terwijl nederlandvuurwerkvrij vooral om de discussie draait.
+Ik kon mij niet voorstellen dat er niet al een soortgelijke website bestond, en eindelijk heb ik http://nederlandvuurwerkvrij.nl gevonden.  Deze pagina lijkt inhoudelijk het meest op mijn project. Het verschil is dat mijn website zich vooral op het visualiseren van de beschikbare cijfers richt. Terwijl nederlandvuurwerkvrij vooral om de discussie draait.
 
 

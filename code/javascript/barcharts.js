@@ -33,11 +33,11 @@ function makeBarchart(svgID, data, perInjury, dataPie1, dataPie2, dataPie3,
   */
 
   // put (properties of) svg in variables.
-  var svg = d3.select("#svg" + svgID),
-    margin = {top: 20, right: 100, bottom: 30, left: 60},
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom,
-    g = svg.append("g").attr("id", "barchart" + svgID)
+  var svg = d3.select("#svg" + svgID);
+  var margin = {top: 20, right: 100, bottom: 30, left: 60};
+  var width = +svg.attr("width") - margin.left - margin.right;
+  var height = +svg.attr("height") - margin.top - margin.bottom;
+  var g = svg.append("g").attr("id", "barchart" + svgID)
      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // set the ranges

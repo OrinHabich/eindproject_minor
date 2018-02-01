@@ -28,11 +28,11 @@ function makeLinechart(dataPM10) {
 
   var data = dataPM10[DEFAULTNEWYEARSEVE];
 
-  var svgLinechart = d3.select("#svgLinechart"),
-    margin = {top: 20, right: 0, bottom: 50, left: 60},
-    widthLinechart = +svgLinechart.attr("width") - margin.left - margin.right,
-    heightLinechart = +svgLinechart.attr("height") - margin.top - margin.bottom,
-    gLinechart = svgLinechart.append("g").attr("id", "linechart")
+  var svgLinechart = d3.select("#svgLinechart");
+  var margin = {top: 20, right: 0, bottom: 50, left: 60};
+  var widthLinechart = +svgLinechart.attr("width") - margin.left - margin.right;
+  var heightLinechart = +svgLinechart.attr("height") - margin.top - margin.bottom;
+  var gLinechart = svgLinechart.append("g").attr("id", "linechart")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // set the ranges
@@ -120,11 +120,11 @@ function makeLinechart(dataPM10) {
          Args: none
     */
 
-    var x0 = x.invert(d3.mouse(this)[0]),
-      i = bisectDate(data, x0, 1),
-      d0 = data[i - 1],
-      d1 = data[i],
-      d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
+    var x0 = x.invert(d3.mouse(this)[0]);
+    var i = bisectDate(data, x0, 1);
+    var d0 = data[i - 1];
+    var d1 = data[i];
+    var d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
       tooltipLinechart.attr("transform", "translate(" + x(d.tijdstip) + "," +
         y(d.waarde) + ")");
       tooltipLinechart.select("text")
@@ -142,11 +142,11 @@ function updateLinechart(data) {
           data    An appropriate dataset.
   */
 
-  var svgLinechart = d3.select("#svgLinechart"),
-    margin = {top: 20, right: 0, bottom: 50, left: 60},
-    widthLinechart = +svgLinechart.attr("width") - margin.left - margin.right,
-    heightLinechart = +svgLinechart.attr("height") - margin.top - margin.bottom,
-    gLinechart = svgLinechart.append("g").attr("id", "linechart")
+  var svgLinechart = d3.select("#svgLinechart");
+  var margin = {top: 20, right: 0, bottom: 50, left: 60};
+  var widthLinechart = +svgLinechart.attr("width") - margin.left - margin.right;
+  var heightLinechart = +svgLinechart.attr("height") - margin.top - margin.bottom;
+  var gLinechart = svgLinechart.append("g").attr("id", "linechart")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // set the ranges
@@ -197,11 +197,11 @@ function updateLinechart(data) {
          Args: none
     */
 
-  var x0 = x.invert(d3.mouse(this)[0]),
-    i = bisectDate(data, x0, 1),
-    d0 = data[i - 1],
-    d1 = data[i],
-    d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
+  var x0 = x.invert(d3.mouse(this)[0]);
+  var i = bisectDate(data, x0, 1);
+  var d0 = data[i - 1];
+  var d1 = data[i];
+  var d = x0 - d0.tijdstip > d1.tijdstip - x0 ? d1 : d0;
     tooltipLinechart.attr("transform", "translate(" + x(d.tijdstip) + "," +
       y(d.waarde) + ")");
     tooltipLinechart.select("text").text(function() { return d.waarde; });

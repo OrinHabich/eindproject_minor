@@ -60,11 +60,11 @@ function makePiechart(svgID, data, itemName, colors) {
          colors        The colors for the piechart.
   */
 
-  var svg = d3.select("#svg" + svgID),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
-    radius = Math.min(width, height) / 2 - 2,
-    g = svg.append("g").attr("id", "Piechart" + svgID).attr("transform",
+  var svg = d3.select("#svg" + svgID);
+  var width = +svg.attr("width");
+  var height = +svg.attr("height");
+  var radius = Math.min(width, height) / 2 - 2;
+  var g = svg.append("g").attr("id", "Piechart" + svgID).attr("transform",
       "translate(" + width / 2 + "," + height / 2 + ")");
 
   var pie = d3.pie()
@@ -136,11 +136,11 @@ function updatePiechart(data, svgID, newYearsEve, itemName, colors) {
         colors        The colors for the piechart.
   */
 
-  var svg = d3.select("#svg" + svgID),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
-    radius = Math.min(width, height) / 2 - 2,
-    g = d3.select("#Piechart" + svgID);
+  var svg = d3.select("#svg" + svgID);
+  var width = +svg.attr("width");
+  var height = +svg.attr("height");
+  var radius = Math.min(width, height) / 2 - 2;
+  var g = d3.select("#Piechart" + svgID);
 
   var pie = d3.pie()
     .sort(null)

@@ -75,7 +75,7 @@ function afterLoad() {
   function main(error, dataFirstAid, dataComplaints, dataDamage, perAge,
     perBystander, perTypeFireworks, perStatusFireworks, perInjury, dataPM10,
     mouemove) {
-    /*   Creates charts based on the given data.
+    /*   Creates the default setup of the web page.
          Args:
          error        Boolean, true if error, false otherwise.
          all others   Appriopiate datasets.

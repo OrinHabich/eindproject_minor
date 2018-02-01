@@ -111,6 +111,7 @@ function plural(n, word) {
          n       A number.
          word    The word 'persoon', 'oog' or 'werd'.
   */
+
   if (n == 1) {
     if (word == "persoon") {
       return "persoon";
@@ -176,7 +177,5 @@ function dropdown(perInjury, dataPie1, dataPie2, dataPie3, dataPie4, dataPM10) {
     updateLinechart(dataPM10[selectValue]);
     makeTitles(selectValue);
     tooltipFigureHuman(perInjury, selectValue);
-
-
   };
 }

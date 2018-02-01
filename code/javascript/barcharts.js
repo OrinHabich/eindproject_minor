@@ -41,13 +41,11 @@ function makeBarchart(svgID, data, perInjury, dataPie1, dataPie2, dataPie3,
      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // set the ranges
-  var x = d3.scaleBand().rangeRound([0, width]).paddingInner(0.05).align(0.1);
+  var x = d3.scaleBand().rangeRound([0, width]).paddingInner(0.2).align(0.1);
   var y = d3.scaleLinear().rangeRound([height, 0]);
   var z = d3.scaleOrdinal().range(colors);
 
   var keys = data.columns.slice(1);
-
-  var selectedNewYearsEve = DEFAULTNEWYEARSEVE;
 
   x.domain(data.map(function(d) { return d.jaarwisseling; }));
   y.domain([0, d3.max(data, function(d) { return d.total; })]).nice();
@@ -138,7 +136,7 @@ function makeBarchart(svgID, data, perInjury, dataPie1, dataPie2, dataPie3,
     .attr("text-anchor", "start")
     .text(nameY);
 
-  // make legend
+  // make legend if needed
   if (legend) {
     var legend = g.append("g")
       .attr("font-family", "sans-serif")

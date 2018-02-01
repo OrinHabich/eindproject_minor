@@ -6,8 +6,7 @@
 Over het algemeen zijn mensen zich onvoldoende bewust van de hoeveelheid schade door vuurwerk. 
 De discussie rondom vuurwerk slingert meestal tussen "het is traditie" en "het veroorzaakt veel schade."
 Dit laatste argument is veelomvattend en rationeel, maar de informatie over vuurwerkschade is erg versnipperd en ontoegankelijk. 
-Daarom is er nu deze website met visualisaties over vuurwerkschade. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.  
-De **doelgroep** bestaat uit mensen die snel en makkelijk een overzicht willen van vuurwerkschade. Het **niveau** van de website is toegankelijk en begrijpelijk.
+Voor mensen die snel een begrijpelijk overzicht willen is er nu deze website met visualisaties. Deze visualisaties zijn gecentreerd rond drie m's: schade aan mensen, schade aan milieu en materiële schade.
 
 ## Screenshot van de website
 ![](docs/imagesProcess/websiteDag16.png)
